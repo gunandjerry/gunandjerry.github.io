@@ -13,7 +13,7 @@ export const PERSONAL_INFO = {
   phone: "010-1234-5678",
   email: "gildong.hong.dev@example.com",
   github: "https://github.com/yourusername",
-  photo: "https://picsum.photos/seed/profilepic/200/200",
+  photo: "img/sample.png",
   introduction: "끊임없는 학습과 도전을 즐기는 N년차 게임 클라이언트 개발자 홍길동입니다. 사용자에게 최고의 경험을 선사하는 게임을 만드는 것을 목표로 하고 있으며, 다양한 기술 스택에 대한 깊은 이해와 협업 능력을 바탕으로 프로젝트 성공에 기여합니다.",
 };
 

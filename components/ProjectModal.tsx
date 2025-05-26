@@ -142,7 +142,7 @@ function ProjectModal({ project, onClose }) {
           )}
 
           {/* Main Scrollable Content */}
-          <div ref={contentPanelRef} className="flex-grow p-4 sm:p-6 overflow-y-auto styled-scrollbar">
+          <div ref={contentPanelRef} className="relative flex-grow p-4 sm:p-6 overflow-y-auto styled-scrollbar">
             <img src={project.image} alt={project.title} className="w-full h-48 sm:h-64 object-cover rounded-lg mb-4 sm:mb-6 shadow-lg" />
 
             {/* Long Description */}
