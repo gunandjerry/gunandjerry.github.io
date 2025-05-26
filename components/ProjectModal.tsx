@@ -152,16 +152,12 @@ function ProjectModal({ project, onClose }) {
                   <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
                     {section.title}
                   </h3>
-                  <p className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base">{section.content}</p>
-                  {section.image && (
-                    <>
-                      <img 
-                        src={section.image} 
-                        alt={`Image for ${section.title}`} 
-                        className="w-full h-auto object-cover rounded-md my-3 sm:my-4 shadow-md"
-                      />
-                      <hr className="my-4 sm:my-6 border-slate-600" />
-                    </>
+                  <div 
+                    className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
+                    dangerouslySetInnerHTML={{ __html: section.content }} 
+                  />
+                  {section.showDivider && (
+                    <hr className="my-4 sm:my-6 border-slate-600" />
                   )}
                 </section>
               ))
