@@ -1,111 +1,207 @@
 
-import React from 'react';
-import { Project } from '../types';
-import { GithubIcon } from '../constants'; // Assuming GithubIcon is in constants
+import React, { useState, useEffect, useRef } from 'react';
+import { CloseIcon, GitHubIcon, ExternalLinkIcon } from '../constants.tsx';
 
-interface ProjectModalProps {
-  project: Project;
-  onClose: () => void;
-}
+function ProjectModal({ project, onClose }) {
+  const [internalVisible, setInternalVisible] = useState(false); // For animation control
+  const contentPanelRef = useRef(null);
+  const [activeSection, setActiveSection] = useState('');
 
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+  useEffect(() => {
+    if (project) {
+      // Modal is being opened or project changed
+      const timer = setTimeout(() => {
+        setInternalVisible(true);
+      }, 10); // Delay for entry animation
+      return () => clearTimeout(timer);
+    } else {
+      // Modal is being closed
+      setInternalVisible(false);
+    }
+  }, [project]);
+  
+  // Effect for observing sections in view for TOC highlighting
+  useEffect(() => {
+    // Only setup if project exists, modal is intended to be visible, content is there, and it's a structured description
+    if (!project || !internalVisible || !contentPanelRef.current || !Array.isArray(project.longDescription) || project.longDescription.length === 0) {
+      // Cleanup if observer was previously active and conditions are no longer met
+      // The return function from a previous successful setup will handle specific observer instance cleanup.
+      return; 
+    }
+
+    const currentContentPanel = contentPanelRef.current; // Capture ref value for use in this effect scope
+
+    // Set initial active section when modal with TOC becomes visible
+    if (project.longDescription[0]?.id) {
+      setActiveSection(`modal-section-${project.longDescription[0].id}`);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) { // Simpler and often more reliable than ratio checks for this use case
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { 
+        root: currentContentPanel, 
+        threshold: 0.5, // Trigger when 50% of the section is visible
+        rootMargin: "-40px 0px -40px 0px" // Adjust for potential fixed/sticky elements within the scroll root
+      }
+    );
+
+    const elementsToObserve = [];
+    project.longDescription.forEach((section) => {
+      const el = currentContentPanel.querySelector(`#modal-section-${section.id}`);
+      if (el) {
+        observer.observe(el);
+        elementsToObserve.push(el);
+      }
+    });
+
+    return () => { // Cleanup function for this specific observer instance
+      elementsToObserve.forEach((el) => {
+        observer.unobserve(el);
+      });
+      observer.disconnect();
+    };
+  }, [project, internalVisible]); // Depend on project and internal animation state
+
+
+  const handleBackdropClick = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  const scrollToSection = (sectionId) => {
+    if (contentPanelRef.current) {
+      const element = contentPanelRef.current.querySelector(`#${sectionId}`);
+      if (element) {
+        const elementPosition = element.offsetTop - 10; // 10px buffer from top of scrollable area
+        contentPanelRef.current.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth',
+        });
+        setActiveSection(sectionId); // Manually set active section on click for immediate feedback
+      }
+    }
+  };
+
+  if (!project) return null; // Primary guard: if no project, render nothing
+
+  const isStructuredDescription = Array.isArray(project.longDescription) && project.longDescription.length > 0;
+
   return (
-    <div 
-      className="fixed inset-0 bg-black bg-opacity-75 backdrop-blur-sm flex items-center justify-center z-[100] p-4 transition-opacity duration-300"
-      onClick={onClose}
+    <div
+      className={`fixed inset-0 bg-black bg-opacity-80 backdrop-blur-md flex items-center justify-center z-[100] p-4
+                  transition-opacity duration-300 ease-out ${internalVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+      onClick={handleBackdropClick}
+      aria-modal="true"
+      role="dialog"
     >
       <div
-        className="bg-gray-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto relative transform transition-all duration-300 scale-95 opacity-0 animate-modal-appear"
-        onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
-        style={{ animationFillMode: 'forwards' }} // Keep final state of animation
+        className={`bg-slate-800 rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col
+                    transform transition-all duration-300 ease-out
+                    ${internalVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
       >
-        <style>
-          {`
-            @keyframes modal-appear {
-              to {
-                opacity: 1;
-                transform: scale(1);
-              }
-            }
-            .animate-modal-appear {
-              animation-name: modal-appear;
-              animation-duration: 0.3s;
-              animation-timing-function: ease-out;
-            }
-          `}
-        </style>
-        <button
-          onClick={onClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors z-10"
-          aria-label="Close modal"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </button>
-
-        <div className="relative h-64 md:h-80 w-full rounded-lg overflow-hidden mb-6 shadow-lg">
-          <img 
-            src={project.imageUrl} 
-            alt={project.title} 
-            className="w-full h-full object-cover"
-          />
+        {/* Modal Header */}
+        <div className="flex-shrink-0 p-4 sm:p-6 border-b border-slate-700 flex justify-between items-start">
+          <h2 className="text-2xl sm:text-3xl font-bold text-teal-400">{project.title}</h2>
+          <button
+            onClick={onClose}
+            className="text-slate-400 hover:text-teal-400 transition-colors"
+            aria-label="Close modal"
+          >
+            <CloseIcon className="w-7 h-7" />
+          </button>
         </div>
 
-        <h2 className="text-3xl md:text-4xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{project.title}</h2>
-        
-        {project.role && (
-          <p className="text-sm text-blue-300 mb-1"><strong className="font-semibold">역할:</strong> {project.role}</p>
-        )}
-        {project.duration && (
-          <p className="text-sm text-blue-300 mb-4"><strong className="font-semibold">개발 기간:</strong> {project.duration}</p>
-        )}
+        {/* Modal Body */}
+        <div className="flex flex-grow overflow-hidden">
+          {/* Table of Contents (TOC) */}
+          {isStructuredDescription && (
+            <nav className="w-48 md:w-56 flex-shrink-0 p-4 sm:p-6 border-r border-slate-700 overflow-y-auto styled-scrollbar hidden md:block">
+              <h4 className="text-md sm:text-lg font-semibold text-slate-100 mb-3 sm:mb-4">목차</h4>
+              <ul>
+                {project.longDescription.map(section => (
+                  <li key={section.id} className="mb-1.5 sm:mb-2">
+                    <button
+                      onClick={() => scrollToSection(`modal-section-${section.id}`)}
+                      className={`text-left w-full text-sm sm:text-base px-2 py-1 rounded
+                                  ${activeSection === `modal-section-${section.id}` ? 'text-teal-400 bg-teal-500/10 font-semibold' : 'text-slate-400 hover:text-teal-300 hover:bg-slate-700/50'}
+                                  transition-all duration-150 ease-in-out`}
+                    >
+                      {section.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          )}
 
-        <div className="prose prose-invert max-w-none text-gray-300 mb-6 leading-relaxed">
-          {typeof project.longDescription === 'string' ? <p>{project.longDescription}</p> : project.longDescription}
-        </div>
+          {/* Main Scrollable Content */}
+          <div ref={contentPanelRef} className="flex-grow p-4 sm:p-6 overflow-y-auto styled-scrollbar">
+            <img src={project.image} alt={project.title} className="w-full h-48 sm:h-64 object-cover rounded-lg mb-4 sm:mb-6 shadow-lg" />
 
-        <div className="mb-6">
-          <h4 className="text-lg font-semibold text-blue-300 mb-2">사용 기술:</h4>
-          <div className="flex flex-wrap gap-2">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="bg-gray-700 text-gray-200 px-3 py-1.5 rounded-md text-sm font-medium shadow"
-              >
-                {tech}
-              </span>
-            ))}
+            {/* Long Description */}
+            {isStructuredDescription ? (
+              project.longDescription.map(section => (
+                <section key={section.id} id={`modal-section-${section.id}`} className="mb-6 sm:mb-8 scroll-mt-4 md:scroll-mt-6">
+                  {/* Removed sticky classes from h3 */}
+                  <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
+                    {section.title}
+                  </h3>
+                  <p className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base">{section.content}</p>
+                </section>
+              ))
+            ) : (
+              <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-wrap text-sm sm:text-base">{project.longDescription}</p>
+            )}
+
+            {/* Technologies */}
+            <div className="mb-6 pt-4 border-t border-slate-700 mt-6 sm:mt-8">
+              <h4 className="text-lg font-semibold text-slate-100 mb-2">주요 기술:</h4>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map(tech => (
+                  <span key={tech} className="bg-teal-500/20 text-teal-300 px-3 py-1 text-xs sm:text-sm rounded-full">{tech}</span>
+                ))}
+              </div>
+            </div>
+
+            {/* Links (GitHub, Live Demo) */}
+            {(project.sourceLink || project.liveLink) && (
+              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 border-t border-slate-700 mt-6">
+                {project.sourceLink && (
+                  <a
+                    href={project.sourceLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                  >
+                    <GitHubIcon className="w-5 h-5 mr-2" />
+                    소스 코드
+                  </a>
+                )}
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                  >
+                    <ExternalLinkIcon className="w-5 h-5 mr-2" />
+                    라이브 데모
+                  </a>
+                )}
+              </div>
+            )}
           </div>
-        </div>
-
-        <div className="flex flex-wrap gap-4">
-          {project.projectUrl && (
-            <a
-              href={project.projectUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 mr-2">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
-              </svg>
-              프로젝트 보기
-            </a>
-          )}
-          {project.sourceCodeUrl && (
-            <a
-              href={project.sourceCodeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center bg-gray-600 hover:bg-gray-500 text-white font-semibold py-2 px-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105"
-            >
-              <GithubIcon className="w-5 h-5 mr-2" />
-              소스 코드
-            </a>
-          )}
         </div>
       </div>
     </div>
   );
-};
+}
+
+export default ProjectModal;

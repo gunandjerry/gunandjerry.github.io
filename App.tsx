@@ -1,83 +1,24 @@
 
+import React from 'react';
+import Header from './components/Header.tsx';
+import Introduction from './components/Introduction.tsx';
+import ProjectCarousel from './components/ProjectCarousel.tsx';
+import ExperienceTimeline from './components/ExperienceTimeline.tsx';
+import Footer from './components/Footer.tsx';
+import { PERSONAL_INFO, PROJECTS_DATA, EXPERIENCE_DATA, SECTION_IDS } from './constants.tsx';
 
-import React, { useState } from 'react';
-import { Header } from './components/Header';
-import { ProjectCard } from './components/ProjectCard';
-import { ProjectModal } from './components/ProjectModal';
-import { LearningJourney } from './components/LearningJourney'; // Corrected import path
-import { PROJECTS_DATA, TIMELINE_DATA, CONTACT_INFO } from './constants'; // Constants import
-import { Project, TimelineEvent } from './types';
-
-const App: React.FC = () => {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  const handleOpenProjectModal = (project: Project) => {
-    setSelectedProject(project);
-  };
-
-  const handleCloseProjectModal = () => {
-    setSelectedProject(null);
-  };
-
+function App() {
   return (
-    <div className="min-h-screen bg-gray-900 text-gray-100 font-sans">
-      <Header contactInfo={CONTACT_INFO} />
-
-      <main className="pt-28 pb-16 px-4 md:px-8 lg:px-16 max-w-screen-xl mx-auto">
-        {/* Profile Intro Section - Minimalist */}
-        <section id="about" className="mb-24 text-center">
-          <img 
-            src="https://picsum.photos/seed/profile/150/150" 
-            alt="Profile Picture" 
-            className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg"
-          />
-          {/* <h1 className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
-            안녕하세요!
-          </h1> */}
-          <p className="text-xl md:text-2xl text-gray-300 mb-6">안녕하세요. 게임 개발자 지망생\n{CONTACT_INFO.name}입니다!</p>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            누구보다 게임 산업에 대한 강한 확신과 흥미를 가지고 최선을 다하겠습니다.
-          </p>
-        </section>
-
-        {/* Projects Section */}
-        <section id="projects" className="mb-24">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
-            프로젝트
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
-            {PROJECTS_DATA.map((project) => (
-              <ProjectCard
-                key={project.id}
-                project={project}
-                onOpenModal={handleOpenProjectModal}
-              />
-            ))}
-          </div>
-        </section>
-
-        {/* Learning Journey Section */}
-        <section id="journey" className="mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">
-            나의 성장 과정
-          </h2>
-          <LearningJourney events={TIMELINE_DATA} />
-        </section>
+    <div className="min-h-screen flex flex-col">
+      <Header personalInfo={PERSONAL_INFO} sectionIds={SECTION_IDS} />
+      <main className="flex-grow pt-20 md:pt-24"> {/* Adjusted padding top for fixed header */}
+        <Introduction id={SECTION_IDS.INTRODUCTION} personalInfo={PERSONAL_INFO} />
+        <ProjectCarousel id={SECTION_IDS.PROJECTS} projects={PROJECTS_DATA} />
+        <ExperienceTimeline id={SECTION_IDS.EXPERIENCE} experiences={EXPERIENCE_DATA} />
       </main>
-
-      {selectedProject && (
-        <ProjectModal
-          project={selectedProject}
-          onClose={handleCloseProjectModal}
-        />
-      )}
-
-      <footer className="text-center p-8 border-t border-gray-700 text-gray-500">
-        <p>&copy; {new Date().getFullYear()} {CONTACT_INFO.name}. All rights reserved.</p>
-        <p className="text-sm mt-1">이 포트폴리오는 React와 Tailwind CSS로 제작되었습니다.</p>
-      </footer>
+      <Footer />
     </div>
   );
-};
+}
 
 export default App;

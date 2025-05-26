@@ -1,44 +1,64 @@
-
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Developer Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-      /* Custom scrollbar for a more polished look */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #2d3748; /* dark-gray-800 */
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #4a5568; /* dark-gray-600 */
-        border-radius: 4px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #718096; /* dark-gray-500 */
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-    </style>
-  <script type="importmap">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Custom scrollbar for webkit browsers (body) */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #1f2937; /* bg-gray-800 */
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #4b5563; /* bg-gray-600 */
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6b7280; /* bg-gray-500 */
+    }
+
+    /* Custom scrollbar for modal content */
+    .styled-scrollbar::-webkit-scrollbar {
+      width: 6px;
+    }
+    .styled-scrollbar::-webkit-scrollbar-track {
+      background: #334155; /* bg-slate-700 */
+    }
+    .styled-scrollbar::-webkit-scrollbar-thumb {
+      background: #4b5563; /* bg-slate-600 */
+      border-radius: 3px;
+    }
+    .styled-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #6b7280; /* bg-gray-500 */
+    }
+    /* For Firefox */
+    .styled-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: #4b5563 #334155; /* thumb track */
+    }
+
+    /* Smooth scrolling for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+<script type="importmap">
 {
   "imports": {
+    "react": "https://esm.sh/react@^19.1.0",
     "react-dom/": "https://esm.sh/react-dom@^19.1.0/",
-    "react/": "https://esm.sh/react@^19.1.0/",
-    "react": "https://esm.sh/react@^19.1.0"
+    "react/": "https://esm.sh/react@^19.1.0/"
   }
 }
 </script>
 </head>
-  <body class="bg-gray-900 text-gray-100">
-    <div id="root"></div>
-    <script type="module" src="/index.tsx"></script>
-  </body>
-</html>
-<link rel="stylesheet" href="index.css">
+<body class="bg-slate-900 text-slate-200">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html><link rel="stylesheet" href="index.css">
 <script src="index.tsx" type="module"></script>
