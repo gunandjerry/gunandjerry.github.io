@@ -48,11 +48,12 @@ export const RocketLaunchIcon: React.FC<{ className?: string }> = ({ className }
 
 // Contact Information
 export const CONTACT_INFO: ContactInfo = {
-  name: "홍길동",
-  email: "gildong.hong@example.com",
-  phone: "010-1234-5678",
-  githubUrl: "https://github.com/gildonghong",
-  blogUrl: "https://gildong.tistory.com",
+  name: "이건제",
+  nickname: "gunandjerry",
+  email: "gunandjerry@gmail.com",
+  phone: "010-2870-5895",
+  githubUrl: "https://github.com/gunandjerry", // Optional
+  blogUrl: "https://ddodigi.tistory.com/", // Optional
   linkedinUrl: "https://linkedin.com/in/gildonghong" // Optional
 };
 

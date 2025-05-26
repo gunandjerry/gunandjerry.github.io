@@ -9,9 +9,9 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ contactInfo }) => {
   const navItems = [
-    { label: "소개", href: "#about" },
+    { label: "프로필", href: "#about" },
     { label: "프로젝트", href: "#projects" },
-    { label: "성장 과정", href: "#journey" },
+    { label: "걸어온 과정", href: "#journey" },
   ];
 
   return (
@@ -45,11 +45,11 @@ export const Header: React.FC<HeaderProps> = ({ contactInfo }) => {
                 <PhoneIcon className="w-6 h-6" />
               </a>
             )}
-            {contactInfo.githubUrl && (
+            {/* {contactInfo.githubUrl && (
               <a href={contactInfo.githubUrl} target="_blank" rel="noopener noreferrer" title="GitHub" className="text-gray-400 hover:text-white transition-colors">
                 <GithubIcon className="w-6 h-6" />
               </a>
-            )}
+            )} */}
             {contactInfo.blogUrl && (
               <a href={contactInfo.blogUrl} target="_blank" rel="noopener noreferrer" title="Tech Blog" className="text-gray-400 hover:text-white transition-colors">
                 <BlogIcon className="w-6 h-6" />
