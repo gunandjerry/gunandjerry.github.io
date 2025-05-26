@@ -149,11 +149,20 @@ function ProjectModal({ project, onClose }) {
             {isStructuredDescription ? (
               project.longDescription.map(section => (
                 <section key={section.id} id={`modal-section-${section.id}`} className="mb-6 sm:mb-8 scroll-mt-4 md:scroll-mt-6">
-                  {/* Removed sticky classes from h3 */}
                   <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
                     {section.title}
                   </h3>
                   <p className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base">{section.content}</p>
+                  {section.image && (
+                    <>
+                      <img 
+                        src={section.image} 
+                        alt={`Image for ${section.title}`} 
+                        className="w-full h-auto object-cover rounded-md my-3 sm:my-4 shadow-md"
+                      />
+                      <hr className="my-4 sm:my-6 border-slate-600" />
+                    </>
+                  )}
                 </section>
               ))
             ) : (
