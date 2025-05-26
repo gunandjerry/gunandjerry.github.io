@@ -54,38 +54,6 @@ function ProjectCarousel({ id, projects }) {
     }
   }, [currentIndex, itemsToShow, isDragging, projects.length]);
 
-  // Effect to handle mouse wheel scrolling for the page
-  useEffect(() => {
-    const carouselElement = viewportRef.current;
-    if (!carouselElement) return;
-
-    const onWheel = (e: WheelEvent) => {
-      // Check if the event originated from within the modal.
-      // The modal has its own scroll handling.
-      if ((e.target as HTMLElement).closest('[role="dialog"]')) {
-        return; // Let the modal handle its own scroll.
-      }
-
-      // Prevent default behavior (like horizontal scrolling of the carousel itself via wheel)
-      e.preventDefault();
-      
-      // Apply the scroll to the main window/document
-      window.scrollBy({
-        left: e.deltaX,
-        top: e.deltaY,
-        behavior: 'auto', 
-      });
-    };
-
-    carouselElement.addEventListener('wheel', onWheel, { passive: false });
-
-    return () => {
-      if (carouselElement) {
-        carouselElement.removeEventListener('wheel', onWheel);
-      }
-    };
-  }, []); // Empty dependency array: run once on mount, cleanup on unmount
-
 
   const handlePrev = () => {
     setCurrentIndex(prev => Math.max(0, prev - 1)); // Scroll one item at a time
@@ -99,6 +67,10 @@ function ProjectCarousel({ id, projects }) {
   
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!viewportRef.current) return;
+    // Prevent dragging if the click originated from a modal (should not happen if modal is on top, but as a safeguard)
+    if ((e.target as HTMLElement).closest('[role="dialog"]')) {
+        return;
+    }
     setIsDragging(true);
     setStartX(e.pageX - viewportRef.current.offsetLeft);
     setScrollLeftStart(viewportRef.current.scrollLeft);
@@ -141,7 +113,7 @@ function ProjectCarousel({ id, projects }) {
   
   if (!projects || projects.length === 0) {
     return (
-      <section id={id} className="py-20 sm:py-28 bg-slate-800/30"> {/* Adjusted padding */}
+      <section id={id} className="py-20 sm:py-28 bg-slate-800/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-4">프로젝트</h2>
           <p className="text-slate-400">등록된 프로젝트가 없습니다.</p>
@@ -163,7 +135,7 @@ function ProjectCarousel({ id, projects }) {
 
 
   return (
-    <section id={id} className="py-20 sm:py-28 bg-slate-800/30"> {/* Adjusted padding */}
+    <section id={id} className="py-20 sm:py-28 bg-slate-800/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12 text-center">
           <span className="text-teal-400">참여</span> 프로젝트
@@ -172,7 +144,7 @@ function ProjectCarousel({ id, projects }) {
         <div className="relative">
           <div 
             ref={viewportRef}
-            className="flex overflow-x-hidden cursor-grab"
+            className="flex overflow-hidden cursor-grab" // Changed from overflow-x-hidden to overflow-hidden
             style={{ scrollSnapType: 'x mandatory', scrollbarWidth: 'none', msOverflowStyle: 'none' }}
             onMouseDown={handleMouseDown}
             onMouseLeave={handleMouseLeaveOrUp}
@@ -187,8 +159,8 @@ function ProjectCarousel({ id, projects }) {
                   width: `calc(100% / ${itemsToShow})`, 
                   paddingLeft: '0.75rem', 
                   paddingRight: '0.75rem',
-                  paddingTop: '1rem', // Added vertical padding
-                  paddingBottom: '1rem', // Added vertical padding
+                  paddingTop: '1rem', 
+                  paddingBottom: '1rem', 
                   boxSizing: 'border-box',
                   scrollSnapAlign: 'start', 
                 }}
