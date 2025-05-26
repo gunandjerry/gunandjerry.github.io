@@ -31,13 +31,12 @@ const App: React.FC = () => {
             alt="Profile Picture" 
             className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-6 border-4 border-blue-500 shadow-lg"
           />
-          <p className="text-xl md:text-2xl text-gray-300 mb-6">안녕하세요</p>
-          <p className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">{CONTACT_INFO.name}</p>
-          <p className="text-xl md:text-2xl text-gray-300 mb-6">입니다.</p>
-
-          <p className="text-xl md:text-2xl text-gray-300 mb-6">열정적인 게임 클라이언트 개발자 지망생</p>
+          {/* <h1 className="text-4xl md:text-5xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">
+            안녕하세요!
+          </h1> */}
+          <p className="text-xl md:text-2xl text-gray-300 mb-6">안녕하세요. 게임 개발자 지망생\n{CONTACT_INFO.name}입니다!</p>
           <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            새로운 기술을 배우고 창의적인 게임 경험을 만드는 것을 즐깁니다. 저의 여정과 프로젝트를 살펴보세요.
+            누구보다 게임 산업에 대한 강한 확신과 흥미를 가지고 최선을 다하겠습니다.
           </p>
         </section>
 
