@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { GitHubIcon } from '../constants.tsx';
 
@@ -15,7 +14,7 @@ function Header({ personalInfo, sectionIds }) {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16 md:h-20">
         <div className="flex items-center">
           <a href="#" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }} className="text-xl md:text-2xl font-bold text-teal-400 hover:text-teal-300 transition-colors">
-            {personalInfo.name}
+            {personalInfo.name} ({personalInfo.name_eng})
           </a>
           <span className="ml-2 md:ml-3 text-xs md:text-sm text-slate-400 hidden sm:inline">| {personalInfo.title}</span>
         </div>
@@ -24,6 +23,7 @@ function Header({ personalInfo, sectionIds }) {
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">소개</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">프로젝트</button>
           <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">경력</button>
+          <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">역량</button>
         </nav>
 
         <div className="flex items-center space-x-3 md:space-x-4">
@@ -34,11 +34,12 @@ function Header({ personalInfo, sectionIds }) {
           </a>
         </div>
       </div>
-       {/* Mobile Navigation (simplified) */}
-       <div className="md:hidden flex justify-center space-x-2 pb-2 border-t border-slate-700/50 pt-2">
+       {/* Mobile Navigation */}
+       <div className="md:hidden flex justify-around space-x-1 pb-2 border-t border-slate-700/50 pt-2">
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">소개</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">프로젝트</button>
           <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">경력</button>
+          <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">역량</button>
        </div>
     </header>
   );

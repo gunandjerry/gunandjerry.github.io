@@ -1,20 +1,22 @@
-
 import React from 'react';
 
 export const SECTION_IDS = {
   INTRODUCTION: 'introduction',
   PROJECTS: 'projects',
   EXPERIENCE: 'experience',
+  SKILLS: 'skills',
   // CONTACT: 'contact', // Footer serves as contact implicitly
 };
 
 export const PERSONAL_INFO = {
-  name: "홍길동 (Gildong Hong)",
-  title: "Game Client Developer",
-  phone: "010-1234-5678",
-  email: "gildong.hong.dev@example.com",
-  github: "https://github.com/yourusername",
-  photo: "https://picsum.photos/seed/profilepic/200/200",
+  name: "이건제",
+  name_eng: "Geonje Lee",
+  title: "게임 개발자(클라이언트) 지망생",
+  phone: "010-2870-5895",
+  email: "gunandjerry@gmail.com",
+  github: "https://github.com/gunandjerry",
+  blog: "https://ddodigi.tistory.com/",
+  photo: "img/profile/face.png",
   introduction: "끊임없는 학습과 도전을 즐기는 N년차 게임 클라이언트 개발자 홍길동입니다. 사용자에게 최고의 경험을 선사하는 게임을 만드는 것을 목표로 하고 있으며, 다양한 기술 스택에 대한 깊은 이해와 협업 능력을 바탕으로 프로젝트 성공에 기여합니다.",
 };
 
@@ -146,6 +148,38 @@ export const EXPERIENCE_DATA = [
   },
 ];
 
+export const STRENGTHS_DATA = [
+  "빠른 학습 능력과 새로운 기술 습득에 대한 높은 관심",
+  "복잡한 문제에 대한 분석적 접근과 효과적인 해결 능력",
+  "다양한 팀원들과의 원활한 커뮤니케이션 및 적극적인 협업",
+  "사용자 경험(UX)을 최우선으로 생각하는 개발 마인드셋",
+  "코드 품질, 유지보수성 및 성능 최적화에 대한 깊은 이해와 노력",
+  "주도적인 업무 수행 능력과 프로젝트에 대한 책임감"
+];
+
+export const SKILLS_DATA = [
+  {
+    category: "Programming Languages",
+    skills: ["C# (Unity, .NET)", "C++ (Unreal Engine, Cocos2d-x)", "HLSL/GLSL (Shader Programming)", "GDScript (Godot)", "Python (Scripting/Tooling)"],
+    icon: (props) => <CodeBracketIcon {...props} />,
+  },
+  {
+    category: "Game Engines & Frameworks",
+    skills: ["Unity (URP/HDRP, DOTS/ECS Basics)", "Unreal Engine 4/5 (Blueprints, C++)", "Cocos2d-x", "Godot Engine", "Direct3D 11/12", "PhysX"],
+    icon: (props) => <CpuChipIcon {...props} />,
+  },
+  {
+    category: "Tools & Platforms",
+    skills: ["Git (Github, Gitlab, Sourcetree)", "Visual Studio, VS Code, Rider", "Photon Engine (PUN, Bolt)", "Oculus SDK, SteamVR", "Android & iOS Development", "Windows & Linux Environments", "JIRA, Confluence"],
+    icon: (props) => <WrenchScrewdriverIcon {...props} />,
+  },
+  {
+    category: "Other Expertise",
+    skills: ["Agile & Scrum Methodologies", "UI/UX Design Principles & Implementation", "Performance Profiling & Optimization", "Game AI Fundamentals", "Network Programming Basics", "Software Architecture Design Patterns"],
+    icon: (props) => <AcademicCapIcon {...props} />,
+  }
+];
+
 export const ChevronLeftIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
@@ -173,5 +207,36 @@ export const ExternalLinkIcon = (props) => (
 export const CloseIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
+
+export const CodeBracketIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z" />
+  </svg>
+);
+
+export const CpuChipIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 21v-1.5M15.75 3v1.5m0 16.5v-1.5m3.75-12H21M12 3.75V3M12 21v-1.5m3.75-15H21m-3.75 0H12m2.25 2.25V7.5M12 12h.008v.008H12V12zm.008 0H12m2.242 0h.008m2.242 0H12m2.25 2.25v-.008M12 12v2.25m0 0H9.75M12 12H9.75m2.25 2.25H9.75M12 12H9.75M7.5 12h-.008V9.75H7.5V12zm4.5 4.5H7.5V12h4.5v4.5z" />
+  </svg>
+);
+
+export const WrenchScrewdriverIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.528-1.036.246-2.395-.8-3.198l-.993-.664A2.25 2.25 0 008.626 8l-2.252 2.252a2.25 2.25 0 00-.663 1.585c0 .414.16.807.444 1.1l3.031 2.496m3.198-3.744c.39.193.69.514.826.898m-3.198-3.744L8.626 8m3.198 3.744L8.626 8" />
+    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 8.25L10.5 3A2.652 2.652 0 003 10.5l5.25 5.25m7.5-7.5L10.5 3m5.25 5.25L3 10.5" />
+  </svg>
+);
+
+export const AcademicCapIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+    </svg>
+);
+
+export const CheckCircleIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
   </svg>
 );
