@@ -3,35 +3,28 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CloseIcon, GitHubIcon, ExternalLinkIcon } from '../constants.tsx';
 
 function ProjectModal({ project, onClose }) {
-  const [internalVisible, setInternalVisible] = useState(false); // For animation control
+  const [internalVisible, setInternalVisible] = useState(false);
   const contentPanelRef = useRef(null);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
     if (project) {
-      // Modal is being opened or project changed
       const timer = setTimeout(() => {
         setInternalVisible(true);
-      }, 10); // Delay for entry animation
+      }, 10);
       return () => clearTimeout(timer);
     } else {
-      // Modal is being closed
       setInternalVisible(false);
     }
   }, [project]);
   
-  // Effect for observing sections in view for TOC highlighting
   useEffect(() => {
-    // Only setup if project exists, modal is intended to be visible, content is there, and it's a structured description
     if (!project || !internalVisible || !contentPanelRef.current || !Array.isArray(project.longDescription) || project.longDescription.length === 0) {
-      // Cleanup if observer was previously active and conditions are no longer met
-      // The return function from a previous successful setup will handle specific observer instance cleanup.
       return; 
     }
 
-    const currentContentPanel = contentPanelRef.current; // Capture ref value for use in this effect scope
+    const currentContentPanel = contentPanelRef.current;
 
-    // Set initial active section when modal with TOC becomes visible
     if (project.longDescription[0]?.id) {
       setActiveSection(`modal-section-${project.longDescription[0].id}`);
     }
@@ -39,34 +32,43 @@ function ProjectModal({ project, onClose }) {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) { // Simpler and often more reliable than ratio checks for this use case
+          if (entry.isIntersecting) {
             setActiveSection(entry.target.id);
           }
         });
       },
       { 
         root: currentContentPanel, 
-        threshold: 0.5, // Trigger when 50% of the section is visible
-        rootMargin: "-40px 0px -40px 0px" // Adjust for potential fixed/sticky elements within the scroll root
+        threshold: 0.4, // Trigger when 40% of the section is visible
+        rootMargin: "-40px 0px -40px 0px" 
       }
     );
 
     const elementsToObserve = [];
     project.longDescription.forEach((section) => {
-      const el = currentContentPanel.querySelector(`#modal-section-${section.id}`);
-      if (el) {
-        observer.observe(el);
-        elementsToObserve.push(el);
+      const mainEl = currentContentPanel.querySelector(`#modal-section-${section.id}`);
+      if (mainEl) {
+        observer.observe(mainEl);
+        elementsToObserve.push(mainEl);
+      }
+      if (section.subSections) {
+        section.subSections.forEach(subSection => {
+          const subEl = currentContentPanel.querySelector(`#modal-section-${subSection.id}`);
+          if (subEl) {
+            observer.observe(subEl);
+            elementsToObserve.push(subEl);
+          }
+        });
       }
     });
 
-    return () => { // Cleanup function for this specific observer instance
+    return () => {
       elementsToObserve.forEach((el) => {
         observer.unobserve(el);
       });
       observer.disconnect();
     };
-  }, [project, internalVisible]); // Depend on project and internal animation state
+  }, [project, internalVisible]);
 
 
   const handleBackdropClick = (e) => {
@@ -79,17 +81,17 @@ function ProjectModal({ project, onClose }) {
     if (contentPanelRef.current) {
       const element = contentPanelRef.current.querySelector(`#${sectionId}`);
       if (element) {
-        const elementPosition = element.offsetTop - 10; // 10px buffer from top of scrollable area
+        const elementPosition = element.offsetTop - 10; 
         contentPanelRef.current.scrollTo({
           top: elementPosition,
           behavior: 'smooth',
         });
-        setActiveSection(sectionId); // Manually set active section on click for immediate feedback
+        setActiveSection(sectionId); 
       }
     }
   };
 
-  if (!project) return null; // Primary guard: if no project, render nothing
+  if (!project) return null;
 
   const isStructuredDescription = Array.isArray(project.longDescription) && project.longDescription.length > 0;
 
@@ -106,7 +108,6 @@ function ProjectModal({ project, onClose }) {
                     transform transition-all duration-300 ease-out
                     ${internalVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
       >
-        {/* Modal Header */}
         <div className="flex-shrink-0 p-4 sm:p-6 border-b border-slate-700 flex justify-between items-start">
           <h2 className="text-2xl sm:text-3xl font-bold text-teal-400">{project.title}</h2>
           <button
@@ -118,56 +119,92 @@ function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
-        {/* Modal Body */}
         <div className="flex flex-grow overflow-hidden">
-          {/* Table of Contents (TOC) */}
           {isStructuredDescription && (
-            <nav className="w-48 md:w-56 flex-shrink-0 p-4 sm:p-6 border-r border-slate-700 overflow-y-auto styled-scrollbar hidden md:block">
+            <nav className="w-56 md:w-64 flex-shrink-0 p-4 sm:p-6 border-r border-slate-700 overflow-y-auto styled-scrollbar hidden md:block">
               <h4 className="text-md sm:text-lg font-semibold text-slate-100 mb-3 sm:mb-4">목차</h4>
               <ul>
                 {project.longDescription.map(section => (
-                  <li key={section.id} className="mb-1.5 sm:mb-2">
+                  <li key={section.id} className="mb-0.5">
                     <button
                       onClick={() => scrollToSection(`modal-section-${section.id}`)}
-                      className={`text-left w-full text-sm sm:text-base px-2 py-1 rounded
-                                  ${activeSection === `modal-section-${section.id}` ? 'text-teal-400 bg-teal-500/10 font-semibold' : 'text-slate-400 hover:text-teal-300 hover:bg-slate-700/50'}
+                      className={`text-left w-full text-sm sm:text-base px-2 py-1.5 rounded font-medium
+                                  ${activeSection === `modal-section-${section.id}` && (!section.subSections || !section.subSections.some(sub => activeSection === `modal-section-${sub.id}`)) ? 'text-teal-300 bg-teal-500/10 font-semibold' : 'text-slate-300 hover:text-teal-300 hover:bg-slate-700/50'}
                                   transition-all duration-150 ease-in-out`}
                     >
                       {section.title}
                     </button>
+                    {section.subSections && section.subSections.length > 0 && (
+                      <ul className="mt-1 mb-1.5">
+                        {section.subSections.map(subSection => (
+                          <li key={subSection.id}>
+                            <button
+                              onClick={() => scrollToSection(`modal-section-${subSection.id}`)}
+                              className={`text-left w-full text-xs sm:text-sm px-2 py-1 rounded ml-4
+                                          ${activeSection === `modal-section-${subSection.id}` ? 'text-teal-400 font-medium' : 'text-slate-400 hover:text-teal-300 hover:bg-slate-700/40'}
+                                          transition-all duration-150 ease-in-out`}
+                            >
+                              {subSection.title}
+                            </button>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </li>
                 ))}
               </ul>
             </nav>
           )}
 
-          {/* Main Scrollable Content */}
-          <div ref={contentPanelRef} className="relative flex-grow p-4 sm:p-6 overflow-y-auto styled-scrollbar">
-            <img src={project.image} alt={project.title} className="w-full h-48 sm:h-64 object-cover rounded-lg mb-4 sm:mb-6 shadow-lg" />
+          <div ref={contentPanelRef} className="relative flex-grow p-4 sm:p-6 overflow-y-auto styled-scrollbar scroll-mt-4 md:scroll-mt-6">
+            <img 
+              src={project.image} 
+              alt={project.title} 
+              className="w-full bg-slate-900/50 rounded-lg mb-4 sm:mb-6 shadow-lg" 
+            />
 
-            {/* Long Description */}
             {isStructuredDescription ? (
               project.longDescription.map(section => (
-                <section key={section.id} id={`modal-section-${section.id}`} className="mb-6 sm:mb-8 scroll-mt-4 md:scroll-mt-6">
-                  <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
-                    {section.title}
-                  </h3>
-                  <div 
-                    className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
-                    dangerouslySetInnerHTML={{ __html: section.content }} 
-                  />
-                  {section.showDivider && (
-                    <hr className="my-4 sm:my-6 border-slate-600" />
+                <React.Fragment key={section.id}>
+                  <section id={`modal-section-${section.id}`} className="mb-3 sm:mb-4 scroll-mt-4 md:scroll-mt-6">
+                    <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
+                      {section.title}
+                    </h3>
+                    {section.content && (
+                      <div 
+                        className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
+                        dangerouslySetInnerHTML={{ __html: section.content }} 
+                      />
+                    )}
+                  </section>
+                  
+                  {section.subSections && section.subSections.length > 0 && (
+                    <div> {/* No indentation for content */}
+                      {section.subSections.map(subSection => (
+                        <section key={subSection.id} id={`modal-section-${subSection.id}`} className="scroll-mt-4 md:scroll-mt-6">
+                          <h4 className="text-lg sm:text-xl font-medium text-slate-100 mt-8 mb-1.5 sm:mb-2">
+                            {subSection.title}
+                          </h4>
+                          <div 
+                            className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
+                            dangerouslySetInnerHTML={{ __html: subSection.content }} 
+                          />
+                        </section>
+                      ))}
+                    </div>
                   )}
-                </section>
+
+                  {section.showDivider && (
+                    <hr className="my-6 sm:my-8 border-slate-600" />
+                  )}
+                </React.Fragment>
               ))
             ) : (
               <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-wrap text-sm sm:text-base">{project.longDescription}</p>
             )}
 
-            {/* Technologies */}
             <div className="mb-6 pt-4 border-t border-slate-700 mt-6 sm:mt-8">
-              <h4 className="text-lg font-semibold text-slate-100 mb-2">주요 기술:</h4>
+              <h4 className="text-lg font-semibold text-slate-100 mb-2">주요 키워드:</h4>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map(tech => (
                   <span key={tech} className="bg-teal-500/20 text-teal-300 px-3 py-1 text-xs sm:text-sm rounded-full">{tech}</span>
@@ -175,7 +212,6 @@ function ProjectModal({ project, onClose }) {
               </div>
             </div>
 
-            {/* Links (GitHub, Live Demo) */}
             {(project.sourceLink || project.liveLink) && (
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 border-t border-slate-700 mt-6">
                 {project.sourceLink && (
@@ -197,7 +233,7 @@ function ProjectModal({ project, onClose }) {
                     className="inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
                   >
                     <ExternalLinkIcon className="w-5 h-5 mr-2" />
-                    라이브 데모
+                    영상 보러가기 (유튜브)
                   </a>
                 )}
               </div>

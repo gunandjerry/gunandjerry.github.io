@@ -1,5 +1,12 @@
 import React from 'react';
 
+export const STRING_TABLE = {
+  header_navigation_profile: "프로필",
+  header_navigation_project: "프로젝트",
+  header_navigation_journey: "성장과정",
+  header_navigation_skill: "역량"
+};
+
 export const SECTION_IDS = {
   INTRODUCTION: 'introduction',
   PROJECTS: 'projects',
@@ -16,33 +23,123 @@ export const PERSONAL_INFO = {
   email: "gunandjerry@gmail.com",
   github: "https://github.com/gunandjerry",
   blog: "https://ddodigi.tistory.com/",
-  photo: "img/profile/face.png",
-  introduction: "끊임없는 학습과 도전을 즐기는 N년차 게임 클라이언트 개발자 홍길동입니다. 사용자에게 최고의 경험을 선사하는 게임을 만드는 것을 목표로 하고 있으며, 다양한 기술 스택에 대한 깊은 이해와 협업 능력을 바탕으로 프로젝트 성공에 기여합니다.",
+  photo: "img/profile/face.png"
 };
 
 export const PROJECTS_DATA = [
   {
-    id: 'project-1',
-    title: '프로젝트 오메가',
-    image: 'https://picsum.photos/seed/omega/600/400',
-    shortDescription: 'Unity 기반 모바일 RPG 게임. 실시간 전투 시스템과 길드 콘텐츠 개발 담당.',
+    id: 'p_rh',
+    title: 'Railway to Hell',
+    image: 'img/project/rh/2.png',
+    shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
     longDescription: [
       {
-        id: 'p1-overview',
+        id: 'p_rh_overview',
         title: '프로젝트 개요',
-        content: '프로젝트 오메가는 판타지 세계관을 배경으로 하는 모바일 RPG입니다. Unity 엔진과 C#을 사용하여 개발되었으며, 뛰어난 그래픽과 몰입감 있는 스토리를 자랑합니다. 수백만 다운로드를 기록하며 성공적으로 서비스되었습니다.\n\n이 프로젝트는 대규모 멀티플레이어 환경을 지원하며, 플레이어 간의 상호작용과 경쟁을 핵심 재미 요소로 삼고 있습니다. 정기적인 업데이트와 이벤트를 통해 사용자들에게 지속적인 즐거움을 제공하는 것을 목표로 했습니다.',
+        content: `제목: Railway To Hell
+장르: 전략, 퍼즐
+개발기간: 3주일 (2024년 8월)
+개발인원: 개발 3인 / 아트 3인 / 기획 2인
+사용엔진: 자체 2D 엔진
+플랫폼: PC, Window
+
+<b><a href="https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
+
+`,
+        subSections: [
+          {
+            id: 'p_rh_overview_desc',
+            title: '게임 소개',
+            content: `전략을 세워 열차 칸의 모든 적을 처치하며 나아가는 턴제 게임입니다.\n플레이어는 1데미지를 가하는 총과 대상을 한 칸 밀어내는 석궁을 사용할 수 있으며, 적들은 플레이어의 행동 이후 정해진 순서에 따라 행동하게 됩니다.\n\n단순한 공격 외에도 플레이어는 다음과 같은 행동들도 취할 수 있습니다.\n1. 석궁으로 적을 뒤로 밀어 그 뒤에 있는 적과 충돌시켜 각각 1데미지를 입힌다.\n2. 샹들리에를 떨어트려 밑에 있는 적에게 3데미지를 입힌다.\n3. 화약통을 터트려 양 쪽의 적에게 1데미지를 입히고 각각 한 칸씩 밀어낸다.\n4. 다음 턴에 적이 스폰되는 위치에 자신 또는 적을 위치시켜 1데미지를 입고 스폰을 막는다.\n\n일반 적은 총 세 가지 타입으로 이루어집니다.\n1. 근접 공격을 가하는 적\n2. 2칸 앞까지 원거리 공격을 가할 수 있는 적\n3. 사이에 장애물이 없다면 플레이어가 있는 곳까지 돌진하는 적\n\n최종 열차 칸에는 보스 몬스터가 출현하며, 일반 몬스터와 전혀 다른 공격 패턴을 보여줍니다.\n\n플레이어는 가장 먼저 행동할 수 있으며, 적의 행동은 턴이 시작할 때 모두 정해지므로 적과 자리를 바꿔 아군을 공격하도록 유도하는 등 다양한 전략적 플레이가 강요됩니다.`,
+          },
+          {
+            id: 'p_rh_overview_role',
+            title: '맡은 역할',
+            content: `▶ 2D 게임 엔진 프레임워크 (게임루프, 입력, 카메라 조작, 사운드, 렌더링 등)
+▶ 플레이어 캐릭터 조작 및 연출 전반
+▶ 캐릭터 범용 로직: 타일 이동, 자리바꿈, 피격, 넉백, 사망 등
+▶ 구조물 오브젝트 로직
+▶ UI 전반 (버튼 상호작용, 9-Sliced 이미지, UI 우선순위 등)
+▶ 리소스 비동기 로딩
+▶ 카메라 연출
+▶ 기타 컨텐츠
+
+
+<img src="img/project/rh/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
         showDivider: true,
       },
       {
-        id: 'p1-my-role',
-        title: '담당 역할 및 주요 개발 내용',
-        content: '클라이언트 개발팀의 선임 개발자로서 실시간 전투 시스템의 핵심 로직 개발을 주도했습니다. 여기에는 캐릭터의 스킬 처리, 몬스터 AI와의 상호작용, 실시간 데미지 계산 및 피드백 표시 등이 포함됩니다. 이 과정에서 복잡한 상태 관리와 성능 최적화에 많은 노력을 기울였습니다.\n\n또한, 길드 시스템 개발에 핵심적으로 참여하여 길드 생성, 가입, 길드원 관리, 길드 채팅 및 길드 전용 콘텐츠 (길드 레이드, 길드전 등) 기획 및 구현을 맡았습니다. Photon Engine을 활용한 네트워크 동기화 작업에도 깊이 관여하여 전투 중 발생할 수 있는 지연 현상을 최소화하고, 플레이어 간의 상호작용이 원활하게 이루어지도록 했습니다.',
+        id: 'p_rh_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_rh_highlight_1',
+            title: '게임 제작 환경 구축하기 : 2D 게임 엔진',
+            content: `이전까지 꾸준히 개발해 나가던 2D 게임 엔진을 사용했습니다. 엔진이 필수적으로 지원해야 하는 전반적인 기능들은 이미 준비가 된 상태였고, 저희 게임이 2D 물리나 기능이 많은 에디터를 요구하지는 않았기 때문에 비교적 빠르게 컨텐츠 제작으로 넘어갈 수 있었습니다.\n따라서 게임 엔진은 기능 추가보다는 주로 버그 수정이나 UI를 위한 기능 추가 정도가 이루어졌습니다.\n\n보다 자세한 내용은 블로그의 자체엔진 프로젝트 문서들을 참고해주세요.`,
+          },
+          {
+            id: 'p_rh_highlight_2',
+            title: '게임의 큰 흐름 구현하기 : 커맨드 패턴의 활용',
+            content: `게임의 핵심 매커니즘은 매 턴의 시작시 모든 적들의 행동과 그 순서를 정해놓는 데에 있습니다.
+순차적으로 진행되는 턴 기반에, 미리 결정된 행동의 종류를 저장해둬야 한다는 점에서 커맨드 패턴을 사용하기에 아주 적합하다고 판단했습니다.
+
+커맨드 객체는 매우 단순한 구조로 적이 취할 행동 정보를 저장하고 있습니다. 여기서 저장해야 하는 데이터와 저장할 필요 없는 데이터를 구분해야 하는데, 이는 적이 행동을 결정한 뒤 상황을 바꿔 적들의 행동을 이용하는 전략이 게임의 핵심 요소이기 때문입니다.
+
+예컨대 '돌진형 몬스터'가 '우측 방향으로' '돌진한다'는 정보만 저장하고 현재 위치가 어디고 어디까지 갈 수 있는 지는 저장하지 않습니다. 후자에 해당하는 정보는 실제로 커맨드를 실행할 때 현재 상황에 따라 결정되게 됩니다.
+
+커맨드 패턴을 활용하여 게임의 메인 플로우를 매우 직관적이고 쉽게 작성할 수 있었습니다.
+개략적인 흐름도는 다음과 같습니다.
+
+<img src="img/project/rh/4.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_rh_highlight_3',
+            title: '타이머 함수 기능 : 자연스러운 딜레이 입히기',
+            content: `행동을 수행하는 동안 또는 행동 사이사이마다, 여러 부분에서 시간 지연을 줄 필요가 있었습니다.
+게임의 메인 플로우 뿐만 아니라 스프라이트 이펙트를 재생한다던가, 열차의 흔들림을 표현하는 카메라 효과 등 다양한 곳에서 범용적으로 사용할 수 있는 기능을 개발하고자 하여 TimerFunction 기능을 엔진에 추가했습니다.
+
+TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브젝트에 등록되어 관리되는 람다 함수의 래퍼 객체입니다.
+시간을 정해놓고 콜백하거나, 반복 호출하거나, 지속 호출하는 등의 작업을 편리하게 수행하는 것이 골자입니다.
+
+다만 전역적으로 참조하는 객체들의 수명을 추적하는 시스템은 결코 아니기 때문에, 자신의 주체가 되는 오브젝트 외 다른 오브젝트를 사용할 때는 주의해야 합니다.`,
+          },
+          {
+            id: 'p_rh_highlight_4',
+            title: '9-Sliced 이미지',
+            content: `튜토리얼 메세지와 플레이어의 말풍선의 배경 이미지는 텍스트의 길이에 따라 적당하게 사이즈가 조절되는 것이 좋습니다.
+이를 위해 9-Sliced 스프라이트를 구현했습니다. 좌, 우, 상, 하 영역의 비율을 지정하여 이미지를 9등분하고, 가로 세로로 이미지의 크기를 변경할 경우 아래 그림과 같이 중간 부분만 늘려서 이미지 테두리의 품질 저하를 줄이며 렌더링하는 방식입니다.
+
+<img src="img/project/rh/5.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
         showDivider: true,
       },
       {
-        id: 'p1-ui-ux',
-        title: 'UI/UX 개선 및 최적화',
-        content: '사용자 인터페이스(UI)와 사용자 경험(UX) 개선 작업에도 적극적으로 참여했습니다. 직관적인 메뉴 구성, 전투 중 정보 가시성 향상, 튜토리얼 시스템 개선 등을 통해 신규 유저의 진입 장벽을 낮추고 기존 유저의 편의성을 증대시키는 데 기여했습니다. A/B 테스트를 통해 변경 사항의 효과를 검증하고, 사용자 피드백을 적극적으로 수렴하여 반영했습니다.\n\n성능 최적화 부분에서는 Unity Profiler를 활용하여 병목 지점을 분석하고, 코드 최적화, 에셋 관리 효율화, 메모리 사용량 감소 등의 작업을 수행했습니다. 특히 저사양 기기에서도 부드러운 플레이 경험을 제공하기 위해 노력했습니다.',
+        id: 'p_rh_lesson',
+        title: '개선할 수 있는 점',
+        subSections: [
+          {
+            id: 'p_rh_lesson_1',
+            title: '설계에 대한 고려 부족',
+            content: `좋은 설계에 대한 지식도 전반적으로 부족했고 시간도 부족하다보니 뒷일을 잘 생각하지 않고 우선 빠르게 구현하는 데 치중했습니다. 그러다보니 기능을 추가하기 위해 이전에 만들어둔 구조를 바꿔야 하는 경우가 종종 발생했습니다.
+
+예컨대 플레이어의 행동은 FSM으로 구현하였는데, 얼추 완성된 후 튜토리얼 기획이 완성되어 작업에 들어가려 했으나 기존의 구조는 튜토리얼을 위한 기능 확장에 용이하지 않았습니다. 결국 새 구조를 고민하는 시간
+
+디자인 패턴에 대한 지식이 전반적으로 부족했고 시간도 부족했기에 게임 코드가 유지보수에 용이하다고 말하기 어렵습니다.`,
+          },
+          {
+            id: 'p_rh_lesson_2',
+            title: '리소스 관리 미흡',
+            content: `리소스를 어떻게 다루어야 하는 지에 대한 지식이 부족해 시행착오가 많았습니다. DDS 포맷을 사용할 수도 없었기 때문에, 이미지가 빠르게 전환될 때는 해상도가 열화된 비트맵을 사용하거나, 애니메이션이 필요할 때 비동기적으로 로드하고 이후 즉시 해제하는 등 여러 방안을 강구해보았으나, 근본적인 해결책이 될 수는 없었습니다.
+
+특히 스프라이트를 빠르게 전환해 재생하는 2D 스프라이트 애니메이션의 특성상 로드해야 할 이미지의 양이 매우 많았고, 이로 인해 로딩이 오래 걸리고 메모리를 많이 사용하는 문제가 가장 중요했습니다.
+SSD에서 읽는 경우엔 크게 문제가 되지 않지만 HDD에서 읽는 경우 열차가 움직이는 애니메이션을 보기까지 많게는 십 수초의 로딩 시간이 필요했고, 이는 비동기적으로 필요할 때 로드하고 사용하고 언로드하는 방법으로 감당할 수 있는 수준이 아니었습니다.
+
+3주라는 짧은 기간동안 별다른 명쾌한 해결책을 찾지 못 하고 결국 게임을 처음 시작하고 인트로 영상을 재생하는 동안 로딩을 마치고, 이후 해제하지 않고 재사용하는 방법으로 바꿨습니다.`,
+          }
+        ],
         showDivider: true,
       },
       {
@@ -52,8 +149,8 @@ export const PROJECTS_DATA = [
         showDivider: false, // Example: last section might not need a divider
       }
     ],
-    technologies: ['Unity', 'C#', 'Photon', 'Mobile', 'RPG', 'UI/UX', 'Optimization'],
-    sourceLink: 'https://github.com/yourusername/project-omega',
+    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
+    liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
   },
   {
     id: 'project-2',
@@ -64,7 +161,7 @@ export const PROJECTS_DATA = [
       {
         id: 'sf1-s1-overview',
         title: '섹션 1: 프로젝트 소개',
-        content: '이 프로젝트는 Direct3D API를 사용하여 개발된 간단한 3D 게임 프로토타입입니다. 기본적인 3D 렌더링 기술과 PhysX 물리 엔진의 기초적인 통합을 학습하고 실험하는 것을 주요 목표로 삼았습니다. 개인적인 스터디의 일환으로 진행되었으며, 복잡한 게임 로직보다는 핵심 기술 구현에 집중하였습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec1-img/500/300" alt="섹션 1: 프로젝트 소개 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
+        content:'이 프로젝트는 Direct3D API를 사용하여 개발된 간단한 3D 게임 프로토타입입니다. 기본적인 3D 렌더링 기술과 PhysX 물리 엔진의 기초적인 통합을 학습하고 실험하는 것을 주요 목표로 삼았습니다. 개인적인 스터디의 일환으로 진행되었으며, 복잡한 게임 로직보다는 핵심 기술 구현에 집중하였습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec1-img/500/300" alt="섹션 1: 프로젝트 소개 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
         showDivider: true
       },
       {
@@ -238,5 +335,17 @@ export const AcademicCapIcon = (props) => (
 export const CheckCircleIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+  </svg>
+);
+
+export const MailIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91A2.25 2.25 0 012.25 6.993V6.75" />
+  </svg>
+);
+
+export const PhoneIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6.62 10.79a15.25 15.25 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 013 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
   </svg>
 );
