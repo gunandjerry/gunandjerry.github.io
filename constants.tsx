@@ -3,7 +3,7 @@ import React from 'react';
 export const STRING_TABLE = {
   header_navigation_profile: "프로필",
   header_navigation_project: "프로젝트",
-  header_navigation_journey: "성장과정",
+  header_navigation_journey: "성장여정",
   header_navigation_skill: "역량"
 };
 
@@ -29,7 +29,7 @@ export const PERSONAL_INFO = {
 export const PROJECTS_DATA = [
   {
     id: 'p_rh',
-    title: 'Railway to Hell',
+    title: 'Railway to Hell (2024.08)',
     image: 'img/project/rh/2.png',
     shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
     longDescription: [
@@ -114,108 +114,404 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 <img src="img/project/rh/5.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
-        showDivider: true,
       },
+    ],
+    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
+    liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
+  },
+
+
+
+
+  {
+    id: 'p_ap',
+    title: 'Aphotica (2024.05)',
+    image: 'img/project/ap/1.png',
+    shortDescription: '2D 자체엔진으로 제작한 퍼즐 게임. 2주 단기 팀 프로젝트입니다.',
+    longDescription: [
       {
-        id: 'p_rh_lesson',
-        title: '개선할 수 있는 점',
+        id: 'p_ap_overview',
+        title: '프로젝트 개요',
+        content: `제목: Aphotica
+장르: 퍼즐
+개발기간: 2주일 (2024년 5월)
+개발인원: 개발 2인 / 아트 2인 / 기획 3인
+사용엔진: 자체 2D 엔진
+플랫폼: PC, Window
+
+<b><a href="https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
+
+`,
         subSections: [
           {
-            id: 'p_rh_lesson_1',
-            title: '설계에 대한 고려 부족',
-            content: `좋은 설계에 대한 지식도 전반적으로 부족했고 시간도 부족하다보니 뒷일을 잘 생각하지 않고 우선 빠르게 구현하는 데 치중했습니다. 그러다보니 기능을 추가하기 위해 이전에 만들어둔 구조를 바꿔야 하는 경우가 종종 발생했습니다.
+            id: 'p_ap_overview_desc',
+            title: '게임 소개',
+            content: `자체 2D 엔진으로 제작한 2주 팀 프로젝트입니다. 게임 프레임워크는 모두 혼자 제작했으며, 렌더링에는 GDI+, 오디오에는 FMOD를 사용했습니다.
 
-예컨대 플레이어의 행동은 FSM으로 구현하였는데, 얼추 완성된 후 튜토리얼 기획이 완성되어 작업에 들어가려 했으나 기존의 구조는 튜토리얼을 위한 기능 확장에 용이하지 않았습니다. 결국 새 구조를 고민하는 시간
+자동으로 움직이는 문어는 색 블록과 충돌할 경우 해당 색을 흡수하며, 두 가지 색을 섞을 수 있습니다.
+플레이어는 타이밍에 맞게 스페이스바를 눌러 세 가지 색 슬롯을 전환해가며 특수 블록이 요구하는 색을 만들어야 합니다.
 
-디자인 패턴에 대한 지식이 전반적으로 부족했고 시간도 부족했기에 게임 코드가 유지보수에 용이하다고 말하기 어렵습니다.`,
+특수 블록이 요구하는 색을 제 때 만들지 못 하면 (1) 섬광이 터지며 일정 시간동안 색을 흡수하지 못 하거나, (2) 화면이 흔들리며 일정 시간동안 슬롯이 무작위로 바뀌거나, (3) 게임오버됩니다.`,
           },
           {
-            id: 'p_rh_lesson_2',
-            title: '리소스 관리 미흡',
-            content: `리소스를 어떻게 다루어야 하는 지에 대한 지식이 부족해 시행착오가 많았습니다. DDS 포맷을 사용할 수도 없었기 때문에, 이미지가 빠르게 전환될 때는 해상도가 열화된 비트맵을 사용하거나, 애니메이션이 필요할 때 비동기적으로 로드하고 이후 즉시 해제하는 등 여러 방안을 강구해보았으나, 근본적인 해결책이 될 수는 없었습니다.
+            id: 'p_ap_overview_role',
+            title: '맡은 역할',
+            content: `▶ 2D 자체 엔진
+▶ 클라이언트 전반 (튜토리얼 제외)
 
-특히 스프라이트를 빠르게 전환해 재생하는 2D 스프라이트 애니메이션의 특성상 로드해야 할 이미지의 양이 매우 많았고, 이로 인해 로딩이 오래 걸리고 메모리를 많이 사용하는 문제가 가장 중요했습니다.
-SSD에서 읽는 경우엔 크게 문제가 되지 않지만 HDD에서 읽는 경우 열차가 움직이는 애니메이션을 보기까지 많게는 십 수초의 로딩 시간이 필요했고, 이는 비동기적으로 필요할 때 로드하고 사용하고 언로드하는 방법으로 감당할 수 있는 수준이 아니었습니다.
 
-3주라는 짧은 기간동안 별다른 명쾌한 해결책을 찾지 못 하고 결국 게임을 처음 시작하고 인트로 영상을 재생하는 동안 로딩을 마치고, 이후 해제하지 않고 재사용하는 방법으로 바꿨습니다.`,
+<img src="img/project/ap/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
       },
       {
-        id: 'p1-challenges-achievements',
-        title: '기술적 도전과 성과',
-        content: '개발 과정에서 다양한 기술적 도전에 직면했습니다. 특히, 다수의 플레이어가 동시에 참여하는 길드 콘텐츠에서 발생할 수 있는 동기화 문제와 성능 문제를 해결하기 위해 많은 연구와 테스트를 진행했습니다. 상태 동기화 알고리즘을 개선하고, 서버와의 데이터 교환을 최적화하여 안정성을 높였습니다.\n\n이러한 노력을 통해 안정적인 프레임률을 유지하고 사용자 만족도를 이전 대비 15% 이상 향상시키는 성과를 달성했습니다. 또한, 주기적인 코드 리뷰와 기술 공유 세션을 통해 팀 전체의 개발 역량 강화에도 기여했으며, 프로젝트의 성공적인 런칭과 안정적인 서비스 운영에 중요한 역할을 수행했습니다.',
-        showDivider: false, // Example: last section might not need a divider
-      }
+        id: 'p_ap_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_ap_highlight_1',
+            title: '박자와 충돌 타이밍 맞추기 / 레벨 에디터',
+            content: `가장 중요한 과제는 충돌 타이밍과 노래 박자를 맞추는 것이었습니다. 이를 위해 다음과 같은 작업을 수행했습니다.
+1. 정확한 타이밍의 충돌을 위해 충돌이 일어날 경우 overlap된 크기만큼 예상 경로로 이동하기
+2. 블록을 배치하고 문어의 속도를 조절할 수 있는 레벨 에디터를 만들어 제공하기
+
+문어의 이동 방향은 항상 사선방향으로 반사벡터 공식을 쓸 것도 없이 간단하게 반사된 뒤에 이동할 방향을 결정할 수 있습니다. 충돌이 발생하면 겹친 영역만큼 반사된 방향으로 밀어냄으로써 아주 미세한 오차만 남길 수 있었습니다. 맵(곡)의 길이가 길어봐야 수 분에 불과했으므로 플레이어는 오차를 전혀 느낄 수 없습니다.
+
+또, 기획이 직접 노래와 싱크를 맞춰가며 블록을 배치할 필요가 있었으므로 레벨 에디터를 만들어 제공했습니다.
+레벨 에디터로 맵을 구성한 뒤 직렬화하여 저장하면, 인게임에서 해당 맵 파일을 읽어 맵을 구성하는 방식입니다.
+
+기획에서 충돌 타이밍을 세부 조정하기를 원했기 때문에, 블록의 크기를 맵 그리드 한 칸보다 크게 설정하고, 한 영역을 9등분하여 중심을 지정할 수 있도록 했습니다.
+
+<img src="img/project/ap/3.gif" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_ap_highlight_2',
+            title: '일정 시간동안 적용되는 효과 구현',
+            content: `특수 블록과 충돌할 때 알맞은 색을 만들어두지 못 하면 일정 시간동안 화면이 흔들리거나, 화면이 밝아졌다 서서히 돌아오거나, 슬롯을 마음대로 전환하지 못 하게 되는 등 효과를 적용시켜야 했습니다.
+
+이를 위해 씬에 등록할 수 있는 TimerFunction 객체를 작성하였습니다. 람다함수 또는 함수포인터를 통해 간단하게 추가할 수 있으며, 주체 오브젝트가 자신과 관련된 TimerFunction을 기록해놓고 씬에서 제거될 때 모든 타이머 함수를 제거함으로써 댕글링 포인터가 발생하지 못 하게 막았습니다.`,
+          },
+          {
+            id: 'p_ap_highlight_3',
+            title: '충돌 예측 애니메이션',
+            content: `박자와 충돌 타이밍을 맞추기 위해 문어는 항상 일정한 속도로 이동해야만 했습니다. 문제는 문어의 충돌 애니메이션을 충돌 시점부터 재생하는 경우 이미 멀어지고 있을 때 충돌하는 애니메이션이 재생된다는 것입니다.
+
+따라서 더 자연스러운 느낌을 주기 위해 얼마 후에 충돌한다는 정보를 미리 구해서 애니메이션을 예측 실행했습니다. 이 때 부드러운 애니메이션 전환을 위해선 우선 이전의 애니메이션 프레임이 모두 끝날 때까지 기다렸다가 실행해야 했고, 충돌 애니메이션이 실행될 수 있는 간격을 계산해 레이캐스팅을 통해 충돌하기 전에 애니메이션을 재생하도록 했습니다.
+
+<img src="img/project/ap/4.gif" alt="게임 이미지" style="display: block; width: 30%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+현재 프레임의 위치에 따라 캐스팅되는 레이의 길이가 달라집니다.`,
+          }
+        ],
+      },
+    ],
+    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD', '2D 게임수학'],
+    liveLink: 'https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v',
+  },
+
+
+
+
+  {
+    id: 'p_etd',
+    title: 'Emoji Tower Defense (2024.06)',
+    image: 'img/project/etd/1.png',
+    shortDescription: '2D 자체엔진으로 제작한 전략, 디펜스 게임. 8일 단기 개인 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_etd_overview',
+        title: '프로젝트 개요',
+        content: `제목: Emoji Tower Defense
+장르: 전략, 디펜스
+개발기간: 8일 (2024년 6월)
+개발인원: 1인
+사용엔진: 자체 2D 엔진
+플랫폼: PC, Window
+
+<b><a href="https://youtu.be/GL2G-A6hkHw?si=BzvAoH8c2fRC3Pie" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
+
+`,
+        subSections: [
+          {
+            id: 'p_etd_overview_desc',
+            title: '게임 소개',
+            content: `Direct2D 자체 엔진을 제작하고 엔진 기능 시연을 위해 짧은 기간동안 만들었던 타워 디펜스 게임입니다.
+
+적의 타입에는 일반 적, 스파이크나 글루를 밟지 않는 비행형 적과
+레이더 타워 업그레이드를 통해 감지할 수 있는 은신형 적 타입이 있습니다.
+
+타워의 타입으로는 타겟을 향해 공격하는 거너, 이속 지연과 데미지를 입히는 글루 거너, 범위 공격을 수행하는 캐논, 자동으로 회전하며 사격하는 터렛, 일정 시간마다 돈을 추가하는 농장, 주변 타워의 공격 속도 증가나 은식 적의 감지 등을 수행하는 레이더, 마우스 커서 방향으로 사격하는 머신거너, 주변 길에 스파이크를 뿌리는 스파이크 팩토리가 있습니다.
+
+이외에도 범위 내에서 가장 앞 또는 뒤, 혹은 가장 강한 적을 공격 대상으로 지정하는 기능이나, 업그레이드를 통한 타워의 기능 향상 등을 구현하였습니다.`,
+          },
+          {
+            id: 'p_etd_overview_role',
+            title: '맡은 역할',
+            content: `배경, UI 프레임, 아이콘, 음악은 오픈소스를 사용했으며, 그 외에는 모두 혼자 제작했습니다.
+
+
+<img src="img/project/etd/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_etd_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_etd_highlight_1',
+            title: '경로를 따라 이동하는 적',
+            content: `경로를 따라 이동하도록 하는 방법은 매우 다양하지만, 이 게임의 경우 단순히 정해진 길을 일정한 속도로 이동하기만 하면 됩니다.
+각 직선 경로의 시작점, 끝점의 좌표를 기록하고 선형보간으로 이동, 보간계수가 1 이상이 되면 다음 직선 경로로 전환하는 방식으로 구현했습니다.
+
+이 방식의 장점은 (1) 프레임이 어떻든 항상 경로 상에서만 이동하는 것이 보장되고, (2) 현재 위치를 예측하고 계산하는 것이 매우 쉽다는 점입니다.`,
+          },
+          {
+            id: 'p_etd_highlight_2',
+            title: '적의 위치 예측하여 사격하기',
+            content: `앞서 선형보간을 통해 이동시키는 것의 장점으로 위치 예측이 쉽다는 것을 들었습니다. 실제로 거너와 같은 특정 타워는 자신이 발사한 총알의 속도를 고려하여 자신이 타겟팅한 적의 이동을 예측해 해당 방향으로 사격을 가해야 합니다.
+
+<img src="img/project/etd/3.png" alt="게임 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+이 때 사격을 시작할 때의 거리와 총알의 속도를 계산하면 도달까지의 시간을 측정할 수 있고, 선형보간을 통해 이동하므로 그 시간만큼 지났을 때 적이 어디에 가있을지 예측하는 것이 매우 쉽습니다. 거너는 이런 방식으로 적의 현재 위치가 아닌 미래의 위치에 사격을 가합니다.
+물론 경로의 모양이 복잡하면 이런 단순한 계산은 정확성이 떨어질 수밖에 없습니다.
+            `,
+          },
+          {
+            id: 'p_etd_highlight_3',
+            title: '공격 방법 결정하기',
+            content: `모든 타워는 공격 범위 안에서 가장 앞에 있는 적, 가장 뒤에 있는 적, 가장 강한 적을 공격 대상으로 설정할 수 있습니다.
+적 오브젝트의 콜라이더 컴포넌트들을 대상으로 공격 범위 영역에 충돌하는지 체크하고, 충돌하는 적 목록을 구한 뒤 경로상의 위치 정보와 레벨 정보를 통해 상황에 맞는 정렬을 수행하여 공격 대상을 결정하도록 하였습니다.`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_etd_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_etd_lesson_1',
+            title: '확장성 있는 설계 - 적과 효과를 분리시키기',
+            content: `글루 거너의 글루를 맞은 적은 일정한 시간동안 속도가 떨어져야 합니다. 이를 게임에서는 적 오브젝트가 직접 관리하게 했는데, 이러면 다른 방식으로 적에게 영향을 주는 타워나 효과를 추가한다고 할 때마다 매번 적 클래스를 수정해야만 할 것입니다.
+
+대신 '효과'를 주관하는 인스턴스를 생성해볼 수 있을 것입니다. 이러한 인스턴스는 전역적으로 존재하는 관리자를 통해 혹은 적 오브젝트의 배열에 담겨 존재하게끔 하고, 시간이 만료되었을 때 알아서 가리키는 적의 속도를 복구시키는 방식으로 작동하면 됩니다.
+이런 방법을 사용하면 어떤 효과나 공격이 새로 추가되던 적이 가지고 있어야 할 어트리뷰트만 가지고 있다면, 이를 수정하는 효과 인스턴스를 만드는 방식으로 쉽게 확장이 가능해집니다.`,
+          }
+        ],
+      },
+    ],
+    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
+    liveLink: 'https://youtu.be/GL2G-A6hkHw?si=BzvAoH8c2fRC3Pie',
+  },
+
+
+
+
+
+  {
+    id: 'p_jf',
+    title: 'Jumping Frog (2024.04)',
+    image: 'img/project/jf/1.png',
+    shortDescription: '2D 자체엔진으로 제작한 플랫포머 게임. 4일 단기 개인 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_jf_overview',
+        title: '프로젝트 개요',
+        content: `제목: Jumping Frog
+장르: 플랫포머
+개발기간: 약 3~4일 (2024년 04월)
+개발인원: 1인
+사용엔진: 자체 2D 엔진
+플랫폼: PC, Window
+
+<b><a href="https://youtube.com/shorts/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
+
+`,
+        subSections: [
+          {
+            id: 'p_jf_overview_desc',
+            title: '게임 소개',
+            content: `WinAPI, GDI+를 사용해 게임루프를 구현하고 그 결과물로 만들었던 간단한 플랫포머 게임입니다.
+좌·우 이동과 공중 조작이 불가능하고 누르고 있으면 점프력이 높아지는 점프 조작만으로 맵을 올라 골인 지점에 도달하는 게 목표입니다.
+
+짧은 기간동안 제작한 개인 프로젝트인 만큼 단순하지만, 게임 루프의 동작이나 애니메이션, OS API를 통한 렌더링, 간단한 물리 처리 등 여러 가지 지식들을 실제로 게임을 제작하며 깊히 이해할 수 있게 되었습니다.`,
+          },
+          {
+            id: 'p_jf_overview_role',
+            title: '맡은 역할',
+            content: `스프라이트와 음악은 오픈소스를 사용하였으며 그 외에는 혼자 만들었습니다.
+
+
+<img src="img/project/jf/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_jf_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_jf_highlight_1',
+            title: '2D 충돌 체크 및 밀어내기',
+            content: `모든 오브젝트는 AABB 콜라이더 컴포넌트를 가지며, 유니티 엔진을 모방하여 RigidBody2D 컴포넌트가 부착된 캐릭터 오브젝트에는 중력을 적용하고 충돌체크 후 적절한 위치로 밀어내는 후처리가 이루어지도록 했습니다.
+단순한 데모 수준의 엔진인 만큼 고도의 물리적 처리를 수행하지는 않으며, 충돌이 발생하면 겹친 영역을 구해 그 반대 방향으로 밀어내는 방식을 사용합니다.
+
+게임에선 사용하지 않았지만 원과 원, AxisAlignedBox와 원 간의 충돌이나 삼각형의 세 꼭지점 좌표가 주어질 때 외적을 통해 특정 점이 삼각형의 외부에 있는지 내부에 있는지 판별하는 기능도 구현하였습니다.`,
+          },
+          {
+            id: 'p_jf_highlight_2',
+            title: '오브젝트 배치하기',
+            content: `에디터가 없었기 때문에 모든 오브젝트는 2차원 배열을 타일셋으로 활용하여 배치되었습니다.
+1x1 크기의 블록들을 각각 오브젝트로 배치하여 맵을 구성할 경우 비용이 너무 커지므로, 맵 타일셋에서 같은 타입이 연속되는 경우 하나의 길거나 큰(1 x n 또는 n x n) 오브젝트로 배치하고, 스프라이트를 반복해 그리는 방식을 사용했습니다.
+
+<img src="img/project/jf/4.png" alt="게임 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_jf_highlight_3',
+            title: '부드러운 카메라 트래킹',
+            content: `유니티의 SmoothDamp 함수 로직을 참고하여 부드러운 카메라 트랙킹을 위한 Vector::SmoothDamp 함수를 작성하고 이를 통해 카메라가 캐릭터를 부드럽게 따라가도록 만들었습니다.`,
+          },
+        ],
+      },
+    ],
+    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD', '2D 게임수학'],
+    liveLink: 'https://youtube.com/shorts/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc',
+  },
+
+
+
+
+
+  {
+    id: 'p_xx',
+    title: '',
+    image: 'img/project/',
+    shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_xx_overview',
+        title: '프로젝트 개요',
+        content: `제목: 
+장르: 
+개발기간: 
+개발인원: 
+사용엔진: 
+플랫폼: PC, Window
+
+<b><a href="" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
+
+`,
+        subSections: [
+          {
+            id: 'p_xx_overview_desc',
+            title: '게임 소개',
+            content: ``,
+          },
+          {
+            id: 'p_xx_overview_role',
+            title: '맡은 역할',
+            content: `▶
+
+
+<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_xx_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_xx_highlight_x',
+            title: '',
+            content: ``,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_xx_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_xx_lesson_x',
+            title: '',
+            content: ``,
+          }
+        ],
+      },
     ],
     technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
     liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
-  },
-  {
-    id: 'project-2',
-    title: '샘플 양식1',
-    image: 'https://picsum.photos/seed/sf1-main/600/400',
-    shortDescription: 'Direct3D로 만든 간단한 게임',
-    longDescription: [
-      {
-        id: 'sf1-s1-overview',
-        title: '섹션 1: 프로젝트 소개',
-        content:'이 프로젝트는 Direct3D API를 사용하여 개발된 간단한 3D 게임 프로토타입입니다. 기본적인 3D 렌더링 기술과 PhysX 물리 엔진의 기초적인 통합을 학습하고 실험하는 것을 주요 목표로 삼았습니다. 개인적인 스터디의 일환으로 진행되었으며, 복잡한 게임 로직보다는 핵심 기술 구현에 집중하였습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec1-img/500/300" alt="섹션 1: 프로젝트 소개 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
-        showDivider: true
-      },
-      {
-        id: 'sf1-s2-graphics',
-        title: '섹션 2: 그래픽 구현 상세',
-        content: 'Direct3D 11을 기반으로 렌더링 파이프라인을 구축했습니다. 버텍스 셰이더와 픽셀 셰이더를 HLSL로 작성하여, 간단한 평면과 큐브 같은 기본 도형에 텍스처를 매핑하고, 기본적인 점 광원(Point Light) 효과를 적용했습니다. 또한, 사용자가 시점을 변경할 수 있도록 기본적인 1인칭 카메라 이동 및 회전 기능을 구현했습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec2-img/500/300" alt="섹션 2: 그래픽 구현 상세 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
-        showDivider: true
-      },
-      {
-        id: 'sf1-s3-physics',
-        title: '섹션 3: PhysX 물리 엔진 연동',
-        content: 'NVIDIA PhysX SDK를 프로젝트에 통합하여 물리 시뮬레이션 기능을 추가했습니다. 씬(Scene) 내에 정적(Static) 및 동적(Dynamic) 강체(Rigid Body)들을 배치하고, 이들 간의 충돌 감지 및 물리적 반응을 처리하도록 했습니다. 예를 들어, 공중에 떠 있는 큐브가 중력에 의해 바닥으로 떨어지고, 다른 오브젝트와 충돌 시 튕겨나가는 등의 현상을 구현했습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec3-img/500/300" alt="섹션 3: PhysX 물리 엔진 연동 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
-        showDivider: true
-      },
-      {
-        id: 'sf1-s4-interaction',
-        title: '섹션 4: 사용자 입력 및 상호작용',
-        content: '키보드 입력을 통해 플레이어가 3D 공간 내에서 기본적인 이동(전후좌우)을 할 수 있도록 구현했습니다. 마우스 입력은 카메라 시점 조작에 사용되었습니다. 추가적으로, 특정 키를 눌렀을 때 씬 내의 동적 오브젝트에 힘을 가하거나, 새로운 오브젝트를 생성하는 등의 간단한 상호작용 기능을 실험적으로 추가해보았습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec4-img/500/300" alt="섹션 4: 사용자 입력 및 상호작용 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
-        showDivider: true
-      },
-      {
-        id: 'sf1-s5-learnings',
-        title: '섹션 5: 개발 과정 및 학습점',
-        content: 'Direct3D와 PhysX를 함께 사용하는 것은 처음이었기에, 두 라이브러리의 초기화 및 연동 과정에서 여러 시행착오를 겪었습니다. 특히 그래픽 객체와 물리 객체 간의 위치 및 회전 정보를 동기화하는 부분이 중요했습니다. 이 프로젝트를 통해 로우레벨 그래픽스 API의 작동 방식과 물리 엔진의 기본적인 사용법에 대한 이해를 높일 수 있었으며, 향후 더 복잡한 3D 애플리케이션 개발의 기초를 다질 수 있었습니다.\n\n<img src="https://picsum.photos/seed/sf1-sec5-img/500/300" alt="섹션 5: 개발 과정 및 학습점 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />',
-        showDivider: false // Last section, no divider needed after this.
-      }
-    ],
-    technologies: ['Direct3D', 'PhysX'],
-  },
-  {
-    id: 'project-3',
-    title: '별빛 모험가',
-    image: 'https://picsum.photos/seed/starlight/600/400',
-    shortDescription: 'Cocos2d-x 기반 2D 플랫포머 게임. 레벨 디자인 및 UI 시스템 구현.',
-    longDescription: '별빛 모험가는 귀여운 캐릭터가 등장하는 2D 플랫포머 게임으로, Cocos2d-x와 C++를 사용하여 개발되었습니다. 다양한 테마의 레벨 디자인과 직관적인 UI/UX 시스템 구현에 참여했습니다. 특히, 저사양 기기에서도 원활하게 동작하도록 성능 최적화에 많은 노력을 기울였습니다.',
-    technologies: ['Cocos2d-x', 'C++', '2D Platformer', 'Mobile'],
-  },
-  {
-    id: 'project-4',
-    title: 'VR 체스 마스터',
-    image: 'https://picsum.photos/seed/vrchess/600/400',
-    shortDescription: 'Unity 기반 VR 체스 게임. VR 인터랙션 및 AI 상대 로직 개발.',
-    longDescription: 'VR 체스 마스터는 몰입감 높은 VR 환경에서 체스를 즐길 수 있는 게임입니다. Unity와 C#을 사용하여 개발되었으며, Oculus Quest 플랫폼을 타겟으로 VR 컨트롤러를 이용한 직관적인 인터랙션 구현과 다양한 난이도의 AI 상대 로직 개발에 참여했습니다. 사용자 테스트를 통해 지속적으로 게임 플레이를 개선했습니다.',
-    technologies: ['Unity', 'C#', 'VR', 'Oculus', 'AI'],
-  },
-  {
-    id: 'project-5',
-    title: '블록 퍼즐 챌린지',
-    image: 'https://picsum.photos/seed/blockpuzzle/600/400',
-    shortDescription: 'Godot Engine을 활용한 캐주얼 퍼즐 게임. 게임 로직 및 다양한 퍼즐 모드 개발.',
-    longDescription: '블록 퍼즐 챌린지는 Godot Engine과 GDScript를 사용하여 개발된 중독성 있는 캐주얼 퍼즐 게임입니다. 핵심 게임 로직 설계 및 시간 제한 모드, 무한 모드 등 다양한 플레이 모드를 개발했습니다. Google Play Store 출시 경험이 있습니다.',
-    technologies: ['Godot Engine', 'GDScript', 'Puzzle', 'Mobile'],
-    liveLink: 'https://play.google.com/store/apps/details?id=your.app.id', // Example
   }
+
+
+
+
+
+// {
+//     id: 'p_xx',
+//     title: '',
+//     image: 'img/project/',
+//     shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
+//     longDescription: [
+//       {
+//         id: 'p_xx_overview',
+//         title: '프로젝트 개요',
+//         content: `제목: 
+// 장르: 
+// 개발기간: 
+// 개발인원: 
+// 사용엔진: 
+// 플랫폼: PC, Window
+
+// <b><a href="" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
+
+// `,
+//         subSections: [
+//           {
+//             id: 'p_xx_overview_desc',
+//             title: '게임 소개',
+//             content: ``,
+//           },
+//           {
+//             id: 'p_xx_overview_role',
+//             title: '맡은 역할',
+//             content: `▶
+// <img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+//           }
+//         ],
+//         showDivider: true,
+//       },
+//       {
+//         id: 'p_xx_highlight',
+//         title: '제작 과정 & 구현 과제',
+//         subSections: [
+//           {
+//             id: 'p_xx_highlight_x',
+//             title: '',
+//             content: ``,
+//           }
+//         ],
+//       },
+//       {
+//         id: 'p_xx_lesson',
+//         title: '반성과 개선점',
+//         subSections: [
+//           {
+//             id: 'p_xx_lesson_x',
+//             title: '',
+//             content: ``,
+//           }
+//         ],
+//       },
+//     ],
+//     technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
+//     liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
+//   },
 ];
 
 export const EXPERIENCE_DATA = [
