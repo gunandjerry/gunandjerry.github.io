@@ -30,7 +30,7 @@ export const PROJECTS_DATA = [
   {
     id: 'p_rh',
     title: 'Railway to Hell (2024.08)',
-    image: 'img/project/rh/2.png',
+    image: 'img/project/RailwayToHell/2.png',
     shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
     longDescription: [
       {
@@ -65,7 +65,7 @@ export const PROJECTS_DATA = [
 ▶ 기타 컨텐츠
 
 
-<img src="img/project/rh/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/RailwayToHell/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -92,7 +92,7 @@ export const PROJECTS_DATA = [
 커맨드 패턴을 활용하여 게임의 메인 플로우를 매우 직관적이고 쉽게 작성할 수 있었습니다.
 개략적인 흐름도는 다음과 같습니다.
 
-<img src="img/project/rh/4.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
             id: 'p_rh_highlight_3',
@@ -111,7 +111,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `튜토리얼 메세지와 플레이어의 말풍선의 배경 이미지는 텍스트의 길이에 따라 적당하게 사이즈가 조절되는 것이 좋습니다.
 이를 위해 9-Sliced 스프라이트를 구현했습니다. 좌, 우, 상, 하 영역의 비율을 지정하여 이미지를 9등분하고, 가로 세로로 이미지의 크기를 변경할 경우 아래 그림과 같이 중간 부분만 늘려서 이미지 테두리의 품질 저하를 줄이며 렌더링하는 방식입니다.
 
-<img src="img/project/rh/5.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/RailwayToHell/5.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
       },
@@ -126,7 +126,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_ap',
     title: 'Aphotica (2024.05)',
-    image: 'img/project/ap/1.png',
+    image: 'img/project/Aphotica/1.png',
     shortDescription: '2D 자체엔진으로 제작한 퍼즐 게임. 2주 단기 팀 프로젝트입니다.',
     longDescription: [
       {
@@ -160,7 +160,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 ▶ 클라이언트 전반 (튜토리얼 제외)
 
 
-<img src="img/project/ap/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/Aphotica/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -183,7 +183,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 기획에서 충돌 타이밍을 세부 조정하기를 원했기 때문에, 블록의 크기를 맵 그리드 한 칸보다 크게 설정하고, 한 영역을 9등분하여 중심을 지정할 수 있도록 했습니다.
 
-<img src="img/project/ap/3.gif" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/Aphotica/3.gif" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
             id: 'p_ap_highlight_2',
@@ -199,7 +199,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 따라서 더 자연스러운 느낌을 주기 위해 얼마 후에 충돌한다는 정보를 미리 구해서 애니메이션을 예측 실행했습니다. 이 때 부드러운 애니메이션 전환을 위해선 우선 이전의 애니메이션 프레임이 모두 끝날 때까지 기다렸다가 실행해야 했고, 충돌 애니메이션이 실행될 수 있는 간격을 계산해 레이캐스팅을 통해 충돌하기 전에 애니메이션을 재생하도록 했습니다.
 
-<img src="img/project/ap/4.gif" alt="게임 이미지" style="display: block; width: 30%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+<img src="img/project/Aphotica/4.gif" alt="게임 이미지" style="display: block; width: 30%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 현재 프레임의 위치에 따라 캐스팅되는 레이의 길이가 달라집니다.`,
           }
         ],
@@ -215,7 +215,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_etd',
     title: 'Emoji Tower Defense (2024.06)',
-    image: 'img/project/etd/1.png',
+    image: 'img/project/EmojiTowerDefense/1.png',
     shortDescription: '2D 자체엔진으로 제작한 전략, 디펜스 게임. 8일 단기 개인 프로젝트입니다.',
     longDescription: [
       {
@@ -250,7 +250,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `배경, UI 프레임, 아이콘, 음악은 오픈소스를 사용했으며, 그 외에는 모두 혼자 제작했습니다.
 
 
-<img src="img/project/etd/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/EmojiTowerDefense/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -272,7 +272,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             title: '적의 위치 예측하여 사격하기',
             content: `앞서 선형보간을 통해 이동시키는 것의 장점으로 위치 예측이 쉽다는 것을 들었습니다. 실제로 거너와 같은 특정 타워는 자신이 발사한 총알의 속도를 고려하여 자신이 타겟팅한 적의 이동을 예측해 해당 방향으로 사격을 가해야 합니다.
 
-<img src="img/project/etd/3.png" alt="게임 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+<img src="img/project/EmojiTowerDefense/3.png" alt="게임 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 이 때 사격을 시작할 때의 거리와 총알의 속도를 계산하면 도달까지의 시간을 측정할 수 있고, 선형보간을 통해 이동하므로 그 시간만큼 지났을 때 적이 어디에 가있을지 예측하는 것이 매우 쉽습니다. 거너는 이런 방식으로 적의 현재 위치가 아닌 미래의 위치에 사격을 가합니다.
 물론 경로의 모양이 복잡하면 이런 단순한 계산은 정확성이 떨어질 수밖에 없습니다.
             `,
@@ -312,7 +312,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_jf',
     title: 'Jumping Frog (2024.04)',
-    image: 'img/project/jf/1.png',
+    image: 'img/project/JumpingFrog/1.png',
     shortDescription: '2D 자체엔진으로 제작한 플랫포머 게임. 4일 단기 개인 프로젝트입니다.',
     longDescription: [
       {
@@ -343,7 +343,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `스프라이트와 음악은 오픈소스를 사용하였으며 그 외에는 혼자 만들었습니다.
 
 
-<img src="img/project/jf/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/JumpingFrog/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -366,7 +366,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `에디터가 없었기 때문에 모든 오브젝트는 2차원 배열을 타일셋으로 활용하여 배치되었습니다.
 1x1 크기의 블록들을 각각 오브젝트로 배치하여 맵을 구성할 경우 비용이 너무 커지므로, 맵 타일셋에서 같은 타입이 연속되는 경우 하나의 길거나 큰(1 x n 또는 n x n) 오브젝트로 배치하고, 스프라이트를 반복해 그리는 방식을 사용했습니다.
 
-<img src="img/project/jf/4.png" alt="게임 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/JumpingFrog/4.png" alt="게임 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
             id: 'p_jf_highlight_3',
