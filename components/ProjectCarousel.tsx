@@ -135,7 +135,7 @@ function ProjectCarousel({ id, projects }) {
 
 
   return (
-    <section id={id} className="py-20 sm:py-28 bg-slate-800/30">
+    <section id={id} className="pt-20 pb-12 sm:pt-28 sm:pb-16 bg-slate-800/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12 text-center">
           <span className="text-teal-400">참여</span> 프로젝트

@@ -22,11 +22,211 @@ export const PERSONAL_INFO = {
   phone: "010-2870-5895",
   email: "gunandjerry@gmail.com",
   github: "https://github.com/gunandjerry",
-  blog: "https://ddodigi.tistory.com/",
+  blog: "",//"https://ddodigi.tistory.com/",
   photo: "img/profile/face.png"
 };
 
 export const PROJECTS_DATA = [
+  {
+    id: 'p_pa',
+    title: 'Potion Atlier (2025.01)',
+    image: 'img/project/PotionAtlier/1.png',
+    shortDescription: '3D 자체엔진으로 제작한 타이쿤 게임. 4주 단기 팀 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_pa_overview',
+        title: '프로젝트 개요',
+        content: `제목: Potion Atlier
+장르: 타이쿤
+개발기간: 4주일 (2025년 1월 ~ 2월)
+개발인원: 개발 4인 / 아트 3인 / 기획 3인
+사용엔진: 자체 3D 엔진
+플랫폼: PC, Window
+`,
+        subSections: [
+          {
+            id: 'p_pa_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/v2JbL4FlbQM?si=_wRq8rtjiGXRymDr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
+          {
+            id: 'p_pa_overview_desc',
+            title: '게임 소개',
+            content: `포션 가게를 경영하는 아기자기한 3D 타이쿤 게임입니다. 제한된 시간 안에 최대한 많은 포션을 판매하는 것이 목적입니다.
+
+게임의 진행 방식은 다음과 같습니다.
+1. 게임이 시작되면 노움들이 차례차례 입장하여 포션을 주문합니다. 화면 좌상단에 주문서가 들어옵니다.
+2. 원재료 상자에서 재료를 꺼내, 썰거나 갈거나 짜는 QTE 작업대를 통해 가공하여 솥에 넣고 포션을 제작합니다.
+3. 카운터에 포션을 가져가 주문을 처리합니다.
+
+주어진 시간이 끝나면 수익에 따라 평점이 매겨지고 다음 레벨로 진행됩니다.
+
+조작키는 이동과 상호작용, 특수한 상황에 사용하는 빗자루 때리기 키만으로 이루어집니다. 조작도 간단하고 포션의 제조 과정도 단순하지만, 계속해서 몰려와 재촉하는 손님들과 끓는 시간이 초과되면 양조에 실패하는 솥, 주기적으로 등장하여 손님을 날려버리는 카운터 기믹 등 플레이어의 정신을 어지럽히는 요소들에 의해 우왕좌왕하게 되는 걸 의도했습니다.`,
+          },
+          {
+            id: 'p_pa_overview_role',
+            title: '맡은 역할',
+            content: `▶ 물리(PhysX) : Primitive-shape 콜라이더, 메쉬 콜라이더, Raycast, Sweep test, 물리 처리 컴포넌트 등
+▶ 캐릭터 조작: 부드러운 이동, 상호작용, 스태미너 시스템
+▶ 엔진 성능 개선 및 디버깅
+▶ UI 렌더링 / 스텐실 마스킹 / 텍스트 렌더링 등
+▶ QTE 미니게임 3종
+▶ 튜토리얼
+▶ 기물 오브젝트: 솥, 배치대, 작업대, 쓰레기통, 카운터 등의 작동 로직 및 오브젝트 프리팹 만들기
+▶ 레벨 에디팅을 위한 컴포넌트: 격자 이동, UI 조절, 
+▶ 특수 효과: 날아가는 노움, 오브젝트 상호작용 이펙트, UI 및 기물 스케일 애니메이션 등
+▶ 말풍선 등 기타 컨텐츠
+
+
+<img src="img/project/PotionAtlier/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_pa_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_pa_highlight_1',
+            title: 'PhysX 물리 컴포넌트 구현하기',
+            content: `NVDIA사에서 제작한 물리엔진인 PhysX를 공부하여 여러 종류의 콜라이더 컴포넌트 / 물리 기반 캐릭터 이동 컴포넌트 / 레이(또는 shape) 캐스팅 함수 등을 구현하고 게임에 사용하였습니다.
+
+물리를 추가하고 커스텀하기 쉽게 컴포넌트를 부착하는 방식으로 PhysX의 Physics Scene과 월드 씬을 동기화할 수 있도록 했습니다. 더 자세하게는 PxScene의 PxActor에 대응하는 Physics Actor 객체를 1:1로 생성하고 관리하는 방식입니다.
+컴포넌트는 동적으로, 순서에 상관없이 부착할 수 있어야 하므로 다음과 같이 두 가지 경우로 처리 로직이 분리됩니다.
+
+<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+콜라이더의 경우 정육면체, 캡슐, 스페어, 메쉬 콜라이더를 지원합니다. 게임에선 작업대 기물은 정육면체, 플레이어는 캡슐, 상점 레벨은 메쉬 콜라이더를 사용했습니다.
+
+게임에서는 활용처가 마땅치 않았으나, 물리 레이어를 구분하여 레이어 간에 충돌(밀어내기), 오버랩(이벤트만 발생), 무시 상호작용 설정이 가능하게 구현하였습니다.
+
+플레이어의 경우엔 Character Controller 컴포넌트를 구현하여 조작할 수 있게 했습니다. 기본적으로 유니티 엔진의 캐릭터 컨트롤러를 모방하였으며, 착지상태 판단, 이동과 점프, 경사면 처리를 통해 경사면에서 이동하기 등을 구현하였습니다.
+`,
+          },
+          {
+            id: 'p_pa_highlight_2',
+            title: '부드러운 조작감 구현하기',
+            content: `캐릭터의 이동과 조작에 대해 자세하게 구현해본 것은 처음이었는데, 단순히 이동 벡터를 가하며 캐릭터를 해당 방향으로 회전시키는 투박한 방식은 조작감이 최악이었습니다.
+어떻게 하면 캐릭터가 부드럽게 조작되는 인상을 줄 수 있을 지 고민한 결과, 다음과 같은 기능을 넣게 되었습니다.
+
+▶ 이동 방향과 현재 바라보고 있는 방향의 각이 클 수록 이동속도를 줄입니다. (t/pi)^2 정도의 간단한 수식만으로도 상당히 자연스러웠습니다.
+▶ 조작키가 눌리면 외적을 통해 더 작은 각에 해당하는 방향으로 부드럽게 회전합니다.
+▶ 대쉬를 사용하면 최종 이동량에 가중치를 곱합니다.`,
+          },
+          {
+            id: 'p_pa_highlight_3',
+            title: 'UI 스텐실 마스킹',
+            content: `UI 이미지의 둥근 모서리를 처리하기 위해 커스텀 스텐실 버퍼를 통한 UI 마스킹을 구현하였습니다.
+마스크로 사용될 텍스쳐는 렌더링되는 대신 스텐실 버퍼에 자신의 마스크 ID를 비트플래그로 기록하며, 이후 마스크 위에 그려지도록 설정된 텍스쳐는 스텐실 버퍼에 지정된 비트 플래그가 켜져있는 경우에만 그려지도록 처리하였습니다.
+
+<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_pa_highlight_4',
+            title: '튜토리얼',
+            content: `이전 미니 프로젝트에서는 클래스 구조에 대한 고민이 부족했고, 튜토리얼을 넣기 위해 기존 클래스를 수정하고 의존성을 추가해야만 했습니다.
+이번에는 그 경험을 반면교사로 튜토리얼 시스템이 어떻게 동작할 지 미리 고려하면서 클래스를 설계했습니다.
+
+플레이어와 기물 오브젝트들은 특정 동작을 취할 때 이벤트를 발생시키고 필요하다면 등록된 콜백 이벤트를 호출합니다. 튜토리얼 매니저는 이런 이벤트가 발생하면 해당 이벤트의 정보가 담긴 커맨드를 자신의 커맨드 큐에 삽입하도록 하는 콜백 함수를 등록하고, 매 업데이트마다 커맨드 큐를 확인하는 방식으로 동작하게 됩니다.
+커맨드 큐를 통해 한 차례 중개하는 이유는 이벤트들을 커맨드를 통해 일관된 방식으로 처리하여 구조를 간단하게 만들기 위해서입니다.
+
+<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_pa_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_pa_lesson_1',
+            title: '픽셀 단위로 마스킹되는 스텐실 마스킹의 대안 - SDF 마스킹',
+            content: `이 게임에서 사용한 UI 마스킹은 스텐실 버퍼에 비트플래그를 기록하고 마스크 위에 그려질 UI를 특정 비트 플래그가 켜진 픽셀 위에서만 그려지도록 한 가장 단순한 마스킹 기법입니다.
+이 방식의 가장 큰 문제는 단순히 픽셀 버리기(discard)로 구현되기 때문에 경계 부분에 앨리어싱을 적용할 수 없다는 점입니다.
+
+게임 제작 기간이 끝난 뒤 이 문제를 어떻게 해결할 수 있을 지 고민해 보았습니다. 나온 결론은 G버퍼의 남는 4바이트 영역을 레이어 ID를 나타내는 비트 플래그 영역과 알파값을 기록하는 알파 마스크 영역으로 나누어 사용하면 어떨가 하는 것이었습니다.
+문제는 역시 G 버퍼를 사용하는 만큼 비용 부담이 크다는 것입니다. 또, 마스크로 사용하는 텍스쳐는 단순히 어떤 픽셀이 마스크에 포함되는지 알려주는 역할만 수행하므로 이 또한 낭비였습니다.
+
+그러던 중 SDF(Signed Distance Field)에 대해 알게 되었습니다. SDF는 픽셀마다 색이 칠해지는 경계로부터 얼만큼 떨어져있는지 거리를 기록해둔 특수한 텍스쳐로, 테두리 바로 위를 0.5로 기준으로 삼는다면 색이 칠해지는 영역의 내부는 0~0.5, 외부는 0.5~1 사이의 거리값을 가지게 됩니다.
+
+<img src="img/project/PotionAtlier/7.png" alt="본문 이미지" style="display: block; width: 60%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+일반적으로 텍스트 그리프 렌더링, 데칼 텍스쳐 렌더링 등 해상도나 거리가 달라져도 부드러운 테두리를 렌더링할 필요가 있을 때 사용하지만, UI 마스킹에도 사용할 수 있겠다는 생각이 들었고 찾아본 결과 이미 사용되고 있는 방법이었습니다.
+SDF 텍스쳐를 마스크로 사용하면 해당 텍스쳐의 거리 값을 약간 조절하여 그려지는 픽셀의 알파값으로 사용할 수 있습니다. 이렇게 되면 추가적인 데이터가 필요 없이 부드러운 경계면을 가진 마스킹을 구현할 수 있습니다.
+`,
+          },
+          {
+            id: 'p_pa_lesson_2',
+            title: '정적 리플렉션을 통한 에디팅',
+            content: `게임을 제작하면서 가장 불편했던 점은 직렬화 문제였습니다. 에디터를 통해 컴포넌트를 탈부착하거나 프로퍼티를 수정할 수 있는 상태가 아니었고 단순 바이너리 직렬화를 사용했기에 툭하면 다른 작업자가 코드를 바꿔 바이너리를 읽지 못 하는 경우들이 발생했습니다.
+
+개발이 끝난 뒤 가장 먼저 C++의 정적 리플렉션을 통해 에디터 상에서 컴포넌트를 탈부착하고 프로퍼티를 수정할 방법을 찾게 되었습니다. 기본적으로 C++은 거대한 런타임 시스템 기반이 아니므로 엄밀한 의미의 리플렉션은 구현할 수 없지만, 타입 구조를 저장해놓고 사용하는 정적 리플렉션은 상당히 쉽게 구현할 수 있었습니다.
+
+엔진이 로드될 때 컴포넌트 레지스트리에는 간단한 컴포넌트의 정보와 컴포넌트를 생성해 반환하는 함수 객체를 등록하게 되며, 이후 에디터에서 컴포넌트를 부착하면 레지스트리를 통해 컴포넌트 인스턴스를 생성해 반환하면 됩니다.
+
+아이디어를 설명하는 간단한 예시 코드는 다음과 같습니다.
+<code-block title="컴포넌트 리플렉션 구현 예시" language="cpp">
+class ComponentRegistry
+{
+	std::unordered_map<std::string, std::function<class Component*()>> registry;
+public:
+	static ComponentFactory& GetInstance();
+
+	// 컴포넌트를 레지스트리에 등록한다.
+	template <typename T>
+	bool _RegisterComponent(std::string_view component_name);
+	{
+		if (registry.find(component_name.data()) == registry.end())
+		{
+			registry[component_name.data()] = []() -> T* { return new T; };
+		}
+	
+		return true;
+	}
+
+	// 컴포넌트 인스턴스를 생성해 반환한다.
+	template <typename T>
+	class T* CreateComponent(std::string_view component_name)
+	{
+		auto iter = registry.find(component_name.data());
+		if (iter != registry.end())
+		{
+			return iter->second();
+		}
+
+		return nullptr;
+	}
+	Component* CreateComponent(std::string_view component_name)
+	{
+		return static_cast<Component*>(CreateComponent<Component>(component_name));
+	}
+};
+
+// 등록에 사용할 매크로
+#define RegisterComponent(comp) \
+	inline static bool is_registered = ComponentRegistry::GetInstance()._RegisterComponent<comp>(#comp);
+
+// 간단한 방법으로 에디터에 컴포넌트를 등록할 수 있다.
+class SomeComponent : public Component
+{
+	RegisterComponent(SomeComponnet)
+	...
+}
+</code-block>
+다음은 자체 엔진에 존재하는 컴포넌트들을 컴포넌트 레지스트리에 등록하여 출력한 모습입니다.
+
+<img src="img/project/PotionAtlier/8.png" alt="본문 이미지" style="display: block; width: 30%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+`,
+          }
+        ],
+      },
+    ],
+    technologies: ['자체엔진', 'C++20', 'Direct3D11', 'PhysX', 'WinAPI', 'FMOD', '3D 게임수학'],
+    liveLink: 'https://youtu.be/v2JbL4FlbQM?si=GtCIvaJ0p6GOYd10',
+  },
+
+
+
   {
     id: 'p_rh',
     title: 'Railway to Hell (2024.08)',
@@ -42,11 +242,13 @@ export const PROJECTS_DATA = [
 개발인원: 개발 3인 / 아트 3인 / 기획 2인
 사용엔진: 자체 2D 엔진
 플랫폼: PC, Window
-
-<b><a href="https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
-
 `,
         subSections: [
+          {
+            id: 'p_rh_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/H3ri3R9NwEg?si=IvPL0-jz1M4fDDJu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
           {
             id: 'p_rh_overview_desc',
             title: '게임 소개',
@@ -138,11 +340,13 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 개발인원: 개발 2인 / 아트 2인 / 기획 3인
 사용엔진: 자체 2D 엔진
 플랫폼: PC, Window
-
-<b><a href="https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
-
 `,
         subSections: [
+          {
+            id: 'p_ap_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/_Xx173pg2-g?si=R4R8VzZOVf_sPk3F" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
           {
             id: 'p_ap_overview_desc',
             title: '게임 소개',
@@ -227,11 +431,13 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 개발인원: 1인
 사용엔진: 자체 2D 엔진
 플랫폼: PC, Window
-
-<b><a href="https://youtu.be/GL2G-A6hkHw?si=BzvAoH8c2fRC3Pie" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
-
 `,
         subSections: [
+          {
+            id: 'p_etd_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" <iframe width="560" height="315" src="https://www.youtube.com/embed/GL2G-A6hkHw?si=bjyu42wSpevpC8Zu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
           {
             id: 'p_etd_overview_desc',
             title: '게임 소개',
@@ -324,11 +530,13 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 개발인원: 1인
 사용엔진: 자체 2D 엔진
 플랫폼: PC, Window
-
-<b><a href="https://youtube.com/shorts/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
-
 `,
         subSections: [
+          {
+            id: 'p_jf_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
           {
             id: 'p_jf_overview_desc',
             title: '게임 소개',
@@ -399,11 +607,13 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 개발인원: 
 사용엔진: 
 플랫폼: PC, Window
-
-<b><a href="" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
-
 `,
         subSections: [
+          {
+            id: 'p_xx_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/H3ri3R9NwEg?si=IvPL0-jz1M4fDDJu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
           {
             id: 'p_xx_overview_desc',
             title: '게임 소개',
@@ -447,131 +657,84 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
     technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
     liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
   }
-
-
-
-
-
-// {
-//     id: 'p_xx',
-//     title: '',
-//     image: 'img/project/',
-//     shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
-//     longDescription: [
-//       {
-//         id: 'p_xx_overview',
-//         title: '프로젝트 개요',
-//         content: `제목: 
-// 장르: 
-// 개발기간: 
-// 개발인원: 
-// 사용엔진: 
-// 플랫폼: PC, Window
-
-// <b><a href="" target="_blank" rel="noopener noreferrer">[플레이 영상 바로가기 (Youtube 링크)]</a></b>
-
-// `,
-//         subSections: [
-//           {
-//             id: 'p_xx_overview_desc',
-//             title: '게임 소개',
-//             content: ``,
-//           },
-//           {
-//             id: 'p_xx_overview_role',
-//             title: '맡은 역할',
-//             content: `▶
-// <img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-//           }
-//         ],
-//         showDivider: true,
-//       },
-//       {
-//         id: 'p_xx_highlight',
-//         title: '제작 과정 & 구현 과제',
-//         subSections: [
-//           {
-//             id: 'p_xx_highlight_x',
-//             title: '',
-//             content: ``,
-//           }
-//         ],
-//       },
-//       {
-//         id: 'p_xx_lesson',
-//         title: '반성과 개선점',
-//         subSections: [
-//           {
-//             id: 'p_xx_lesson_x',
-//             title: '',
-//             content: ``,
-//           }
-//         ],
-//       },
-//     ],
-//     technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
-//     liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
-//   },
 ];
+
+
+
+
+
 
 export const EXPERIENCE_DATA = [
   {
     id: 'exp-1',
-    period: '2021년 3월 - 현재',
-    company: '넥스트젠 게임즈',
-    role: '선임 게임 클라이언트 개발자',
-    description: '주요 모바일 RPG 프로젝트 "프로젝트 오메가"의 클라이언트 개발 리드. 전투 시스템, 길드 콘텐츠, UI/UX 개발 및 최적화 담당. 신규 기술 도입 및 팀원 멘토링 수행.',
-    learnings: ['리더십 및 프로젝트 관리', 'Unity 심화 최적화', '실시간 네트워크 동기화', '애자일 개발 프로세스'],
-  },
-  {
-    id: 'exp-2',
-    period: '2019년 1월 - 2021년 2월',
-    company: '인피니티 스튜디오',
-    role: '게임 클라이언트 개발자',
-    description: 'PC FPS 게임 "코드네임 제타" 개발팀 소속. Unreal Engine 4 기반 캐릭터 애니메이션, 무기 시스템, 물리 효과 개발. C++ 및 블루프린트 활용.',
-    learnings: ['Unreal Engine 4 활용 능력', 'C++ 프로그래밍 심화', '3D 게임 개발 파이프라인', '퍼포먼스 프로파일링'],
-  },
-  {
-    id: 'exp-3',
-    period: '2017년 7월 - 2018년 12월',
-    company: '픽셀크래프트',
-    role: '주니어 게임 개발자',
-    description: 'Cocos2d-x 기반 2D 모바일 게임 다수 개발 참여. 레벨 디자인, UI 구현, 버그 수정 및 QA 지원. 주로 C++ 사용.',
-    learnings: ['Cocos2d-x 프레임워크', '2D 게임 개발 기초', '모바일 플랫폼 이해', '버전 관리 시스템 (Git)'],
-  },
+    period: '2024년 3월 - 2025년 11월',
+    company: '게임인재원',
+    role: '게임인재원 6기 프로그래밍 교육생',
+    description: '게임 개발에 필요한 저반 지식 학습부터 멘토링과 수 차례에 걸친 팀 프로젝트 경험. 모든 교육 과정을 우수한 성적으로 수료함.',
+    learnings: ['C/C++, 3D 렌더링, 3D 수학', '리더십 및 프로젝트 관리', '게임 네트워크 기초', '언리얼 엔진 등'],
+  }
 ];
 
 export const STRENGTHS_DATA = [
-  "빠른 학습 능력과 새로운 기술 습득에 대한 높은 관심",
-  "복잡한 문제에 대한 분석적 접근과 효과적인 해결 능력",
-  "다양한 팀원들과의 원활한 커뮤니케이션 및 적극적인 협업",
-  "사용자 경험(UX)을 최우선으로 생각하는 개발 마인드셋",
-  "코드 품질, 유지보수성 및 성능 최적화에 대한 깊은 이해와 노력",
-  "주도적인 업무 수행 능력과 프로젝트에 대한 책임감"
+  "BlahBlahBlahBlahBlahBlah",
+  "BlahBlahBlahBlahBlahBlah",
+  "BlahBlahBlahBlahBlahBlah",
+  "BlahBlahBlahBlahBlahBlah",
+  "BlahBlahBlahBlahBlahBlah",
+  // "빠른 학습 능력과 새로운 기술 습득에 대한 높은 관심",
+  // "복잡한 문제에 대한 분석적 접근과 효과적인 해결 능력",
+  // "다양한 팀원들과의 원활한 커뮤니케이션 및 적극적인 협업",
+  // "사용자 경험(UX)을 최우선으로 생각하는 개발 마인드셋",
+  // "코드 품질, 유지보수성 및 성능 최적화에 대한 깊은 이해와 노력",
+  // "주도적인 업무 수행 능력과 프로젝트에 대한 책임감"
 ];
 
 export const SKILLS_DATA = [
   {
     category: "Programming Languages",
-    skills: ["C# (Unity, .NET)", "C++ (Unreal Engine, Cocos2d-x)", "HLSL/GLSL (Shader Programming)", "GDScript (Godot)", "Python (Scripting/Tooling)"],
+    skills: ["C", "C++20", "Unreal C++", "C#", "Python", "HLSL"],
     icon: (props) => <CodeBracketIcon {...props} />,
   },
   {
     category: "Game Engines & Frameworks",
-    skills: ["Unity (URP/HDRP, DOTS/ECS Basics)", "Unreal Engine 4/5 (Blueprints, C++)", "Cocos2d-x", "Godot Engine", "Direct3D 11/12", "PhysX"],
+    skills: ["Unreal Engine 5", "Unity Engine", "Direct3D11", "PhysX", "Direct2D", "WinAPI", "FMOD", "Assimp", "ImGUI"],
     icon: (props) => <CpuChipIcon {...props} />,
   },
   {
     category: "Tools & Platforms",
-    skills: ["Git (Github, Gitlab, Sourcetree)", "Visual Studio, VS Code, Rider", "Photon Engine (PUN, Bolt)", "Oculus SDK, SteamVR", "Android & iOS Development", "Windows & Linux Environments", "JIRA, Confluence"],
+    skills: ["Git(Github)", "Subversion", "VS IDE", "CMake", "vcpkg"],
     icon: (props) => <WrenchScrewdriverIcon {...props} />,
   },
   {
     category: "Other Expertise",
-    skills: ["Agile & Scrum Methodologies", "UI/UX Design Principles & Implementation", "Performance Profiling & Optimization", "Game AI Fundamentals", "Network Programming Basics", "Software Architecture Design Patterns"],
+    skills: ["작업 명세화", "3D 게임수학", "3D 렌더링 파이프라인", "게임 디자인 패턴", "UI/UX 디자인 이론", "Unreal Performance Profiling"],
     icon: (props) => <AcademicCapIcon {...props} />,
   }
 ];
+
+
+
+
+
+export const CALL_TO_ACTION_DATA = [
+  {
+    id: 'cta-blog',
+    title: '3D 자체엔진 개발기 보러가기',
+    description: '우마무스메 신데렐라 그레이 절찬 상영중',
+    image: 'img/banner/oguri.jpg',
+    href: 'https://github.com/yourusername'
+  },
+  {
+    id: 'cta-portfolio',
+    title: '언리얼 삽질기 보러가기',
+    description: '우마무스메 신데렐라 그레이 절찬 상영중',
+    image: 'img/banner/gorusi.jpg',
+    href: '#'
+  }
+];
+
+
+
 
 export const ChevronLeftIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>

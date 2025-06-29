@@ -1,6 +1,96 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { CloseIcon, GitHubIcon, ExternalLinkIcon } from '../constants.tsx';
+import EmbeddedVideo from './EmbeddedVideo.tsx';
+import CollapsibleCodeBlock from './CollapsibleCodeBlock.tsx';
+
+interface ContentPart {
+  type: 'html' | 'video' | 'codeBlock';
+  content?: string;        // For HTML
+  videoSrc?: string;       // For video src
+  videoTitle?: string;     // For video title
+  codeContent?: string;    // For code block content
+  codeBlockTitle?: string; // For code block title
+  language?: string;       // For code block language
+}
+
+
+// Helper function to parse HTML content and separate videos and code blocks
+const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: string = "Project Video"): ContentPart[] => {
+  if (!htmlString) return [];
+
+  const parts: ContentPart[] = [];
+  let remainingHtml = htmlString;
+
+  // Regex for iframe and code-block
+  // iframe: captures src (1), title (2, optional)
+  const iframeRegex = /<iframe[^>]*src=["'](https?:\/\/(?:www\.)?(?:youtube\.com\/embed\/|player\.vimeo\.com\/video\/)[^"'?]+[^"']*)["'][^>]*?(?:title=["'](.*?)["'])?[^>]*>.*?<\/iframe>/i;
+  // code-block: captures title (1, optional), language (2, optional), code (3)
+  const codeBlockRegex = /<code-block(?:\s+title=["'](.*?)["'])?(?:\s+language=["'](.*?)["'])?\s*>([\s\S]*?)<\/code-block>/i;
+
+  while (remainingHtml.length > 0) {
+    const iframeMatch = remainingHtml.match(iframeRegex);
+    const codeBlockMatch = remainingHtml.match(codeBlockRegex);
+
+    let firstMatchIsIframe = false;
+    let firstMatchIsCodeBlock = false;
+    let matchIndex = Infinity;
+    let matchLength = 0;
+    let currentMatchDetails: any = null; // To store details of the earliest match
+
+    if (iframeMatch && iframeMatch.index !== undefined) {
+      if (iframeMatch.index < matchIndex) {
+        matchIndex = iframeMatch.index;
+        matchLength = iframeMatch[0].length;
+        firstMatchIsIframe = true;
+        firstMatchIsCodeBlock = false;
+        currentMatchDetails = iframeMatch;
+      }
+    }
+
+    if (codeBlockMatch && codeBlockMatch.index !== undefined) {
+      if (codeBlockMatch.index < matchIndex) {
+        matchIndex = codeBlockMatch.index;
+        matchLength = codeBlockMatch[0].length;
+        firstMatchIsCodeBlock = true;
+        firstMatchIsIframe = false;
+        currentMatchDetails = codeBlockMatch;
+      }
+    }
+
+    if (!firstMatchIsIframe && !firstMatchIsCodeBlock) {
+      // No more special tags, add remaining as HTML
+      if (remainingHtml.trim().length > 0) {
+        parts.push({ type: 'html', content: remainingHtml });
+      }
+      break;
+    }
+
+    // Add HTML content before the found tag
+    if (matchIndex > 0) {
+      const htmlContentBefore = remainingHtml.substring(0, matchIndex);
+      if (htmlContentBefore.trim().length > 0) {
+         parts.push({ type: 'html', content: htmlContentBefore });
+      }
+    }
+
+    if (firstMatchIsIframe && currentMatchDetails) {
+      const iframeSrc = currentMatchDetails[1];
+      const iframeTitle = currentMatchDetails[2] || defaultVideoTitle;
+      parts.push({ type: 'video', videoSrc: iframeSrc, videoTitle: iframeTitle });
+    } else if (firstMatchIsCodeBlock && currentMatchDetails) {
+      const codeTitle = currentMatchDetails[1] || "Code Snippet";
+      const codeLang = currentMatchDetails[2] || undefined;
+      const code = currentMatchDetails[3].trim(); // Trim the code content itself
+      parts.push({ type: 'codeBlock', codeBlockTitle: codeTitle, language: codeLang, codeContent: code });
+    }
+    
+    remainingHtml = remainingHtml.substring(matchIndex + matchLength);
+  }
+  
+  return parts.filter(part => !(part.type === 'html' && (!part.content || part.content.trim() === '')));
+};
+
 
 function ProjectModal({ project, onClose }) {
   const [internalVisible, setInternalVisible] = useState(false);
@@ -12,9 +102,14 @@ function ProjectModal({ project, onClose }) {
       const timer = setTimeout(() => {
         setInternalVisible(true);
       }, 10);
-      return () => clearTimeout(timer);
+      document.body.style.overflow = 'hidden'; // Prevent background scroll when modal is open
+      return () => {
+        clearTimeout(timer);
+        document.body.style.overflow = 'auto'; // Restore scroll on close
+      };
     } else {
       setInternalVisible(false);
+      document.body.style.overflow = 'auto'; // Ensure scroll is restored if project becomes null
     }
   }, [project]);
   
@@ -39,7 +134,7 @@ function ProjectModal({ project, onClose }) {
       },
       { 
         root: currentContentPanel, 
-        threshold: 0.4, // Trigger when 40% of the section is visible
+        threshold: 0.4, 
         rootMargin: "-40px 0px -40px 0px" 
       }
     );
@@ -86,7 +181,6 @@ function ProjectModal({ project, onClose }) {
           top: elementPosition,
           behavior: 'smooth',
         });
-        setActiveSection(sectionId); 
       }
     }
   };
@@ -94,6 +188,31 @@ function ProjectModal({ project, onClose }) {
   if (!project) return null;
 
   const isStructuredDescription = Array.isArray(project.longDescription) && project.longDescription.length > 0;
+
+  const renderParsedContent = (htmlString: string | undefined | null, keyPrefix: string) => {
+    const parts = parseContent(htmlString, `${project.title} - Video`);
+    return parts.map((part, index) => {
+      const uniqueKey = `${keyPrefix}-part-${index}-${part.type}-${part.videoSrc || part.codeBlockTitle || 'html'}`;
+      
+      if (part.type === 'video' && part.videoSrc) {
+        return <EmbeddedVideo key={uniqueKey} src={part.videoSrc} title={part.videoTitle || `${project.title} Video`} />;
+      }
+      if (part.type === 'codeBlock' && part.codeContent) {
+        return <CollapsibleCodeBlock key={uniqueKey} code={part.codeContent} title={part.codeBlockTitle} language={part.language} />;
+      }
+      if (part.type === 'html' && part.content && part.content.trim() !== '') {
+        return (
+          <div 
+            key={uniqueKey} 
+            className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
+            dangerouslySetInnerHTML={{ __html: part.content }} 
+          />
+        );
+      }
+      return null;
+    });
+  };
+
 
   return (
     <div
@@ -170,25 +289,17 @@ function ProjectModal({ project, onClose }) {
                     <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
                       {section.title}
                     </h3>
-                    {section.content && (
-                      <div 
-                        className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
-                        dangerouslySetInnerHTML={{ __html: section.content }} 
-                      />
-                    )}
+                    {section.content && renderParsedContent(section.content, `section-${section.id}`)}
                   </section>
                   
                   {section.subSections && section.subSections.length > 0 && (
-                    <div> {/* No indentation for content */}
+                    <div>
                       {section.subSections.map(subSection => (
                         <section key={subSection.id} id={`modal-section-${subSection.id}`} className="scroll-mt-4 md:scroll-mt-6">
-                          <h4 className="text-lg sm:text-xl font-medium text-slate-100 mt-8 mb-1.5 sm:mb-2">
+                          <h4 className="text-lg sm:text-xl font-medium text-slate-100 mt-6 mb-1.5 sm:mb-2">
                             {subSection.title}
                           </h4>
-                          <div 
-                            className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
-                            dangerouslySetInnerHTML={{ __html: subSection.content }} 
-                          />
+                          {subSection.content && renderParsedContent(subSection.content, `subsection-${subSection.id}`)}
                         </section>
                       ))}
                     </div>
@@ -200,7 +311,9 @@ function ProjectModal({ project, onClose }) {
                 </React.Fragment>
               ))
             ) : (
-              <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-wrap text-sm sm:text-base">{project.longDescription}</p>
+              typeof project.longDescription === 'string' 
+                ? renderParsedContent(project.longDescription, `project-${project.id}-desc`)
+                : <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-wrap text-sm sm:text-base">No detailed description available.</p>
             )}
 
             <div className="mb-6 pt-4 border-t border-slate-700 mt-6 sm:mt-8">
