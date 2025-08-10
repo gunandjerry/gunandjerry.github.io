@@ -58,7 +58,7 @@ function Introduction({ id, personalInfo }) {
           <p className="text-lg sm:text-xl text-slate-300 leading-relaxed">
             꾸준하고, 집요하고, 체계적이며, 누구보다 게임 산업의 전망에 대해 강한 확신을 가지고 있는 게임 개발자 지망생입니다.<br></br>
             2년간의 집중적인 교육을 통해 게임 개발에 필요한 저반의 지식을 익히고 실무형 프로젝트를 수행하며 구현 능력을 키워왔으며, 그 과정에서 단 한 차례도 포기하지 않고 꾸준히 좋은 성적을 내어 왔습니다.<br></br>
-            또한 여러 차례의 팀 프로젝트를 수행하며 소통과 협업의 중요성을 몸소 체험하고 그 노하우를 익혀왔습니다.
+            또한 여러 차례의 팀 프로젝트를 수행하며 소통의 중요성을 몸소 체험하고 협업의 노하우를 익혀왔습니다.
           </p>
 
           {/* Contact Info with Copy Functionality */}
@@ -110,7 +110,7 @@ function Introduction({ id, personalInfo }) {
               이메일 보내기
             </a>
             <a href={personalInfo.blog} target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
-              블로그 구경하기
+              기술블로그 바로가기
             </a>
           </div>
         </div>

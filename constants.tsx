@@ -3,6 +3,7 @@ import React from 'react';
 export const STRING_TABLE = {
   header_navigation_profile: "프로필",
   header_navigation_project: "프로젝트",
+  header_navigation_experience: "경력",
   header_navigation_journey: "성장여정",
   header_navigation_skill: "역량"
 };
@@ -11,6 +12,7 @@ export const SECTION_IDS = {
   INTRODUCTION: 'introduction',
   PROJECTS: 'projects',
   EXPERIENCE: 'experience',
+  LEARNING_JOURNEY: 'learning-journey',
   SKILLS: 'skills',
   // CONTACT: 'contact', // Footer serves as contact implicitly
 };
@@ -27,11 +29,82 @@ export const PERSONAL_INFO = {
 };
 
 export const PROJECTS_DATA = [
+{
+    id: 'p_fh',
+    title: 'F Rank Survivor (언리얼/리썰라이크/멀티플레이)',
+    image: 'img/project/FRankSurvivor/banner.gif',
+    shortDescription: '6개월 장기 팀 프로젝트입니다. 냉무',
+    longDescription: [
+      {
+        id: 'p_fh_overview',
+        title: '프로젝트 개요',
+        content: `제목: F급 헌터 생존기 / F Rank Survivor
+장르: 리썰라이크, 생존, 어드벤처
+개발기간: 6개월 (2025년 5월 ~ 10월)
+개발인원: 개발 4인 / 아트 1인 / 기획 2인
+사용엔진: 언리얼 엔진
+플랫폼: PC, Window
+`,
+        subSections: [
+          {
+            id: 'p_fh_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
+          {
+            id: 'p_fh_overview_desc',
+            title: '게임 소개',
+            content: `냉무`,
+          },
+          {
+            id: 'p_fh_overview_role',
+            title: '맡은 역할',
+            content: `▶ 냉무
+
+<img src="img/project/FRankSurvivor/banner.gif" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_fh_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_fh_highlight_1',
+            title: '이것저것',
+            content: `
+<img src="img/project/FRankSurvivor/banner.gif" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+
+`,
+          },
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_fh_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_fh_lesson_1',
+            title: '이것저것',
+            content: `
+`,
+          },
+        ],
+      },
+    ],
+    technologies: ['언리얼5', '언리얼 네트워크', '카오스 피직스', '메타휴먼'],
+    liveLink: '',
+  },
+
+
+
   {
     id: 'p_pa',
-    title: 'Potion Atlier (2025.01)',
-    image: 'img/project/PotionAtlier/1.png',
-    shortDescription: '3D 자체엔진으로 제작한 타이쿤 게임. 4주 단기 팀 프로젝트입니다.',
+    title: 'Potion Atlier (3D/캐쥬얼/타이쿤)',
+    image: 'img/project/PotionAtlier/banner.gif',
+    shortDescription: '4주 단기 팀 프로젝트입니다. 인게임 컨텐츠, 물리, 특수효과, UI 렌더링 등을 담당했습니다.',
     longDescription: [
       {
         id: 'p_pa_overview',
@@ -221,7 +294,7 @@ class SomeComponent : public Component
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++20', 'Direct3D11', 'PhysX', 'WinAPI', 'FMOD', '3D 게임수학'],
+    technologies: ['자체엔진', 'C++20', 'Direct3D11', 'PhysX', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtu.be/v2JbL4FlbQM?si=GtCIvaJ0p6GOYd10',
   },
 
@@ -229,9 +302,9 @@ class SomeComponent : public Component
 
   {
     id: 'p_rh',
-    title: 'Railway to Hell (2024.08)',
-    image: 'img/project/RailwayToHell/2.png',
-    shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
+    title: 'Railway to Hell (2D/전략/퍼즐)',
+    image: 'img/project/RailwayToHell/banner.gif',
+    shortDescription: '3주 단기 팀 프로젝트입니다. 게임엔진, 조작, 게임 범용 로직, UI, 특수효과 등을 담당했습니다.',
     longDescription: [
       {
         id: 'p_rh_overview',
@@ -318,7 +391,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
+    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
   },
 
@@ -327,9 +400,9 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
   {
     id: 'p_ap',
-    title: 'Aphotica (2024.05)',
-    image: 'img/project/Aphotica/1.png',
-    shortDescription: '2D 자체엔진으로 제작한 퍼즐 게임. 2주 단기 팀 프로젝트입니다.',
+    title: 'Aphotica (2D/리듬/퍼즐)',
+    image: 'img/project/Aphotica/banner.gif',
+    shortDescription: '2주 단기 팀 프로젝트입니다. 게임엔진, 게임 컨텐츠 전반을 담당했습니다.',
     longDescription: [
       {
         id: 'p_ap_overview',
@@ -361,7 +434,8 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             id: 'p_ap_overview_role',
             title: '맡은 역할',
             content: `▶ 2D 자체 엔진
-▶ 클라이언트 전반 (튜토리얼 제외)
+▶ 레벨 에디팅
+▶ 튜토리얼 제외 컨텐츠 전반
 
 
 <img src="img/project/Aphotica/2.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
@@ -409,7 +483,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD', '2D 게임수학'],
+    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v',
   },
 
@@ -418,9 +492,9 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
   {
     id: 'p_etd',
-    title: 'Emoji Tower Defense (2024.06)',
-    image: 'img/project/EmojiTowerDefense/1.png',
-    shortDescription: '2D 자체엔진으로 제작한 전략, 디펜스 게임. 8일 단기 개인 프로젝트입니다.',
+    title: 'Emoji Tower Defense (2D/타워디펜스)',
+    image: 'img/project/EmojiTowerDefense/banner.gif',
+    shortDescription: '8일 단기 개인 프로젝트입니다.',
     longDescription: [
       {
         id: 'p_etd_overview',
@@ -507,7 +581,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
+    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtu.be/GL2G-A6hkHw?si=BzvAoH8c2fRC3Pie',
   },
 
@@ -517,9 +591,9 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
   {
     id: 'p_jf',
-    title: 'Jumping Frog (2024.04)',
-    image: 'img/project/JumpingFrog/1.png',
-    shortDescription: '2D 자체엔진으로 제작한 플랫포머 게임. 4일 단기 개인 프로젝트입니다.',
+    title: 'Jumping Frog (2D/플랫포머)',
+    image: 'img/project/JumpingFrog/banner.gif',
+    shortDescription: '4일 단기 개인 프로젝트입니다.',
     longDescription: [
       {
         id: 'p_jf_overview',
@@ -584,7 +658,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD', '2D 게임수학'],
+    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtube.com/shorts/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc',
   },
 
@@ -661,7 +735,22 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 
 
-
+export const CALL_TO_ACTION_DATA = [
+  {
+    id: 'cta-blog',
+    title: '3D 자체엔진 개발기 보러가기',
+    description: '간단한 3D 엔진을 직접 만들어보았습니다. Direct3D11, PhysX, FMOD가 사용되었으며 PBR+IBL 렌더링, 캐릭터 컨트롤러, 세부적인 물리 설정을 지원합니다.',
+    image: 'img/banner/oguri.jpg',
+    href: 'https://github.com/yourusername'
+  },
+  {
+    id: 'cta-portfolio',
+    title: '언리얼 삽질기 보러가기',
+    description: '중장기 프로젝트를 수행하며 언리얼5에 대해 깊히 공부했습니다. 수 십개의 트러블 슈팅을 경험했으며 GAS, 메타휴먼, 카오스 디스트럭션을 비롯한 언리얼의 차세대 기능들에 대해 숙달되었습니다.',
+    image: 'img/banner/gorusi.jpg',
+    href: '#'
+  }
+];
 
 
 export const EXPERIENCE_DATA = [
@@ -674,6 +763,43 @@ export const EXPERIENCE_DATA = [
     learnings: ['C/C++, 3D 렌더링, 3D 수학', '리더십 및 프로젝트 관리', '게임 네트워크 기초', '언리얼 엔진 등'],
   }
 ];
+
+
+
+
+export const LEARNING_JOURNEY_DATA = {
+  title: "학습 기록",
+  subTitle: "",
+  sections: [
+    {
+      id: 'lj-1',
+      subTitle: "호기심에서 시작된 프로그래밍",
+      paragraphs: [
+        "저는 단순히 코드를 작성하는 것을 넘어, 문제의 본질을 파악하고 최적의 해결책을 찾는 과정 자체를 즐기는 개발자입니다. 저의 성장 과정은 끊임없는 호기심과 학습에 대한 열정으로 가득 차 있습니다. 처음에는 작은 스크립트를 작성하며 프로그래밍의 재미를 느꼈고, 곧이어 복잡한 게임 로직과 시스템 아키텍처를 설계하는 데 깊은 매력을 느끼게 되었습니다."
+      ],
+      image: "https://picsum.photos/seed/learning-journey-1/600/450",
+    },
+    {
+      id: 'lj-2',
+      subTitle: "기술의 깊이를 탐구하며",
+      paragraphs: [
+        "특히 새로운 기술이 등장했을 때, 저는 주저하지 않고 직접 부딪혀보며 제 것으로 만드는 것을 선호합니다. Direct3D와 같은 로우레벨 그래픽스 API를 파고들어 렌더링 파이프라인의 동작 원리를 이해하고, 물리 엔진을 연동하며 가상 세계에 생명을 불어넣는 경험은 저에게 큰 성취감을 안겨주었습니다. 이 과정에서 겪었던 수많은 오류와 디버깅의 시간들은 저를 더욱 단단하고 겸손한 개발자로 만들어주었습니다.",
+      ],
+      image: "https://picsum.photos/seed/learning-journey-2/600/450",
+    },
+    {
+      id: 'lj-3',
+      subTitle: "함께 성장하는 개발자",
+      paragraphs: [
+        "이제 저는 기술의 깊이뿐만 아니라, 동료와의 협업과 사용자 경험의 중요성을 이해하는 개발자로 성장했습니다. 저의 지식과 경험을 공유하고, 함께 더 나은 결과물을 만들어가는 과정에서 가장 큰 보람을 느낍니다. 앞으로도 현실에 안주하지 않고, 새로운 도전을 통해 사용자에게 최고의 경험을 선사하는 개발자가 되기 위해 끊임없이 나아갈 것입니다."
+      ],
+      image: "https://picsum.photos/seed/learning-journey-3/600/450",
+    }
+  ],
+};
+
+
+
 
 export const STRENGTHS_DATA = [
   "BlahBlahBlahBlahBlahBlah",
@@ -713,25 +839,6 @@ export const SKILLS_DATA = [
 ];
 
 
-
-
-
-export const CALL_TO_ACTION_DATA = [
-  {
-    id: 'cta-blog',
-    title: '3D 자체엔진 개발기 보러가기',
-    description: '우마무스메 신데렐라 그레이 절찬 상영중',
-    image: 'img/banner/oguri.jpg',
-    href: 'https://github.com/yourusername'
-  },
-  {
-    id: 'cta-portfolio',
-    title: '언리얼 삽질기 보러가기',
-    description: '우마무스메 신데렐라 그레이 절찬 상영중',
-    image: 'img/banner/gorusi.jpg',
-    href: '#'
-  }
-];
 
 
 

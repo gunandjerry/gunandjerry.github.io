@@ -39,7 +39,7 @@ const CallToActionBanner = () => {
                             </div>
 
                             {/* Content Container */}
-                            <div className="relative p-6 sm:p-8 flex-grow flex items-center justify-between">
+                            <div className="relative p-12 sm:p-16 flex-grow flex items-center justify-between">
                                 <div className="pr-4">
                                     <h3 className="text-lg sm:text-xl font-bold text-teal-400 mb-2 group-hover:text-teal-300 transition-colors">
                                         {item.title}

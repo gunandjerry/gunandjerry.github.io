@@ -202,7 +202,7 @@ function ProjectCarousel({ id, projects }) {
         </div>
         
         {projects.length > itemsToShow && totalPagesToRender > 1 && (
-          <div className="flex justify-center mt-8 space-x-2">
+          <div className="flex justify-center mt-8 space-x-3">
             {Array.from({ length: totalPagesToRender }).map((_, pageIndex) => (
               <button
                 key={pageIndex}
@@ -210,7 +210,7 @@ function ProjectCarousel({ id, projects }) {
                   const newIdx = Math.min(pageIndex * itemsToShow, projects.length - itemsToShow);
                   setCurrentIndex(newIdx);
                 }}
-                className={`w-4 h-4 rounded-full ${pageIndex === activeDotPage ? 'bg-teal-400' : 'bg-slate-600 hover:bg-slate-500'} transition-colors`}
+                className={`w-8 h-8 rounded-full ${pageIndex === activeDotPage ? 'bg-teal-400' : 'bg-slate-600 hover:bg-slate-500'} transition-colors`}
                 aria-label={`Go to page ${pageIndex + 1}`}
               />
             ))}
