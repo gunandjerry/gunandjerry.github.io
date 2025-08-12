@@ -72,10 +72,149 @@ export const PROJECTS_DATA = [
         subSections: [
           {
             id: 'p_fh_highlight_1',
-            title: '이것저것',
+            title: '에디터 커스텀 UI',
             content: `
 <img src="img/project/FRankSurvivor/banner.gif" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 
+`,
+          },
+          {
+            id: 'p_fh_highlight_2',
+            title: '동적 던전 생성과 최적화',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_3',
+            title: '동적 생성 미니맵',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_4',
+            title: 'MovementComponent 개조하기',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_5',
+            title: 'GAS: 기반 만들기',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_6',
+            title: 'GAS: 플레이어 해부하기',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_7',
+            title: 'GAS: 상속과 태그 구조',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_8',
+            title: '메타휴먼에 특수효과 입히기',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_9',
+            title: '1인칭과 3인칭을 분리하기',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_10',
+            title: '장비 상태와 모션의 동기화',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_11',
+            title: '상호작용 개선하기',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_12',
+            title: '래그돌 충격 효과',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_13',
+            title: '카오스 디스트럭션',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_14',
+            title: '시각적 하이라이팅',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_15',
+            title: '커스텀 카메라 쉐이크',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_highlight_16',
+            title: '시각적 이펙트 개선하기',
+            content: `Vignette + CameraShake + Niagra
+`,
+          },
+          {
+            id: 'p_fh_highlight_17',
+            title: '사운드 시스템',
+            content: `
+`,
+          },
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_fh_troubleshooting',
+        title: '트러블슈팅',
+        subSections: [
+          {
+            id: 'p_fh_troubleshooting_1',
+            title: 'MovementComponent 동기화 관리',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_troubleshooting_2',
+            title: 'CDO 생성 이후 추가된 블루프린트 노드를 다루는 법',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_troubleshooting_3',
+            title: '메타휴먼 LOD 문제',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_troubleshooting_4',
+            title: 'ULevelStreaming 동적 해제 문제',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_troubleshooting_5',
+            title: 'UGroomComponent 렌더링 문제',
+            content: `
+`,
+          },
+          {
+            id: 'p_fh_troubleshooting_6',
+            title: '카메라의 업데이트 순서 문제',
+            content: `
 `,
           },
         ],
@@ -398,6 +537,78 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 
 
+
+
+  {
+    id: 'p_dp',
+    title: 'Drawing Puzzle',
+    image: 'img/project/DrawingPuzzle/banner.gif',
+    shortDescription: '유니티 엔진으로 제작한 퍼즐 게임. 단기 개인 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_dp_overview',
+        title: '프로젝트 개요',
+        content: `제목: (가제) Drawing Puzzle
+장르: 퍼즐
+개발인원: 1인
+사용엔진: 유니티 엔진
+플랫폼: PC, Window
+`,
+        subSections: [
+          {
+            id: 'p_df_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
+          {
+            id: 'p_dp_overview_desc',
+            title: '게임 소개',
+            content: ``,
+          },
+          {
+            id: 'p_dp_overview_role',
+            title: '맡은 역할',
+            content: `▶
+
+
+<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_dp_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_dp_highlight_x',
+            title: '',
+            content: ``,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_dp_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_dp_lesson_x',
+            title: '',
+            content: ``,
+          }
+        ],
+      },
+    ],
+    technologies: ['유니티', 'C#', '2D 게임수학'],
+    liveLink: '',
+  },
+
+
+
+
+
+
   {
     id: 'p_ap',
     title: 'Aphotica (2D/리듬/퍼즐)',
@@ -485,6 +696,75 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
     ],
     technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v',
+  },
+
+
+
+
+
+  {
+    id: 'p_be',
+    title: 'Bouncing Emoji Game',
+    image: 'img/project/BounceEmoji/banner.gif',
+    shortDescription: '유니티 엔진으로 제작한 퍼즐 게임. 단기 개인 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_be_overview',
+        title: '프로젝트 개요',
+        content: `제목: (가제) Bouncing Emoji Game
+장르: 퍼즐
+개발인원: 1인
+사용엔진: 유니티 엔진
+플랫폼: PC, Window
+`,
+        subSections: [
+          {
+            id: 'p_be_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
+          {
+            id: 'p_be_overview_desc',
+            title: '게임 소개',
+            content: ``,
+          },
+          {
+            id: 'p_be_overview_role',
+            title: '맡은 역할',
+            content: `▶
+
+
+<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_be_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_be_highlight_x',
+            title: '',
+            content: ``,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_be_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_be_lesson_x',
+            title: '',
+            content: ``,
+          }
+        ],
+      },
+    ],
+    technologies: ['유니티', 'C#', 'SoftBody'],
+    liveLink: '',
   },
 
 
@@ -735,6 +1015,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 
 
+// <25-08-12> 사용하지 않음
 export const CALL_TO_ACTION_DATA = [
   {
     id: 'cta-blog',
@@ -753,6 +1034,7 @@ export const CALL_TO_ACTION_DATA = [
 ];
 
 
+// <25-08-12> 사용하지 않음
 export const EXPERIENCE_DATA = [
   {
     id: 'exp-1',
@@ -773,52 +1055,55 @@ export const LEARNING_JOURNEY_DATA = {
   sections: [
     {
       id: 'lj-1',
-      subTitle: "호기심에서 시작된 프로그래밍",
+      subTitle: "2년간의 집중적인 교육, 수 차례의 팀 프로젝트",
       paragraphs: [
-        "저는 단순히 코드를 작성하는 것을 넘어, 문제의 본질을 파악하고 최적의 해결책을 찾는 과정 자체를 즐기는 개발자입니다. 저의 성장 과정은 끊임없는 호기심과 학습에 대한 열정으로 가득 차 있습니다. 처음에는 작은 스크립트를 작성하며 프로그래밍의 재미를 느꼈고, 곧이어 복잡한 게임 로직과 시스템 아키텍처를 설계하는 데 깊은 매력을 느끼게 되었습니다."
+        "C/C++, 선형대수학, 게임 알고리즘, 셰이더, 컴퓨터 그래픽스 기술들의 원리와 실무 지식, 고수준 렌더링 기술, 게임 엔진의 동작 원리, 효율적인 설계법과 최적화 기법, SIMD에 이르기까지 게임을 제작하는데 필요한 기초와 심화 지식을 익히고 실습했습니다.",
+        "또한 네 차례의 단기 팀 프로젝트와 한 차례의 장기 팀 프로젝트를 경험하며 게임을 만들며 협업을 하는 방법과 노하우를 익혔고, "
       ],
       images: [
-        "https://picsum.photos/seed/learning-journey-1a/600/450",
-        "https://picsum.photos/seed/learning-journey-1b/600/450",
-        "https://picsum.photos/seed/learning-journey-1c/600/450",
+        "img/sample/gorusi.jpg",
+        "img/sample/gorusi.jpg",
+        "img/sample/gorusi.jpg",
       ],
       button: {
-        text: "초심자의 기록 보기",
-        description: "프로그래밍 첫걸음과 학습 과정을 공유합니다.",
-        link: "https://github.com/yourusername/blog/tag/beginner"
+        text: "공부 기록 보러가기",
+        description: "기술 블로그에서 수 백 페이지의 공부 기록을 구경해보세요.",
+        link: ""
       }
     },
     {
       id: 'lj-2',
-      subTitle: "기술의 깊이를 탐구하며",
+      subTitle: "고수준 렌더링과 물리가 탑재된 자체 엔진 제작",
       paragraphs: [
-        "특히 새로운 기술이 등장했을 때, 저는 주저하지 않고 직접 부딪혀보며 제 것으로 만드는 것을 선호합니다. Direct3D와 같은 로우레벨 그래픽스 API를 파고들어 렌더링 파이프라인의 동작 원리를 이해하고, 물리 엔진을 연동하며 가상 세계에 생명을 불어넣는 경험은 저에게 큰 성취감을 안겨주었습니다. 이 과정에서 겪었던 수많은 오류와 디버깅의 시간들은 저를 더욱 단단하고 겸손한 개발자로 만들어주었습니다.",
+        "창을 띄우고 간단한 게임 루프를 돌리는 것부터 시작해 컴포넌트와 상속 기반의 게임 엔진을 만들어 PBR·IBL 렌더링을 구현하고, PhysX를 탑재해 물리 컴포넌트를 작성하고, 애니메이션을 블렌딩하고, 포스트 프로세싱을 입히고, FSM·BT로 AI를 만드는 등 자체 엔진을 조금씩 발전시켜 나갔습니다.",
+        "이 모든 과정은 스스로 배우고 깨닫고 구현하기를 반복하는 과정이었으며, 단순히 시키는 대로 받아적고 남의 코드를 베끼는 수준과는 차원이 다른 이해를 가지고 있다고 자부합니다.",
       ],
       images: [
-        "https://picsum.photos/seed/learning-journey-2a/600/450",
-        "https://picsum.photos/seed/learning-journey-2b/600/450",
+        "img/sample/gorusi.jpg",
+        "img/sample/gorusi.jpg",
+        "img/sample/gorusi.jpg",
       ],
       button: {
-        text: "기술 탐구 과정 살펴보기",
-        description: "로우레벨 API와 물리엔진 탐구 기록입니다.",
-        link: "https://github.com/yourusername/blog/tag/deep-dive"
+        text: "자체 엔진 개발기 보러가기",
+        description: "자체 엔진을 발전시켜나가며 깨달은 것과 부딪혔던 난관을 해결해나간 과정이 적혀있습니다.",
+        link: ""
       }
     },
     {
       id: 'lj-3',
-      subTitle: "함께 성장하는 개발자",
+      subTitle: "언리얼 엔진에 대한 깊은 이해와 숙련도",
       paragraphs: [
-        "이제 저는 기술의 깊이뿐만 아니라, 동료와의 협업과 사용자 경험의 중요성을 이해하는 개발자로 성장했습니다. 저의 지식과 경험을 공유하고, 함께 더 나은 결과물을 만들어가는 과정에서 가장 큰 보람을 느낍니다. 앞으로도 현실에 안주하지 않고, 새로운 도전을 통해 사용자에게 최고의 경험을 선사하는 개발자가 되기 위해 끊임없이 나아갈 것입니다."
+        "가장 중요한 장기 팀 프로젝트는 언리얼 엔진으로 제작되었으며, 그 과정에서 언리얼과 언리얼 네트워크의 동작 과정을 자세하게 들여다보고 터득했습니다. Slate를 사용해 에디터를 개조하거나 플러그인을 제작하고, 언리얼 컴포넌트를 상속해 게임에 맞게 바꾸었으며, 멀티플레이 게임을 만들며 네트워크를 오고 가는 복잡한 로직을 숱하게 구현해보았습니다.",
+        "Gameplay Ability System, Custom Primitive Data, Chaos Destruction, Chaos Cloth, MetaHuman, Procedural Content Generation과 같은 언리얼이 제공하는 최신의 기능들에 대한 상당한 수준의 이해 역시 가지고 있습니다."
       ],
       images: [
-        "https://picsum.photos/seed/learning-journey-3a/600/450",
-        "https://picsum.photos/seed/learning-journey-3b/600/450",
-        "https://picsum.photos/seed/learning-journey-3c/600/450",
-        "https://picsum.photos/seed/learning-journey-3d/600/450",
+        "img/sample/gorusi.jpg",
+        "img/sample/gorusi.jpg",
+        "img/sample/gorusi.jpg",
       ],
       button: {
-        text: "성장과 협업에 대한 생각",
-        description: "팀워크와 개발자로서의 성찰을 다룹니다.",
+        text: "언리얼 엔진 공부 및 구현 기록 보러가기",
+        description: "언리얼 엔진의 동작 방식과 네트워크 플로우에 대한 분석, GAS를 사용한 게임 기반의 제작, 커스텀 에디터 UI와 동적으로 생성되는 던전과 미니맵 등 수 많은 구현 기록들을 보실 수 있습니다.",
         link: "https://github.com/yourusername/blog/tag/growth"
       }
     }
@@ -829,11 +1114,13 @@ export const LEARNING_JOURNEY_DATA = {
 
 
 export const STRENGTHS_DATA = [
-  "BlahBlahBlahBlahBlahBlah",
-  "BlahBlahBlahBlahBlahBlah",
-  "BlahBlahBlahBlahBlahBlah",
-  "BlahBlahBlahBlahBlahBlah",
-  "BlahBlahBlahBlahBlahBlah",
+  "소통능력 어필",
+  "컨텐츠 구현능력 어필(빠르고 정확함/강한몰입)",
+  "꾸준함 어필",
+  "여러 차례의 협업 경험",
+  "시간 관리, 작업 명세화",
+  "쉽게 설명함?/교육가능",
+  "아이디어/의사개진을 통한 퀄업사례?"
   // "빠른 학습 능력과 새로운 기술 습득에 대한 높은 관심",
   // "복잡한 문제에 대한 분석적 접근과 효과적인 해결 능력",
   // "다양한 팀원들과의 원활한 커뮤니케이션 및 적극적인 협업",
