@@ -33,7 +33,7 @@ export const PROJECTS_DATA = [
     id: 'p_fh',
     title: 'F Rank Survivor (언리얼/리썰라이크/멀티플레이)',
     image: 'img/project/FRankSurvivor/banner.gif',
-    shortDescription: '6개월 장기 팀 프로젝트입니다. 냉무',
+    shortDescription: '6개월 장기 팀 프로젝트입니다. 작성중...',
     longDescription: [
       {
         id: 'p_fh_overview',
@@ -54,12 +54,12 @@ export const PROJECTS_DATA = [
           {
             id: 'p_fh_overview_desc',
             title: '게임 소개',
-            content: `냉무`,
+            content: `작성중...`,
           },
           {
             id: 'p_fh_overview_role',
             title: '맡은 역할',
-            content: `▶ 냉무
+            content: `▶ 작성중...
 
 <img src="img/project/FRankSurvivor/banner.gif" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
@@ -768,8 +768,8 @@ export const EXPERIENCE_DATA = [
 
 
 export const LEARNING_JOURNEY_DATA = {
-  title: "학습 기록",
-  subTitle: "",
+  title: "성장 여정", // not use
+  subTitle: "", // not use
   sections: [
     {
       id: 'lj-1',
@@ -777,7 +777,16 @@ export const LEARNING_JOURNEY_DATA = {
       paragraphs: [
         "저는 단순히 코드를 작성하는 것을 넘어, 문제의 본질을 파악하고 최적의 해결책을 찾는 과정 자체를 즐기는 개발자입니다. 저의 성장 과정은 끊임없는 호기심과 학습에 대한 열정으로 가득 차 있습니다. 처음에는 작은 스크립트를 작성하며 프로그래밍의 재미를 느꼈고, 곧이어 복잡한 게임 로직과 시스템 아키텍처를 설계하는 데 깊은 매력을 느끼게 되었습니다."
       ],
-      image: "https://picsum.photos/seed/learning-journey-1/600/450",
+      images: [
+        "https://picsum.photos/seed/learning-journey-1a/600/450",
+        "https://picsum.photos/seed/learning-journey-1b/600/450",
+        "https://picsum.photos/seed/learning-journey-1c/600/450",
+      ],
+      button: {
+        text: "초심자의 기록 보기",
+        description: "프로그래밍 첫걸음과 학습 과정을 공유합니다.",
+        link: "https://github.com/yourusername/blog/tag/beginner"
+      }
     },
     {
       id: 'lj-2',
@@ -785,7 +794,15 @@ export const LEARNING_JOURNEY_DATA = {
       paragraphs: [
         "특히 새로운 기술이 등장했을 때, 저는 주저하지 않고 직접 부딪혀보며 제 것으로 만드는 것을 선호합니다. Direct3D와 같은 로우레벨 그래픽스 API를 파고들어 렌더링 파이프라인의 동작 원리를 이해하고, 물리 엔진을 연동하며 가상 세계에 생명을 불어넣는 경험은 저에게 큰 성취감을 안겨주었습니다. 이 과정에서 겪었던 수많은 오류와 디버깅의 시간들은 저를 더욱 단단하고 겸손한 개발자로 만들어주었습니다.",
       ],
-      image: "https://picsum.photos/seed/learning-journey-2/600/450",
+      images: [
+        "https://picsum.photos/seed/learning-journey-2a/600/450",
+        "https://picsum.photos/seed/learning-journey-2b/600/450",
+      ],
+      button: {
+        text: "기술 탐구 과정 살펴보기",
+        description: "로우레벨 API와 물리엔진 탐구 기록입니다.",
+        link: "https://github.com/yourusername/blog/tag/deep-dive"
+      }
     },
     {
       id: 'lj-3',
@@ -793,7 +810,17 @@ export const LEARNING_JOURNEY_DATA = {
       paragraphs: [
         "이제 저는 기술의 깊이뿐만 아니라, 동료와의 협업과 사용자 경험의 중요성을 이해하는 개발자로 성장했습니다. 저의 지식과 경험을 공유하고, 함께 더 나은 결과물을 만들어가는 과정에서 가장 큰 보람을 느낍니다. 앞으로도 현실에 안주하지 않고, 새로운 도전을 통해 사용자에게 최고의 경험을 선사하는 개발자가 되기 위해 끊임없이 나아갈 것입니다."
       ],
-      image: "https://picsum.photos/seed/learning-journey-3/600/450",
+      images: [
+        "https://picsum.photos/seed/learning-journey-3a/600/450",
+        "https://picsum.photos/seed/learning-journey-3b/600/450",
+        "https://picsum.photos/seed/learning-journey-3c/600/450",
+        "https://picsum.photos/seed/learning-journey-3d/600/450",
+      ],
+      button: {
+        text: "성장과 협업에 대한 생각",
+        description: "팀워크와 개발자로서의 성찰을 다룹니다.",
+        link: "https://github.com/yourusername/blog/tag/growth"
+      }
     }
   ],
 };

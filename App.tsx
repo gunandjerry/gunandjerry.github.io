@@ -16,7 +16,7 @@ function App() {
       <main className="flex-grow pt-20 md:pt-24"> {/* Adjusted padding top for fixed header */}
         <Introduction id={SECTION_IDS.INTRODUCTION} personalInfo={PERSONAL_INFO} />
         <ProjectCarousel id={SECTION_IDS.PROJECTS} projects={PROJECTS_DATA} />
-        <CallToActionBanner />
+        {/* <CallToActionBanner /> */}
         {/* <ExperienceTimeline id={SECTION_IDS.EXPERIENCE} experiences={EXPERIENCE_DATA} /> */}
         <LearningJourney id={SECTION_IDS.LEARNING_JOURNEY} data={LEARNING_JOURNEY_DATA} />
         <SkillsSection id={SECTION_IDS.SKILLS} strengths={STRENGTHS_DATA} skills={SKILLS_DATA} />
