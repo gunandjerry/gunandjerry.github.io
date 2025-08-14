@@ -18,7 +18,7 @@ function App() {
         <ProjectCarousel id={SECTION_IDS.PROJECTS} projects={PROJECTS_DATA} />
         {/* <CallToActionBanner /> */}
         {/* <ExperienceTimeline id={SECTION_IDS.EXPERIENCE} experiences={EXPERIENCE_DATA} /> */}
-        <LearningJourney id={SECTION_IDS.LEARNING_JOURNEY} data={LEARNING_JOURNEY_DATA} />
+        {/* <LearningJourney id={SECTION_IDS.LEARNING_JOURNEY} data={LEARNING_JOURNEY_DATA} /> */}
         <SkillsSection id={SECTION_IDS.SKILLS} strengths={STRENGTHS_DATA} skills={SKILLS_DATA} />
       </main>
       <Footer />

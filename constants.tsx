@@ -21,6 +21,12 @@ export const PERSONAL_INFO = {
   name: "이건제",
   name_eng: "Geonje Lee",
   title: "게임 개발자(클라이언트) 지망생",
+  birthDate: "1998.12.06",
+  education: [
+    "한국콘텐츠진흥원 게임인재원 6기 프로그래밍 학과 (2024.03 ~ )",
+    "서울과학기술대학교 행정학 학사 (2017.03 - 2023.08)",
+    "건국대학교 사범대학 부속 고등학교 졸업 (2014.03 ~ 2017.02)"
+  ],
   phone: "010-2870-5895",
   email: "gunandjerry@gmail.com",
   github: "https://github.com/gunandjerry",
@@ -29,11 +35,17 @@ export const PERSONAL_INFO = {
 };
 
 export const PROJECTS_DATA = [
-{
+  // F급 헌터 생존기
+  {
     id: 'p_fh',
+    isMain: true,
     title: 'F Rank Survivor (언리얼/리썰라이크/멀티플레이)',
     image: 'img/project/FRankSurvivor/banner.gif',
+    images: [
+        'img/project/FRankSurvivor/banner.gif',
+    ],
     shortDescription: '6개월 장기 팀 프로젝트입니다. 작성중...',
+    implementationFeatures: ['실시간 전투 시스템', '길드 콘텐츠 개발', '네트워크 동기화', 'UI/UX 개선 및 최적화'],
     longDescription: [
       {
         id: 'p_fh_overview',
@@ -238,12 +250,17 @@ export const PROJECTS_DATA = [
   },
 
 
-
+  // 포션 아틀리에
   {
     id: 'p_pa',
+    isMain: true,
     title: 'Potion Atlier (3D/캐쥬얼/타이쿤)',
     image: 'img/project/PotionAtlier/banner.gif',
+    images: [
+        'img/project/PotionAtlier/banner.gif',
+    ],
     shortDescription: '4주 단기 팀 프로젝트입니다. 인게임 컨텐츠, 물리, 특수효과, UI 렌더링 등을 담당했습니다.',
+    implementationFeatures: ['실시간 전투 시스템', '길드 콘텐츠 개발', '네트워크 동기화', 'UI/UX 개선 및 최적화'],
     longDescription: [
       {
         id: 'p_pa_overview',
@@ -438,12 +455,19 @@ class SomeComponent : public Component
   },
 
 
+  
 
+  // 레일웨이투헬
   {
     id: 'p_rh',
+    isMain: true,
     title: 'Railway to Hell (2D/전략/퍼즐)',
     image: 'img/project/RailwayToHell/banner.gif',
+    images: [
+        'img/project/RailwayToHell/banner.gif',
+    ],
     shortDescription: '3주 단기 팀 프로젝트입니다. 게임엔진, 조작, 게임 범용 로직, UI, 특수효과 등을 담당했습니다.',
+    implementationFeatures: ['실시간 전투 시스템', '길드 콘텐츠 개발', '네트워크 동기화', 'UI/UX 개선 및 최적화'],
     longDescription: [
       {
         id: 'p_rh_overview',
@@ -535,10 +559,74 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   },
 
 
+  // 바운싱 이모지 게임
+  {
+    id: 'p_be',
+    title: 'Bouncing Emoji Game',
+    image: 'img/project/BounceEmoji/banner.gif',
+    shortDescription: '유니티 엔진으로 제작한 퍼즐 게임. 단기 개인 프로젝트입니다.',
+    longDescription: [
+      {
+        id: 'p_be_overview',
+        title: '프로젝트 개요',
+        content: `제목: (가제) Bouncing Emoji Game
+장르: 퍼즐
+개발인원: 1인
+사용엔진: 유니티 엔진
+플랫폼: PC, Window
+`,
+        subSections: [
+          {
+            id: 'p_be_overview_live',
+            title: '플레이 영상',
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          },
+          {
+            id: 'p_be_overview_desc',
+            title: '게임 소개',
+            content: ``,
+          },
+          {
+            id: 'p_be_overview_role',
+            title: '맡은 역할',
+            content: `▶
 
 
+<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_be_highlight',
+        title: '제작 과정 & 구현 과제',
+        subSections: [
+          {
+            id: 'p_be_highlight_x',
+            title: '',
+            content: ``,
+          }
+        ],
+        showDivider: true,
+      },
+      {
+        id: 'p_be_lesson',
+        title: '반성과 개선점',
+        subSections: [
+          {
+            id: 'p_be_lesson_x',
+            title: '',
+            content: ``,
+          }
+        ],
+      },
+    ],
+    technologies: ['유니티', 'C#', 'SoftBody'],
+    liveLink: '',
+  },
 
 
+  // 드로잉 퍼즐
   {
     id: 'p_dp',
     title: 'Drawing Puzzle',
@@ -605,10 +693,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   },
 
 
-
-
-
-
+  // 아포티카
   {
     id: 'p_ap',
     title: 'Aphotica (2D/리듬/퍼즐)',
@@ -699,77 +784,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   },
 
 
-
-
-
-  {
-    id: 'p_be',
-    title: 'Bouncing Emoji Game',
-    image: 'img/project/BounceEmoji/banner.gif',
-    shortDescription: '유니티 엔진으로 제작한 퍼즐 게임. 단기 개인 프로젝트입니다.',
-    longDescription: [
-      {
-        id: 'p_be_overview',
-        title: '프로젝트 개요',
-        content: `제목: (가제) Bouncing Emoji Game
-장르: 퍼즐
-개발인원: 1인
-사용엔진: 유니티 엔진
-플랫폼: PC, Window
-`,
-        subSections: [
-          {
-            id: 'p_be_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
-          {
-            id: 'p_be_overview_desc',
-            title: '게임 소개',
-            content: ``,
-          },
-          {
-            id: 'p_be_overview_role',
-            title: '맡은 역할',
-            content: `▶
-
-
-<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-          }
-        ],
-        showDivider: true,
-      },
-      {
-        id: 'p_be_highlight',
-        title: '제작 과정 & 구현 과제',
-        subSections: [
-          {
-            id: 'p_be_highlight_x',
-            title: '',
-            content: ``,
-          }
-        ],
-        showDivider: true,
-      },
-      {
-        id: 'p_be_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_be_lesson_x',
-            title: '',
-            content: ``,
-          }
-        ],
-      },
-    ],
-    technologies: ['유니티', 'C#', 'SoftBody'],
-    liveLink: '',
-  },
-
-
-
-
+  // 이모지 타워 디펜스
   {
     id: 'p_etd',
     title: 'Emoji Tower Defense (2D/타워디펜스)',
@@ -866,9 +881,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   },
 
 
-
-
-
+  // 점핑 프로그
   {
     id: 'p_jf',
     title: 'Jumping Frog (2D/플랫포머)',
@@ -941,76 +954,6 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
     technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD'],
     liveLink: 'https://youtube.com/shorts/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc',
   },
-
-
-
-
-
-  {
-    id: 'p_xx',
-    title: '',
-    image: 'img/project/',
-    shortDescription: '2D 자체엔진으로 제작한 전략, 퍼즐 게임. 3주 단기 팀 프로젝트입니다.',
-    longDescription: [
-      {
-        id: 'p_xx_overview',
-        title: '프로젝트 개요',
-        content: `제목: 
-장르: 
-개발기간: 
-개발인원: 
-사용엔진: 
-플랫폼: PC, Window
-`,
-        subSections: [
-          {
-            id: 'p_xx_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/H3ri3R9NwEg?si=IvPL0-jz1M4fDDJu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
-          {
-            id: 'p_xx_overview_desc',
-            title: '게임 소개',
-            content: ``,
-          },
-          {
-            id: 'p_xx_overview_role',
-            title: '맡은 역할',
-            content: `▶
-
-
-<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-          }
-        ],
-        showDivider: true,
-      },
-      {
-        id: 'p_xx_highlight',
-        title: '제작 과정 & 구현 과제',
-        subSections: [
-          {
-            id: 'p_xx_highlight_x',
-            title: '',
-            content: ``,
-          }
-        ],
-        showDivider: true,
-      },
-      {
-        id: 'p_xx_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_xx_lesson_x',
-            title: '',
-            content: ``,
-          }
-        ],
-      },
-    ],
-    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD', '2D 게임수학'],
-    liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
-  }
 ];
 
 
@@ -1048,7 +991,7 @@ export const EXPERIENCE_DATA = [
 
 
 
-
+// <25-08-13> 사용하지 않음
 export const LEARNING_JOURNEY_DATA = {
   title: "성장 여정", // not use
   subTitle: "", // not use
@@ -1212,6 +1155,12 @@ export const AcademicCapIcon = (props) => (
     </svg>
 );
 
+export const DocumentTextIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+  </svg>
+);
+
 export const CheckCircleIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -1227,5 +1176,11 @@ export const MailIcon = (props) => (
 export const PhoneIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M6.62 10.79a15.25 15.25 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 013 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+  </svg>
+);
+
+export const CalendarDaysIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+    <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18" />
   </svg>
 );
