@@ -23,7 +23,7 @@ function Header({ personalInfo, sectionIds, stringTable }) {
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_profile}</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_project}</button>
           {/* <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_experience}</button> */}
-          <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">성장기록</button>
+          {/* <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">성장기록</button> */}
           <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button>
         </nav>
 
@@ -43,7 +43,7 @@ function Header({ personalInfo, sectionIds, stringTable }) {
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_profile}</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_project}</button>
           {/* <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_experience}</button> */}
-          <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button>
+          {/* <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button> */}
           <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button>
        </div>
     </header>

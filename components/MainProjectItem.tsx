@@ -18,7 +18,7 @@ function MainProjectItem({ project, onSelect }) {
             )}
         </div>
 
-        <p className="text-slate-300 leading-relaxed text-base sm:text-lg mb-6 max-w-xl">{project.shortDescription}</p>
+        <p className="text-slate-300 leading-relaxed text-base sm:text-lg mb-6 max-w-xl whitespace-pre-line">{project.shortDescription}</p>
 
         {/* Implementation Features */}
         {project.implementationFeatures && project.implementationFeatures.length > 0 && (

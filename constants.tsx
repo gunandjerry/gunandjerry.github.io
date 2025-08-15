@@ -39,41 +39,53 @@ export const PROJECTS_DATA = [
   {
     id: 'p_fh',
     isMain: true,
-    title: 'F Rank Survivor (언리얼/리썰라이크/멀티플레이)',
+    title: '(개발중) F급 헌터 생존기',
     image: 'img/project/FRankSurvivor/banner.gif',
     images: [
         'img/project/FRankSurvivor/banner.gif',
     ],
-    shortDescription: '6개월 장기 팀 프로젝트입니다. 작성중...',
-    implementationFeatures: ['실시간 전투 시스템', '길드 콘텐츠 개발', '네트워크 동기화', 'UI/UX 개선 및 최적화'],
+    shortDescription: '리썰컴퍼니 스타일의 협동 생존 장르로, 던전(게이트) 안으로 들어가 위험을 무릎쓰고 자원을 채굴하는 헌터가 되는 게임입니다. 중장기 팀 프로젝트로 아직 개발 진행중입니다.\n',
+    implementationFeatures: ['절차적 맵 생성', '동적 미니맵 렌더링', '에디터 커스텀', 'GAS 기반 시스템', '1/3인칭 분리 및 모션 동기화', '부분 파괴 가능한 오브젝트', '메타휴먼에 이펙트 입히기'],
     longDescription: [
       {
         id: 'p_fh_overview',
         title: '프로젝트 개요',
         content: `제목: F급 헌터 생존기 / F Rank Survivor
 장르: 리썰라이크, 생존, 어드벤처
-개발기간: 6개월 (2025년 5월 ~ 10월)
-개발인원: 개발 4인 / 아트 1인 / 기획 2인
+개발기간: 2025년 5월 ~
+개발인원: 개발 4인 / 아트 2인 / 기획 3인
 사용엔진: 언리얼 엔진
 플랫폼: PC, Window
 `,
         subSections: [
-          {
-            id: 'p_fh_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
+          // {
+          //   id: 'p_fh_overview_live',
+          //   title: '플레이 영상',
+          //   content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+          // },
           {
             id: 'p_fh_overview_desc',
             title: '게임 소개',
-            content: `작성중...`,
+            content: `리썰컴퍼니 스타일의 협동 생존 게임입니다. 플레이어는 능력이 보잘 것 없는 'F급 헌터'가 되어 던전(게이트)안으로 들어가 몬스터들을 피해다니며 자원을 채굴해야 합니다.
+플레이어는 평범한 인간은 아니기 때문에 채굴한 자원을 소모하여 자신의 스탯을 강화할 수 있고, 특수능력을 사용할 수도 있습니다. 이 모든 시스템은 언리얼의 GameplayAbilitySystem을 기반으로 설계되어 새로운 스탯이나 행동, 능력을 추가하기 매우 쉬운 구조로 되어있습니다.`,
           },
           {
             id: 'p_fh_overview_role',
             title: '맡은 역할',
-            content: `▶ 작성중...
+            content: `▶ 프로그래밍 파트 팀장으로서의 역할
+    - 작업 명세화, 업무 분배, 일정 확인
+    - 타 파트와 협의 주도
+    - 브랜치 충돌 해결, 머지
+    - QA, 디버깅 관리 총괄
+    - 기능 문서 작성, 타 파트 전파 및 교육
+▶ GameplayAbilitySystem 기반 구축
+▶ 플레이어 총괄: 초기화, 메타휴먼 프리셋 적용, 조작, 행동, 애니메이션, 장비상태 및 모션 동기화 등
+▶ 절차적 던전 생성, 동적 렌더링 미니맵
+▶ FX 전반: 커스텀 카메라 쉐이크, 카오스 디스트럭션, Vignette 이펙트, 혈흔, 아웃라인 강조 등
+▶ 사운드 전반: 설정과 연동된 사운드 시스템, 사운드 입히기
+▶ 커스텀 에디터 UI·데이터 에셋 제작 및 교육
 
-<img src="img/project/FRankSurvivor/banner.gif" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+`,
           }
         ],
         showDivider: true,
@@ -85,44 +97,63 @@ export const PROJECTS_DATA = [
           {
             id: 'p_fh_highlight_1',
             title: '에디터 커스텀 UI',
-            content: `
-<img src="img/project/FRankSurvivor/banner.gif" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+            content: `Slate 기반으로 구현된 에디터 모듈(FAssetToolsModule, FPropertyEditorModule 등)에 Slate 문법으로 커스텀 메뉴나 디자인을 추가하여 팀원들, 특히 다른 파트의 인원들이 사용하기 쉽도록 제공하였습니다.
 
+던전이 동적으로 생성되는 만큼 던전 내 룸들의 비중이나 내부에 랜덤하게 생성되는 요소들 등 커스텀해야 하는 요소들의 수가 매우 많았고, 그렇다보니 기획에서 헷갈려하는 일이 많았습니다. 이에 필요한 데이터 에셋들을 에셋 메뉴에 범주화하거나, 편집이 쉬운 디테일 디자인을 만들어 제공함으로써 편의성이 많이 증대되었습니다.
+
+<img src="img/project/FRankSurvivor/1.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 `,
           },
           {
             id: 'p_fh_highlight_2',
             title: '동적 던전 생성과 최적화',
-            content: `
+            content: `언리얼 레벨을 DFS/BFS 알고리즘으로 Dynamic Level Streaming을 사용해 연결시켜 나가는 간단한 오픈소스 라이브러리를 기반으로 기능을 확장하여 저희 게임에 맞는 절차적 던전 생성 플러그인을 제작하였습니다.
+
+절차적 던전 생성은 게임의 핵심으로 던전의 형태 자체가 게임의 밸런스, 재미와 직결되는 아주 중요한 과제였습니다. 이에 다음과 같은 조치를 취하여 밸런스 잡힌 던전이 만들어질 수 있도록 노력했습니다.
+
+▶ 룸의 타입과 룸과 룸을 잇는 문/통로의 타입을 지정할 수 있게 하고, 특정 타입의 룸 간의 연속 확률을 정의하거나 최소/최대 거리를 설정하는 등 커스텀 규칙을 설정하여 원하는 배치를 만들 수 있도록 함.
+▶ 던전의 주요 목표가 되는 핵심(필수) 룸의 배치를 보장함. 이 때 커스텀 규칙을 사용하여 시작 룸으로부터 충분한 거리만큼 떨어트릴 수 있음.
+▶ 룸의 크기와 던전 내 심도(깊이)에 따라 자원의 분포량을 결정함.
+
+던전의 구조가 확정되면 언리얼의 Dynamic Level Streaming으로 룸 레벨들이 모든 클라이언트에서 로드되기 시작하며, 게이트를 채우는 NavMesh의 첫 빌드를 포함하여 생성 과정을 트래킹하기 때문에 던전 내부 생태계를 만들거나 플레이어가 시작할 타이밍을 결정할 수 있습니다.
+
+또한 랜덤한 프롭을 SpawningPoint를 레벨에 배치하여 생성하거나, NavMesh를 기반으로 도달할 수 있는 위치에 스폰할 수 있고, 총 개수나 단위 범위 내 편중도를 조절할 수도 있습니다.
+기본적으로 책장, 상자, SpawningPoint 등 던전 내부의 거의 모든 프롭들은 자체적인 사양을 가지며 스폰할 수 있는 후보군이나 확률, 최대 개수, 잠김 여부 등을 세부적으로 설정하고 무작위성을 부여할 수 있습니다.
+몬스터는 특정 텀마다 플레이어가 절대로 볼 수 없는, 충분히 떨어진 위치에서 스폰되어 던전 내부를 돌아다니기 시작합니다.
+
+이를 통해 매번 새롭고 다채로운 던전을 경험할 수 있습니다.
+
+<img src="img/project/FRankSurvivor/2.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 `,
           },
           {
             id: 'p_fh_highlight_3',
             title: '동적 생성 미니맵',
-            content: `
+            content: `던전이 절차적으로 생성되는 만큼 미니맵도 동적으로 만들어져야 했습니다. 던전의 구조를 캐싱하고 n초마다 렌더 타겟에 특정한 의미가 담긴 RG값(R은 방의 상태와 구분, G는 문과 같은 특수 영역을 정의합니다)을 칠한 뒤, 후처리를 통해 보여질 미니맵의 모양을 만들어내고 이를 위젯에 포함, 마지막으로 위젯을 다이나믹 머터리얼로 최종적인 효과를 입혀 메쉬에 그려내는 방식입니다.
+
+미니맵에서 방문하지 않은 룸은 한 덩어리로 취급되어 전체적인 외곽선으로만 윤곽을 파악할 수 있습니다. 그러다 플레이어들 중 한 명이 밝혀지지 않은 룸에 진입하면 이벤트를 발생시켜 모든 플레이어의 미니맵에서 해당 룸이 밝혀지며, 이 때 룸의 아이콘이나 내부에 있는 미니맵이 트래킹하는 오브젝트, 이동할 수 있는 통로 등이 드러나게 됩니다.
+플레이어가 층계를 이동하면 미니맵도 그에 따라 현재 층만을 그려내며, 다른 플레이어의 위치를 트래킹하기도 합니다.
+
+<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 `,
           },
           {
             id: 'p_fh_highlight_4',
-            title: 'MovementComponent 개조하기',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_highlight_5',
-            title: 'GAS: 기반 만들기',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_highlight_6',
-            title: 'GAS: 플레이어 해부하기',
-            content: `
+            title: 'GAS 기반의 게임 시스템',
+            content: `저희 게임에서는 언리얼의 GameplayAbilitySystem을 적극적으로 사용했습니다. 플레이어의 모든 스탯, 상태, 행동은 게임플레이 어트리뷰트와 어빌리티, 태그로 구현되어 있습니다.
+
+플레이어의 스탯은 초기값이 지정되는 1차 어트리뷰트어 MMC 블루프린트를 통해 1차 어트리뷰트를 계산식에서 캡쳐해 사용하는 2차 어트리뷰트로 나뉘어지고, 일부 어트리뷰트 세트는 플레이어, 크리쳐, 심지어 데미지를 입힐 수 있는 프롭에까지 범용적으로 사용되어 같은 로직으로 일관된 처리가 가능합니다.
+
+모든 액터의 상태는 게임플레이 태그를 통해 표현됩니다. 태그의 계층 구조는 제가 총괄하여 하위 태그가 반드시 상위 태그의 하위분류가 되도록 해 행동 가능성이나 이펙트의 적용 여부를 판단할 때 매우 직관적으로 설정할 수 있는 구조로 만들어져 있습니다.
+
+어빌리티와 이펙트, 큐는 모두 커스텀하여 코딩을 전혀 모르는 기획 파트에서도 손쉽게 초기 어빌리티를 변경하거나, 이펙트의 수치를 조정할 수 있도록 했습니다. 큐는 다양한 버전으로 개조하여 1/3인칭으로 분리된 모션을 동시에 재생 및 동기화하거나, 사운드를 재생함과 동시에 크리쳐가 감지할 수 있는 노이즈를 발생시키거나 합니다.
+
+GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진입장벽이 있지만, GAS를 기반으로 모든 시스템을 구축해둔 지금은 GAS를 사용하기로 결정한 것이 매우 잘 한 결정이었다고 생각합니다. 초반에는 기반을 만드는 데도 시간이 많이 걸렸고, 팀원들이 진입장벽에 어려워하여 튜토리얼 문서를 만들거나 샘플 클래스를 작성하느라 시간이 더 소요되긴 했습니다. 하지만 기반이 완성되고 팀원들도 GAS에 적응한 뒤로는 훨씬 시간을 단축할 수 있었으며, 기획이 추가되어 새로운 스탯이나 액션이 필요해져도 간단하게 추가할 수 있었습니다.
 `,
           },
           {
             id: 'p_fh_highlight_7',
-            title: 'GAS: 상속과 태그 구조',
+            title: 'MovementComponent 개조하기',
             content: `
 `,
           },
@@ -189,64 +220,65 @@ export const PROJECTS_DATA = [
         ],
         showDivider: true,
       },
-      {
-        id: 'p_fh_troubleshooting',
-        title: '트러블슈팅',
-        subSections: [
-          {
-            id: 'p_fh_troubleshooting_1',
-            title: 'MovementComponent 동기화 관리',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_troubleshooting_2',
-            title: 'CDO 생성 이후 추가된 블루프린트 노드를 다루는 법',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_troubleshooting_3',
-            title: '메타휴먼 LOD 문제',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_troubleshooting_4',
-            title: 'ULevelStreaming 동적 해제 문제',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_troubleshooting_5',
-            title: 'UGroomComponent 렌더링 문제',
-            content: `
-`,
-          },
-          {
-            id: 'p_fh_troubleshooting_6',
-            title: '카메라의 업데이트 순서 문제',
-            content: `
-`,
-          },
-        ],
-        showDivider: true,
-      },
-      {
-        id: 'p_fh_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_fh_lesson_1',
-            title: '이것저것',
-            content: `
-`,
-          },
-        ],
-      },
+//       {
+//         id: 'p_fh_troubleshooting',
+//         title: '트러블슈팅',
+//         subSections: [
+//           {
+//             id: 'p_fh_troubleshooting_1',
+//             title: 'MovementComponent 동기화 관리',
+//             content: `
+// `,
+//           },
+//           {
+//             id: 'p_fh_troubleshooting_2',
+//             title: 'CDO 생성 이후 추가된 블루프린트 노드를 다루는 법',
+//             content: `
+// `,
+//           },
+//           {
+//             id: 'p_fh_troubleshooting_3',
+//             title: '메타휴먼 LOD 문제',
+//             content: `
+// `,
+//           },
+//           {
+//             id: 'p_fh_troubleshooting_4',
+//             title: 'ULevelStreaming 동적 해제 문제',
+//             content: `
+// `,
+//           },
+//           {
+//             id: 'p_fh_troubleshooting_5',
+//             title: 'UGroomComponent 렌더링 문제',
+//             content: `
+// `,
+//           },
+//           {
+//             id: 'p_fh_troubleshooting_6',
+//             title: '카메라의 업데이트 순서 문제',
+//             content: `
+// `,
+//           },
+//         ],
+//         showDivider: true,
+//       },
+//       {
+//         id: 'p_fh_lesson',
+//         title: '반성과 개선점',
+//         subSections: [
+//           {
+//             id: 'p_fh_lesson_1',
+//             title: '이것저것',
+//             content: `
+// `,
+//           },
+//         ],
+//       },
     ],
-    technologies: ['언리얼5', '언리얼 네트워크', '카오스 피직스', '메타휴먼'],
+    technologies: ['언리얼5', '언리얼 네트워크', '4인 멀티플레이', '1인칭', '리썰라이크', '생존'],
     liveLink: '',
+    blogLink: '',
   },
 
 
@@ -254,13 +286,13 @@ export const PROJECTS_DATA = [
   {
     id: 'p_pa',
     isMain: true,
-    title: 'Potion Atlier (3D/캐쥬얼/타이쿤)',
+    title: 'Potion Atlier',
     image: 'img/project/PotionAtlier/banner.gif',
     images: [
         'img/project/PotionAtlier/banner.gif',
     ],
-    shortDescription: '4주 단기 팀 프로젝트입니다. 인게임 컨텐츠, 물리, 특수효과, UI 렌더링 등을 담당했습니다.',
-    implementationFeatures: ['실시간 전투 시스템', '길드 콘텐츠 개발', '네트워크 동기화', 'UI/UX 개선 및 최적화'],
+    shortDescription: '포션을 제작해 판매하는 캐쥬얼한 타이쿤 게임입니다. 4주 단기 팀 프로젝트입니다.',
+    implementationFeatures: ['3D 자체엔진 제작', 'Direct3D11 PBR 렌더링', 'PhysX 물리', 'UI 렌더링', '게임 컨텐츠 전반'],
     longDescription: [
       {
         id: 'p_pa_overview',
@@ -450,24 +482,25 @@ class SomeComponent : public Component
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++20', 'Direct3D11', 'PhysX', 'WinAPI', 'FMOD'],
+    technologies: ['3D 자체엔진', '싱글플레이', '타이쿤', '캐쥬얼'],
     liveLink: 'https://youtu.be/v2JbL4FlbQM?si=GtCIvaJ0p6GOYd10',
+    blogLink: '',
   },
 
 
-  
+
 
   // 레일웨이투헬
   {
     id: 'p_rh',
     isMain: true,
-    title: 'Railway to Hell (2D/전략/퍼즐)',
+    title: 'Railway to Hell',
     image: 'img/project/RailwayToHell/banner.gif',
     images: [
         'img/project/RailwayToHell/banner.gif',
     ],
-    shortDescription: '3주 단기 팀 프로젝트입니다. 게임엔진, 조작, 게임 범용 로직, UI, 특수효과 등을 담당했습니다.',
-    implementationFeatures: ['실시간 전투 시스템', '길드 콘텐츠 개발', '네트워크 동기화', 'UI/UX 개선 및 최적화'],
+    shortDescription: '타일 위치 이동으로 공격을 회피하거나 아군 공격을 유도해 적들을 물리치는 전략 퍼즐 게임입니다. 3주 단기 팀 프로젝트입니다.',
+    implementationFeatures: ['2D 자체엔진 제작', 'Direct2D 렌더링', '비동기 리소스 로딩', '입력처리, 플레이어 조작', '카메라 쉐이크 이펙트', '타이머 함수', '턴 기반 동작'],
     longDescription: [
       {
         id: 'p_rh_overview',
@@ -515,7 +548,7 @@ class SomeComponent : public Component
           {
             id: 'p_rh_highlight_1',
             title: '게임 제작 환경 구축하기 : 2D 게임 엔진',
-            content: `이전까지 꾸준히 개발해 나가던 2D 게임 엔진을 사용했습니다. 엔진이 필수적으로 지원해야 하는 전반적인 기능들은 이미 준비가 된 상태였고, 저희 게임이 2D 물리나 기능이 많은 에디터를 요구하지는 않았기 때문에 비교적 빠르게 컨텐츠 제작으로 넘어갈 수 있었습니다.\n따라서 게임 엔진은 기능 추가보다는 주로 버그 수정이나 UI를 위한 기능 추가 정도가 이루어졌습니다.\n\n보다 자세한 내용은 블로그의 자체엔진 프로젝트 문서들을 참고해주세요.`,
+            content: `이전까지 꾸준히 개발해 나가던 2D 게임 엔진을 사용했습니다. 엔진이 필수적으로 지원해야 하는 전반적인 기능들은 이미 준비가 된 상태였고, 저희 게임이 2D 물리나 기능이 많은 에디터를 요구하지는 않았기 때문에 비교적 빠르게 컨텐츠 제작으로 넘어갈 수 있었습니다.\n따라서 게임 엔진은 기능 추가보다는 주로 버그 수정이나 UI를 위한 기능 추가 정도가 이루어졌습니다.`,
           },
           {
             id: 'p_rh_highlight_2',
@@ -554,8 +587,9 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD'],
+    technologies: ['2D 자체엔진', '싱글플레이', '전략', '퍼즐'],
     liveLink: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2',
+    blogLink: '',
   },
 
 
@@ -564,7 +598,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
     id: 'p_be',
     title: 'Bouncing Emoji Game',
     image: 'img/project/BounceEmoji/banner.gif',
-    shortDescription: '유니티 엔진으로 제작한 퍼즐 게임. 단기 개인 프로젝트입니다.',
+    shortDescription: '수박 게임에 말랑말랑한 탄성을 접목시킨 퍼즐 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.',
     longDescription: [
       {
         id: 'p_be_overview',
@@ -579,21 +613,15 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
           {
             id: 'p_be_overview_live',
             title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/1kLIHAhSvVM?si=uRIMVK5bqpi_ROIi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
           },
           {
             id: 'p_be_overview_desc',
             title: '게임 소개',
-            content: ``,
+            content: `최근 'Suika Game'으로 유행한, 같은 크기의 원형 오브젝트를 합치는 퍼즐 장르의 게임입니다. 기존의 게임과의 차별점을 두기 위해 오브젝트에 Spring joint로 구현한 탄성 시스템을 적용하였습니다.
+
+같은 크기의 이모지가 충돌할 경우 다음 단계의 이모지로 합쳐지며 점수를 얻습니다. 이모지는 총 10단계의 레벨이 존재하며 박스의 전면 영역을 초과할 경우 게임 오버 처리됩니다. 게임의 목표는 높은 점수를 얻는 것입니다.`,
           },
-          {
-            id: 'p_be_overview_role',
-            title: '맡은 역할',
-            content: `▶
-
-
-<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-          }
         ],
         showDivider: true,
       },
@@ -602,27 +630,25 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         title: '제작 과정 & 구현 과제',
         subSections: [
           {
-            id: 'p_be_highlight_x',
-            title: '',
-            content: ``,
+            id: 'p_be_highlight_1',
+            title: 'SpringJoint로 탄성 구현하기',
+            content: `오브젝트에 여러 개의 본을 심고, 본마다 Spring joint와 Circle collider를 부착하여 탄성을 구현했습니다.
+
+<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" style="display: block; width: 30%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_be_highlight_2',
+            title: '이모지를 부드럽게 합치기',
+            content: `이모지가 서로 충돌할 때, 두 이모지의 현재 레벨을 검사하여 같은 경우 더 큰 하나의 이모지로 합쳐지게 됩니다.
+이 때 시각적으로 부드럽게 합쳐져야 하며, 다음 물리 틱에서 주변의 이모지들이 자연스럽게 밀려나고 충돌해야 하기 때문에 (1) 여러 프레임에 걸친 스케일링 애니메이션을 사용하고, (2) 두 이모지의 충돌점으로부터 합쳐진 이모지가 생기도록 하여 부드러운 움직임이 가능하도록 했습니다.`,
           }
         ],
         showDivider: true,
       },
-      {
-        id: 'p_be_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_be_lesson_x',
-            title: '',
-            content: ``,
-          }
-        ],
-      },
     ],
-    technologies: ['유니티', 'C#', 'SoftBody'],
-    liveLink: '',
+    technologies: ['유니티', '싱글플레이', '퍼즐', '수박 게임'],
+    liveLink: 'https://www.youtube.com/watch?v=1kLIHAhSvVM',
+    blogLink: '',
   },
 
 
@@ -631,7 +657,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
     id: 'p_dp',
     title: 'Drawing Puzzle',
     image: 'img/project/DrawingPuzzle/banner.gif',
-    shortDescription: '유니티 엔진으로 제작한 퍼즐 게임. 단기 개인 프로젝트입니다.',
+    shortDescription: '그려낸 모양에 물리를 입혀 퍼즐을 푸는 프로토타입 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.',
     longDescription: [
       {
         id: 'p_dp_overview',
@@ -646,20 +672,15 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
           {
             id: 'p_df_overview_live',
             title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
+            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uH11PwM16ic?si=7fzwJBssUf03xPmx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
           },
           {
             id: 'p_dp_overview_desc',
             title: '게임 소개',
-            content: ``,
-          },
-          {
-            id: 'p_dp_overview_role',
-            title: '맡은 역할',
-            content: `▶
+            content: `실시간 라인 콜라이더 생성을 활용한 퍼즐 게임입니다.
+유저가 그림을 그리면 즉시 폴리곤 콜라이더가 생성되며, 선의 위 또는 선으로 둘러쌓인 도형의 내부에 Hinge Joint를 추가하여 다양한 관절 물리를 구현할 수 있습니다.
 
-
-<img src="img/project/.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/DrawingPuzzle/1.png" alt="게임 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -669,36 +690,49 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         title: '제작 과정 & 구현 과제',
         subSections: [
           {
-            id: 'p_dp_highlight_x',
-            title: '',
-            content: ``,
+            id: 'p_dp_highlight_1',
+            title: '실시간 라인 콜라이더',
+            content: `Line Renderer를 이용하여 오브젝트를 그려내는 기능을 구현하였습니다. 과정은 다음과 같습니다.
+1) 현재 커서의 위치를 기록합니다. 현재 커서와 마지막으로 기록된 좌표의 거리가 설정된 최소거리를 초과하면 해당 지점의 좌표를 기록하고 마지막 좌표를 갱신합니다.
+2) 좌표를 기록할 때마다 Line Renderer의 position을 추가하면서 씬에 그려냅니다.
+3) Line Renderer의 BakeMesh() 메서드로 메시를 구합니다.
+4) 메시 콜라이더를 사용할 경우 연산량이 많아 메시로부터 Polygon Collider를 생성하고, Ramer-Douglas-Peucker 알고리즘을 적용하여 최적화하는 방식을 선택했습니다. 다음 주소의 프로젝트를 참고하였습니다: Automatically Create Polygon Collider 2D From 2D Mesh in Unity, H3XED (h3xed.com/programming/automatically-create-polygon-collider-2d-from-2d-mesh-in-unity)
+	Polygon Collider Simplification, j-bbr, (github.com/j-bbr/PolygonColliderSimplification)
+5) Rigidbody2D 컴포넌트를 부착하고 몇 가지 후처리를 하여 물리효과를 구현한 드로잉 오브젝트를 생성합니다.`,
+          },
+          {
+            id: 'p_dp_highlight_2',
+            title: '라인 내부 Hinge joint',
+            content: `그려진 오브젝트의 라인 또는 둘러쌓인 내부에 Hinge를 추가하는 기능을 구현하였습니다. 힌지를 설치하는 과정은 다음과 같습니다.
+1) Line Renderer Physics의 특성 상 기존의 도형 내부 판별 알고리즘을 사용할 수 없었기 때문에, 대신 상하좌우로 레이캐스팅을 수행하였습니다.
+2) 씬에 존재하는 모든 오브젝트를 한 번 순회하면서 최초로 모든 방향에서 충돌한 오브젝트를 Hinge의 부모 오브젝트로 삼습니다.
+
+생성된 Hinge 위에 오브젝트를 그릴 경우, 우선 힌지마다 오브젝트의 내부에 포함되는지 위 과정대로 체크한 뒤, 해당 힌지를 앵커로 삼는 HingeJoint2D 컴포넌트를 추가해 서로 다른 오브젝트끼리 연결되게 됩니다.`,
+          },
+          {
+            id: 'p_dp_highlight_3',
+            title: '지우개, 바람, 무게 등',
+            content: `이외에도 라인 오브젝트나 힌지를 제거하는 지우개(이 역시 내부 판별을 통해 라인 오브젝트의 내부 공간인지 판별할 수 있습니다), 힘을 가하는 바람 등을 구현하였습니다.
+또 라인 오브젝트를 그린 뒤 마우스를 떼지 않고 대기하면 오브젝트의 무게가 높아지는 기능도 구현하였습니다.
+
+<img src="img/project/DrawingPuzzle/2.png" alt="게임 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
-      },
-      {
-        id: 'p_dp_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_dp_lesson_x',
-            title: '',
-            content: ``,
-          }
-        ],
-      },
+      }
     ],
-    technologies: ['유니티', 'C#', '2D 게임수학'],
-    liveLink: '',
+    technologies: ['유니티', '싱글플레이', '퍼즐'],
+    liveLink: 'https://www.youtube.com/watch?v=uH11PwM16ic',
+    blogLink: '',
   },
 
 
   // 아포티카
   {
     id: 'p_ap',
-    title: 'Aphotica (2D/리듬/퍼즐)',
+    title: 'Aphotica',
     image: 'img/project/Aphotica/banner.gif',
-    shortDescription: '2주 단기 팀 프로젝트입니다. 게임엔진, 게임 컨텐츠 전반을 담당했습니다.',
+    shortDescription: '부딪힌 블록의 색을 흡수하고, 흡수한 색을 혼합하며 풀어나가는 퍼즐 게임입니다. 2주 단기 팀 프로젝트로 엔진, 레벨에디터, 컨텐츠 전반을 담당하였습니다.',
     longDescription: [
       {
         id: 'p_ap_overview',
@@ -779,17 +813,18 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD'],
+    technologies: ['2D 자체엔진', '리듬', '퍼즐'],
     liveLink: 'https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v',
+    blogLink: '',
   },
 
 
   // 이모지 타워 디펜스
   {
     id: 'p_etd',
-    title: 'Emoji Tower Defense (2D/타워디펜스)',
+    title: 'Emoji Tower Defense',
     image: 'img/project/EmojiTowerDefense/banner.gif',
-    shortDescription: '8일 단기 개인 프로젝트입니다.',
+    shortDescription: '풍선 타워 디펜스를 모방한 타워 디펜스 게임입니다. 자체 2D 엔진으로 제작한 8일 단기 개인 프로젝트입니다.',
     longDescription: [
       {
         id: 'p_etd_overview',
@@ -876,17 +911,18 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++17', 'Direct2D', 'WinAPI', 'FMOD'],
+    technologies: ['2D 자체엔진', '싱글플레이', '타워디펜스'],
     liveLink: 'https://youtu.be/GL2G-A6hkHw?si=BzvAoH8c2fRC3Pie',
+    blogLink: '',
   },
 
 
   // 점핑 프로그
   {
     id: 'p_jf',
-    title: 'Jumping Frog (2D/플랫포머)',
+    title: 'Jumping Frog',
     image: 'img/project/JumpingFrog/banner.gif',
-    shortDescription: '4일 단기 개인 프로젝트입니다.',
+    shortDescription: 'GDI+ 렌더링의 자체 2D 엔진으로 제작한 4일 단기 개인 프로젝트입니다.',
     longDescription: [
       {
         id: 'p_jf_overview',
@@ -951,8 +987,9 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['자체엔진', 'C++14', 'GDI+', 'WinAPI', 'FMOD'],
+    technologies: ['2D 자체엔진', '싱글플레이', '플랫포머', '점프킹'],
     liveLink: 'https://youtube.com/shorts/QO94xC8n9K8?si=Ik6yl80ONWKKu8Bc',
+    blogLink: '',
   },
 ];
 
@@ -1074,6 +1111,12 @@ export const STRENGTHS_DATA = [
 
 export const SKILLS_DATA = [
   {
+    category: "Experience",
+    skills: ["여러 차례의 팀 프로젝트", "여러 차례의 팀장 경험"],
+    icon: (props) => <ChartBarIcon {...props} />,
+  },
+  {
+    
     category: "Programming Languages",
     skills: ["C", "C++20", "Unreal C++", "C#", "Python", "HLSL"],
     icon: (props) => <CodeBracketIcon {...props} />,
@@ -1090,7 +1133,7 @@ export const SKILLS_DATA = [
   },
   {
     category: "Other Expertise",
-    skills: ["작업 명세화", "3D 게임수학", "3D 렌더링 파이프라인", "게임 디자인 패턴", "UI/UX 디자인 이론", "Unreal Performance Profiling"],
+    skills: ["3D 게임수학", "Direct3D12 기초", "게임 디자인 패턴", "Unreal Performance Profiling"],
     icon: (props) => <AcademicCapIcon {...props} />,
   }
 ];
@@ -1098,6 +1141,11 @@ export const SKILLS_DATA = [
 
 
 
+export const ChartBarIcon = (props) => (
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />
+    </svg>
+);
 
 
 export const ChevronLeftIcon = (props) => (

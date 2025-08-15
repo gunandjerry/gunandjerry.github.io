@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { CloseIcon, GitHubIcon, ExternalLinkIcon } from '../constants.tsx';
+import { CloseIcon, GitHubIcon, ExternalLinkIcon, DocumentTextIcon } from '../constants.tsx';
 import EmbeddedVideo from './EmbeddedVideo.tsx';
 import CollapsibleCodeBlock from './CollapsibleCodeBlock.tsx';
 
@@ -296,7 +296,7 @@ function ProjectModal({ project, onClose }) {
                     <div>
                       {section.subSections.map(subSection => (
                         <section key={subSection.id} id={`modal-section-${subSection.id}`} className="scroll-mt-4 md:scroll-mt-6">
-                          <h4 className="text-lg sm:text-xl font-medium text-slate-100 mt-6 mb-1.5 sm:mb-2">
+                          <h4 className="text-lg sm:text-xl font-medium text-slate-100 mt-8 mb-1.5 sm:mb-2">
                             {subSection.title}
                           </h4>
                           {subSection.content && renderParsedContent(subSection.content, `subsection-${subSection.id}`)}
@@ -325,7 +325,7 @@ function ProjectModal({ project, onClose }) {
               </div>
             </div>
 
-            {(project.sourceLink || project.liveLink) && (
+            {(project.sourceLink || project.liveLink || project.blogLink) && (
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 border-t border-slate-700 mt-6">
                 {project.sourceLink && (
                   <a
@@ -347,6 +347,17 @@ function ProjectModal({ project, onClose }) {
                   >
                     <ExternalLinkIcon className="w-5 h-5 mr-2" />
                     영상 보러가기 (유튜브)
+                  </a>
+                )}
+                {project.blogLink && (
+                  <a
+                    href={project.blogLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center bg-sky-600 hover:bg-sky-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                  >
+                    <DocumentTextIcon className="w-5 h-5 mr-2" />
+                    관련 블로그 글
                   </a>
                 )}
               </div>

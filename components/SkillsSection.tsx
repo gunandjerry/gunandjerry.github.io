@@ -17,12 +17,15 @@ function SkillsSection({ id, strengths, skills }) {
     <section id={id} className="py-16 sm:py-24 bg-slate-800/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12 sm:mb-16 text-center">
-          핵심 <span className="text-teal-400">역량</span> 및 <span className="text-teal-400">기술</span> 스택
+          <span className="text-teal-400">역량</span>과 <span className="text-teal-400">기술</span>
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12">
+        {/* <div className="grid grid-cols-1 md:grid-cols-5 gap-8 lg:gap-12"> */}
+
+        <div className="max-w-4xl mx-auto">
+
           {/* Strengths Section */}
-          {strengths && strengths.length > 0 && (
+          {/* {strengths && strengths.length > 0 && (
             <div className="md:col-span-2">
               <h3 className="text-2xl sm:text-3xl font-semibold text-teal-400 mb-6 sm:mb-8 flex items-center">
                 <CheckCircleIcon className="w-7 h-7 sm:w-8 sm:h-8 mr-3 text-teal-400 flex-shrink-0" />
@@ -39,17 +42,18 @@ function SkillsSection({ id, strengths, skills }) {
                 ))}
               </ul>
             </div>
-          )}
+          )} */}
 
           {/* Skills Section */}
           {skills && skills.length > 0 && (
-            <div className={`md:col-span-${strengths && strengths.length > 0 ? '3' : '5'}`}>
-              <h3 className="text-2xl sm:text-3xl font-semibold text-teal-400 mb-6 sm:mb-8 flex items-center">
+            // <div className={`md:col-span-${strengths && strengths.length > 0 ? '3' : '5'}`}>
+            <div>
+              {/* <h3 className="text-2xl sm:text-3xl font-semibold text-teal-400 mb-6 sm:mb-8 flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-7 h-7 sm:w-8 sm:h-8 mr-3 text-teal-400 flex-shrink-0">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 12l4.179 2.25m0 0l5.571 3L17.75 12l-4.179-2.25m0 0l5.571 3 5.571-3M6.429 9.75L12 12.75l5.571-3" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M14.25 9.75 16.5 12l-2.25 2.25m-4.5-4.5L7.5 12l2.25 2.25M6 20.25h12A2.25 2.25 0 0 0 20.25 18V6A2.25 2.25 0 0 0 18 3.75H6A2.25 2.25 0 0 0 3.75 6v12A2.25 2.25 0 0 0 6 20.25Z" />
                 </svg>
                 기술 스택
-              </h3>
+              </h3> */}
               <div className="space-y-8">
                 {skills.map((skillCategory) => (
                   <div key={skillCategory.category}>
