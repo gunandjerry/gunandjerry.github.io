@@ -35,10 +35,9 @@ function MainProjectItem({ project, onSelect }) {
           </div>
         )}
         
-        {/* Even Bigger Button */}
         <button
           onClick={() => onSelect(project)}
-          className="w-full md:w-auto inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-bold py-5 px-12 text-xl rounded-xl shadow-lg transition-transform transform hover:scale-105"
+          className="w-full md:w-auto inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-bold py-8 px-32 text-2xl rounded-xl shadow-lg transition-transform transform hover:scale-105"
         >
           <DocumentTextIcon className="w-7 h-7 mr-4" />
           자세히 보기
