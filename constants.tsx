@@ -44,8 +44,8 @@ export const PROJECTS_DATA = [
     images: [
         'img/project/FRankSurvivor/banner.gif',
     ],
-    shortDescription: '리썰컴퍼니 스타일의 협동 생존 장르로, 던전(게이트) 안으로 들어가 위험을 무릎쓰고 자원을 채굴하는 헌터가 되는 게임입니다. 중장기 팀 프로젝트로 아직 개발 진행중입니다.\n',
-    implementationFeatures: ['절차적 맵 생성', '동적 미니맵 렌더링', '에디터 커스텀', 'GAS 기반 시스템', '1/3인칭 분리 및 모션 동기화', '부분 파괴 가능한 오브젝트', '메타휴먼에 이펙트 입히기'],
+    shortDescription: '리썰컴퍼니 스타일의 협동 생존 장르로, 던전(게이트) 안으로 들어가 위험을 무릎쓰고 자원을 채굴하는 헌터가 되는 게임입니다. 중장기 팀 프로젝트로 스팀 출시를 목표로 개발 마무리 단계에 있습니다.\n',
+    implementationFeatures: ['절차적 맵 생성', '동적 미니맵 렌더링', '에디터 커스텀', 'GAS 기반 시스템', '1/3인칭 분리 및 모션 동기화', '부분 파괴 가능한 오브젝트', '메타휴먼 다루기'],
     longDescription: [
       {
         id: 'p_fh_overview',

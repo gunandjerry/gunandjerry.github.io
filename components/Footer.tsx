@@ -7,10 +7,11 @@ function Footer() {
     <footer className="bg-slate-800 text-slate-400 py-12 text-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xl font-semibold text-teal-400 mb-4">
-          새로운 기회를 찾고 있습니다!
+          헌신할 각오가 되어 있습니다.
         </p>
         <p className="mb-2">
-          저의 경험과 기술이 팀에 기여할 수 있다고 생각되시면 언제든지 연락주세요.
+          신입으로서 경험과 지식은 부족하지만, 객관적으로 배우고 적응하는 요령은 뛰어나다고 생각합니다.<br></br>
+          잘 부탁드립니다!
         </p>
         <p className="mb-6">
           <a href={`mailto:${PERSONAL_INFO.email}`} className="text-teal-400 hover:text-teal-300 transition-colors">
