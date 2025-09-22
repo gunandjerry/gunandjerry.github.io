@@ -129,14 +129,14 @@ function Introduction({ id, personalInfo }) {
             </button>
           </div>
 
-          {/* <div className="mt-8 flex justify-center md:justify-start space-x-4">
-            <a href={`mailto:${personalInfo.email}`} className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
+          <div className="mt-8 flex justify-center md:justify-start space-x-4">
+            {/* <a href={`mailto:${personalInfo.email}`} className="bg-teal-500 hover:bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
               이메일 보내기
-            </a>
+            </a> */}
             <a href={personalInfo.blog} target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-slate-600 text-slate-100 font-semibold py-3 px-6 rounded-lg shadow-md transition-transform transform hover:scale-105">
               기술블로그 바로가기
             </a>
-          </div> */}
+          </div>
         </div>
       </div>
     </section>
