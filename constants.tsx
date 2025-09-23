@@ -30,7 +30,7 @@ export const PERSONAL_INFO = {
   phone: "010-2870-5895",
   email: "gunandjerry@gmail.com",
   github: "https://github.com/gunandjerry",
-  blog: "https://gunandjerry-blog.vercel.app/",//"https://ddodigi.tistory.com/",
+  blog: "https://gunandjerry.github.io/gunandjerry_blog/",//"https://ddodigi.tistory.com/",
   photo: "img/profile/face.png"
 };
 
