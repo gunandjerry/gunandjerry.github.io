@@ -290,6 +290,17 @@ function ProjectModal({ project, onClose }) {
                       {section.title}
                     </h3>
                     {section.content && renderParsedContent(section.content, `section-${section.id}`)}
+                    {section.button && (
+                        <a
+                          href={section.button.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center mt-4 bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                        >
+                          <ExternalLinkIcon className="w-5 h-5 mr-2" />
+                          {section.button.text}
+                        </a>
+                      )}
                   </section>
                   
                   {section.subSections && section.subSections.length > 0 && (
@@ -300,6 +311,18 @@ function ProjectModal({ project, onClose }) {
                             {subSection.title}
                           </h4>
                           {subSection.content && renderParsedContent(subSection.content, `subsection-${subSection.id}`)}
+                          {subSection.button && (
+                            <a
+                              href={subSection.button.link}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center mt-4 bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                            >
+                              <ExternalLinkIcon className="w-5 h-5 mr-2" />
+                              {subSection.button.text}
+                            </a>
+                          )}
+                          <p><br></br></p>
                         </section>
                       ))}
                     </div>

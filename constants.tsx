@@ -102,8 +102,11 @@ export const PROJECTS_DATA = [
 
 던전이 동적으로 생성되는 만큼 던전 내 룸들의 비중이나 내부에 랜덤하게 생성되는 요소들 등 커스텀해야 하는 요소들의 수가 매우 많았고, 그렇다보니 기획에서 헷갈려하는 일이 많았습니다. 이에 필요한 데이터 에셋들을 에셋 메뉴에 범주화하거나, 편집이 쉬운 디테일 디자인을 만들어 제공함으로써 편의성이 많이 증대되었습니다.
 
-<img src="img/project/FRankSurvivor/1.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
-`,
+<img src="img/project/FRankSurvivor/1.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            button: {
+              text: '블로그에서 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/details-property-customization.html'
+            },
           },
           {
             id: 'p_fh_highlight_2',
@@ -124,8 +127,7 @@ export const PROJECTS_DATA = [
 
 이를 통해 매번 새롭고 다채로운 던전을 경험할 수 있습니다.
 
-<img src="img/project/FRankSurvivor/2.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
-`,
+<img src="img/project/FRankSurvivor/2.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
             id: 'p_fh_highlight_3',
@@ -135,8 +137,11 @@ export const PROJECTS_DATA = [
 미니맵에서 방문하지 않은 룸은 한 덩어리로 취급되어 전체적인 외곽선으로만 윤곽을 파악할 수 있습니다. 그러다 플레이어들 중 한 명이 밝혀지지 않은 룸에 진입하면 이벤트를 발생시켜 모든 플레이어의 미니맵에서 해당 룸이 밝혀지며, 이 때 룸의 아이콘이나 내부에 있는 미니맵이 트래킹하는 오브젝트, 이동할 수 있는 통로 등이 드러나게 됩니다.
 플레이어가 층계를 이동하면 미니맵도 그에 따라 현재 층만을 그려내며, 다른 플레이어의 위치를 트래킹하기도 합니다.
 
-<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
-`,
+<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            button: {
+              text: '블로그에서 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%8F%99%EC%A0%81-%EC%83%9D%EC%84%B1-%EB%AF%B8%EB%8B%88%EB%A7%B5.html'
+            },
           },
           {
             id: 'p_fh_highlight_4',
@@ -149,8 +154,7 @@ export const PROJECTS_DATA = [
 
 어빌리티와 이펙트, 큐는 모두 커스텀하여 코딩을 전혀 모르는 기획 파트에서도 손쉽게 초기 어빌리티를 변경하거나, 이펙트의 수치를 조정할 수 있도록 했습니다. 큐는 다양한 버전으로 개조하여 1/3인칭으로 분리된 모션을 동시에 재생 및 동기화하거나, 사운드를 재생함과 동시에 크리쳐가 감지할 수 있는 노이즈를 발생시키거나 합니다.
 
-GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진입장벽이 있지만, GAS를 기반으로 모든 시스템을 구축해둔 지금은 GAS를 사용하기로 결정한 것이 매우 잘 한 결정이었다고 생각합니다. 초반에는 기반을 만드는 데도 시간이 많이 걸렸고, 팀원들이 진입장벽에 어려워하여 튜토리얼 문서를 만들거나 샘플 클래스를 작성하느라 시간이 더 소요되긴 했습니다. 하지만 기반이 완성되고 팀원들도 GAS에 적응한 뒤로는 훨씬 시간을 단축할 수 있었으며, 기획이 추가되어 새로운 스탯이나 액션이 필요해져도 간단하게 추가할 수 있었습니다.
-`,
+GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진입장벽이 있지만, GAS를 기반으로 모든 시스템을 구축해둔 지금은 GAS를 사용하기로 결정한 것이 매우 잘 한 결정이었다고 생각합니다. 초반에는 기반을 만드는 데도 시간이 많이 걸렸고, 팀원들이 진입장벽에 어려워하여 튜토리얼 문서를 만들거나 샘플 클래스를 작성하느라 시간이 더 소요되긴 했습니다. 하지만 기반이 완성되고 팀원들도 GAS에 적응한 뒤로는 훨씬 시간을 단축할 수 있었으며, 기획이 추가되어 새로운 스탯이나 액션이 필요해져도 간단하게 추가할 수 있었습니다.`,
           },
           {
             id: 'p_fh_highlight_7',
@@ -158,8 +162,7 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
             content: `스프린트와 스태미너 시스템을 만들면서 언리얼의 MovementComponent를 개조했습니다.
 사용자가 'StartSprint()'를 호출하면 컴포넌트는 미리 계산된 2차 어트리뷰트인 RunSpeed로 최대 속도를 갱신하며, 이 때 실제 키 입력과 지면에서의 일정 수준 이상의 속도가 발생하면 스태미너를 감소시키는 태그를 부착합니다.
 
-뿐만 아니라 좌우, 뒤로 이동할 경우 플레이어의 방향에 따른 이동 속도 감소를 부여하며, 이 모든 과정이 MovementComponent의 예측 실행 구조와 호환되도록 구현되어 있어 클라 예측 - 서버 검증 모델로 사용이 가능합니다.
-`,
+뿐만 아니라 좌우, 뒤로 이동할 경우 플레이어의 방향에 따른 이동 속도 감소를 부여하며, 이 모든 과정이 MovementComponent의 예측 실행 구조와 호환되도록 구현되어 있어 클라 예측 - 서버 검증 모델로 사용이 가능합니다.`,
           },
           {
             id: 'p_fh_highlight_8',
@@ -171,6 +174,10 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
 또, 플레이어가 던전 안에서 리타이어하여 복귀할 때 사용할 디졸브 이펙트를 구현하기 위해 메타 휴먼 메쉬가 사용하는 수 십개의 머터리얼에 노이즈 텍스쳐를 사용해 구현한 간단한 Dissolve 머터리얼 함수를 입혀 개조한 버전을 만들고, 그것으로 갈아끼워서 아래와 같은 볼만한 이펙트를 만들어보았습니다.
 
 <img src="img/project/FRankSurvivor/5.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            button: {
+              text: '블로그에서 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%A9%94%ED%83%80%ED%9C%B4%EB%A8%BC%EC%9D%84-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.html'
+            },
           },
           {
             id: 'p_fh_highlight_9',
@@ -181,8 +188,11 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
 
 또한 인벤토리 슬롯을 변경하면 기존 아이템을 집어넣거나 꺼내서 드는 모션이 재생되고, 그 상태도 모든 클라이언트에게 동기화되도록 했습니다. 이를 위해 우선 아이템마다 범용 마네킹의 손 슬롯의 어느 위치에 있어야 하는지, 어느 손으로 들어야 하고 어떤 홀딩 모션을 취하는지 모두 정의해놓은 데이터테이블을 만들어 사용했습니다.
 
-또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.
-`,
+또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.`,
+            button: {
+              text: '블로그에서 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%9E%A5%EB%B9%84-%EC%8A%A4%EC%99%91,-%EC%B0%A9%EC%9A%A9-%EB%AA%A8%EC%85%98-%EB%8F%99%EA%B8%B0%ED%99%94.html'
+            },
           },
           {
             id: 'p_fh_highlight_11',
@@ -193,6 +203,10 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
 레벨이 어두운 경우 플레이어가 무엇과 상호작용할 수 있는지 알기 어려울 수 있으므로, 플레이어의 주변 반경에 들어온 상호작용 가능한 액터에 부드러운 아웃라인을 입혔습니다. 스텐실 버퍼에 일정 구간을 사용해 현재 Opcacity를 전달하는 방식으로, 실제 아웃라인 애니메이션은 상호작용 컴포넌트가 처리합니다.
 
 <img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            button: {
+              text: '블로그에서 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9,-interactable-component.html'
+            },
           },
           {
             id: 'p_fh_highlight_13',
@@ -200,21 +214,23 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
             content: `언리얼의 카오스 디스트럭션을 사용해 부술 수 있는 오브젝트를 만들었습니다. 다음 이미지는 던전의 코어 프롭 샘플로, 플레이어가 공격을 가하면 카오스 피직스 필드를 사용해 외핵 메쉬를 사방으로 터트리는 예시입니다.
 
 <img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            button: {
+              text: '블로그에서 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/chaos-destruction%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EB%B6%80%EC%88%98%EA%B8%B0.html'
+            },
           },
           {
             id: 'p_fh_highlight_16',
             title: '시각적 이펙트 개선하기',
             content: `플레이어의 몰입감을 개선하기 위해 여러 VFX와 연출을 섞어서 사용했습니다.
-우선 Plane 메쉬에 출력되는 나이아가라 시스템을 월드에 배치해 플레이어의 카메라를 따라다니며 Vignette 이펙트를 재생하고, 무기를 휘두르거나 공격을 받는 등 충격이 있을 때 FloatCurve에 따라 카메라의 로테이션을 회전시키는 커스텀 카메라 쉐이크 패턴을 사용해 적절한 흔들림을 주었습니다.
-`,
+우선 Plane 메쉬에 출력되는 나이아가라 시스템을 월드에 배치해 플레이어의 카메라를 따라다니며 Vignette 이펙트를 재생하고, 무기를 휘두르거나 공격을 받는 등 충격이 있을 때 FloatCurve에 따라 카메라의 로테이션을 회전시키는 커스텀 카메라 쉐이크 패턴을 사용해 적절한 흔들림을 주었습니다.`,
           },
           {
             id: 'p_fh_highlight_17',
             title: '사운드 시스템',
             content: `사운드 서브시스템을 만들어 편리하게 사운드를 재생하고 관리할 수 있도록 했습니다. 게임 설정과 연동하기 위한 별도의 세팅이 되어 있으며, 특정한 위치에 3D 음향을 발생시키거나 로컬 플레이어에게 2D 음향을 재생하는 동작을 두 개의 블루프린트 노드만으로 수행할 수 있습니다.
 
-모든 음향은 옵션으로 다른 클라이언트에게 전파하거나 노이즈를 발생시켜 크리쳐 AI가 감지하게 할 수 있으며, 필요한 경우 FName으로 재생된 사운드의 핸들을 생성하고 원하는 시점에 페이드아웃 시킬 수도 있습니다.
-`,
+모든 음향은 옵션으로 다른 클라이언트에게 전파하거나 노이즈를 발생시켜 크리쳐 AI가 감지하게 할 수 있으며, 필요한 경우 FName으로 재생된 사운드의 핸들을 생성하고 원하는 시점에 페이드아웃 시킬 수도 있습니다.`,
           },
 //           {
 //             id: 'p_fh_highlight_18',
