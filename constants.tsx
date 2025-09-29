@@ -188,7 +188,9 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
 
 또한 인벤토리 슬롯을 변경하면 기존 아이템을 집어넣거나 꺼내서 드는 모션이 재생되고, 그 상태도 모든 클라이언트에게 동기화되도록 했습니다. 이를 위해 우선 아이템마다 범용 마네킹의 손 슬롯의 어느 위치에 있어야 하는지, 어느 손으로 들어야 하고 어떤 홀딩 모션을 취하는지 모두 정의해놓은 데이터테이블을 만들어 사용했습니다.
 
-또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.`,
+또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.
+
+<img src="img/project/FRankSurvivor/SwapTools.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
             button: {
               text: '블로그에서 자세히 보기',
               link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%9E%A5%EB%B9%84-%EC%8A%A4%EC%99%91,-%EC%B0%A9%EC%9A%A9-%EB%AA%A8%EC%85%98-%EB%8F%99%EA%B8%B0%ED%99%94.html'
@@ -223,7 +225,9 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
             id: 'p_fh_highlight_16',
             title: '시각적 이펙트 개선하기',
             content: `플레이어의 몰입감을 개선하기 위해 여러 VFX와 연출을 섞어서 사용했습니다.
-우선 Plane 메쉬에 출력되는 나이아가라 시스템을 월드에 배치해 플레이어의 카메라를 따라다니며 Vignette 이펙트를 재생하고, 무기를 휘두르거나 공격을 받는 등 충격이 있을 때 FloatCurve에 따라 카메라의 로테이션을 회전시키는 커스텀 카메라 쉐이크 패턴을 사용해 적절한 흔들림을 주었습니다.`,
+우선 Plane 메쉬에 출력되는 나이아가라 시스템을 월드에 배치해 플레이어의 카메라를 따라다니며 Vignette 이펙트를 재생하고, 무기를 휘두르거나 공격을 받는 등 충격이 있을 때 FloatCurve에 따라 카메라의 로테이션을 회전시키는 커스텀 카메라 쉐이크 패턴을 사용해 적절한 흔들림을 주었습니다. 피가 튀기는 나이아가라 이펙트나 사운드 작업도 전부 맡았습니다.
+
+<img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
             id: 'p_fh_highlight_17',
