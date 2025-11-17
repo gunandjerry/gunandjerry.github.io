@@ -22,28 +22,30 @@ function Header({ personalInfo, sectionIds, stringTable }) {
         <nav className="hidden md:flex space-x-4">
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_profile}</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_project}</button>
+          <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button>
           {/* <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_experience}</button> */}
-          {/* <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">성장기록</button> */}
-          <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button>
+          {/* <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button> */}
         </nav>
 
         <div className="flex items-center space-x-3 md:space-x-4">
           {/* <a href={`tel:${personalInfo.phone}`} className="text-slate-300 hover:text-teal-400 transition-colors text-xs sm:text-sm">{personalInfo.phone}</a> */}
-          {/* <a href={personalInfo.blog} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-teal-400 transition-colors text-xs sm:text-sm">
+          <a href={personalInfo.blog} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-teal-400 transition-colors text-xs sm:text-sm">
             Blog
           </a>
-          <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-teal-400 transition-colors">
+          {/* <a href={personalInfo.github} target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-teal-400 transition-colors">
             <GitHubIcon className="w-5 h-5 sm:w-6 sm:h-6" />
             <span className="sr-only">GitHub</span>
           </a> */}
         </div>
       </div>
+
+
        {/* Mobile Navigation */}
        <div className="md:hidden flex justify-around space-x-1 pb-2 border-t border-slate-700/50 pt-2">
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_profile}</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_project}</button>
+          <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button>
           {/* <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_experience}</button> */}
-          {/* <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button> */}
           <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button>
        </div>
     </header>

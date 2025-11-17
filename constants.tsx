@@ -4,7 +4,7 @@ export const STRING_TABLE = {
   header_navigation_profile: "프로필",
   header_navigation_project: "프로젝트",
   header_navigation_experience: "경력",
-  header_navigation_journey: "성장여정",
+  header_navigation_journey: "역량",
   header_navigation_skill: "역량"
 };
 
@@ -1053,65 +1053,65 @@ export const EXPERIENCE_DATA = [
 
 
 
-// <25-08-13> 사용하지 않음
+// <25-11-17> 강점과 역량으로 변경
 export const LEARNING_JOURNEY_DATA = {
   title: "성장 여정", // not use
   subTitle: "", // not use
   sections: [
     {
       id: 'lj-1',
-      subTitle: "2년간의 집중적인 교육, 수 차례의 팀 프로젝트",
+      subTitle: "빠르게 성장하고, 꾸준히 성실합니다",
       paragraphs: [
-        "C/C++, 선형대수학, 게임 알고리즘, 셰이더, 컴퓨터 그래픽스 기술들의 원리와 실무 지식, 고수준 렌더링 기술, 게임 엔진의 동작 원리, 효율적인 설계법과 최적화 기법, SIMD에 이르기까지 게임을 제작하는데 필요한 기초와 심화 지식을 익히고 실습했습니다.",
-        "또한 네 차례의 단기 팀 프로젝트와 한 차례의 장기 팀 프로젝트를 경험하며 게임을 만들며 협업을 하는 방법과 노하우를 익혔고, "
+        "게임인재원에 다니면서 성적 1등을 놓치지 않았고, 늘 최선을 다하며 높은 성취도를 보여 교수님들께 신임을 얻었습니다. 그 결과 2024년 일본 TGS, 2025년 독일 게임스컴 견학 기회도 얻을 수 있었습니다.",
+        "'빠른 성장'과 '꾸준함'은 저의 가장 강력한 무기입니다. 무엇을 시켜주셔도 끝까지 매달려 완성도를 갖춘 결과물을 만들어보이겠습니다.",
+        // "C/C++, 선형대수학, 게임 알고리즘, 셰이더, 컴퓨터 그래픽스 기술들의 원리와 실무 지식, 고수준 렌더링 기술, 게임 엔진의 동작 원리, 효율적인 설계법과 최적화 기법, SIMD에 이르기까지 게임을 제작하는데 필요한 기초와 심화 지식을 익히고 실습했습니다.",
+        // "또한 네 차례의 단기 팀 프로젝트와 한 차례의 장기 팀 프로젝트를 경험하며 게임을 만들며 협업을 하는 방법과 노하우를 익혔고, "
       ],
       images: [
-        "img/sample/gorusi.jpg",
-        "img/sample/gorusi.jpg",
-        "img/sample/gorusi.jpg",
+        "img/etc/gamescom2025.png",
       ],
-      button: {
-        text: "공부 기록 보러가기",
-        description: "기술 블로그에서 수 백 페이지의 공부 기록을 구경해보세요.",
-        link: ""
-      }
+      // button: {
+      //   text: "공부 기록 보러가기",
+      //   description: "기술 블로그에서 수 백 페이지의 공부 기록을 구경해보세요.",
+      //   link: ""
+      // }
     },
     {
       id: 'lj-2',
-      subTitle: "고수준 렌더링과 물리가 탑재된 자체 엔진 제작",
+      subTitle: "자체엔진과 상용엔진, 모두 다룰 수 있습니다",
       paragraphs: [
-        "창을 띄우고 간단한 게임 루프를 돌리는 것부터 시작해 컴포넌트와 상속 기반의 게임 엔진을 만들어 PBR·IBL 렌더링을 구현하고, PhysX를 탑재해 물리 컴포넌트를 작성하고, 애니메이션을 블렌딩하고, 포스트 프로세싱을 입히고, FSM·BT로 AI를 만드는 등 자체 엔진을 조금씩 발전시켜 나갔습니다.",
-        "이 모든 과정은 스스로 배우고 깨닫고 구현하기를 반복하는 과정이었으며, 단순히 시키는 대로 받아적고 남의 코드를 베끼는 수준과는 차원이 다른 이해를 가지고 있다고 자부합니다.",
+        "Direct3D11로 제작한 렌더러, HLSL로 작성한 PBR·IBL 렌더링, PhysX로 만든 물리 컴포넌트, 애니메이션 블렌딩, 포스트 프로세싱 등 바닥부터 하나씩 공부해가며 자체 엔진을 만들고 실제 게임 제작에 사용해보았습니다.",
+        "또한 8개월간 언리얼 엔진을 공부하고 게임을 만들며 언리얼 엔진에 대한 이해도 터득했습니다.",
+        "모든 과정은 호기심과 필요에 의해 스스로 부딪히고, 깨닫는 과정의 연속이었다고 자신있게 말씀드릴 수 있습니다. 단순한 따라하기가 아닌 생각하고 구현하는 힘을 길렀습니다."
       ],
       images: [
-        "img/sample/gorusi.jpg",
-        "img/sample/gorusi.jpg",
-        "img/sample/gorusi.jpg",
+        "img/etc/PBR_IBL_EnvMap_Shadow_Animation.gif",
       ],
-      button: {
-        text: "자체 엔진 개발기 보러가기",
-        description: "자체 엔진을 발전시켜나가며 깨달은 것과 부딪혔던 난관을 해결해나간 과정이 적혀있습니다.",
-        link: ""
-      }
+      // button: {
+      //   text: "자체 엔진 개발기 보러가기",
+      //   description: "자체 엔진을 발전시켜나가며 깨달은 것과 부딪혔던 난관을 해결해나간 과정이 적혀있습니다.",
+      //   link: ""
+      // }
     },
-    {
-      id: 'lj-3',
-      subTitle: "언리얼 엔진에 대한 깊은 이해와 숙련도",
-      paragraphs: [
-        "가장 중요한 장기 팀 프로젝트는 언리얼 엔진으로 제작되었으며, 그 과정에서 언리얼과 언리얼 네트워크의 동작 과정을 자세하게 들여다보고 터득했습니다. Slate를 사용해 에디터를 개조하거나 플러그인을 제작하고, 언리얼 컴포넌트를 상속해 게임에 맞게 바꾸었으며, 멀티플레이 게임을 만들며 네트워크를 오고 가는 복잡한 로직을 숱하게 구현해보았습니다.",
-        "Gameplay Ability System, Custom Primitive Data, Chaos Destruction, Chaos Cloth, MetaHuman, Procedural Content Generation과 같은 언리얼이 제공하는 최신의 기능들에 대한 상당한 수준의 이해 역시 가지고 있습니다."
-      ],
-      images: [
-        "img/sample/gorusi.jpg",
-        "img/sample/gorusi.jpg",
-        "img/sample/gorusi.jpg",
-      ],
-      button: {
-        text: "언리얼 엔진 공부 및 구현 기록 보러가기",
-        description: "언리얼 엔진의 동작 방식과 네트워크 플로우에 대한 분석, GAS를 사용한 게임 기반의 제작, 커스텀 에디터 UI와 동적으로 생성되는 던전과 미니맵 등 수 많은 구현 기록들을 보실 수 있습니다.",
-        link: "https://github.com/yourusername/blog/tag/growth"
-      }
-    }
+    // {
+    //   id: 'lj-3',
+    //   subTitle: "말이 잘 통하는, 호감을 주는 팀원입니다",
+    //   paragraphs: [
+    //     "",
+    //     "게임인재원 팀 프로젝트에서 수 차례 프로그래밍 팀장을 맡아 팀을 이끌었으며, 적극적으로 소통하고 솔선수범하며 좋은 게임을 만들기 위해 노력했습니다.",
+    //     "제가 가진 지론은 타인을 존중해야 내가 존중받을 수 있고, 내가 할 수 있는 일을 묵묵히 하는 것만이 스스로의 "
+    //   ],
+    //   images: [
+    //     "img/sample/gorusi.jpg",
+    //     "img/sample/gorusi.jpg",
+    //     "img/sample/gorusi.jpg",
+    //   ],
+    //   // button: {
+    //   //   text: "언리얼 엔진 공부 및 구현 기록 보러가기",
+    //   //   description: "언리얼 엔진의 동작 방식과 네트워크 플로우에 대한 분석, GAS를 사용한 게임 기반의 제작, 커스텀 에디터 UI와 동적으로 생성되는 던전과 미니맵 등 수 많은 구현 기록들을 보실 수 있습니다.",
+    //   //   link: "https://github.com/yourusername/blog/tag/growth"
+    //   // }
+    // }
   ],
 };
 

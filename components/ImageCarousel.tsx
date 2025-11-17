@@ -1,8 +1,7 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '../constants.tsx';
 
-const ImageCarousel = ({ images, alt }: { images: string[], alt: string }) => {
+const ImageCarousel = ({ images, alt, aspectClass = 'aspect-[4/3]' }: { images: string[], alt: string, aspectClass?: string }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const totalImages = images.length;
   const isDraggable = totalImages > 1;
@@ -155,7 +154,7 @@ const ImageCarousel = ({ images, alt }: { images: string[], alt: string }) => {
             <img
               src={src}
               alt={`${alt} - slide ${index + 1}`}
-              className="w-full object-cover aspect-[4/3] pointer-events-none select-none"
+              className={`w-full object-cover ${aspectClass} pointer-events-none select-none`}
               loading={index === 0 ? 'eager' : 'lazy'}
               draggable="false"
             />
