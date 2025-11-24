@@ -223,7 +223,7 @@ function ProjectModal({ project, onClose }) {
       role="dialog"
     >
       <div
-        className={`bg-slate-800 rounded-xl shadow-2xl w-full max-w-5xl max-h-[90vh] flex flex-col
+        className={`bg-slate-800 rounded-xl shadow-2xl w-[95%] md:w-[85%] lg:w-[80%] max-w-7xl max-h-[90vh] flex flex-col
                     transform transition-all duration-300 ease-out
                     ${internalVisible ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-4'}`}
       >
@@ -238,6 +238,7 @@ function ProjectModal({ project, onClose }) {
           </button>
         </div>
 
+        {/* 좌측 목차 */}
         <div className="flex flex-grow overflow-hidden">
           {isStructuredDescription && (
             <nav className="w-56 md:w-64 flex-shrink-0 p-4 sm:p-6 border-r border-slate-700 overflow-y-auto styled-scrollbar hidden md:block">
@@ -285,8 +286,8 @@ function ProjectModal({ project, onClose }) {
             {isStructuredDescription ? (
               project.longDescription.map(section => (
                 <React.Fragment key={section.id}>
-                  <section id={`modal-section-${section.id}`} className="mb-3 sm:mb-4 scroll-mt-4 md:scroll-mt-6">
-                    <h3 className="text-xl sm:text-2xl font-semibold text-teal-300 mb-2 sm:mb-3">
+                  <section id={`modal-section-${section.id}`} className="mb-6 sm:mb-8 scroll-mt-4 md:scroll-mt-6">
+                    <h3 className="text-3xl sm:text-4xl font-bold text-teal-300 mb-4 sm:mb-5">
                       {section.title}
                     </h3>
                     {section.content && renderParsedContent(section.content, `section-${section.id}`)}
@@ -307,7 +308,7 @@ function ProjectModal({ project, onClose }) {
                     <div>
                       {section.subSections.map(subSection => (
                         <section key={subSection.id} id={`modal-section-${subSection.id}`} className="scroll-mt-4 md:scroll-mt-6">
-                          <h4 className="text-lg sm:text-xl font-medium text-slate-100 mt-8 mb-1.5 sm:mb-2">
+                          <h4 className="text-xl sm:text-2xl font-bold text-slate-100 mt-8 mb-3 sm:mb-4">
                             {subSection.title}
                           </h4>
                           {subSection.content && renderParsedContent(subSection.content, `subsection-${subSection.id}`)}

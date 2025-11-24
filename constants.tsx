@@ -44,7 +44,7 @@ export const PROJECTS_DATA = [
     images: [
         'img/project/FRankSurvivor/banner.gif',
     ],
-    shortDescription: '리썰컴퍼니 스타일의 협동 생존 장르로, 던전(게이트) 안으로 들어가 위험을 무릎쓰고 자원을 채굴하는 헌터가 되는 게임입니다. 중장기 팀 프로젝트로 스팀 출시를 목표로 개발 마무리 단계에 있습니다.\n',
+    shortDescription: '리썰컴퍼니 스타일의 협동 생존 장르로, 던전(게이트) 안으로 들어가 위험을 무릎쓰고 자원을 채굴하는 헌터가 되는 게임입니다. 언리얼로 제작한 중장기 팀 프로젝트입니다.\n',
     implementationFeatures: ['절차적 맵 생성', '동적 미니맵 렌더링', '에디터 커스텀', 'GAS 기반 시스템', '1/3인칭 분리 및 모션 동기화', '부분 파괴 가능한 오브젝트', '메타휴먼 다루기'],
     longDescription: [
       {
@@ -317,7 +317,7 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
         'img/project/PotionAtlier/banner.gif',
     ],
     shortDescription: '포션을 제작해 판매하는 캐쥬얼한 타이쿤 게임입니다. 4주 단기 팀 프로젝트입니다.',
-    implementationFeatures: ['3D 자체엔진 제작', 'Direct3D11 PBR 렌더링', 'PhysX 물리', 'UI 렌더링', '게임 컨텐츠 전반'],
+    implementationFeatures: ['3D 자체엔진', 'Direct3D11 PBR 렌더링', 'PhysX 물리 시스템', 'UI 스텐실 마스킹', '부드러운 조작', '튜토리얼'],
     longDescription: [
       {
         id: 'p_pa_overview',
@@ -340,31 +340,28 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
             title: '게임 소개',
             content: `포션 가게를 경영하는 아기자기한 3D 타이쿤 게임입니다. 제한된 시간 안에 최대한 많은 포션을 판매하는 것이 목적입니다.
 
-게임의 진행 방식은 다음과 같습니다.
-1. 게임이 시작되면 노움들이 차례차례 입장하여 포션을 주문합니다. 화면 좌상단에 주문서가 들어옵니다.
-2. 원재료 상자에서 재료를 꺼내, 썰거나 갈거나 짜는 QTE 작업대를 통해 가공하여 솥에 넣고 포션을 제작합니다.
-3. 카운터에 포션을 가져가 주문을 처리합니다.
-
-주어진 시간이 끝나면 수익에 따라 평점이 매겨지고 다음 레벨로 진행됩니다.
-
-조작키는 이동과 상호작용, 특수한 상황에 사용하는 빗자루 때리기 키만으로 이루어집니다. 조작도 간단하고 포션의 제조 과정도 단순하지만, 계속해서 몰려와 재촉하는 손님들과 끓는 시간이 초과되면 양조에 실패하는 솥, 주기적으로 등장하여 손님을 날려버리는 카운터 기믹 등 플레이어의 정신을 어지럽히는 요소들에 의해 우왕좌왕하게 되는 걸 의도했습니다.`,
+주문서가 들어오면 알맞은 재료를 꺼내고, 손질하고, 끓여서 포션을 만들어 주문을 처리해야 합니다. 손님들은 참을성이 없으며 너무 오래 끓이면 제조에 실패합니다. 종종 마법에 걸린 테이블이 손님을 날려버리려고 하는 것도 막아야 합니다.`,
           },
           {
             id: 'p_pa_overview_role',
             title: '맡은 역할',
-            content: `▶ 물리(PhysX) : Primitive-shape 콜라이더, 메쉬 콜라이더, Raycast, Sweep test, 물리 처리 컴포넌트 등
-▶ 캐릭터 조작: 부드러운 이동, 상호작용, 스태미너 시스템
-▶ 엔진 성능 개선 및 디버깅
-▶ UI 렌더링 / 스텐실 마스킹 / 텍스트 렌더링 등
-▶ QTE 미니게임 3종
-▶ 튜토리얼
-▶ 기물 오브젝트: 솥, 배치대, 작업대, 쓰레기통, 카운터 등의 작동 로직 및 오브젝트 프리팹 만들기
-▶ 레벨 에디팅을 위한 컴포넌트: 격자 이동, UI 조절, 
-▶ 특수 효과: 날아가는 노움, 오브젝트 상호작용 이펙트, UI 및 기물 스케일 애니메이션 등
-▶ 말풍선 등 기타 컨텐츠
+//             content: `▶ 물리(PhysX) : Primitive-shape 콜라이더, 메쉬 콜라이더, Raycast, Sweep test, 물리 처리 컴포넌트 등
+// ▶ 캐릭터 조작: 부드러운 이동, 상호작용, 스태미너 시스템
+// ▶ 엔진 성능 개선 및 디버깅
+// ▶ UI 렌더링 / 스텐실 마스킹 / 텍스트 렌더링 등
+// ▶ QTE 미니게임 3종
+// ▶ 튜토리얼
+// ▶ 기물 오브젝트: 솥, 배치대, 작업대, 쓰레기통, 카운터 등의 작동 로직 및 오브젝트 프리팹 만들기
+// ▶ 레벨 에디팅을 위한 컴포넌트: 격자 이동, UI 조절, 
+// ▶ 특수 효과: 날아가는 노움, 오브젝트 상호작용 이펙트, UI 및 기물 스케일 애니메이션 등
+// ▶ 말풍선 등 기타 컨텐츠
 
 
-<img src="img/project/PotionAtlier/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+// <img src="img/project/PotionAtlier/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            content: `엔진 사이드에선 물리, UI, 텍스트, 에디터 툴, 디버깅과 성능 개선을 수행하였습니다.
+게임 컨텐츠 사이드에선 컨텐츠 전반을 구현하였습니다.
+<img src="img/project/PotionAtlier/Work/EngineSide.png" alt="게임 이미지" style="display: block; width: 80%; height: auto; margin-top: 0.8rem; margin-bottom: 0.2rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+<img src="img/project/PotionAtlier/Work/ClientSide.png" alt="게임 이미지" style="display: block; width: 80%; height: auto; margin-top: 0.2rem; margin-bottom: 0.4rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -374,49 +371,61 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
         title: '제작 과정 & 구현 과제',
         subSections: [
           {
-            id: 'p_pa_highlight_1',
+            id: 'p_pa_highlight_physics',
             title: 'PhysX 물리 컴포넌트 구현하기',
-            content: `NVDIA사에서 제작한 물리엔진인 PhysX를 공부하여 여러 종류의 콜라이더 컴포넌트 / 물리 기반 캐릭터 이동 컴포넌트 / 레이(또는 shape) 캐스팅 함수 등을 구현하고 게임에 사용하였습니다.
+            content: `NVDIA사에서 제작한 물리엔진인 PhysX를 공부하여 여러 종류의 콜라이더 컴포넌트 / 물리 기반 캐릭터 이동 컴포넌트 / Scene Query 함수를 구현하고 게임에 사용하였습니다.
 
-물리를 추가하고 커스텀하기 쉽게 컴포넌트를 부착하는 방식으로 PhysX의 Physics Scene과 월드 씬을 동기화할 수 있도록 했습니다. 더 자세하게는 PxScene의 PxActor에 대응하는 Physics Actor 객체를 1:1로 생성하고 관리하는 방식입니다.
-컴포넌트는 동적으로, 순서에 상관없이 부착할 수 있어야 하므로 다음과 같이 두 가지 경우로 처리 로직이 분리됩니다.
+물리 컴포넌트가 부착된 액터는 PhysX Scene의 피직스 액터와 1:1로 대응되고 관리됩니다. 컴포넌트가 동적으로, 순서에 상관 없이 부착될 수 있어야 했기에 다음과 같이 두 가지 경로로 피직스 신에 대응하는 피직스 액터가 생성되도록 했습니다.
+<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" style="display: block; width: 60%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+콜라이더에는 정육면체, 캡슐, 스페어 콜라이더와 메쉬의 정점 데이터를 사용한 메쉬 콜라이더를 구현하였습니다. 콜라이더의 초기 사이즈는 메쉬의 바운드 박스를 기준으로 정해지지만 원하는 대로 크기, 앵커 등을 자유롭게 바꿀 수 있습니다.
+<img src="img/project/PotionAtlier/BoxCollider.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+모든 액터는 물리 레이어를 설정할 수 있으며, 두 레이어 사이의 물리 반응을 블록(밀어내기), 오버랩(이벤트만 발생), 무시 중 하나로 설정할 수 있습니다.
 
-<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
-콜라이더의 경우 정육면체, 캡슐, 스페어, 메쉬 콜라이더를 지원합니다. 게임에선 작업대 기물은 정육면체, 플레이어는 캡슐, 상점 레벨은 메쉬 콜라이더를 사용했습니다.
-
-게임에서는 활용처가 마땅치 않았으나, 물리 레이어를 구분하여 레이어 간에 충돌(밀어내기), 오버랩(이벤트만 발생), 무시 상호작용 설정이 가능하게 구현하였습니다.
-
-플레이어의 경우엔 Character Controller 컴포넌트를 구현하여 조작할 수 있게 했습니다. 기본적으로 유니티 엔진의 캐릭터 컨트롤러를 모방하였으며, 착지상태 판단, 이동과 점프, 경사면 처리를 통해 경사면에서 이동하기 등을 구현하였습니다.
+플레이어의 상호작용에는 Sweep 쿼리를 사용합니다. 반응성을 개선하기 위해 레이캐스트가 아닌 적당한 크기의 스페어와 오버랩된 가장 가까운 기물에 대해 상호작용 함수를 호출하도록 했습니다.
+<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭터를 손쉽게 이동시킬 수 있습니다. 착지상태 판단, 이동, 점프, 경사면을 부드럽게 올라가고 내려가는 기능 등을 구현하였습니다.
 `,
           },
           {
-            id: 'p_pa_highlight_2',
-            title: '부드러운 조작감 구현하기',
-            content: `캐릭터의 이동과 조작에 대해 자세하게 구현해본 것은 처음이었는데, 단순히 이동 벡터를 가하며 캐릭터를 해당 방향으로 회전시키는 투박한 방식은 조작감이 최악이었습니다.
-어떻게 하면 캐릭터가 부드럽게 조작되는 인상을 줄 수 있을 지 고민한 결과, 다음과 같은 기능을 넣게 되었습니다.
-
-▶ 이동 방향과 현재 바라보고 있는 방향의 각이 클 수록 이동속도를 줄입니다. (t/pi)^2 정도의 간단한 수식만으로도 상당히 자연스러웠습니다.
-▶ 조작키가 눌리면 외적을 통해 더 작은 각에 해당하는 방향으로 부드럽게 회전합니다.
-▶ 대쉬를 사용하면 최종 이동량에 가중치를 곱합니다.`,
-          },
-          {
-            id: 'p_pa_highlight_3',
+            id: 'p_pa_highlight_uistencil',
             title: 'UI 스텐실 마스킹',
             content: `UI 이미지의 둥근 모서리를 처리하기 위해 커스텀 스텐실 버퍼를 통한 UI 마스킹을 구현하였습니다.
-마스크로 사용될 텍스쳐는 렌더링되는 대신 스텐실 버퍼에 자신의 마스크 ID를 비트플래그로 기록하며, 이후 마스크 위에 그려지도록 설정된 텍스쳐는 스텐실 버퍼에 지정된 비트 플래그가 켜져있는 경우에만 그려지도록 처리하였습니다.
+마스크로 사용될 텍스쳐는 렌더링되는 대신 스텐실 버퍼에 자신의 마스크 ID를 비트플래그로 기록하며, 이후 마스크 위에 그려지도록 설정된 텍스쳐는 스텐실 버퍼에 지정된 비트 플래그가 켜져있는 경우에만 그려집니다.
 
 <img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
-            id: 'p_pa_highlight_4',
-            title: '튜토리얼',
-            content: `이전 미니 프로젝트에서는 클래스 구조에 대한 고민이 부족했고, 튜토리얼을 넣기 위해 기존 클래스를 수정하고 의존성을 추가해야만 했습니다.
-이번에는 그 경험을 반면교사로 튜토리얼 시스템이 어떻게 동작할 지 미리 고려하면서 클래스를 설계했습니다.
+            id: 'p_pa_highlight_playermovement',
+            title: '부드러운 조작감 구현하기',
+            content: `단순히 키가 눌린 방향으로 이동 벡터를 가하는 투박한 방식은 조작감이 매우 좋지 않았기 때문에 조작감을 높힐 방법을 연구했습니다.
 
-플레이어와 기물 오브젝트들은 특정 동작을 취할 때 이벤트를 발생시키고 필요하다면 등록된 콜백 이벤트를 호출합니다. 튜토리얼 매니저는 이런 이벤트가 발생하면 해당 이벤트의 정보가 담긴 커맨드를 자신의 커맨드 큐에 삽입하도록 하는 콜백 함수를 등록하고, 매 업데이트마다 커맨드 큐를 확인하는 방식으로 동작하게 됩니다.
-커맨드 큐를 통해 한 차례 중개하는 이유는 이벤트들을 커맨드를 통해 일관된 방식으로 처리하여 구조를 간단하게 만들기 위해서입니다.
+우선 캐릭터의 회전은 이동과 함께 부드럽게 이루어지는게 보기 좋았고, 회전 속도가 등속적일 경우 미끄러지는 느낌이 심하게 나기 때문에 '현재 바라보고 있는 방향'과 '이동 방향'의 차이가 클 수록 이동속도를 줄이는 식((t/pi)^2)을 사용했습니다. 그러자 이동할 방향을 돌아 바라본 뒤 이동하는 느낌이 들어 조작감이 상당히 부드러워질 수 있었습니다.
 
-<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+회전은 캐릭터의 전방 벡터와 이동 방향 벡터 간의 외적으로 시계 방향과 반시계 방향 중 각도가 더 작은 쪽으로 회전합니다. 대쉬를 사용하면 그렇게 얻어진 최종 이동량에 가중치를 곱하는 방식으로 속도가 빨라지게 됩니다.
+
+<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_pa_highlight_uiinteract',
+            title: 'UI와 상호작용하기',
+            content: `UI 오브젝트는 Z Order에 따라 렌더링의 마지막 과정에 그려질 뿐, 특수한 오브젝트는 아닙니다. 대신 EventListener 컴포넌트를 통해 플레이어의 클릭에 반응하도록 처리했습니다.
+
+플레이어가 화면을 클릭하면 현재 활성화된 EventListener 중 클릭 지점이 자신의 바운딩 볼륨 내부에 놓이는 액터만을 추립니다. 이후 UI -> Non-UI 순서로 Order 체크를 진행하여 가장 상단에 있는 오브젝트의 EventListener가 클릭 이벤트를 가져가는 방식입니다.
+
+아쉬운 것은 시간이 부족해 내부 판별을 단순 순회로 진행했다는 것입니다. 뷰포트를 나누어 쿼드 트리를 활용한다면 훨씬 효율적으로 검사를 수행할 수 있을 듯 합니다.
+
+<img src="img/project/PotionAtlier/uiorder.png" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_pa_highlight_tutorial',
+            title: '메인 로직으로부터 분리된 튜토리얼',
+            content: `이전 미니 프로젝트에서의 반면교사로 메인 로직과 분리될 수 있는 튜토리얼 시스템을 만들기 위해 고민했고, 이벤트 기반의 시스템을 만들게 되었습니다.
+
+먼저 캐릭터의 조작과 같은 플레이어의 동작은 모두 구현 단계에서 기능 단위로 독립되도록 설계하였고, 동작이 발생하면 언리얼의 Delegate처럼 등록된 콜백을 호출하는 이벤트 대리자를 동작시킵니다.
+
+튜토리얼 매니저는 연관된 액터에 콜백 함수를 등록해놓고, 이벤트가 발생하길 기다립니다. 필요하다면 연관된 액터가 노출하는 함수를 호출해 기능 일부를 켜고 끌 수 있도록 되어있습니다.
+
+<img src="img/project/PotionAtlier/tuto.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
@@ -438,7 +447,7 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
 
 <img src="img/project/PotionAtlier/7.png" alt="본문 이미지" style="display: block; width: 60%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
 일반적으로 텍스트 그리프 렌더링, 데칼 텍스쳐 렌더링 등 해상도나 거리가 달라져도 부드러운 테두리를 렌더링할 필요가 있을 때 사용하지만, UI 마스킹에도 사용할 수 있겠다는 생각이 들었고 찾아본 결과 이미 사용되고 있는 방법이었습니다.
-SDF 텍스쳐를 마스크로 사용하면 해당 텍스쳐의 거리 값을 약간 조절하여 그려지는 픽셀의 알파값으로 사용할 수 있습니다. 이렇게 되면 추가적인 데이터가 필요 없이 부드러운 경계면을 가진 마스킹을 구현할 수 있습니다.
+SDF 텍스쳐를 마스크로 사용하면 해당 텍스쳐의 거리 값을 약간 조절하여 그려지는 픽셀의 알파값으로 사용할 수 있습니다. 이렇게 되면 추가적인 데이터가 필요 없이 부드러운 경계면을 가진 마스킹을 구현할 수 있을 듯 합니다.
 `,
           },
           {
@@ -588,7 +597,7 @@ class SomeComponent : public Component
 커맨드 패턴을 활용하여 게임의 메인 플로우를 매우 직관적이고 쉽게 작성할 수 있었습니다.
 개략적인 흐름도는 다음과 같습니다.
 
-<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" style="display: block; width: 70%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           },
           {
             id: 'p_rh_highlight_3',
