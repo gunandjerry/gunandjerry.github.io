@@ -7,7 +7,7 @@ function Footer() {
     <footer className="bg-slate-800 text-slate-400 py-12 text-center">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <p className="text-xl font-semibold text-teal-400 mb-4">
-          당장 달려가겠습니다!
+          최선을 다하겠습니다!
         </p>
         <p className="mb-2">
           태도와 성과로 증명할 준비가 되어있습니다.<br></br>

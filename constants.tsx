@@ -44,7 +44,7 @@ export const PROJECTS_DATA = [
     images: [
         'img/project/FRankSurvivor/banner.gif',
     ],
-    shortDescription: '리썰컴퍼니 스타일의 협동 생존 장르로, 던전(게이트) 안으로 들어가 위험을 무릎쓰고 자원을 채굴하는 헌터가 되는 게임입니다. 언리얼로 제작한 중장기 팀 프로젝트입니다.\n',
+    shortDescription: '언리얼엔진5로 제작한 6개월 중장기 팀 프로젝트로, 던전 안으로 들어가 크리쳐를 피하며 자원을 채굴하는 리썰라이크 류의 협동 생존 게임입니다.',
     implementationFeatures: ['절차적 맵 생성', '동적 미니맵 렌더링', '에디터 커스텀', 'GAS 기반 시스템', '1/3인칭 분리 및 모션 동기화', '부분 파괴 가능한 오브젝트', '메타휴먼 다루기'],
     longDescription: [
       {
@@ -52,7 +52,7 @@ export const PROJECTS_DATA = [
         title: '프로젝트 개요',
         content: `제목: F급 헌터 생존기 / F Rank Survivor
 장르: 리썰라이크, 생존, 어드벤처
-개발기간: 2025년 5월 ~
+개발기간: 2025년 4월 말 ~ 2025년 11월 초
 개발인원: 개발 4인 / 아트 2인 / 기획 3인
 사용엔진: 언리얼 엔진
 플랫폼: PC, Window
@@ -66,41 +66,81 @@ export const PROJECTS_DATA = [
           {
             id: 'p_fh_overview_desc',
             title: '게임 소개',
-            content: `리썰컴퍼니 스타일의 협동 생존 게임입니다. 플레이어는 능력이 보잘 것 없는 'F급 헌터'가 되어 던전(게이트)안으로 들어가 몬스터들을 피해다니며 자원을 채굴해야 합니다.
-플레이어는 평범한 인간은 아니기 때문에 채굴한 자원을 소모하여 자신의 스탯을 강화할 수 있고, 특수능력을 사용할 수도 있습니다. 이 모든 시스템은 언리얼의 GameplayAbilitySystem을 기반으로 설계되어 새로운 스탯이나 행동, 능력을 추가하기 매우 쉬운 구조로 되어있습니다.`,
+            content: `리썰컴퍼니 스타일의 협동 생존 게임입니다. 플레이어는 던전 안으로 들어가 크리쳐들을 피해다니며 마력석을 채굴한 뒤, 이를 돈으로 바꿔 상납금을 만들어야 합니다.
+
+던전은 절차적으로 생성되어 매번 새로운 경험을 주며, 다양한 아이템과 크리쳐가 존재합니다. 플레이어는 스탯을 성장시키거나 특수능력을 사용할 수도 있습니다.
+
+모든 시스템은 언리얼의 Gameplay Ability System을 기반으로 구축되어 있어, 새로운 스탯이나 행동, 효과를 추가하기 매우 용이한 구조로 되어있습니다.`,
           },
           {
             id: 'p_fh_overview_role',
             title: '맡은 역할',
-            content: `▶ 프로그래밍 파트 팀장으로서의 역할
-    - 작업 명세화, 업무 분배, 일정 확인
-    - 타 파트와 협의 주도
-    - 브랜치 충돌 해결, 머지
-    - QA, 디버깅 관리 총괄
-    - 기능 문서 작성, 타 파트 전파 및 교육
-▶ GameplayAbilitySystem 기반 구축
-▶ 플레이어 총괄: 초기화, 메타휴먼 프리셋 적용, 조작, 행동, 애니메이션, 장비상태 및 모션 동기화 등
-▶ 절차적 던전 생성, 동적 렌더링 미니맵
-▶ FX 전반: 커스텀 카메라 쉐이크, 카오스 디스트럭션, Vignette 이펙트, 혈흔, 아웃라인 강조 등
-▶ 사운드 전반: 설정과 연동된 사운드 시스템, 사운드 입히기
-▶ 커스텀 에디터 UI·데이터 에셋 제작 및 교육
-▶ 기타 자잘한 컨텐츠들
+            content: `프로그래밍 파트 팀장으로서의 역할을 수행하며 팀을 이끌었습니다.
+엔진 사이드에선 언리얼 에디터를 편집하여 기획 파트에서 사용하기 편리하게 디테일 창을 수정하거나, 새 에셋을 에셋 메뉴에 추가했습니다.
+게임 컨텐츠 사이드에선 던전 생성, 플레이어, FX, 사운드를 모두 담당하였으며, GAS 시스템을 사용한 기반과 구조를 작성하고 오브젝트 로직의 대부분을 작성하였으며 핵심 문제의 대부분을 디버깅하는 등 압도적으로 많은 작업량을 소화하였습니다.
 
-`,
+<img src="img/project/FRankSurvivor/work1.png" alt="게임 이미지" style="display: block; width: 80%; height: auto; margin-top: 0.8rem; margin-bottom: 0.2rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+<img src="img/project/FRankSurvivor/work2.png" alt="게임 이미지" style="display: block; width: 80%; height: auto; margin-top: 0.2rem; margin-bottom: 0.4rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />
+<img src="img/project/FRankSurvivor/work3.png" alt="게임 이미지" style="display: block; width: 80%; height: auto; margin-top: 0.2rem; margin-bottom: 0.4rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
           }
         ],
         showDivider: true,
       },
       {
         id: 'p_fh_highlight',
-        title: '제작 과정 & 구현 과제',
+        title: '주요 구현 과제',
         subSections: [
           {
-            id: 'p_fh_highlight_1',
-            title: '에디터 커스텀 UI',
-            content: `Slate 기반으로 구현된 에디터 모듈(FAssetToolsModule, FPropertyEditorModule 등)에 Slate 문법으로 커스텀 메뉴나 디자인을 추가하여 팀원들, 특히 다른 파트의 인원들이 사용하기 쉽도록 제공하였습니다.
+            id: 'p_fh_highlight_procedural_dungeon',
+            title: '절차적 던전 생성과 최적화',
+            content: `룸(방) 단위로 만들어진 던전 모듈들을 절차적으로 이어붙여 던전을 생성하고, 내부를 다양한 프롭들로 꾸미는 던전생성기를 만들었습니다.
 
-던전이 동적으로 생성되는 만큼 던전 내 룸들의 비중이나 내부에 랜덤하게 생성되는 요소들 등 커스텀해야 하는 요소들의 수가 매우 많았고, 그렇다보니 기획에서 헷갈려하는 일이 많았습니다. 이에 필요한 데이터 에셋들을 에셋 메뉴에 범주화하거나, 편집이 쉬운 디테일 디자인을 만들어 제공함으로써 편의성이 많이 증대되었습니다.
+절차적 던전 생성은 게임의 핵심이었습니다. 던전의 형태 자체가 게임의 밸런스, 재미와 직결되는 매우 중요한 과제였던 만큼 가장 많은 시간을 투입해야 했습니다.
+
+시간이 부족했던 만큼 기반은 DFS/BFS 알고리즘으로 다른 레벨을 Level Streaming으로 불러와 이어나가는 오픈소스 플러그인의 코드를 분석해 모방하였습니다. 이후 아래와 같은 여러 가지 기능들을 추가해나가며 발전시켰습니다.
+
+▶ 룸의 타입과 룸과 룸을 잇는 문/통로의 타입을 지정할 수 있게 하고, 특정 타입의 룸 간의 연속 확률을 정의하거나 최소/최대 거리를 설정하는 등 커스텀 규칙을 설정하여 원하는 배치를 만들 수 있도록 함.
+▶ 던전의 주요 목표가 되는 핵심(필수) 룸의 배치를 보장하고 시작지점으로부터 적당한 거리만큼 떨어트림.
+▶ 룸의 크기와 던전 내 심도(깊이)에 따라 생성되는 자원의 분포량을 결정함.
+
+던전의 구조가 확정되면 네비게이션 메쉬를 빌드한 후 랜덤한 위치와 지정된 스폰 포인트를 통해 내부 환경을 구성합니다. 이 과정은 데이터 에셋을 통해 쉽게 편집할 수 있게 하여 기획, 아트 파트에서 자신들이 원하는 바대로 손쉽게 편집이 가능하도록 했습니다.
+
+던전이 만들어지면 게임이 시작되며, 시간이 지나면 플레이어들이 보지 못 하는 적당한 거리에서 크리쳐들이 스폰되기 시작합니다.
+
+절차적 던전 생성을 통해 플레이어들은 매번 완전히 새로운 구조의 던전을 탐사할 수 있습니다.
+
+<img src="img/project/FRankSurvivor/2.gif" alt="본문 이미지" style="display: block; width: 50%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+          },
+          {
+            id: 'p_fh_highlight_dynamic_minimap_rendering',
+            title: '실시간으로 렌더링되는 미니맵',
+            content: `던전이 절차적으로 생성되는 만큼 미니맵도 동적으로 렌더링되어야 했습니다.
+
+기획측의 요구는 총 네 가지로, (1) R.E.P.O 스타일의 추상화된 미니맵이어야 하고, (2) 방문하지 않은 룸의 구조를 밝히지 말아야 하며, (3) 다른 플레이어를 아이콘으로 트래킹해야 하고, (4) 마지막으로 층계를 구분할 수 있기를 원했습니다.
+
+완전히 처음 해보는 도전이었던 만큼 많은 시행착오가 있었지만, 결과적으로 미니맵의 구조를 추상화한 구조체를 구성한 뒤, 이를 통해 렌더 타겟에 실시간으로 던전의 구조를 그려내는 방식으로 구현하였습니다.
+
+핵심 아이디어는 그려질 방의 상태를 R, G 값으로 표현하는 것입니다. 아직 아무도 방문하지 않은 방은 고정된 R값으로 그리고, 누군가 방문한 방은 고유한 R 값을 부여하여 그리게 됩니다. 그럼 다음과 같이 방의 영역을 서로 구분할 수 있습니다.
+<img src="img/project/FRankSurvivor/minimap1.png" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 0.7rem; margin-bottom: 0.2rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(12, 9, 9, 0.06);" />
+그럼 이 텍스쳐에 후처리를 통해 룸의 외곽선을 그려낼 수 있습니다. 방문하지 않은 룸들은 어차피 하나로 뭉쳐서 그려지므로 상관 없으며, 방문한 룸들은 고유한 R 값을 가지고 있으므로 R값의 오차가 발생하는 지점에 윤곽선을 그려내는 방식입니다.
+<img src="img/project/FRankSurvivor/minimap2.png" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 0.7rem; margin-bottom: 0.2rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(12, 9, 9, 0.06);" />
+마무리로 해당 텍스쳐를 위젯에 그린 뒤, 다른 플레이어 등을 트래킹하는 아이콘을 추가하여 마무리하였습니다.
+
+층계는 미니맵 데이터 구조체를 여러 층의 레이어로 구분해둔 뒤, 현재 플레이어의 Z값에 따라 일부 룸만 그려내는 방식으로 구현하였습니다.
+
+<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
+            button: {
+              text: '블로그에서 더 자세히 보기',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%8F%99%EC%A0%81-%EC%83%9D%EC%84%B1-%EB%AF%B8%EB%8B%88%EB%A7%B5.html'
+            },
+          },
+          {
+            id: 'p_fh_highlight_editor_custom',
+            title: '에디터 커스텀하기',
+            content: `에디터 편집용 모듈을 추가하고 FPropertyEditorModule에 Slate 문법으로 추가한 커스텀 메뉴와 디자인을 추가하여 기획 파트에서 편집하기 쉽게 하였습니다.
+
+던전이 동적으로 생성되는 만큼 던전 내 룸들의 비중이나 내부에 랜덤하게 생성되는 요소들 등 커스텀해야 하는 요소들의 수가 매우 많았고, 그렇다보니 기획에서 헷갈려하는 일이 많았습니다.
+이에 필요한 데이터 에셋들을 에셋 메뉴에 범주화하거나, 편집이 쉬운 디테일 디자인을 만들어 제공함으로써 편의성을 증대시킬 수 있었습니다.
 
 <img src="img/project/FRankSurvivor/1.png" alt="본문 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
             button: {
@@ -109,42 +149,7 @@ export const PROJECTS_DATA = [
             },
           },
           {
-            id: 'p_fh_highlight_2',
-            title: '동적 던전 생성과 최적화',
-            content: `언리얼 레벨을 DFS/BFS 알고리즘으로 Dynamic Level Streaming을 사용해 연결시켜 나가는 간단한 오픈소스 라이브러리를 기반으로 기능을 확장하여 저희 게임에 맞는 절차적 던전 생성 플러그인을 제작하였습니다.
-
-절차적 던전 생성은 게임의 핵심으로 던전의 형태 자체가 게임의 밸런스, 재미와 직결되는 아주 중요한 과제였습니다. 이에 다음과 같은 조치를 취하여 밸런스 잡힌 던전이 만들어질 수 있도록 노력했습니다.
-
-▶ 룸의 타입과 룸과 룸을 잇는 문/통로의 타입을 지정할 수 있게 하고, 특정 타입의 룸 간의 연속 확률을 정의하거나 최소/최대 거리를 설정하는 등 커스텀 규칙을 설정하여 원하는 배치를 만들 수 있도록 함.
-▶ 던전의 주요 목표가 되는 핵심(필수) 룸의 배치를 보장함. 이 때 커스텀 규칙을 사용하여 시작 룸으로부터 충분한 거리만큼 떨어트릴 수 있음.
-▶ 룸의 크기와 던전 내 심도(깊이)에 따라 자원의 분포량을 결정함.
-
-던전의 구조가 확정되면 언리얼의 Dynamic Level Streaming으로 룸 레벨들이 모든 클라이언트에서 로드되기 시작하며, 게이트를 채우는 NavMesh의 첫 빌드를 포함하여 생성 과정을 트래킹하기 때문에 던전 내부 생태계를 만들거나 플레이어가 시작할 타이밍을 결정할 수 있습니다.
-
-또한 랜덤한 프롭을 SpawningPoint를 레벨에 배치하여 생성하거나, NavMesh를 기반으로 도달할 수 있는 위치에 스폰할 수 있고, 총 개수나 단위 범위 내 편중도를 조절할 수도 있습니다.
-기본적으로 책장, 상자, SpawningPoint 등 던전 내부의 거의 모든 프롭들은 자체적인 사양을 가지며 스폰할 수 있는 후보군이나 확률, 최대 개수, 잠김 여부 등을 세부적으로 설정하고 무작위성을 부여할 수 있습니다.
-몬스터는 특정 텀마다 플레이어가 절대로 볼 수 없는, 충분히 떨어진 위치에서 스폰되어 던전 내부를 돌아다니기 시작합니다.
-
-이를 통해 매번 새롭고 다채로운 던전을 경험할 수 있습니다.
-
-<img src="img/project/FRankSurvivor/2.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-          },
-          {
-            id: 'p_fh_highlight_3',
-            title: '동적 생성 미니맵',
-            content: `던전이 절차적으로 생성되는 만큼 미니맵도 동적으로 만들어져야 했습니다. 던전의 구조를 캐싱하고 n초마다 렌더 타겟에 특정한 의미가 담긴 RG값(R은 방의 상태와 구분, G는 문과 같은 특수 영역을 정의합니다)을 칠한 뒤, 후처리를 통해 보여질 미니맵의 모양을 만들어내고 이를 위젯에 포함, 마지막으로 위젯을 다이나믹 머터리얼로 최종적인 효과를 입혀 메쉬에 그려내는 방식입니다.
-
-미니맵에서 방문하지 않은 룸은 한 덩어리로 취급되어 전체적인 외곽선으로만 윤곽을 파악할 수 있습니다. 그러다 플레이어들 중 한 명이 밝혀지지 않은 룸에 진입하면 이벤트를 발생시켜 모든 플레이어의 미니맵에서 해당 룸이 밝혀지며, 이 때 룸의 아이콘이나 내부에 있는 미니맵이 트래킹하는 오브젝트, 이동할 수 있는 통로 등이 드러나게 됩니다.
-플레이어가 층계를 이동하면 미니맵도 그에 따라 현재 층만을 그려내며, 다른 플레이어의 위치를 트래킹하기도 합니다.
-
-<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-            button: {
-              text: '블로그에서 자세히 보기',
-              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%8F%99%EC%A0%81-%EC%83%9D%EC%84%B1-%EB%AF%B8%EB%8B%88%EB%A7%B5.html'
-            },
-          },
-          {
-            id: 'p_fh_highlight_4',
+            id: 'p_fh_highlight_gas',
             title: 'GAS 기반의 게임 시스템',
             content: `저희 게임에서는 언리얼의 GameplayAbilitySystem을 적극적으로 사용했습니다. 플레이어의 모든 스탯, 상태, 행동은 게임플레이 어트리뷰트와 어빌리티, 태그로 구현되어 있습니다.
 
@@ -155,15 +160,19 @@ export const PROJECTS_DATA = [
 어빌리티와 이펙트, 큐는 모두 커스텀하여 코딩을 전혀 모르는 기획 파트에서도 손쉽게 초기 어빌리티를 변경하거나, 이펙트의 수치를 조정할 수 있도록 했습니다. 큐는 다양한 버전으로 개조하여 1/3인칭으로 분리된 모션을 동시에 재생 및 동기화하거나, 사운드를 재생함과 동시에 크리쳐가 감지할 수 있는 노이즈를 발생시키거나 합니다.
 
 GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진입장벽이 있지만, GAS를 기반으로 모든 시스템을 구축해둔 지금은 GAS를 사용하기로 결정한 것이 매우 잘 한 결정이었다고 생각합니다. 초반에는 기반을 만드는 데도 시간이 많이 걸렸고, 팀원들이 진입장벽에 어려워하여 튜토리얼 문서를 만들거나 샘플 클래스를 작성하느라 시간이 더 소요되긴 했습니다. 하지만 기반이 완성되고 팀원들도 GAS에 적응한 뒤로는 훨씬 시간을 단축할 수 있었으며, 기획이 추가되어 새로운 스탯이나 액션이 필요해져도 간단하게 추가할 수 있었습니다.`,
+            button: {
+              text: 'GAS 활용 사례: 커스텀 어빌리티 태스크',
+              link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%96%B4%EB%B9%8C%EB%A6%AC%ED%8B%B0-%ED%83%9C%EC%8A%A4%ED%81%AC.html'
+            },
           },
-          {
-            id: 'p_fh_highlight_7',
-            title: 'MovementComponent 개조하기',
-            content: `스프린트와 스태미너 시스템을 만들면서 언리얼의 MovementComponent를 개조했습니다.
-사용자가 'StartSprint()'를 호출하면 컴포넌트는 미리 계산된 2차 어트리뷰트인 RunSpeed로 최대 속도를 갱신하며, 이 때 실제 키 입력과 지면에서의 일정 수준 이상의 속도가 발생하면 스태미너를 감소시키는 태그를 부착합니다.
+//           {
+//             id: 'p_fh_highlight_7',
+//             title: 'MovementComponent 개조하기',
+//             content: `스프린트와 스태미너 시스템을 만들면서 언리얼의 MovementComponent를 개조했습니다.
+// 사용자가 'StartSprint()'를 호출하면 컴포넌트는 미리 계산된 2차 어트리뷰트인 RunSpeed로 최대 속도를 갱신하며, 이 때 실제 키 입력과 지면에서의 일정 수준 이상의 속도가 발생하면 스태미너를 감소시키는 태그를 부착합니다.
 
-뿐만 아니라 좌우, 뒤로 이동할 경우 플레이어의 방향에 따른 이동 속도 감소를 부여하며, 이 모든 과정이 MovementComponent의 예측 실행 구조와 호환되도록 구현되어 있어 클라 예측 - 서버 검증 모델로 사용이 가능합니다.`,
-          },
+// 뿐만 아니라 좌우, 뒤로 이동할 경우 플레이어의 방향에 따른 이동 속도 감소를 부여하며, 이 모든 과정이 MovementComponent의 예측 실행 구조와 호환되도록 구현되어 있어 클라 예측 - 서버 검증 모델로 사용이 가능합니다.`,
+//           },
           {
             id: 'p_fh_highlight_8',
             title: '메타휴먼 사용하기',
@@ -197,12 +206,13 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
             },
           },
           {
-            id: 'p_fh_highlight_11',
-            title: '상호작용 개선하기, 시각적 하이라이팅',
+            id: 'p_fh_highlight_interaction',
+            title: '상호작용 시스템',
             content: `상호작용은 플레이어의 경험에 중요한 요소이기 때문에 여러모로 공을 많이 들였습니다.
 우선 플레이어가 바라보고 있는 방향으로 Sweep을 통해 액터를 판별하며, 상호작용이 가능한 액터만을 추림으로써 반응성을 높였고, 상호작용 컴포넌트를 통해 액터마다 최대 거리나 상호작용 키, 툴팁 등을 커스텀할 수 있게 했습니다.
 
-레벨이 어두운 경우 플레이어가 무엇과 상호작용할 수 있는지 알기 어려울 수 있으므로, 플레이어의 주변 반경에 들어온 상호작용 가능한 액터에 부드러운 아웃라인을 입혔습니다. 스텐실 버퍼에 일정 구간을 사용해 현재 Opcacity를 전달하는 방식으로, 실제 아웃라인 애니메이션은 상호작용 컴포넌트가 처리합니다.
+레벨이 어두운 경우 플레이어가 무엇과 상호작용할 수 있는지 알기 어려울 수 있으므로, 플레이어의 주변 반경에 들어온 상호작용 가능한 액터에 부드러운 아웃라인을 입혔습니다.
+스텐실 버퍼에 일정 구간을 사용해 현재 Opcacity를 전달하는 방식으로, 실제 아웃라인 애니메이션은 상호작용 컴포넌트가 처리합니다.
 
 <img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
             button: {
@@ -211,9 +221,10 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
             },
           },
           {
-            id: 'p_fh_highlight_13',
-            title: '카오스 디스트럭션',
-            content: `언리얼의 카오스 디스트럭션을 사용해 부술 수 있는 오브젝트를 만들었습니다. 다음 이미지는 던전의 코어 프롭 샘플로, 플레이어가 공격을 가하면 카오스 피직스 필드를 사용해 외핵 메쉬를 사방으로 터트리는 예시입니다.
+            id: 'p_fh_highlight_destructible_prop',
+            title: '파괴 가능한 프롭',
+            content: `언리얼의 카오스 디스트럭션을 사용해 부술 수 있는 오브젝트를 만들었습니다.
+여기서도 역시 GAS를 사용하여 프롭에 체력 어트리뷰트를 부착하고 플레이어의 공격에 의해 체력이 깎이면 카오스 필드를 작동시켜 프롭을 부수게 됩니다.
 
 <img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="display: block; width: 40%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
             button: {
@@ -242,6 +253,7 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
 //             content: `이번 프로젝트에서 구현한 것이 매우 많아 모두 적지는 못 하지만, 이외에도 PhysicsConstraint를 사용해 부드럽게 열리고 닫히는 문이나 상자, 메타휴먼 래그돌화와 크리쳐의 돌진에 맞았을 때 날아가는 로직, 던전 내부의 공포감을 높이는 디스턴스 포그, 타 파트에서 쉽게 수정이 가능한 피직스 마터리얼 기반의 사운드 분기 시스템 등을 구현하였습니다.
 // `,
 //           },
+// 공부하고 배운 내용 짤막하게 제시? : 언리얼 인사이트, 애니메이션 리타게팅, 엔진 코드 분석 사례 등
         ],
         showDivider: true,
       },
@@ -316,7 +328,7 @@ GAS는 기능이 많은 만큼 알아야 하는 것도 많기에 확실히 진�
     images: [
         'img/project/PotionAtlier/banner.gif',
     ],
-    shortDescription: '포션을 제작해 판매하는 캐쥬얼한 타이쿤 게임입니다. 4주 단기 팀 프로젝트입니다.',
+    shortDescription: '3D 자체엔진으로 제작한 4주 단기 팀 프로젝트로, 포션을 제작해 판매하는 캐쥬얼한 타이쿤 게임입니다.',
     implementationFeatures: ['3D 자체엔진', 'Direct3D11 PBR 렌더링', 'PhysX 물리 시스템', 'UI 스텐실 마스킹', '부드러운 조작', '튜토리얼'],
     longDescription: [
       {
@@ -533,7 +545,7 @@ class SomeComponent : public Component
     images: [
         'img/project/RailwayToHell/banner.gif',
     ],
-    shortDescription: '타일 위치 이동으로 공격을 회피하거나 아군 공격을 유도해 적들을 물리치는 전략 퍼즐 게임입니다. 3주 단기 팀 프로젝트입니다.',
+    shortDescription: '2D 자체엔진으로 제작한 3주 단기 팀 프로젝트로, 타일 위치 이동으로 공격을 회피하거나 아군 공격을 유도해 적들을 물리치는 전략 퍼즐 게임입니다.',
     implementationFeatures: ['2D 자체엔진 제작', 'Direct2D 렌더링', '비동기 리소스 로딩', '입력처리, 플레이어 조작', '카메라 쉐이크 이펙트', '타이머 함수', '턴 기반 동작'],
     longDescription: [
       {
@@ -1102,23 +1114,24 @@ export const LEARNING_JOURNEY_DATA = {
       //   link: ""
       // }
     },
-    {
-      id: 'lj-3',
-      subTitle: "말이 잘 통하는, 호감을 주는 팀원입니다",
-      paragraphs: [
-        "뭐지",
-        "게임인재원 팀 프로젝트에서 수 차례 프로그래밍 팀장을 맡아 팀을 이끌었으며, 적극적으로 소통하고 솔선수범하며 좋은 게임을 만들기 위해 노력했습니다.",
-        "제가 가진 지론은 타인을 존중해야 내가 존중받을 수 있고, 내가 할 수 있는 일을 묵묵히 하는 것만이 스스로의 "
-      ],
-      images: [
-        "img/etc/games.png",
-      ],
-      // button: {
-      //   text: "언리얼 엔진 공부 및 구현 기록 보러가기",
-      //   description: "언리얼 엔진의 동작 방식과 네트워크 플로우에 대한 분석, GAS를 사용한 게임 기반의 제작, 커스텀 에디터 UI와 동적으로 생성되는 던전과 미니맵 등 수 많은 구현 기록들을 보실 수 있습니다.",
-      //   link: "https://github.com/yourusername/blog/tag/growth"
-      // }
-    }
+    // {
+    //   id: 'lj-3',
+    //   subTitle: "존중하는 법과 신뢰를 얻는 방법을 압니다",
+    //   paragraphs: [
+    //     "뭐지",
+    //     "게임인재원 팀 프로젝트에서 수 차례 프로그래밍 팀장을 맡아 팀을 이끌었으며, 적극적으로 소통하고 솔선수범하며 좋은 게임을 만들기 위해 노력했습니다.",
+    //     "제가 가진 지론은 타인을 존중해야 내가 존중받을 수 있고, 내가 할 수 있는 일을 묵묵히 하는 것만이 스스로의 "
+    //   ],
+    //   images: [
+    //     "img/etc/games.png",
+    //   ],
+    //   // button: {
+    //   //   text: "언리얼 엔진 공부 및 구현 기록 보러가기",
+    //   //   description: "언리얼 엔진의 동작 방식과 네트워크 플로우에 대한 분석, GAS를 사용한 게임 기반의 제작, 커스텀 에디터 UI와 동적으로 생성되는 던전과 미니맵 등 수 많은 구현 기록들을 보실 수 있습니다.",
+    //   //   link: "https://github.com/yourusername/blog/tag/growth"
+    //   // }
+    // }
+    // 소통능력, 명확한 의사전달 어필? ~ AI 시대에도 필요한 능력
   ],
 };
 
