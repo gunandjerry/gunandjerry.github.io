@@ -74,7 +74,7 @@ function Introduction({ id, personalInfo }) {
                 <div className="flex items-start justify-center sm:justify-start">
                     <AcademicCapIcon className="w-6 h-6 mr-3 text-teal-500 flex-shrink-0 mt-1" />
                     <div>
-                        <p className="text-xs text-slate-400">학력</p>
+                        <p className="text-xs text-slate-400">교육</p>
                         <div className="mt-1 space-y-1">
                         {personalInfo.education.map((edu, index) => (
                             <p key={index} className="text-base text-slate-200 leading-snug">- {edu}</p>
