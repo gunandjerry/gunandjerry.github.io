@@ -60,11 +60,11 @@ Error generating stack: `+e.message+`
 엔진 사이드에선 언리얼 에디터를 편집하여 기획 파트에서 사용하기 편리하게 디테일 창을 수정하거나, 새 에셋을 에셋 메뉴에 추가했습니다.
 게임 컨텐츠 사이드에선 던전 생성, 플레이어, FX·사운드 및 GAS 시스템을 사용한 기반과 구조를 작성하고 오브젝트 로직의 대부분을 작성하였으며 디버깅 작업 역시 주도하였습니다.
 
-<img src="img/project/FRankSurvivor/work1.png" alt="게임 이미지" />
+<img src="img/project/FRankSurvivor/work1.png" alt="게임 이미지" style="width: 70%;" />
 
-<img src="img/project/FRankSurvivor/work2.png" alt="게임 이미지" />
+<img src="img/project/FRankSurvivor/work2.png" alt="게임 이미지" style="width: 75%;" />
 
-<img src="img/project/FRankSurvivor/work3.png" alt="게임 이미지" />
+<img src="img/project/FRankSurvivor/work3.png" alt="게임 이미지" style="width: 75%;" />
 `}],showDivider:!0},{id:"p_fh_highlight",title:"주요 구현 과제",subSections:[{id:"p_fh_highlight_gas",title:"GAS 기반의 게임 시스템",content:`언리얼의 GAS를 공부한 뒤, 이 게임에 반드시 필요한 시스템이라고 생각되어 사용할 것을 적극적으로 주장하였습니다.
 GAS가 추구하는 철학과 구조가 세계적인 개발자들이 내놓은 모범적인 답안이라고 느껴졌기 때문입니다. 저희 게임은 육성 요소가 있기에 다양한 어트리뷰트들을 체계적으로 관리해야 했고 여러 아이템, 특수능력마다 고유한 로직을 구현해야 했기에 개별 로직의 디커플링을 확장에 용이한 구조 위에서 확보할 필요가 있었습니다.
 
@@ -78,7 +78,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 각각의 행동들을 모두 계층성이 없는 개별 태그로 만들어 사용한다면 스턴 상태 GE에서 부착해야 하는 태그의 양은 수 십개에 달하고, 새로운 행동이 추가되면 하나가 더 늘어나야 했을 것입니다. 대신 저는 아래와 같은 계층 구조를 만들어 'Uncapable' 태그만을 스턴 상태 GE가 부착하도록 했습니다. 개별 GA의 호출은 BlockTag의 조상에 대해서도 방지되기 때문에 새로운 행동이 추가되어도, 예컨대 'Player->Action->PlayEmote'와 'Player->State->Uncapable->Unactionable->BlockEmote'가 추가되어도 스턴 상태 GE를 편집하지 않아도 됐습니다.
 
-<img src="img/project/FRankSurvivor/gas1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/gas1.png" alt="본문 이미지" style="width: 80%;" />
 
 
 ▶ 사례2: 유연하고 범용적인 어트리뷰트
@@ -93,7 +93,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 먼저 어트리뷰트마다 초기화 방식을 고를 수 있게 하고, Derived Attribute의 경우 플레이어에게 상시 적용되는 GE를 거쳐 실시간으로 갱신됩니다.
 
-<img src="img/project/FRankSurvivor/gas2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/gas2.png" alt="본문 이미지" style="width: 80%;" />
 
 이렇게 방식을 바꾸자 앞서 말한 두 가지 문제가 모두 해결되었습니다. 모든 계산식이 블루프린트로 작성되므로 기획에서도 부담 없이 식을 고쳐 테스트해볼 수 있었고, Derived Attribute마다 각각 MMC 블루프린트를 생성하여 추가만 해주면 되기 때문에 코드를 고칠 일도 없어졌습니다.
 
@@ -119,7 +119,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 라이브러리가 제공하는 기능만으론 원하는 바를 구현할 수 없었기 때문에 수정과 확장은 필수적이었습니다.
 이를 위해선 우선 라이브러리가 작동하는 구조를 자세히 분석할 필요가 있었습니다. 다음은 그렇게 분석한 작동 구조의 대략적인 플로우 차트입니다.
 
-<img src="img/project/FRankSurvivor/pd1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd1.png" alt="본문 이미지" style="width: 75%;" />
 
 라이브러리는 크게 두 단계로 이루어지고 있었습니다.
 첫 단계(Init State)에선 DFS/BFS 방식으로 그대로 스트리밍이 가능한 레벨들의 그래프를 구성하고,
@@ -137,28 +137,28 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 이런 요구사항들은 기존의 구조에선 해결할 수 없었고, 저는 아래와 같이 라이브러리를 수정 및 확장했습니다.
 
-<img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" style="width: 75%;" />
 
 추가된 노드들의 의미와 역할을 간략하게 말씀드리자면 다음과 같습니다.
 
-<img src="img/project/FRankSurvivor/pd3.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd3.png" alt="본문 이미지" style="width: 40%;" />
 
 가장 중요한 건 룸과 룸이 연결될 수 있는 규칙을 설정하는 것이었습니다.
 
 룸을 디자인하는 아트 팀원은 연결 통로의 디자인이 다양해질 수 있기를 원했고, 던전 구조의 밸런스를 담당하는 기획 팀원은 룸 타입별로 세부적인 연결 규칙(타입별 기본적인 확률부터 최소 거리, 시작 위치로부터의 거리 등)을 설정할 수 있기를 원했습니다.
 
-<img src="img/project/FRankSurvivor/pd4.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd4.png" alt="본문 이미지" style="width: 50%;" />
 
 이런 규칙들을 에셋을 통해 간단하게 수정하고 적용할 수 있도록 하여 타 파트에서 로우 로직에 대해 전혀 신경쓰지 않고 원하는 대로 수정할 수 있도록 했습니다.
 
 또, 코어룸들은 반드시 일정 개수 배치가 보장되어야 하는 동시에 던전 전체에 균등하게 분포될 필요가 있었습니다.
 
-<img src="img/project/FRankSurvivor/pd5.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd5.png" alt="본문 이미지" style="width: 25%;" />
 
 따라서 시작할 때 배치되어야 하는 코어룸들을 늘어놓고 '0 ~ 목표 던전 크기' 사이의 랜덤한 인덱스를 배정했습니다.
 이 인덱스는 코어룸의 배치 순서가 되어 던전 크기가 해당 숫자에 도달했을 때 해당 코어룸을 Ready 상태로 바꿔 다른 무엇보다 우선 배치를 시도하도록 합니다.
 
-<img src="img/project/FRankSurvivor/pd6.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd6.png" alt="본문 이미지" style="width: 40%;" />
 
 다음으로 저희 게임은 던전 안에서 크리쳐들로부터 도망다녀야 했는데, 만약 경로들이 일방향으로 막다른 길로 향하게 된다면 게임의 재미가 크게 떨어지게 됩니다.
 그래서 룸을 배치한 뒤 추가적으로 연결 가능한 방향을 순회하여 통로를 만들 수 있다면 확률적으로 통로를 생성하는 로직을 추가해 순환(사이클) 경로를 적극적으로 생성했습니다. 
@@ -166,11 +166,11 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 그래프의 구성이 끝나면 유효성을 검사하고, 만약 유효하지 않은 던전(예컨대, 목표한 크기 범위를 벗어나거나, 모든 코어룸의 배치에 실패했거나, 특정 층에 너무 많은 방이 몰려있는 등)이라고 판단된다면 재작성을 시도하게 됩니다.
 하지만 이 과정을 무한히 반복할 수는 없었고, 만약 던전의 생성 조건이 매우 까다로워 수 차례 생성에 실패하는 경우의 예외 처리가 필요했습니다.
 
-<img src="img/project/FRankSurvivor/pd7.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd7.png" alt="본문 이미지" style="width: 60%;" />
 
 따라서 저는 미리 '좋은 구조'를 만들어내는 시드값을 여러 개 기록해놓고, 일정 횟수 유효한 던전 생성에 실패했다면 대신 그 중 하나를 골라 생성하도록 했습니다.
 
-<img src="img/project/FRankSurvivor/pd8.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd8.png" alt="본문 이미지" style="width: 50%;" />
 
 마지막으로 레벨 스트리밍이 완료되면 두 차례에 걸쳐 내부 인테리어를 진행하고, 모든 절차가 완료된 클라이언트는 레디 이벤트를 발생시키는 것으로 생성 과정이 마무리됩니다.
 `},{id:"p_fh_highlight_dynamic_minimap_rendering",title:"실시간으로 렌더링되는 미니맵",content:`던전이 절차적으로 생성되는 만큼 미니맵도 동적으로 렌더링되어야 했습니다.
@@ -180,7 +180,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 ▶ 미니멀한 미니맵
 
-<img src="img/project/FRankSurvivor/minimap0.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap0.png" alt="본문 이미지" style="width: 25%;" />
 (예시사진: 게임 R.E.P.O의 미니맵 스타일)
 
 R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은 룸들은 하나로 뭉쳐서 외곽선을 그리고, 방문한 룸은 각각에 대해 외곽선을 그릴 수 있어야 했습니다.
@@ -192,13 +192,13 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 그렇게 그려진 렌더타겟의 모습은 다음과 같습니다.
 
-<img src="img/project/FRankSurvivor/minimap1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap1.png" alt="본문 이미지" style="width: 30%;" />
 
 다음으로 이 렌더타겟에 대해 마터리얼을 이용해 적절한 처리를 가했습니다.
 
-<img src="img/project/FRankSurvivor/minimap2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap2.png" alt="본문 이미지" style="width: 70%;" />
 
-<img src="img/project/FRankSurvivor/minimap3.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap3.png" alt="본문 이미지" style="width: 30%;" />
 
 
 ▶ 층계 구분하기
@@ -207,23 +207,23 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 먼저 현재 테마의 던전이 사용하는 그리드 상 한 칸의 높이를 층의 높이로 정의한 뒤, 월드 공간에서 각 룸마다 최소 층과 최대 층이 몇 층인지 계산했습니다.
 
-<img src="img/project/FRankSurvivor/minimap4.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap4.png" alt="본문 이미지" style="width: 40%;" />
 
 이후 미니맵을 그릴 때 로컬 플레이어의 무릎 정도의 높이를 기준으로 층을 판별한 뒤 해당 층에 존재하는 룸들을 추려 그리도록 했습니다. 이 때 각 층에서 해당 룸을 그릴 지 말 지, 그려져야 한다면 어떤 모양으로 그릴 지 커스텀이 가능하게 하여 유연성을 제공하였습니다.
 
 
 최종적으로 후처리를 입히고 룸 아이콘이나 트래킹할 액터의 아이콘을 붙여 완성한 미니맵의 모습입니다.
 
-<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="width: 30%;" />
 `,buttons:[{text:"블로그에서 더 자세히 보기",link:"https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%8F%99%EC%A0%81-%EC%83%9D%EC%84%B1-%EB%AF%B8%EB%8B%88%EB%A7%B5.html",type:"blog"}]},{id:"p_fh_highlight_editor_custom",title:"디테일 패널 커스터마이징",content:`던전을 생성하고 인테리어를 꾸미는 과정에서 기획의 의도를 자유롭게 반영하기 위해 다양한 옵션이 제공하고, 헷갈리지 않게 이들을 총괄적으로 관리할 수 있게 데이터 에셋을 구성하였습니다.
 
 그런데 Details 패널의 기본 레이아웃에선 프로퍼티가 행마다 하나씩 놓이고, 배열은 인덱스를 각각 눌러 하위 섹션을 열어야 했기 때문에 한 눈에 현황을 파악하기가 힘들었습니다. 
 
-<img src="img/project/FRankSurvivor/detail1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/detail1.png" alt="본문 이미지" style="width: 60%;" />
 
 그래서 에디터 편집용 모듈을 추가하고 FPropertyEditorModule에 커스텀 프로퍼티 레이아웃을 추가하여 모든 프로퍼티를 인덱스 헤더의 ValueContent에 나열하도록 수정하였습니다.
 
-<img src="img/project/FRankSurvivor/details2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/details2.png" alt="본문 이미지" style="width: 60%;" />
 
 이를 통해 구성 현황을 한 눈에 파악하며 밸런스를 맞춰 옵션을 변경하기가 매우 편리해질 수 있었습니다.
 `,buttons:[{text:"블로그에서 더 자세히 보기",link:"https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/details-property-customization.html",type:"blog"}]},{id:"p_fh_highlight_8",title:"메타휴먼 캐릭터에 이펙트 입히기",content:`저희 게임은 '수준 낮은 헌터'라는 게임의 컨셉과 던전 아트의 분위기에 맞추기 위해 현실적으로 생긴 캐릭터가 필요해 메타휴먼을 플레이어 캐릭터로 사용하기로 결정했습니다.
@@ -232,14 +232,14 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 문제는 캐릭터에 Dissolving 효과같은 이펙트를 입힐 때도 생겼습니다. 메타휴먼은 고퀄리티의 모듈형 캐릭터이기 때문에 하나의 캐릭터를 렌더링하는데 수 십가지의 머터리얼을 사용합니다. 그런데 점진적인 투명화와 같은 효과를 위해선 이 마터리얼들을 전부 다 수정해야 했습니다.
 
-<img src="img/project/FRankSurvivor/metahuman1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/metahuman1.png" alt="본문 이미지" style="width: 60%;" />
 (총 21개의 머터리얼을 수정하고 110개의 머터리얼 인스턴스를 만들어야 했습니다.)
 
 머터리얼은 Masked 블렌드와 Transcluent 블렌드로 나뉘어져 있었기 때문에 두 가지 버전의 머터리얼 함수를 작성해 사용했습니다. 그런데 UGroomComponent의 머터리얼들은 아예 Opacity를 적용할 수가 없었습니다. 찾아본 결과 언리얼 개발자의 답변에서 UGroomComponent의 경우 내부적으로 Hair Shading Model을 사용해 완전히 다른 방식으로 렌더링되기 때문에 머터리얼로 Opacity Mask를 사용할 수 없다는 사실을 알 수 있었습니다.
 
 따라서 헤어 메쉬의 경우 색만 변화시킨 뒤 적당한 타이밍에 Visibility를 끄는 방법을 선택했습니다.
 
-<img src="img/project/FRankSurvivor/5.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/5.gif" alt="본문 이미지" style="width: 30%;" />
 `,buttons:[{text:"블로그에서 더 자세히 보기",link:"https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%A9%94%ED%83%80%ED%9C%B4%EB%A8%BC%EC%9D%84-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.html",type:"blog"}]},{id:"p_fh_highlight_9",title:"1/3인칭의 분리, 장비 상태와 모션의 동기화",content:`보다 리얼한 모션을 구현하기 위해 저희는 남들이 볼 때의 3인칭 모션과 내 화면에서 보이는 1인칭 모션을 구분했습니다. 문제는 애니메이션이 다르기 때문에 두 모션간의 타이밍이 어긋날 수 있다는 점이었습니다.
 
 이 때 기준이 되어야 하는 것은 동작의 주체인 자신이 보는 1인칭 모션이었고, 따라서 모션을 재생하는 GameplayCue를 작성하여 1인칭 모션의 노티파이나 시간대를 기준으로 3인칭 모션의 프레임을 조절, 두 모션의 타이밍이 일치하도록 맞추었습니다.
@@ -248,18 +248,18 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.
 
-<img src="img/project/FRankSurvivor/SwapTools.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/SwapTools.gif" alt="본문 이미지" style="width: 30%;" />
 `,buttons:[{text:"블로그에서 더 자세히 보기",link:"https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%9E%A5%EB%B9%84-%EC%8A%A4%EC%99%91,-%EC%B0%A9%EC%9A%A9-%EB%AA%A8%EC%85%98-%EB%8F%99%EA%B8%B0%ED%99%94.html",type:"blog"}]},{id:"p_fh_highlight_interaction",title:"상호작용 시스템",content:`상호작용은 플레이어의 경험에 중요한 요소이기 때문에 여러모로 공을 많이 들였습니다.
 우선 플레이어가 바라보고 있는 방향으로 Sweep을 통해 액터를 판별하며, 상호작용이 가능한 액터만을 추림으로써 반응성을 높였고, 상호작용 컴포넌트를 통해 액터마다 최대 거리나 상호작용 키, 툴팁 등을 커스텀할 수 있게 했습니다.
 
 레벨이 어두운 경우 플레이어가 무엇과 상호작용할 수 있는지 알기 어려울 수 있으므로, 플레이어의 주변 반경에 들어온 상호작용 가능한 액터에 부드러운 아웃라인을 입혔습니다.
 스텐실 버퍼에 일정 구간을 사용해 현재 Opcacity를 전달하는 방식으로, 실제 아웃라인 애니메이션은 상호작용 컴포넌트가 처리합니다.
 
-<img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" style="width: 30%;" />
 `,buttons:[{text:"블로그에서 더 자세히 보기",link:"https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9,-interactable-component.html",type:"blog"}]},{id:"p_fh_highlight_destructible_prop",title:"파괴 가능한 프롭",content:`언리얼의 카오스 디스트럭션을 사용해 부술 수 있는 오브젝트를 만들었습니다.
 여기서도 역시 GAS를 사용하여 프롭에 체력 어트리뷰트를 부착하고 플레이어의 공격에 의해 체력이 깎이면 카오스 필드를 작동시켜 프롭을 부수게 됩니다.
 
-<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="width: 30%;" />
 `,buttons:[{text:"블로그에서 더 자세히 보기",link:"https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/chaos-destruction%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EB%B6%80%EC%88%98%EA%B8%B0.html",type:"blog"}]},{id:"p_fh_highlight_16",title:"시각적 이펙트 개선하기",content:`곡괭이로 오브젝트를 부수거나 피격당하는 상황에서 나이아가라 이펙트만 재생하니 너무 타격감이 없고 밋밋했습니다.
 
 이를 개선하기 위해 먼저 FloatCurve를 따라 카메라의 Rotation과 Pov를 변환하는 간단한 커스텀 카메라 쉐이크 클래스를 작성하여 카메라가 흔들리는 느낌을 주었습니다. 특히 코어 오브젝트를 파괴했을 때 던전 전체가 흔들리는 느낌을 준 건 지스타에서 많은 플레이어분들의 좋은 반응을 얻을 수 있었습니다.
@@ -267,7 +267,7 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 사운드 + 나이아가라 이펙트 + 카메라 쉐이크 + 비네트 매니저를 조합하여 보다 실감나고 타격감 있는 시각적 효과를 보여줄 수 있었습니다.
 
-<img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" style="width: 30%;" />
 `},{id:"p_fh_highlight_17",title:"사운드 시스템",content:`사운드 서브시스템을 만들어 편리하게 사운드를 재생하고 관리할 수 있도록 했습니다. 게임 설정과 연동하기 위한 별도의 세팅이 되어 있으며, 특정한 위치에 3D 음향을 발생시키거나 로컬 플레이어에게 2D 음향을 재생하는 동작을 두 개의 블루프린트 노드만으로 수행할 수 있습니다.
 
 모든 음향은 옵션으로 다른 클라이언트에게 전파하거나 노이즈를 발생시켜 크리쳐 AI가 감지하게 할 수 있으며, 필요한 경우 FName으로 재생된 사운드의 핸들을 생성하고 원하는 시점에 페이드아웃 시킬 수도 있습니다.`}],showDivider:!0}],technologies:["언리얼5","언리얼 네트워크","4인 멀티플레이","1인칭","리썰라이크","생존"],liveLink:"",blogLink:""},{id:"p_pa",isMain:!0,title:"Potion Atlier",image:"img/project/PotionAtlier/banner.gif",images:["img/project/PotionAtlier/banner.gif"],shortDescription:"3D 자체엔진으로 제작한 4주 단기 팀 프로젝트로, 포션을 제작해 판매하는 캐쥬얼한 타이쿤 게임입니다.",implementationFeatures:["3D 자체엔진","PhysX 물리 시스템","UI 스텐실 마스킹","부드러운 조작","컨텐츠 전반","튜토리얼"],links:[{type:"live",text:"유튜브 보러가기",link:"https://youtu.be/v2JbL4FlbQM?si=GtCIvaJ0p6GOYd10"}],longDescription:[{id:"p_pa_overview",title:"프로젝트 개요",content:`제목: Potion Atlier
@@ -281,51 +281,51 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 주문서가 들어오면 알맞은 재료를 꺼내고, 손질하고, 끓여서 포션을 만들어 주문을 처리해야 합니다. 손님들은 참을성이 없으며 너무 오래 끓이면 제조에 실패합니다. 종종 마법에 걸린 테이블이 손님을 날려버리려고 하는 것도 막아야 합니다.`},{id:"p_pa_overview_role",title:"맡은 역할",content:`엔진 사이드에선 물리, UI, 텍스트, 에디터 툴, 디버깅과 성능 개선을 수행하였습니다.
 게임 컨텐츠 사이드에선 컨텐츠 전반을 구현하였습니다.
 
-<img src="img/project/PotionAtlier/Work/EngineSide.png" alt="게임 이미지" />
+<img src="img/project/PotionAtlier/Work/EngineSide.png" alt="게임 이미지" style="width: 60%;" />
 
-<img src="img/project/PotionAtlier/Work/ClientSide.png" alt="게임 이미지" />
+<img src="img/project/PotionAtlier/Work/ClientSide.png" alt="게임 이미지" style="width: 75%;" />
 `}],showDivider:!0},{id:"p_pa_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_pa_highlight_physics",title:"PhysX 물리 컴포넌트 구현하기",content:`NVDIA사에서 제작한 물리엔진인 PhysX를 공부하여 여러 종류의 콜라이더 컴포넌트 / 물리 기반 캐릭터 이동 컴포넌트 / Scene Query 함수를 구현하고 게임에 사용하였습니다.
 
 물리 컴포넌트가 부착된 액터는 PhysX Scene의 피직스 액터와 1:1로 대응되고 관리됩니다. 컴포넌트가 동적으로, 순서에 상관 없이 부착될 수 있어야 했기에 다음과 같이 두 가지 경로로 피직스 신에 대응하는 피직스 액터가 생성되도록 했습니다.
 
-<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" style="width: 60%;" />
 
 콜라이더에는 정육면체, 캡슐, 스페어 콜라이더와 메쉬의 정점 데이터를 사용한 메쉬 콜라이더를 구현하였습니다. 콜라이더의 초기 사이즈는 메쉬의 바운드 박스를 기준으로 정해지지만 원하는 대로 크기, 앵커 등을 자유롭게 바꿀 수 있습니다.
 
-<img src="img/project/PotionAtlier/BoxCollider.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/BoxCollider.gif" alt="본문 이미지" style="width: 35%;" />
 
 모든 액터는 물리 레이어를 설정할 수 있으며, 두 레이어 사이의 물리 반응을 블록(밀어내기), 오버랩(이벤트만 발생), 무시 중 하나로 설정할 수 있습니다.
 
 플레이어의 상호작용에는 Sweep 쿼리를 사용합니다. 반응성을 개선하기 위해 레이캐스트가 아닌 적당한 크기의 스페어와 오버랩된 가장 가까운 기물에 대해 상호작용 함수를 호출하도록 했습니다.
 
-<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" style="width: 35%;" />
 
 Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭터를 손쉽게 이동시킬 수 있습니다. 착지상태 판단, 이동, 점프, 경사면을 부드럽게 올라가고 내려가는 기능 등을 구현하였습니다.
 `},{id:"p_pa_highlight_uistencil",title:"UI 스텐실 마스킹",content:`UI 이미지의 둥근 모서리를 처리하기 위해 커스텀 스텐실 버퍼를 통한 UI 마스킹을 구현하였습니다.
 마스크로 사용될 텍스쳐는 렌더링되는 대신 스텐실 버퍼에 자신의 마스크 ID를 비트플래그로 기록하며, 이후 마스크 위에 그려지도록 설정된 텍스쳐는 스텐실 버퍼에 지정된 비트 플래그가 켜져있는 경우에만 그려집니다.
 
-<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" style="width: 30%;" />
 `},{id:"p_pa_highlight_playermovement",title:"부드러운 조작감 구현하기",content:`단순히 키가 눌린 방향으로 이동 벡터를 가하는 투박한 방식은 조작감이 매우 좋지 않았기 때문에 조작감을 높힐 방법을 연구했습니다.
 
 우선 캐릭터의 회전은 이동과 함께 부드럽게 이루어지는게 보기 좋았고, 회전 속도가 등속적일 경우 미끄러지는 느낌이 심하게 나기 때문에 '현재 바라보고 있는 방향'과 '이동 방향'의 차이가 클 수록 이동속도를 줄이는 식((t/pi)^2)을 사용했습니다. 그러자 이동할 방향을 돌아 바라본 뒤 이동하는 느낌이 들어 조작감이 상당히 부드러워질 수 있었습니다.
 
 회전은 캐릭터의 전방 벡터와 이동 방향 벡터 간의 외적으로 시계 방향과 반시계 방향 중 각도가 더 작은 쪽으로 회전합니다. 대쉬를 사용하면 그렇게 얻어진 최종 이동량에 가중치를 곱하는 방식으로 속도가 빨라지게 됩니다.
 
-<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" style="width: 30%;" />
 `},{id:"p_pa_highlight_uiinteract",title:"UI와 상호작용하기",content:`UI 오브젝트는 Z Order에 따라 렌더링의 마지막 과정에 그려질 뿐, 특수한 오브젝트는 아닙니다. 대신 EventListener 컴포넌트를 통해 플레이어의 클릭에 반응하도록 처리했습니다.
 
 플레이어가 화면을 클릭하면 현재 활성화된 EventListener 중 클릭 지점이 자신의 바운딩 볼륨 내부에 놓이는 액터만을 추립니다. 이후 UI -> Non-UI 순서로 Order 체크를 진행하여 가장 상단에 있는 오브젝트의 EventListener가 클릭 이벤트를 가져가는 방식입니다.
 
 아쉬운 것은 시간이 부족해 내부 판별을 단순 순회로 진행했다는 것입니다. 뷰포트를 나누어 쿼드 트리를 활용한다면 훨씬 효율적으로 검사를 수행할 수 있을 듯 합니다.
 
-<img src="img/project/PotionAtlier/uiorder.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/uiorder.png" alt="본문 이미지" style="width: 40%;" />
 `},{id:"p_pa_highlight_tutorial",title:"메인 로직으로부터 분리된 튜토리얼",content:`이전 미니 프로젝트에서의 반면교사로 메인 로직과 분리될 수 있는 튜토리얼 시스템을 만들기 위해 고민했고, 이벤트 기반의 시스템을 만들게 되었습니다.
 
 먼저 캐릭터의 조작과 같은 플레이어의 동작은 모두 구현 단계에서 기능 단위로 독립되도록 설계하였고, 동작이 발생하면 언리얼의 Delegate처럼 등록된 콜백을 호출하는 이벤트 대리자를 동작시킵니다.
 
 튜토리얼 매니저는 연관된 액터에 콜백 함수를 등록해놓고, 이벤트가 발생하길 기다립니다. 필요하다면 연관된 액터가 노출하는 함수를 호출해 기능 일부를 켜고 끌 수 있도록 되어있습니다.
 
-<img src="img/project/PotionAtlier/tuto.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/tuto.gif" alt="본문 이미지" style="width: 50%;" />
 `}],showDivider:!0},{id:"p_pa_lesson",title:"반성과 개선점",subSections:[{id:"p_pa_lesson_1",title:"픽셀 단위로 마스킹되는 스텐실 마스킹의 대안 - SDF 마스킹",content:`이 게임에서 사용한 UI 마스킹은 스텐실 버퍼에 비트플래그를 기록하고 마스크 위에 그려질 UI를 특정 비트 플래그가 켜진 픽셀 위에서만 그려지도록 한 가장 단순한 마스킹 기법입니다.
 이 방식의 가장 큰 문제는 단순히 픽셀 버리기(discard)로 구현되기 때문에 경계 부분에 앨리어싱을 적용할 수 없다는 점입니다.
 
@@ -334,7 +334,7 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
 
 그러던 중 SDF(Signed Distance Field)에 대해 알게 되었습니다. SDF는 픽셀마다 색이 칠해지는 경계로부터 얼만큼 떨어져있는지 거리를 기록해둔 특수한 텍스쳐로, 테두리 바로 위를 0.5로 기준으로 삼는다면 색이 칠해지는 영역의 내부는 0~0.5, 외부는 0.5~1 사이의 거리값을 가지게 됩니다.
 
-<img src="img/project/PotionAtlier/7.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/7.png" alt="본문 이미지" style="width: 40%;" />
 
 일반적으로 텍스트 그리프 렌더링, 데칼 텍스쳐 렌더링 등 해상도나 거리가 달라져도 부드러운 테두리를 렌더링할 필요가 있을 때 사용하지만, UI 마스킹에도 사용할 수 있겠다는 생각이 들었고 찾아본 결과 이미 사용되고 있는 방법이었습니다.
 SDF 텍스쳐를 마스크로 사용하면 해당 텍스쳐의 거리 값을 약간 조절하여 그려지는 픽셀의 알파값으로 사용할 수 있습니다. 이렇게 되면 추가적인 데이터가 필요 없이 부드러운 경계면을 가진 마스킹을 구현할 수 있을 듯 합니다.
@@ -394,7 +394,7 @@ class SomeComponent : public Component
 </code-block>
 다음은 자체 엔진에 존재하는 컴포넌트들을 컴포넌트 레지스트리에 등록하여 출력한 모습입니다.
 
-<img src="img/project/PotionAtlier/8.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/8.png" alt="본문 이미지" style="width: 20%;" />
 `}]}],technologies:["3D 자체엔진","싱글플레이","타이쿤","캐쥬얼"]},{id:"p_rh",isMain:!0,title:"Railway to Hell",image:"img/project/RailwayToHell/banner.gif",images:["img/project/RailwayToHell/banner.gif"],shortDescription:"2D 자체엔진으로 제작한 3주 단기 팀 프로젝트로, 타일 위치 이동으로 공격을 회피하거나 아군 공격을 유도해 적들을 물리치는 전략 퍼즐 게임입니다.",implementationFeatures:["2D 자체엔진","비동기 리소스 로딩","입력처리, 플레이어 조작","카메라 쉐이크 이펙트","타이머 함수","턴 기반 동작"],links:[{type:"live",text:"유튜브 보러가기",link:"https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2"}],longDescription:[{id:"p_rh_overview",title:"프로젝트 개요",content:`제목: Railway To Hell
 장르: 전략, 퍼즐
 개발기간: 3주일 (2024년 8월)
@@ -427,7 +427,7 @@ class SomeComponent : public Component
 ▶ 기타 컨텐츠
 
 
-<img src="img/project/RailwayToHell/3.png" alt="게임 이미지" />
+<img src="img/project/RailwayToHell/3.png" alt="게임 이미지" style="width: 80%;" />
 `}],showDivider:!0},{id:"p_rh_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_rh_highlight_1",title:"게임 제작 환경 구축하기 : 2D 게임 엔진",content:`이전까지 꾸준히 개발해 나가던 2D 게임 엔진을 사용했습니다. 엔진이 필수적으로 지원해야 하는 전반적인 기능들은 이미 준비가 된 상태였고, 저희 게임이 2D 물리나 기능이 많은 에디터를 요구하지는 않았기 때문에 비교적 빠르게 컨텐츠 제작으로 넘어갈 수 있었습니다.
 따라서 게임 엔진은 기능 추가보다는 주로 버그 수정이나 UI를 위한 기능 추가 정도가 이루어졌습니다.`},{id:"p_rh_highlight_2",title:"게임의 큰 흐름 구현하기 : 커맨드 패턴의 활용",content:`게임의 핵심 매커니즘은 매 턴의 시작시 모든 적들의 행동과 그 순서를 정해놓는 데에 있습니다.
 순차적으로 진행되는 턴 기반에, 미리 결정된 행동의 종류를 저장해둬야 한다는 점에서 커맨드 패턴을 사용하기에 아주 적합하다고 판단했습니다.
@@ -439,7 +439,7 @@ class SomeComponent : public Component
 커맨드 패턴을 활용하여 게임의 메인 플로우를 매우 직관적이고 쉽게 작성할 수 있었습니다.
 개략적인 흐름도는 다음과 같습니다.
 
-<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" />
+<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" style="width: 50%;" />
 `},{id:"p_rh_highlight_3",title:"타이머 함수 기능 : 자연스러운 딜레이 입히기",content:`행동을 수행하는 동안 또는 행동 사이사이마다, 여러 부분에서 시간 지연을 줄 필요가 있었습니다.
 게임의 메인 플로우 뿐만 아니라 스프라이트 이펙트를 재생한다던가, 열차의 흔들림을 표현하는 카메라 효과 등 다양한 곳에서 범용적으로 사용할 수 있는 기능을 개발하고자 하여 TimerFunction 기능을 엔진에 추가했습니다.
 
@@ -449,7 +449,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 다만 전역적으로 참조하는 객체들의 수명을 추적하는 시스템은 결코 아니기 때문에, 자신의 주체가 되는 오브젝트 외 다른 오브젝트를 사용할 때는 주의해야 합니다.`},{id:"p_rh_highlight_4",title:"9-Sliced 이미지",content:`튜토리얼 메세지와 플레이어의 말풍선의 배경 이미지는 텍스트의 길이에 따라 적당하게 사이즈가 조절되는 것이 좋습니다.
 이를 위해 9-Sliced 스프라이트를 구현했습니다. 좌, 우, 상, 하 영역의 비율을 지정하여 이미지를 9등분하고, 가로 세로로 이미지의 크기를 변경할 경우 아래 그림과 같이 중간 부분만 늘려서 이미지 테두리의 품질 저하를 줄이며 렌더링하는 방식입니다.
 
-<img src="img/project/RailwayToHell/5.png" alt="본문 이미지" />
+<img src="img/project/RailwayToHell/5.png" alt="본문 이미지" style="width: 40%;" />
 `}]}],technologies:["2D 자체엔진","싱글플레이","전략","퍼즐"]},{id:"p_be",title:"Bouncing Emoji Game",image:"img/project/BounceEmoji/banner.gif",shortDescription:"수박 게임에 말랑말랑한 탄성을 접목시킨 퍼즐 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.",links:[{type:"live",text:"유튜브 보러가기",link:"https://www.youtube.com/watch?v=1kLIHAhSvVM"}],longDescription:[{id:"p_be_overview",title:"프로젝트 개요",content:`제목: (가제) Bouncing Emoji Game
 장르: 퍼즐
 개발인원: 1인
@@ -459,7 +459,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 같은 크기의 이모지가 충돌할 경우 다음 단계의 이모지로 합쳐지며 점수를 얻습니다. 이모지는 총 10단계의 레벨이 존재하며 박스의 전면 영역을 초과할 경우 게임 오버 처리됩니다. 게임의 목표는 높은 점수를 얻는 것입니다.`}],showDivider:!0},{id:"p_be_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_be_highlight_1",title:"SpringJoint로 탄성 구현하기",content:`오브젝트에 여러 개의 본을 심고, 본마다 Spring joint와 Circle collider를 부착하여 탄성을 구현했습니다.
 
-<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" />
+<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" style="width: 40%;" />
 `},{id:"p_be_highlight_2",title:"이모지를 부드럽게 합치기",content:`이모지가 서로 충돌할 때, 두 이모지의 현재 레벨을 검사하여 같은 경우 더 큰 하나의 이모지로 합쳐지게 됩니다.
 이 때 시각적으로 부드럽게 합쳐져야 하며, 다음 물리 틱에서 주변의 이모지들이 자연스럽게 밀려나고 충돌해야 하기 때문에 (1) 여러 프레임에 걸친 스케일링 애니메이션을 사용하고, (2) 두 이모지의 충돌점으로부터 합쳐진 이모지가 생기도록 하여 부드러운 움직임이 가능하도록 했습니다.`}],showDivider:!0}],technologies:["유니티","싱글플레이","퍼즐","수박 게임"]},{id:"p_dp",title:"Drawing Puzzle",image:"img/project/DrawingPuzzle/banner.gif",shortDescription:"그려낸 모양에 물리를 입혀 퍼즐을 푸는 프로토타입 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.",links:[{type:"live",text:"유튜브 보러가기",link:"https://www.youtube.com/watch?v=uH11PwM16ic"}],longDescription:[{id:"p_dp_overview",title:"프로젝트 개요",content:`제목: (가제) Drawing Puzzle
 장르: 퍼즐
@@ -469,7 +469,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 `,subSections:[{id:"p_df_overview_live",title:"플레이 영상",content:'<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uH11PwM16ic?si=7fzwJBssUf03xPmx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'},{id:"p_dp_overview_desc",title:"게임 소개",content:`실시간 라인 콜라이더 생성을 활용한 퍼즐 게임입니다.
 유저가 그림을 그리면 즉시 폴리곤 콜라이더가 생성되며, 선의 위 또는 선으로 둘러쌓인 도형의 내부에 Hinge Joint를 추가하여 다양한 관절 물리를 구현할 수 있습니다.
 
-<img src="img/project/DrawingPuzzle/1.png" alt="게임 이미지" />
+<img src="img/project/DrawingPuzzle/1.png" alt="게임 이미지" style="width: 80%;" />
 `}],showDivider:!0},{id:"p_dp_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_dp_highlight_1",title:"실시간 라인 콜라이더",content:`Line Renderer를 이용하여 오브젝트를 그려내는 기능을 구현하였습니다. 과정은 다음과 같습니다.
 1) 현재 커서의 위치를 기록합니다. 현재 커서와 마지막으로 기록된 좌표의 거리가 설정된 최소거리를 초과하면 해당 지점의 좌표를 기록하고 마지막 좌표를 갱신합니다.
 2) 좌표를 기록할 때마다 Line Renderer의 position을 추가하면서 씬에 그려냅니다.
@@ -483,7 +483,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 생성된 Hinge 위에 오브젝트를 그릴 경우, 우선 힌지마다 오브젝트의 내부에 포함되는지 위 과정대로 체크한 뒤, 해당 힌지를 앵커로 삼는 HingeJoint2D 컴포넌트를 추가해 서로 다른 오브젝트끼리 연결되게 됩니다.`},{id:"p_dp_highlight_3",title:"지우개, 바람, 무게 등",content:`이외에도 라인 오브젝트나 힌지를 제거하는 지우개(이 역시 내부 판별을 통해 라인 오브젝트의 내부 공간인지 판별할 수 있습니다), 힘을 가하는 바람 등을 구현하였습니다.
 또 라인 오브젝트를 그린 뒤 마우스를 떼지 않고 대기하면 오브젝트의 무게가 높아지는 기능도 구현하였습니다.
 
-<img src="img/project/DrawingPuzzle/2.png" alt="게임 이미지" />
+<img src="img/project/DrawingPuzzle/2.png" alt="게임 이미지" style="width: 80%;" />
 `}],showDivider:!0}],technologies:["유니티","싱글플레이","퍼즐"]},{id:"p_ap",title:"Aphotica",image:"img/project/Aphotica/banner.gif",shortDescription:"부딪힌 블록의 색을 흡수하고, 흡수한 색을 혼합하며 풀어나가는 퍼즐 게임입니다. 2주 단기 팀 프로젝트로 엔진, 레벨에디터, 컨텐츠 전반을 담당하였습니다.",links:[{type:"live",text:"유튜브 보러가기",link:"https://youtu.be/_Xx173pg2-g?si=wAt_g96_a6mW3o6v"}],longDescription:[{id:"p_ap_overview",title:"프로젝트 개요",content:`제목: Aphotica
 장르: 퍼즐
 개발기간: 2주일 (2024년 5월)
@@ -500,7 +500,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 ▶ 튜토리얼 제외 컨텐츠 전반
 
 
-<img src="img/project/Aphotica/2.png" alt="게임 이미지" />
+<img src="img/project/Aphotica/2.png" alt="게임 이미지" style="width: 80%;" />
 `}],showDivider:!0},{id:"p_ap_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_ap_highlight_1",title:"박자와 충돌 타이밍 맞추기 / 레벨 에디터",content:`가장 중요한 과제는 충돌 타이밍과 노래 박자를 맞추는 것이었습니다. 이를 위해 다음과 같은 작업을 수행했습니다.
 1. 정확한 타이밍의 충돌을 위해 충돌이 일어날 경우 overlap된 크기만큼 예상 경로로 이동하기
 2. 블록을 배치하고 문어의 속도를 조절할 수 있는 레벨 에디터를 만들어 제공하기
@@ -512,14 +512,14 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 기획에서 충돌 타이밍을 세부 조정하기를 원했기 때문에, 블록의 크기를 맵 그리드 한 칸보다 크게 설정하고, 한 영역을 9등분하여 중심을 지정할 수 있도록 했습니다.
 
-<img src="img/project/Aphotica/3.gif" alt="게임 이미지" />
+<img src="img/project/Aphotica/3.gif" alt="게임 이미지" style="width: 40%;" />
 `},{id:"p_ap_highlight_2",title:"일정 시간동안 적용되는 효과 구현",content:`특수 블록과 충돌할 때 알맞은 색을 만들어두지 못 하면 일정 시간동안 화면이 흔들리거나, 화면이 밝아졌다 서서히 돌아오거나, 슬롯을 마음대로 전환하지 못 하게 되는 등 효과를 적용시켜야 했습니다.
 
 이를 위해 씬에 등록할 수 있는 TimerFunction 객체를 작성하였습니다. 람다함수 또는 함수포인터를 통해 간단하게 추가할 수 있으며, 주체 오브젝트가 자신과 관련된 TimerFunction을 기록해놓고 씬에서 제거될 때 모든 타이머 함수를 제거함으로써 댕글링 포인터가 발생하지 못 하게 막았습니다.`},{id:"p_ap_highlight_3",title:"충돌 예측 애니메이션",content:`박자와 충돌 타이밍을 맞추기 위해 문어는 항상 일정한 속도로 이동해야만 했습니다. 문제는 문어의 충돌 애니메이션을 충돌 시점부터 재생하는 경우 이미 멀어지고 있을 때 충돌하는 애니메이션이 재생된다는 것입니다.
 
 따라서 더 자연스러운 느낌을 주기 위해 얼마 후에 충돌한다는 정보를 미리 구해서 애니메이션을 예측 실행했습니다. 이 때 부드러운 애니메이션 전환을 위해선 우선 이전의 애니메이션 프레임이 모두 끝날 때까지 기다렸다가 실행해야 했고, 충돌 애니메이션이 실행될 수 있는 간격을 계산해 레이캐스팅을 통해 충돌하기 전에 애니메이션을 재생하도록 했습니다.
 
-<img src="img/project/Aphotica/4.gif" alt="게임 이미지" />
+<img src="img/project/Aphotica/4.gif" alt="게임 이미지" style="width: 30%;" />
 
 현재 프레임의 위치에 따라 캐스팅되는 레이의 길이가 달라집니다.`}]}],technologies:["2D 자체엔진","리듬","퍼즐"]},{id:"p_etd",title:"Emoji Tower Defense",image:"img/project/EmojiTowerDefense/banner.gif",shortDescription:"풍선 타워 디펜스를 모방한 타워 디펜스 게임입니다. 자체 2D 엔진으로 제작한 8일 단기 개인 프로젝트입니다.",links:[{type:"live",text:"유튜브 보러가기",link:"https://youtu.be/GL2G-A6hkHw?si=BzvAoH8c2fRC3Pie"}],longDescription:[{id:"p_etd_overview",title:"프로젝트 개요",content:`제목: Emoji Tower Defense
 장르: 전략, 디펜스
@@ -537,13 +537,13 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 이외에도 범위 내에서 가장 앞 또는 뒤, 혹은 가장 강한 적을 공격 대상으로 지정하는 기능이나, 업그레이드를 통한 타워의 기능 향상 등을 구현하였습니다.`},{id:"p_etd_overview_role",title:"맡은 역할",content:`배경, UI 프레임, 아이콘, 음악은 오픈소스를 사용했으며, 그 외에는 모두 혼자 제작했습니다.
 
 
-<img src="img/project/EmojiTowerDefense/2.png" alt="게임 이미지" />
+<img src="img/project/EmojiTowerDefense/2.png" alt="게임 이미지" style="width: 80%;" />
 `}],showDivider:!0},{id:"p_etd_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_etd_highlight_1",title:"경로를 따라 이동하는 적",content:`경로를 따라 이동하도록 하는 방법은 매우 다양하지만, 이 게임의 경우 단순히 정해진 길을 일정한 속도로 이동하기만 하면 됩니다.
 각 직선 경로의 시작점, 끝점의 좌표를 기록하고 선형보간으로 이동, 보간계수가 1 이상이 되면 다음 직선 경로로 전환하는 방식으로 구현했습니다.
 
 이 방식의 장점은 (1) 프레임이 어떻든 항상 경로 상에서만 이동하는 것이 보장되고, (2) 현재 위치를 예측하고 계산하는 것이 매우 쉽다는 점입니다.`},{id:"p_etd_highlight_2",title:"적의 위치 예측하여 사격하기",content:`앞서 선형보간을 통해 이동시키는 것의 장점으로 위치 예측이 쉽다는 것을 들었습니다. 실제로 거너와 같은 특정 타워는 자신이 발사한 총알의 속도를 고려하여 자신이 타겟팅한 적의 이동을 예측해 해당 방향으로 사격을 가해야 합니다.
 
-<img src="img/project/EmojiTowerDefense/3.png" alt="게임 이미지" />
+<img src="img/project/EmojiTowerDefense/3.png" alt="게임 이미지" style="width: 30%;" />
 
 이 때 사격을 시작할 때의 거리와 총알의 속도를 계산하면 도달까지의 시간을 측정할 수 있고, 선형보간을 통해 이동하므로 그 시간만큼 지났을 때 적이 어디에 가있을지 예측하는 것이 매우 쉽습니다. 거너는 이런 방식으로 적의 현재 위치가 아닌 미래의 위치에 사격을 가합니다.
 물론 경로의 모양이 복잡하면 이런 단순한 계산은 정확성이 떨어질 수밖에 없습니다.
@@ -563,14 +563,14 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 짧은 기간동안 제작한 개인 프로젝트인 만큼 단순하지만, 게임 루프의 동작이나 애니메이션, OS API를 통한 렌더링, 간단한 물리 처리 등 여러 가지 지식들을 실제로 게임을 제작하며 깊히 이해할 수 있게 되었습니다.`},{id:"p_jf_overview_role",title:"맡은 역할",content:`스프라이트와 음악은 오픈소스를 사용하였으며 그 외에는 혼자 만들었습니다.
 
 
-<img src="img/project/JumpingFrog/3.png" alt="게임 이미지" />
+<img src="img/project/JumpingFrog/3.png" alt="게임 이미지" style="width: 60%;" />
 `}],showDivider:!0},{id:"p_jf_highlight",title:"제작 과정 & 구현 과제",subSections:[{id:"p_jf_highlight_1",title:"2D 충돌 체크 및 밀어내기",content:`모든 오브젝트는 AABB 콜라이더 컴포넌트를 가지며, 유니티 엔진을 모방하여 RigidBody2D 컴포넌트가 부착된 캐릭터 오브젝트에는 중력을 적용하고 충돌체크 후 적절한 위치로 밀어내는 후처리가 이루어지도록 했습니다.
 단순한 데모 수준의 엔진인 만큼 고도의 물리적 처리를 수행하지는 않으며, 충돌이 발생하면 겹친 영역을 구해 그 반대 방향으로 밀어내는 방식을 사용합니다.
 
 게임에선 사용하지 않았지만 원과 원, AxisAlignedBox와 원 간의 충돌이나 삼각형의 세 꼭지점 좌표가 주어질 때 외적을 통해 특정 점이 삼각형의 외부에 있는지 내부에 있는지 판별하는 기능도 구현하였습니다.`},{id:"p_jf_highlight_2",title:"오브젝트 배치하기",content:`에디터가 없었기 때문에 모든 오브젝트는 2차원 배열을 타일셋으로 활용하여 배치되었습니다.
 1x1 크기의 블록들을 각각 오브젝트로 배치하여 맵을 구성할 경우 비용이 너무 커지므로, 맵 타일셋에서 같은 타입이 연속되는 경우 하나의 길거나 큰(1 x n 또는 n x n) 오브젝트로 배치하고, 스프라이트를 반복해 그리는 방식을 사용했습니다.
 
-<img src="img/project/JumpingFrog/4.png" alt="게임 이미지" />
+<img src="img/project/JumpingFrog/4.png" alt="게임 이미지" style="width: 50%;" />
 `},{id:"p_jf_highlight_3",title:"부드러운 카메라 트래킹",content:"유니티의 SmoothDamp 함수 로직을 참고하여 부드러운 카메라 트랙킹을 위한 Vector::SmoothDamp 함수를 작성하고 이를 통해 카메라가 캐릭터를 부드럽게 따라가도록 만들었습니다."}]}],technologies:["2D 자체엔진","싱글플레이","플랫포머","점프킹"]}],h0=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M15.75 19.5L8.25 12l7.5-7.5"})}),g0=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M8.25 4.5l7.5 7.5-7.5 7.5"})}),cf=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",viewBox:"0 0 16 16",fill:"currentColor",...h,children:s.jsx("path",{d:"M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8Z"})}),pn=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"})}),Pm=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M6 18L18 6M6 6l12 12"})}),th=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5"})}),Uu=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"})}),lh=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z"})}),eh=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91A2.25 2.25 0 012.25 6.993V6.75"})}),ah=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M6.62 10.79a15.25 15.25 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1A17 17 0 013 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"})}),nh=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18"})});function uh({id:h,personalInfo:w}){const[U,d]=it.useState(""),[z,B]=it.useState(""),G=async(q,T)=>{if(!navigator.clipboard){const x=T==="email"?"이메일 복사 실패. 수동으로 복사해주세요.":"전화번호 복사 실패. 수동으로 복사해주세요.";T==="email"?d(x):B(x),setTimeout(()=>{T==="email"?d(""):B("")},3e3);return}try{await navigator.clipboard.writeText(q),T==="email"?(d("복사 완료!"),setTimeout(()=>d(""),2e3)):T==="phone"&&(B("복사 완료!"),setTimeout(()=>B(""),2e3))}catch(x){console.error("Failed to copy: ",x);const j="복사 실패";T==="email"?(d(j),setTimeout(()=>d(""),2e3)):T==="phone"&&(B(j),setTimeout(()=>B(""),2e3))}};return s.jsx("section",{id:h,className:"py-8 sm:py-14 bg-slate-900",children:s.jsxs("div",{className:"container mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center",children:[s.jsx("div",{className:"md:w-1/3 flex justify-center mb-8 md:mb-0 md:mr-12",children:s.jsx("img",{src:w.photo,alt:w.name,className:"w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 rounded-full object-cover shadow-2xl border-4 border-teal-500/50"})}),s.jsxs("div",{className:"md:w-2/3 text-center md:text-left",children:[s.jsxs("h1",{className:"text-3xl sm:text-3xl lg:text-4xl font-bold text-teal-400 mb-4",children:["안녕하세요! ",w.name,"입니다."]}),s.jsxs("p",{className:"text-lg sm:text-xl text-slate-300 leading-relaxed",children:["'빠른 성장'과 '꾸준함'은 저의 가장 강력한 무기입니다.",s.jsx("br",{}),"무엇을 시켜주셔도 끝까지 매달려 완성도를 갖춘 결과물을 만들어보이겠습니다."]}),s.jsxs("div",{className:"mt-8 space-y-4 text-left max-w-lg mx-auto md:mx-0",children:[s.jsxs("div",{className:"flex items-center justify-center sm:justify-start",children:[s.jsx(nh,{className:"w-6 h-6 mr-3 text-teal-500 flex-shrink-0"}),s.jsxs("div",{children:[s.jsx("p",{className:"text-xs text-slate-400",children:"생년월일"}),s.jsx("p",{className:"text-base text-slate-200",children:w.birthDate})]})]}),w.education&&Array.isArray(w.education)&&w.education.length>0&&s.jsxs("div",{className:"flex items-start justify-center sm:justify-start",children:[s.jsx(th,{className:"w-6 h-6 mr-3 text-teal-500 flex-shrink-0 mt-1"}),s.jsxs("div",{children:[s.jsx("p",{className:"text-xs text-slate-400",children:"학력"}),s.jsx("div",{className:"mt-1 space-y-1",children:w.education.map((q,T)=>s.jsxs("p",{className:"text-base text-slate-200 leading-snug",children:["- ",q]},T))})]})]})]}),s.jsxs("div",{className:"mt-8 text-sm space-y-3",children:[s.jsxs("button",{onClick:()=>G(w.email,"email"),className:"flex items-center text-slate-400 hover:text-teal-400 transition-colors group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-md p-1 -ml-1","aria-label":`Copy email address ${w.email}`,role:"button",tabIndex:0,children:[s.jsx(eh,{className:"w-5 h-5 mr-2.5 text-teal-500 group-hover:text-teal-400 transition-colors flex-shrink-0"}),s.jsx("span",{className:"flex-grow",children:w.email}),U&&s.jsx("span",{className:"ml-2 text-xs text-teal-400 font-medium",children:U}),!U&&s.jsx("span",{className:"ml-2 text-xs text-slate-500 group-hover:text-teal-500 transition-opacity opacity-0 group-hover:opacity-100 font-medium",children:"(클릭하여 복사)"})]}),s.jsxs("button",{onClick:()=>G(w.phone,"phone"),className:"flex items-center text-slate-400 hover:text-teal-400 transition-colors group w-full text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 rounded-md p-1 -ml-1","aria-label":`Copy phone number ${w.phone}`,role:"button",tabIndex:0,children:[s.jsx(ah,{className:"w-5 h-5 mr-2.5 text-teal-500 group-hover:text-teal-400 transition-colors flex-shrink-0"}),s.jsx("span",{className:"flex-grow",children:w.phone}),z&&s.jsx("span",{className:"ml-2 text-xs text-teal-400 font-medium",children:z}),!z&&s.jsx("span",{className:"ml-2 text-xs text-slate-500 group-hover:text-teal-500 transition-opacity opacity-0 group-hover:opacity-100 font-medium",children:"(클릭하여 복사)"})]})]})]})]})})}function ih({project:h,onSelect:w}){return s.jsxs("div",{className:"bg-slate-800 rounded-xl shadow-xl overflow-hidden flex flex-col cursor-pointer group transform transition-all duration-300 hover:scale-105 hover:shadow-teal-500/30",onClick:()=>w(h),children:[s.jsx("img",{src:h.image,alt:h.title,className:"w-full aspect-[4/3] object-cover group-hover:opacity-80 transition-opacity"}),s.jsxs("div",{className:"p-6 flex flex-col flex-grow",children:[s.jsx("h3",{className:"text-xl font-semibold text-teal-400 mb-2 group-hover:text-teal-300 transition-colors",children:h.title}),s.jsx("p",{className:"text-slate-400 text-sm mb-4 flex-grow group-hover:text-slate-300 transition-colors",children:h.shortDescription}),s.jsxs("div",{className:"flex flex-wrap gap-2 mt-auto",children:[h.technologies.slice(0,6).map(d=>s.jsx("span",{className:"bg-slate-700 text-teal-400 px-3 py-1.5 text-base font-bold rounded-full group-hover:bg-teal-500/20 group-hover:text-teal-300 transition-colors",children:d},d)),h.technologies.length>6&&s.jsxs("span",{className:"bg-slate-700 text-teal-400 px-3 py-1.5 text-base font-bold rounded-full group-hover:bg-teal-500/20 group-hover:text-teal-300 transition-colors",children:["+",h.technologies.length-6," more"]})]})]})]})}const ch=Hu.memo(({src:h,title:w})=>s.jsxs("div",{className:"my-4 sm:my-6",children:[" ",s.jsx("iframe",{className:"w-full aspect-video rounded-lg shadow-lg bg-slate-900/50",src:h,title:w,frameBorder:"0",allow:"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",allowFullScreen:!0,loading:"lazy"})]})),fh=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"m19.5 8.25-7.5 7.5-7.5-7.5"})}),sh=h=>s.jsx("svg",{xmlns:"http://www.w3.org/2000/svg",fill:"none",viewBox:"0 0 24 24",strokeWidth:1.5,stroke:"currentColor",...h,children:s.jsx("path",{strokeLinecap:"round",strokeLinejoin:"round",d:"m4.5 15.75 7.5-7.5 7.5 7.5"})}),oh=({code:h,title:w="Code Snippet",language:U})=>{const[d,z]=it.useState(!1),B=()=>z(!d),q=`code-block-content-${Hu.useId()}`;return s.jsxs("div",{className:"my-4 sm:my-6 rounded-lg border border-slate-600 shadow-md bg-slate-800/30",children:[s.jsxs("button",{type:"button",onClick:B,className:"w-full bg-slate-700/70 hover:bg-slate-700 px-4 py-3 flex justify-between items-center cursor-pointer rounded-t-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 transition-colors","aria-expanded":d,"aria-controls":q,children:[s.jsxs("span",{className:"text-sm font-medium text-slate-100 text-left",children:[w,U&&s.jsxs("span",{className:"text-xs text-slate-400 ml-2",children:["(",U,")"]})]}),d?s.jsx(sh,{className:"w-5 h-5 text-slate-300 flex-shrink-0"}):s.jsx(fh,{className:"w-5 h-5 text-slate-300 flex-shrink-0"})]}),d&&s.jsx("div",{id:q,className:"bg-slate-800/50 rounded-b-lg",children:s.jsx("pre",{className:"p-4 text-sm text-slate-200 overflow-x-auto styled-scrollbar whitespace-pre-wrap break-words leading-relaxed",children:s.jsx("code",{children:h})})})]})},rh=(h,w="Project Video")=>{if(!h)return[];const U=[];let d=h;const z=/<iframe[^>]*src=["'](https?:\/\/(?:www\.)?(?:youtube\.com\/embed\/|player\.vimeo\.com\/video\/)[^"'?]+[^"']*)["'][^>]*?(?:title=["'](.*?)["'])?[^>]*>.*?<\/iframe>/i,B=/<code-block(?:\s+title=["'](.*?)["'])?(?:\s+language=["'](.*?)["'])?\s*>([\s\S]*?)<\/code-block>/i;for(;d.length>0;){const G=d.match(z),q=d.match(B);let T=!1,x=!1,j=1/0,J=0,_=null;if(G&&G.index!==void 0&&G.index<j&&(j=G.index,J=G[0].length,T=!0,x=!1,_=G),q&&q.index!==void 0&&q.index<j&&(j=q.index,J=q[0].length,x=!0,T=!1,_=q),!T&&!x){d.trim().length>0&&U.push({type:"html",content:d});break}if(j>0){const N=d.substring(0,j);N.trim().length>0&&U.push({type:"html",content:N})}if(T&&_){const N=_[1],at=_[2]||w;U.push({type:"video",videoSrc:N,videoTitle:at})}else if(x&&_){const N=_[1]||"Code Snippet",at=_[2]||void 0,$=_[3].trim();U.push({type:"codeBlock",codeBlockTitle:N,language:at,codeContent:$})}d=d.substring(j+J)}return U.filter(G=>!(G.type==="html"&&(!G.content||G.content.trim()==="")))};function dh({project:h,onClose:w}){const[U,d]=it.useState(!1),z=it.useRef(null),[B,G]=it.useState("");it.useEffect(()=>{if(h){const _=setTimeout(()=>{d(!0)},10);return document.body.style.overflow="hidden",()=>{clearTimeout(_),document.body.style.overflow="auto"}}else d(!1),document.body.style.overflow="auto"},[h]),it.useEffect(()=>{var $;if(!h||!U||!z.current||!Array.isArray(h.longDescription)||h.longDescription.length===0)return;const _=z.current;($=h.longDescription[0])!=null&&$.id&&G(`modal-section-${h.longDescription[0].id}`);const N=new IntersectionObserver(ft=>{ft.forEach(bt=>{bt.isIntersecting&&G(bt.target.id)})},{root:_,threshold:.4,rootMargin:"-40px 0px -40px 0px"}),at=[];return h.longDescription.forEach(ft=>{const bt=_.querySelector(`#modal-section-${ft.id}`);bt&&(N.observe(bt),at.push(bt)),ft.subSections&&ft.subSections.forEach(At=>{const st=_.querySelector(`#modal-section-${At.id}`);st&&(N.observe(st),at.push(st))})}),()=>{at.forEach(ft=>{N.unobserve(ft)}),N.disconnect()}},[h,U]);const q=_=>{_.target===_.currentTarget&&w()},T=_=>{if(z.current){const N=z.current.querySelector(`#${_}`);if(N){const at=N.offsetTop-10;z.current.scrollTo({top:at,behavior:"smooth"})}}};if(!h)return null;const x=Array.isArray(h.longDescription)&&h.longDescription.length>0,j=(_,N)=>rh(_,`${h.title} - Video`).map(($,ft)=>{const bt=`${N}-part-${ft}-${$.type}-${$.videoSrc||$.codeBlockTitle||"html"}`;return $.type==="video"&&$.videoSrc?s.jsx(ch,{src:$.videoSrc,title:$.videoTitle||`${h.title} Video`},bt):$.type==="codeBlock"&&$.codeContent?s.jsx(oh,{code:$.codeContent,title:$.codeBlockTitle,language:$.language},bt):$.type==="html"&&$.content&&$.content.trim()!==""?s.jsx("div",{className:`text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base
             [&_a]:text-sky-300
             [&_a:hover]:text-sky-500
