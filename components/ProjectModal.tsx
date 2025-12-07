@@ -3,15 +3,19 @@ import React, { useState, useEffect, useRef } from 'react';
 import { CloseIcon, GitHubIcon, ExternalLinkIcon, DocumentTextIcon } from '../constants.tsx';
 import EmbeddedVideo from './EmbeddedVideo.tsx';
 import CollapsibleCodeBlock from './CollapsibleCodeBlock.tsx';
+import VideoGif from './VideoGif.tsx';
 
 interface ContentPart {
-  type: 'html' | 'video' | 'codeBlock';
+  type: 'html' | 'video' | 'codeBlock' | 'videoGif';
   content?: string;        // For HTML
   videoSrc?: string;       // For video src
   videoTitle?: string;     // For video title
   codeContent?: string;    // For code block content
   codeBlockTitle?: string; // For code block title
   language?: string;       // For code block language
+  videoGifSrc?: string;    // For video gif src
+  videoGifTitle?: string;  // For video gif title
+  videoGifWidth?: string;  // For video gif width
 }
 
 
@@ -22,28 +26,29 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
   const parts: ContentPart[] = [];
   let remainingHtml = htmlString;
 
-  // Regex for iframe and code-block
+  // Regex definitions
   // iframe: captures src (1), title (2, optional)
   const iframeRegex = /<iframe[^>]*src=["'](https?:\/\/(?:www\.)?(?:youtube\.com\/embed\/|player\.vimeo\.com\/video\/)[^"'?]+[^"']*)["'][^>]*?(?:title=["'](.*?)["'])?[^>]*>.*?<\/iframe>/i;
   // code-block: captures title (1, optional), language (2, optional), code (3)
   const codeBlockRegex = /<code-block(?:\s+title=["'](.*?)["'])?(?:\s+language=["'](.*?)["'])?\s*>([\s\S]*?)<\/code-block>/i;
+  // video-gif: captures attributes string (1) to be parsed later for src, title, width
+  const videoGifRegex = /<video-gif\s+([^>]+?)\s*\/?>/i;
 
   while (remainingHtml.length > 0) {
     const iframeMatch = remainingHtml.match(iframeRegex);
     const codeBlockMatch = remainingHtml.match(codeBlockRegex);
+    const videoGifMatch = remainingHtml.match(videoGifRegex);
 
-    let firstMatchIsIframe = false;
-    let firstMatchIsCodeBlock = false;
+    let matchType: 'iframe' | 'codeBlock' | 'videoGif' | null = null;
     let matchIndex = Infinity;
     let matchLength = 0;
-    let currentMatchDetails: any = null; // To store details of the earliest match
+    let currentMatchDetails: any = null;
 
     if (iframeMatch && iframeMatch.index !== undefined) {
       if (iframeMatch.index < matchIndex) {
         matchIndex = iframeMatch.index;
         matchLength = iframeMatch[0].length;
-        firstMatchIsIframe = true;
-        firstMatchIsCodeBlock = false;
+        matchType = 'iframe';
         currentMatchDetails = iframeMatch;
       }
     }
@@ -52,13 +57,21 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
       if (codeBlockMatch.index < matchIndex) {
         matchIndex = codeBlockMatch.index;
         matchLength = codeBlockMatch[0].length;
-        firstMatchIsCodeBlock = true;
-        firstMatchIsIframe = false;
+        matchType = 'codeBlock';
         currentMatchDetails = codeBlockMatch;
       }
     }
 
-    if (!firstMatchIsIframe && !firstMatchIsCodeBlock) {
+    if (videoGifMatch && videoGifMatch.index !== undefined) {
+      if (videoGifMatch.index < matchIndex) {
+        matchIndex = videoGifMatch.index;
+        matchLength = videoGifMatch[0].length;
+        matchType = 'videoGif';
+        currentMatchDetails = videoGifMatch;
+      }
+    }
+
+    if (!matchType) {
       // No more special tags, add remaining as HTML
       if (remainingHtml.trim().length > 0) {
         parts.push({ type: 'html', content: remainingHtml });
@@ -74,15 +87,29 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
       }
     }
 
-    if (firstMatchIsIframe && currentMatchDetails) {
+    if (matchType === 'iframe' && currentMatchDetails) {
       const iframeSrc = currentMatchDetails[1];
       const iframeTitle = currentMatchDetails[2] || defaultVideoTitle;
       parts.push({ type: 'video', videoSrc: iframeSrc, videoTitle: iframeTitle });
-    } else if (firstMatchIsCodeBlock && currentMatchDetails) {
+    } else if (matchType === 'codeBlock' && currentMatchDetails) {
       const codeTitle = currentMatchDetails[1] || "Code Snippet";
       const codeLang = currentMatchDetails[2] || undefined;
       const code = currentMatchDetails[3].trim(); // Trim the code content itself
       parts.push({ type: 'codeBlock', codeBlockTitle: codeTitle, language: codeLang, codeContent: code });
+    } else if (matchType === 'videoGif' && currentMatchDetails) {
+		  const attrString = currentMatchDetails[1];
+      const srcMatch = attrString.match(/src=["']([^"']+)["']/i);
+      const titleMatch = attrString.match(/title=["']([^"']+)["']/i);
+      const widthMatch = attrString.match(/width=["']([^"']+)["']/i);
+	  
+      if (srcMatch) {
+          parts.push({ 
+            type: 'videoGif', 
+            videoGifSrc: srcMatch[1], 
+            videoGifTitle: titleMatch ? titleMatch[1] : undefined,
+            videoGifWidth: widthMatch ? widthMatch[1] : undefined
+          });
+      }
     }
     
     remainingHtml = remainingHtml.substring(matchIndex + matchLength);
@@ -192,13 +219,17 @@ function ProjectModal({ project, onClose }) {
   const renderParsedContent = (htmlString: string | undefined | null, keyPrefix: string) => {
     const parts = parseContent(htmlString, `${project.title} - Video`);
     return parts.map((part, index) => {
-      const uniqueKey = `${keyPrefix}-part-${index}-${part.type}-${part.videoSrc || part.codeBlockTitle || 'html'}`;
+      const uniqueKey = `${keyPrefix}-part-${index}-${part.type}-${part.videoSrc || part.codeBlockTitle || part.videoGifSrc || 'html'}`;
+
       
       if (part.type === 'video' && part.videoSrc) {
         return <EmbeddedVideo key={uniqueKey} src={part.videoSrc} title={part.videoTitle || `${project.title} Video`} />;
       }
       if (part.type === 'codeBlock' && part.codeContent) {
         return <CollapsibleCodeBlock key={uniqueKey} code={part.codeContent} title={part.codeBlockTitle} language={part.language} />;
+      }
+      if (part.type === 'videoGif' && part.videoGifSrc) {
+        return <VideoGif key={uniqueKey} src={part.videoGifSrc} title={part.videoGifTitle} width={part.videoGifWidth} />;
       }
       if (part.type === 'html' && part.content && part.content.trim() !== '') {
         return (

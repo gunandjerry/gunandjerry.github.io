@@ -34,6 +34,9 @@ export const PERSONAL_INFO = {
   photo: "img/profile/face.png"
 };
 
+
+//<video-gif src="https://www.w3schools.com/html/mov_bbb.mp4" title="PhysX Simulation Demo" />
+
 export const PROJECTS_DATA = [
   // F급 헌터 생존기
   {
@@ -349,7 +352,7 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.
 
-<img src="img/project/FRankSurvivor/SwapTools.gif" alt="본문 이미지" style="width: 30%;" />
+<video-gif src="img/project/FRankSurvivor/animsync.mp4" title="Animation Sync demo" width="70%"/>
 `,
             buttons: [
               {
