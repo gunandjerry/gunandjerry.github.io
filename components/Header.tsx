@@ -44,9 +44,9 @@ function Header({ personalInfo, sectionIds, stringTable }) {
        <div className="md:hidden flex justify-around space-x-1 pb-2 border-t border-slate-700/50 pt-2">
           <button onClick={() => scrollToSection(sectionIds.INTRODUCTION)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_profile}</button>
           <button onClick={() => scrollToSection(sectionIds.PROJECTS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_project}</button>
-          <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button>
+          {/* <button onClick={() => scrollToSection(sectionIds.LEARNING_JOURNEY)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_journey}</button> */}
           {/* <button onClick={() => scrollToSection(sectionIds.EXPERIENCE)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_experience}</button> */}
-          <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button>
+          {/* <button onClick={() => scrollToSection(sectionIds.SKILLS)} className="px-2 py-1 rounded-md text-xs font-medium text-slate-300 hover:bg-slate-700 hover:text-white transition-colors">{stringTable.header_navigation_skill}</button> */}
        </div>
     </header>
   );
