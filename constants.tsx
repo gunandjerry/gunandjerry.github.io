@@ -83,11 +83,11 @@ export const PROJECTS_DATA = [
 엔진 사이드에선 언리얼 에디터를 편집하여 기획 파트에서 사용하기 편리하게 디테일 창을 수정하거나, 새 에셋을 에셋 메뉴에 추가했습니다.
 게임 컨텐츠 사이드에선 던전 생성, 플레이어, FX·사운드 및 GAS 시스템을 사용한 기반과 구조를 작성하고 오브젝트 로직의 대부분을 작성하였으며 디버깅 작업 역시 주도하였습니다.
 
-<img src="img/project/FRankSurvivor/work1.png" alt="게임 이미지" />
+<img src="img/project/FRankSurvivor/work1.png" alt="게임 이미지" style="width: 70%;" />
 
-<img src="img/project/FRankSurvivor/work2.png" alt="게임 이미지" />
+<img src="img/project/FRankSurvivor/work2.png" alt="게임 이미지" style="width: 75%;" />
 
-<img src="img/project/FRankSurvivor/work3.png" alt="게임 이미지" />
+<img src="img/project/FRankSurvivor/work3.png" alt="게임 이미지" style="width: 75%;" />
 `,
           }
         ],
@@ -113,7 +113,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 각각의 행동들을 모두 계층성이 없는 개별 태그로 만들어 사용한다면 스턴 상태 GE에서 부착해야 하는 태그의 양은 수 십개에 달하고, 새로운 행동이 추가되면 하나가 더 늘어나야 했을 것입니다. 대신 저는 아래와 같은 계층 구조를 만들어 'Uncapable' 태그만을 스턴 상태 GE가 부착하도록 했습니다. 개별 GA의 호출은 BlockTag의 조상에 대해서도 방지되기 때문에 새로운 행동이 추가되어도, 예컨대 'Player->Action->PlayEmote'와 'Player->State->Uncapable->Unactionable->BlockEmote'가 추가되어도 스턴 상태 GE를 편집하지 않아도 됐습니다.
 
-<img src="img/project/FRankSurvivor/gas1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/gas1.png" alt="본문 이미지" style="width: 80%;" />
 
 
 ▶ 사례2: 유연하고 범용적인 어트리뷰트
@@ -128,7 +128,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 먼저 어트리뷰트마다 초기화 방식을 고를 수 있게 하고, Derived Attribute의 경우 플레이어에게 상시 적용되는 GE를 거쳐 실시간으로 갱신됩니다.
 
-<img src="img/project/FRankSurvivor/gas2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/gas2.png" alt="본문 이미지" style="width: 80%;" />
 
 이렇게 방식을 바꾸자 앞서 말한 두 가지 문제가 모두 해결되었습니다. 모든 계산식이 블루프린트로 작성되므로 기획에서도 부담 없이 식을 고쳐 테스트해볼 수 있었고, Derived Attribute마다 각각 MMC 블루프린트를 생성하여 추가만 해주면 되기 때문에 코드를 고칠 일도 없어졌습니다.
 
@@ -171,7 +171,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 라이브러리가 제공하는 기능만으론 원하는 바를 구현할 수 없었기 때문에 수정과 확장은 필수적이었습니다.
 이를 위해선 우선 라이브러리가 작동하는 구조를 자세히 분석할 필요가 있었습니다. 다음은 그렇게 분석한 작동 구조의 대략적인 플로우 차트입니다.
 
-<img src="img/project/FRankSurvivor/pd1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd1.png" alt="본문 이미지" style="width: 75%;" />
 
 라이브러리는 크게 두 단계로 이루어지고 있었습니다.
 첫 단계(Init State)에선 DFS/BFS 방식으로 그대로 스트리밍이 가능한 레벨들의 그래프를 구성하고,
@@ -189,28 +189,28 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 이런 요구사항들은 기존의 구조에선 해결할 수 없었고, 저는 아래와 같이 라이브러리를 수정 및 확장했습니다.
 
-<img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" style="width: 75%;" />
 
 추가된 노드들의 의미와 역할을 간략하게 말씀드리자면 다음과 같습니다.
 
-<img src="img/project/FRankSurvivor/pd3.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd3.png" alt="본문 이미지" style="width: 40%;" />
 
 가장 중요한 건 룸과 룸이 연결될 수 있는 규칙을 설정하는 것이었습니다.
 
 룸을 디자인하는 아트 팀원은 연결 통로의 디자인이 다양해질 수 있기를 원했고, 던전 구조의 밸런스를 담당하는 기획 팀원은 룸 타입별로 세부적인 연결 규칙(타입별 기본적인 확률부터 최소 거리, 시작 위치로부터의 거리 등)을 설정할 수 있기를 원했습니다.
 
-<img src="img/project/FRankSurvivor/pd4.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd4.png" alt="본문 이미지" style="width: 50%;" />
 
 이런 규칙들을 에셋을 통해 간단하게 수정하고 적용할 수 있도록 하여 타 파트에서 로우 로직에 대해 전혀 신경쓰지 않고 원하는 대로 수정할 수 있도록 했습니다.
 
 또, 코어룸들은 반드시 일정 개수 배치가 보장되어야 하는 동시에 던전 전체에 균등하게 분포될 필요가 있었습니다.
 
-<img src="img/project/FRankSurvivor/pd5.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd5.png" alt="본문 이미지" style="width: 25%;" />
 
 따라서 시작할 때 배치되어야 하는 코어룸들을 늘어놓고 '0 ~ 목표 던전 크기' 사이의 랜덤한 인덱스를 배정했습니다.
 이 인덱스는 코어룸의 배치 순서가 되어 던전 크기가 해당 숫자에 도달했을 때 해당 코어룸을 Ready 상태로 바꿔 다른 무엇보다 우선 배치를 시도하도록 합니다.
 
-<img src="img/project/FRankSurvivor/pd6.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd6.png" alt="본문 이미지" style="width: 40%;" />
 
 다음으로 저희 게임은 던전 안에서 크리쳐들로부터 도망다녀야 했는데, 만약 경로들이 일방향으로 막다른 길로 향하게 된다면 게임의 재미가 크게 떨어지게 됩니다.
 그래서 룸을 배치한 뒤 추가적으로 연결 가능한 방향을 순회하여 통로를 만들 수 있다면 확률적으로 통로를 생성하는 로직을 추가해 순환(사이클) 경로를 적극적으로 생성했습니다. 
@@ -218,11 +218,11 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 그래프의 구성이 끝나면 유효성을 검사하고, 만약 유효하지 않은 던전(예컨대, 목표한 크기 범위를 벗어나거나, 모든 코어룸의 배치에 실패했거나, 특정 층에 너무 많은 방이 몰려있는 등)이라고 판단된다면 재작성을 시도하게 됩니다.
 하지만 이 과정을 무한히 반복할 수는 없었고, 만약 던전의 생성 조건이 매우 까다로워 수 차례 생성에 실패하는 경우의 예외 처리가 필요했습니다.
 
-<img src="img/project/FRankSurvivor/pd7.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd7.png" alt="본문 이미지" style="width: 60%;" />
 
 따라서 저는 미리 '좋은 구조'를 만들어내는 시드값을 여러 개 기록해놓고, 일정 횟수 유효한 던전 생성에 실패했다면 대신 그 중 하나를 골라 생성하도록 했습니다.
 
-<img src="img/project/FRankSurvivor/pd8.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/pd8.png" alt="본문 이미지" style="width: 50%;" />
 
 마지막으로 레벨 스트리밍이 완료되면 두 차례에 걸쳐 내부 인테리어를 진행하고, 모든 절차가 완료된 클라이언트는 레디 이벤트를 발생시키는 것으로 생성 과정이 마무리됩니다.
 `,
@@ -237,7 +237,7 @@ GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 �
 
 ▶ 미니멀한 미니맵
 
-<img src="img/project/FRankSurvivor/minimap0.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap0.png" alt="본문 이미지" style="width: 25%;" />
 (예시사진: 게임 R.E.P.O의 미니맵 스타일)
 
 R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은 룸들은 하나로 뭉쳐서 외곽선을 그리고, 방문한 룸은 각각에 대해 외곽선을 그릴 수 있어야 했습니다.
@@ -249,13 +249,13 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 그렇게 그려진 렌더타겟의 모습은 다음과 같습니다.
 
-<img src="img/project/FRankSurvivor/minimap1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap1.png" alt="본문 이미지" style="width: 30%;" />
 
 다음으로 이 렌더타겟에 대해 마터리얼을 이용해 적절한 처리를 가했습니다.
 
-<img src="img/project/FRankSurvivor/minimap2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap2.png" alt="본문 이미지" style="width: 70%;" />
 
-<img src="img/project/FRankSurvivor/minimap3.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap3.png" alt="본문 이미지" style="width: 30%;" />
 
 
 ▶ 층계 구분하기
@@ -264,14 +264,14 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 먼저 현재 테마의 던전이 사용하는 그리드 상 한 칸의 높이를 층의 높이로 정의한 뒤, 월드 공간에서 각 룸마다 최소 층과 최대 층이 몇 층인지 계산했습니다.
 
-<img src="img/project/FRankSurvivor/minimap4.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/minimap4.png" alt="본문 이미지" style="width: 40%;" />
 
 이후 미니맵을 그릴 때 로컬 플레이어의 무릎 정도의 높이를 기준으로 층을 판별한 뒤 해당 층에 존재하는 룸들을 추려 그리도록 했습니다. 이 때 각 층에서 해당 룸을 그릴 지 말 지, 그려져야 한다면 어떤 모양으로 그릴 지 커스텀이 가능하게 하여 유연성을 제공하였습니다.
 
 
 최종적으로 후처리를 입히고 룸 아이콘이나 트래킹할 액터의 아이콘을 붙여 완성한 미니맵의 모습입니다.
 
-<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="width: 30%;" />
 `,
             buttons: [
               {
@@ -288,11 +288,11 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 그런데 Details 패널의 기본 레이아웃에선 프로퍼티가 행마다 하나씩 놓이고, 배열은 인덱스를 각각 눌러 하위 섹션을 열어야 했기 때문에 한 눈에 현황을 파악하기가 힘들었습니다. 
 
-<img src="img/project/FRankSurvivor/detail1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/detail1.png" alt="본문 이미지" style="width: 60%;" />
 
 그래서 에디터 편집용 모듈을 추가하고 FPropertyEditorModule에 커스텀 프로퍼티 레이아웃을 추가하여 모든 프로퍼티를 인덱스 헤더의 ValueContent에 나열하도록 수정하였습니다.
 
-<img src="img/project/FRankSurvivor/details2.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/details2.png" alt="본문 이미지" style="width: 60%;" />
 
 이를 통해 구성 현황을 한 눈에 파악하며 밸런스를 맞춰 옵션을 변경하기가 매우 편리해질 수 있었습니다.
 `,
@@ -321,14 +321,14 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 문제는 캐릭터에 Dissolving 효과같은 이펙트를 입힐 때도 생겼습니다. 메타휴먼은 고퀄리티의 모듈형 캐릭터이기 때문에 하나의 캐릭터를 렌더링하는데 수 십가지의 머터리얼을 사용합니다. 그런데 점진적인 투명화와 같은 효과를 위해선 이 마터리얼들을 전부 다 수정해야 했습니다.
 
-<img src="img/project/FRankSurvivor/metahuman1.png" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/metahuman1.png" alt="본문 이미지" style="width: 60%;" />
 (총 21개의 머터리얼을 수정하고 110개의 머터리얼 인스턴스를 만들어야 했습니다.)
 
 머터리얼은 Masked 블렌드와 Transcluent 블렌드로 나뉘어져 있었기 때문에 두 가지 버전의 머터리얼 함수를 작성해 사용했습니다. 그런데 UGroomComponent의 머터리얼들은 아예 Opacity를 적용할 수가 없었습니다. 찾아본 결과 언리얼 개발자의 답변에서 UGroomComponent의 경우 내부적으로 Hair Shading Model을 사용해 완전히 다른 방식으로 렌더링되기 때문에 머터리얼로 Opacity Mask를 사용할 수 없다는 사실을 알 수 있었습니다.
 
 따라서 헤어 메쉬의 경우 색만 변화시킨 뒤 적당한 타이밍에 Visibility를 끄는 방법을 선택했습니다.
 
-<img src="img/project/FRankSurvivor/5.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/5.gif" alt="본문 이미지" style="width: 30%;" />
 `,
 			      buttons: [
               {
@@ -349,7 +349,7 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.
 
-<img src="img/project/FRankSurvivor/SwapTools.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/SwapTools.gif" alt="본문 이미지" style="width: 30%;" />
 `,
             buttons: [
               {
@@ -368,7 +368,7 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 레벨이 어두운 경우 플레이어가 무엇과 상호작용할 수 있는지 알기 어려울 수 있으므로, 플레이어의 주변 반경에 들어온 상호작용 가능한 액터에 부드러운 아웃라인을 입혔습니다.
 스텐실 버퍼에 일정 구간을 사용해 현재 Opcacity를 전달하는 방식으로, 실제 아웃라인 애니메이션은 상호작용 컴포넌트가 처리합니다.
 
-<img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" style="width: 30%;" />
 `,
             buttons: [
               {
@@ -384,7 +384,7 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
             content: `언리얼의 카오스 디스트럭션을 사용해 부술 수 있는 오브젝트를 만들었습니다.
 여기서도 역시 GAS를 사용하여 프롭에 체력 어트리뷰트를 부착하고 플레이어의 공격에 의해 체력이 깎이면 카오스 필드를 작동시켜 프롭을 부수게 됩니다.
 
-<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="width: 30%;" />
 `,
             buttons: [
               {
@@ -404,7 +404,7 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 사운드 + 나이아가라 이펙트 + 카메라 쉐이크 + 비네트 매니저를 조합하여 보다 실감나고 타격감 있는 시각적 효과를 보여줄 수 있었습니다.
 
-<img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" />
+<img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" style="width: 30%;" />
 `,
           },
           {
@@ -543,9 +543,9 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
             content: `엔진 사이드에선 물리, UI, 텍스트, 에디터 툴, 디버깅과 성능 개선을 수행하였습니다.
 게임 컨텐츠 사이드에선 컨텐츠 전반을 구현하였습니다.
 
-<img src="img/project/PotionAtlier/Work/EngineSide.png" alt="게임 이미지" />
+<img src="img/project/PotionAtlier/Work/EngineSide.png" alt="게임 이미지" style="width: 60%;" />
 
-<img src="img/project/PotionAtlier/Work/ClientSide.png" alt="게임 이미지" />
+<img src="img/project/PotionAtlier/Work/ClientSide.png" alt="게임 이미지" style="width: 75%;" />
 `,
           }
         ],
@@ -562,17 +562,17 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 
 물리 컴포넌트가 부착된 액터는 PhysX Scene의 피직스 액터와 1:1로 대응되고 관리됩니다. 컴포넌트가 동적으로, 순서에 상관 없이 부착될 수 있어야 했기에 다음과 같이 두 가지 경로로 피직스 신에 대응하는 피직스 액터가 생성되도록 했습니다.
 
-<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" style="width: 60%;" />
 
 콜라이더에는 정육면체, 캡슐, 스페어 콜라이더와 메쉬의 정점 데이터를 사용한 메쉬 콜라이더를 구현하였습니다. 콜라이더의 초기 사이즈는 메쉬의 바운드 박스를 기준으로 정해지지만 원하는 대로 크기, 앵커 등을 자유롭게 바꿀 수 있습니다.
 
-<img src="img/project/PotionAtlier/BoxCollider.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/BoxCollider.gif" alt="본문 이미지" style="width: 35%;" />
 
 모든 액터는 물리 레이어를 설정할 수 있으며, 두 레이어 사이의 물리 반응을 블록(밀어내기), 오버랩(이벤트만 발생), 무시 중 하나로 설정할 수 있습니다.
 
 플레이어의 상호작용에는 Sweep 쿼리를 사용합니다. 반응성을 개선하기 위해 레이캐스트가 아닌 적당한 크기의 스페어와 오버랩된 가장 가까운 기물에 대해 상호작용 함수를 호출하도록 했습니다.
 
-<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" style="width: 35%;" />
 
 Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭터를 손쉽게 이동시킬 수 있습니다. 착지상태 판단, 이동, 점프, 경사면을 부드럽게 올라가고 내려가는 기능 등을 구현하였습니다.
 `,
@@ -583,7 +583,7 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
             content: `UI 이미지의 둥근 모서리를 처리하기 위해 커스텀 스텐실 버퍼를 통한 UI 마스킹을 구현하였습니다.
 마스크로 사용될 텍스쳐는 렌더링되는 대신 스텐실 버퍼에 자신의 마스크 ID를 비트플래그로 기록하며, 이후 마스크 위에 그려지도록 설정된 텍스쳐는 스텐실 버퍼에 지정된 비트 플래그가 켜져있는 경우에만 그려집니다.
 
-<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" style="width: 30%;" />
 `,
           },
           {
@@ -595,7 +595,7 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
 
 회전은 캐릭터의 전방 벡터와 이동 방향 벡터 간의 외적으로 시계 방향과 반시계 방향 중 각도가 더 작은 쪽으로 회전합니다. 대쉬를 사용하면 그렇게 얻어진 최종 이동량에 가중치를 곱하는 방식으로 속도가 빨라지게 됩니다.
 
-<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" style="width: 30%;" />
 `,
           },
           {
@@ -607,7 +607,7 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
 
 아쉬운 것은 시간이 부족해 내부 판별을 단순 순회로 진행했다는 것입니다. 뷰포트를 나누어 쿼드 트리를 활용한다면 훨씬 효율적으로 검사를 수행할 수 있을 듯 합니다.
 
-<img src="img/project/PotionAtlier/uiorder.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/uiorder.png" alt="본문 이미지" style="width: 40%;" />
 `,
           },
           {
@@ -619,7 +619,7 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
 
 튜토리얼 매니저는 연관된 액터에 콜백 함수를 등록해놓고, 이벤트가 발생하길 기다립니다. 필요하다면 연관된 액터가 노출하는 함수를 호출해 기능 일부를 켜고 끌 수 있도록 되어있습니다.
 
-<img src="img/project/PotionAtlier/tuto.gif" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/tuto.gif" alt="본문 이미지" style="width: 50%;" />
 `,
           }
         ],
@@ -640,7 +640,7 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
 
 그러던 중 SDF(Signed Distance Field)에 대해 알게 되었습니다. SDF는 픽셀마다 색이 칠해지는 경계로부터 얼만큼 떨어져있는지 거리를 기록해둔 특수한 텍스쳐로, 테두리 바로 위를 0.5로 기준으로 삼는다면 색이 칠해지는 영역의 내부는 0~0.5, 외부는 0.5~1 사이의 거리값을 가지게 됩니다.
 
-<img src="img/project/PotionAtlier/7.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/7.png" alt="본문 이미지" style="width: 40%;" />
 
 일반적으로 텍스트 그리프 렌더링, 데칼 텍스쳐 렌더링 등 해상도나 거리가 달라져도 부드러운 테두리를 렌더링할 필요가 있을 때 사용하지만, UI 마스킹에도 사용할 수 있겠다는 생각이 들었고 찾아본 결과 이미 사용되고 있는 방법이었습니다.
 SDF 텍스쳐를 마스크로 사용하면 해당 텍스쳐의 거리 값을 약간 조절하여 그려지는 픽셀의 알파값으로 사용할 수 있습니다. 이렇게 되면 추가적인 데이터가 필요 없이 부드러운 경계면을 가진 마스킹을 구현할 수 있을 듯 합니다.
@@ -706,7 +706,7 @@ class SomeComponent : public Component
 </code-block>
 다음은 자체 엔진에 존재하는 컴포넌트들을 컴포넌트 레지스트리에 등록하여 출력한 모습입니다.
 
-<img src="img/project/PotionAtlier/8.png" alt="본문 이미지" />
+<img src="img/project/PotionAtlier/8.png" alt="본문 이미지" style="width: 20%;" />
 `,
           }
         ],
@@ -765,7 +765,7 @@ class SomeComponent : public Component
 ▶ 기타 컨텐츠
 
 
-<img src="img/project/RailwayToHell/3.png" alt="게임 이미지" />
+<img src="img/project/RailwayToHell/3.png" alt="게임 이미지" style="width: 80%;" />
 `,
           }
         ],
@@ -793,7 +793,7 @@ class SomeComponent : public Component
 커맨드 패턴을 활용하여 게임의 메인 플로우를 매우 직관적이고 쉽게 작성할 수 있었습니다.
 개략적인 흐름도는 다음과 같습니다.
 
-<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" />
+<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" style="width: 50%;" />
 `,
           },
           {
@@ -813,7 +813,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `튜토리얼 메세지와 플레이어의 말풍선의 배경 이미지는 텍스트의 길이에 따라 적당하게 사이즈가 조절되는 것이 좋습니다.
 이를 위해 9-Sliced 스프라이트를 구현했습니다. 좌, 우, 상, 하 영역의 비율을 지정하여 이미지를 9등분하고, 가로 세로로 이미지의 크기를 변경할 경우 아래 그림과 같이 중간 부분만 늘려서 이미지 테두리의 품질 저하를 줄이며 렌더링하는 방식입니다.
 
-<img src="img/project/RailwayToHell/5.png" alt="본문 이미지" />
+<img src="img/project/RailwayToHell/5.png" alt="본문 이미지" style="width: 40%;" />
 `,
           }
         ],
@@ -867,7 +867,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             title: 'SpringJoint로 탄성 구현하기',
             content: `오브젝트에 여러 개의 본을 심고, 본마다 Spring joint와 Circle collider를 부착하여 탄성을 구현했습니다.
 
-<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" />
+<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" style="width: 40%;" />
 `,
           },
           {
@@ -915,7 +915,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `실시간 라인 콜라이더 생성을 활용한 퍼즐 게임입니다.
 유저가 그림을 그리면 즉시 폴리곤 콜라이더가 생성되며, 선의 위 또는 선으로 둘러쌓인 도형의 내부에 Hinge Joint를 추가하여 다양한 관절 물리를 구현할 수 있습니다.
 
-<img src="img/project/DrawingPuzzle/1.png" alt="게임 이미지" />
+<img src="img/project/DrawingPuzzle/1.png" alt="게임 이미지" style="width: 80%;" />
 `,
           }
         ],
@@ -951,7 +951,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `이외에도 라인 오브젝트나 힌지를 제거하는 지우개(이 역시 내부 판별을 통해 라인 오브젝트의 내부 공간인지 판별할 수 있습니다), 힘을 가하는 바람 등을 구현하였습니다.
 또 라인 오브젝트를 그린 뒤 마우스를 떼지 않고 대기하면 오브젝트의 무게가 높아지는 기능도 구현하였습니다.
 
-<img src="img/project/DrawingPuzzle/2.png" alt="게임 이미지" />
+<img src="img/project/DrawingPuzzle/2.png" alt="게임 이미지" style="width: 80%;" />
 `,
           }
         ],
@@ -1006,7 +1006,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 ▶ 튜토리얼 제외 컨텐츠 전반
 
 
-<img src="img/project/Aphotica/2.png" alt="게임 이미지" />
+<img src="img/project/Aphotica/2.png" alt="게임 이미지" style="width: 80%;" />
 `,
           }
         ],
@@ -1030,7 +1030,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 기획에서 충돌 타이밍을 세부 조정하기를 원했기 때문에, 블록의 크기를 맵 그리드 한 칸보다 크게 설정하고, 한 영역을 9등분하여 중심을 지정할 수 있도록 했습니다.
 
-<img src="img/project/Aphotica/3.gif" alt="게임 이미지" />
+<img src="img/project/Aphotica/3.gif" alt="게임 이미지" style="width: 40%;" />
 `,
           },
           {
@@ -1047,7 +1047,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 
 따라서 더 자연스러운 느낌을 주기 위해 얼마 후에 충돌한다는 정보를 미리 구해서 애니메이션을 예측 실행했습니다. 이 때 부드러운 애니메이션 전환을 위해선 우선 이전의 애니메이션 프레임이 모두 끝날 때까지 기다렸다가 실행해야 했고, 충돌 애니메이션이 실행될 수 있는 간격을 계산해 레이캐스팅을 통해 충돌하기 전에 애니메이션을 재생하도록 했습니다.
 
-<img src="img/project/Aphotica/4.gif" alt="게임 이미지" />
+<img src="img/project/Aphotica/4.gif" alt="게임 이미지" style="width: 30%;" />
 
 현재 프레임의 위치에 따라 캐스팅되는 레이의 길이가 달라집니다.`,
           }
@@ -1102,7 +1102,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `배경, UI 프레임, 아이콘, 음악은 오픈소스를 사용했으며, 그 외에는 모두 혼자 제작했습니다.
 
 
-<img src="img/project/EmojiTowerDefense/2.png" alt="게임 이미지" />
+<img src="img/project/EmojiTowerDefense/2.png" alt="게임 이미지" style="width: 80%;" />
 `,
           }
         ],
@@ -1125,7 +1125,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             title: '적의 위치 예측하여 사격하기',
             content: `앞서 선형보간을 통해 이동시키는 것의 장점으로 위치 예측이 쉽다는 것을 들었습니다. 실제로 거너와 같은 특정 타워는 자신이 발사한 총알의 속도를 고려하여 자신이 타겟팅한 적의 이동을 예측해 해당 방향으로 사격을 가해야 합니다.
 
-<img src="img/project/EmojiTowerDefense/3.png" alt="게임 이미지" />
+<img src="img/project/EmojiTowerDefense/3.png" alt="게임 이미지" style="width: 30%;" />
 
 이 때 사격을 시작할 때의 거리와 총알의 속도를 계산하면 도달까지의 시간을 측정할 수 있고, 선형보간을 통해 이동하므로 그 시간만큼 지났을 때 적이 어디에 가있을지 예측하는 것이 매우 쉽습니다. 거너는 이런 방식으로 적의 현재 위치가 아닌 미래의 위치에 사격을 가합니다.
 물론 경로의 모양이 복잡하면 이런 단순한 계산은 정확성이 떨어질 수밖에 없습니다.
@@ -1199,7 +1199,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `스프라이트와 음악은 오픈소스를 사용하였으며 그 외에는 혼자 만들었습니다.
 
 
-<img src="img/project/JumpingFrog/3.png" alt="게임 이미지" />
+<img src="img/project/JumpingFrog/3.png" alt="게임 이미지" style="width: 60%;" />
 `,
           }
         ],
@@ -1223,7 +1223,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             content: `에디터가 없었기 때문에 모든 오브젝트는 2차원 배열을 타일셋으로 활용하여 배치되었습니다.
 1x1 크기의 블록들을 각각 오브젝트로 배치하여 맵을 구성할 경우 비용이 너무 커지므로, 맵 타일셋에서 같은 타입이 연속되는 경우 하나의 길거나 큰(1 x n 또는 n x n) 오브젝트로 배치하고, 스프라이트를 반복해 그리는 방식을 사용했습니다.
 
-<img src="img/project/JumpingFrog/4.png" alt="게임 이미지" />
+<img src="img/project/JumpingFrog/4.png" alt="게임 이미지" style="width: 50%;" />
 `,
           },
           {
