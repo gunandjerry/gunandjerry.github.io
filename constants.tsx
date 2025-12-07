@@ -20,7 +20,7 @@ export const SECTION_IDS = {
 export const PERSONAL_INFO = {
   name: "이건제",
   name_eng: "Geonje Lee",
-  title: "게임 개발자(클라이언트) 지망생",
+  title: "신입 클라이언트 개발자",
   birthDate: "1998.12.06",
   education: [
     "한국콘텐츠진흥원 게임인재원 6기 프로그래밍 학과 (2024.03 ~ )",
