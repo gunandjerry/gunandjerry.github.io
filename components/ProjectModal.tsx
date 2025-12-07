@@ -204,7 +204,17 @@ function ProjectModal({ project, onClose }) {
         return (
           <div 
             key={uniqueKey} 
-            className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base"
+            className="text-slate-300 leading-relaxed whitespace-pre-wrap text-sm sm:text-base
+            [&_a]:text-sky-300
+            [&_a:hover]:text-sky-500
+            [&_a]:transition-colors
+            [&_img]:block
+            [&_img]:w-auto
+            [&_img]:h-auto
+            [&_img]:mt-0
+            [&_img]:mb-0
+            [&_img]:rounded-md
+            [&_img]:shadow-md"
             dangerouslySetInnerHTML={{ __html: part.content }} 
           />
         );
@@ -213,6 +223,32 @@ function ProjectModal({ project, onClose }) {
     });
   };
 
+  const renderButtons = (buttons) => {
+    if (!buttons || buttons.length === 0) return null;
+    return (
+      <div className="flex flex-wrap gap-3 mt-4">
+        {buttons.map((btn, idx) => (
+          <a
+            key={idx}
+            href={btn.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`inline-flex items-center font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base ${
+              btn.type === 'live' ? 'bg-teal-500 hover:bg-teal-600 text-white' :
+              btn.type === 'blog' ? 'bg-sky-600 hover:bg-sky-700 text-white' :
+              'bg-slate-700 hover:bg-slate-600 text-slate-100'
+            }`}
+          >
+            {btn.type === 'github' && <GitHubIcon className="w-5 h-5 mr-2" />}
+            {btn.type === 'live' && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
+            {btn.type === 'blog' && <DocumentTextIcon className="w-5 h-5 mr-2" />}
+            {!['github', 'live', 'blog'].includes(btn.type) && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
+            {btn.text}
+          </a>
+        ))}
+      </div>
+    );
+  };
 
   return (
     <div
@@ -291,17 +327,12 @@ function ProjectModal({ project, onClose }) {
                       {section.title}
                     </h3>
                     {section.content && renderParsedContent(section.content, `section-${section.id}`)}
-                    {section.button && (
-                        <a
-                          href={section.button.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center mt-4 bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
-                        >
-                          <ExternalLinkIcon className="w-5 h-5 mr-2" />
-                          {section.button.text}
-                        </a>
-                      )}
+                    
+                    {/* Render multiple buttons for section */}
+                    {section.buttons && renderButtons(section.buttons)}
+                    {/* Backward compatibility for single button */}
+                    {section.button && !section.buttons && renderButtons([section.button])}
+
                   </section>
                   
                   {section.subSections && section.subSections.length > 0 && (
@@ -312,17 +343,12 @@ function ProjectModal({ project, onClose }) {
                             {subSection.title}
                           </h4>
                           {subSection.content && renderParsedContent(subSection.content, `subsection-${subSection.id}`)}
-                          {subSection.button && (
-                            <a
-                              href={subSection.button.link}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="inline-flex items-center mt-4 bg-slate-700 hover:bg-slate-600 text-slate-100 font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
-                            >
-                              <ExternalLinkIcon className="w-5 h-5 mr-2" />
-                              {subSection.button.text}
-                            </a>
-                          )}
+                          
+                          {/* Render multiple buttons for subSection */}
+                          {subSection.buttons && renderButtons(subSection.buttons)}
+                          {/* Backward compatibility for single button */}
+                          {subSection.button && !subSection.buttons && renderButtons([subSection.button])}
+
                           <p><br></br></p>
                         </section>
                       ))}
@@ -349,9 +375,33 @@ function ProjectModal({ project, onClose }) {
               </div>
             </div>
 
-            {(project.sourceLink || project.liveLink || project.blogLink) && (
-              <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4 border-t border-slate-700 mt-6">
-                {project.sourceLink && (
+            {/* Render Footer Links (supports multiple) */}
+            {(project.links && project.links.length > 0) || project.sourceLink || project.liveLink || project.blogLink ? (
+              <div className="flex flex-col sm:flex-row flex-wrap gap-3 pt-4 border-t border-slate-700 mt-6">
+                
+                {/* New links array support */}
+                {project.links && project.links.map((link, idx) => (
+                  <a
+                    key={`link-${idx}`}
+                    href={link.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`inline-flex items-center justify-center font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base ${
+                        link.type === 'live' ? 'bg-teal-500 hover:bg-teal-600 text-white' :
+                        link.type === 'blog' ? 'bg-sky-600 hover:bg-sky-700 text-white' :
+                        'bg-slate-700 hover:bg-slate-600 text-slate-100'
+                    }`}
+                  >
+                     {link.type === 'github' && <GitHubIcon className="w-5 h-5 mr-2" />}
+                     {link.type === 'live' && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
+                     {link.type === 'blog' && <DocumentTextIcon className="w-5 h-5 mr-2" />}
+                     {!['github', 'live', 'blog'].includes(link.type) && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
+                    {link.text}
+                  </a>
+                ))}
+
+                {/* Legacy support for sourceLink, liveLink, blogLink if links array is not used for them */}
+                {!project.links && project.sourceLink && (
                   <a
                     href={project.sourceLink}
                     target="_blank"
@@ -362,7 +412,7 @@ function ProjectModal({ project, onClose }) {
                     소스 코드
                   </a>
                 )}
-                {project.liveLink && (
+                {!project.links && project.liveLink && (
                   <a
                     href={project.liveLink}
                     target="_blank"
@@ -373,7 +423,7 @@ function ProjectModal({ project, onClose }) {
                     영상 보러가기 (유튜브)
                   </a>
                 )}
-                {project.blogLink && (
+                {!project.links && project.blogLink && (
                   <a
                     href={project.blogLink}
                     target="_blank"
@@ -385,7 +435,8 @@ function ProjectModal({ project, onClose }) {
                   </a>
                 )}
               </div>
-            )}
+            ) : null}
+
           </div>
         </div>
       </div>
