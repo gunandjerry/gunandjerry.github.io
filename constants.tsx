@@ -22,10 +22,12 @@ export const PERSONAL_INFO = {
   name_eng: "Geonje Lee",
   title: "신입 클라이언트 개발자",
   birthDate: "1998.12.06",
+  academic: [
+    "서울과학기술대학교 행정학 학사 (2017.03 - 2023.08)",
+    "건국대학교 사범대학 부속 고등학교 졸업 (2014.03 ~ 2017.02)"
+  ],
   education: [
     "한국콘텐츠진흥원 게임인재원 6기 프로그래밍 학과 (2024.03 ~ )",
-    "서울과학기술대학교 행정학 학사 (2017.03 - 2023.08)",
-    // "건국대학교 사범대학 부속 고등학교 졸업 (2014.03 ~ 2017.02)"
   ],
   phone: "010-2870-5895",
   email: "gunandjerry@gmail.com",
@@ -57,222 +59,149 @@ export const PROJECTS_DATA = [
       {
         id: 'p_fh_overview',
         title: '프로젝트 개요',
-        content: `제목: F급 헌터 생존기 / F Rank Survivor
-장르: 리썰라이크, 생존, 어드벤처
-개발기간: 약 6개월 (2025년 4월 말 ~ 2025년 11월 초)
-개발인원: 개발 4인 / 아트 2인 / 기획 3인
-사용엔진: 언리얼 엔진
-플랫폼: PC, Window
+        content: `<table>
+  <tr>
+    <td>제작기간</td>
+    <td>7개월</td>
+  </tr>
+  <tr>
+    <td>제작인원</td>
+    <td>개발 4인 / 아트 1인 / 기획 2인</td>
+  </tr>
+  <tr>
+    <td>사용엔진</td>
+    <td>언리얼 엔진 5</td>
+  </tr>
+  <tr>
+    <td>맡은 역할</td>
+    <td>프로그래밍 팀장, 컨텐츠 개발 등</td>
+  </tr>
+</table>
 `,
-        subSections: [
-          // {
-          //   id: 'p_fh_overview_live',
-          //   title: '플레이 영상',
-          //   content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          // },
-          {
-            id: 'p_fh_overview_desc',
-            title: '게임 소개',
-            content: `리썰컴퍼니 스타일의 협동 생존 게임입니다. 플레이어는 던전 안으로 들어가 크리쳐들을 피해다니며 마력석을 채굴한 뒤, 이를 돈으로 바꿔 상납금을 만들어야 합니다.
-
-던전은 절차적으로 생성되어 매번 새로운 경험을 주며, 다양한 아이템과 크리쳐가 존재합니다. 플레이어는 스탯을 성장시키거나 특수능력을 사용할 수도 있습니다.
-
-모든 시스템은 언리얼의 Gameplay Ability System을 기반으로 구축되어 있어, 새로운 스탯이나 행동, 효과를 추가하기 매우 용이한 구조로 되어있습니다.`,
-          },
-          {
-            id: 'p_fh_overview_role',
-            title: '맡은 역할',
-            content: `프로그래밍 파트 팀장으로서의 역할을 수행하며 팀을 이끌었습니다.
-엔진 사이드에선 언리얼 에디터를 편집하여 기획 파트에서 사용하기 편리하게 디테일 창을 수정하거나, 새 에셋을 에셋 메뉴에 추가했습니다.
-게임 컨텐츠 사이드에선 던전 생성, 플레이어, FX·사운드 및 GAS 시스템을 사용한 기반과 구조를 작성하고 오브젝트 로직의 대부분을 작성하였으며 디버깅 작업 역시 주도하였습니다.
-
-<img src="img/project/FRankSurvivor/work1.png" alt="게임 이미지" style="width: 70%;" />
-
-<img src="img/project/FRankSurvivor/work2.png" alt="게임 이미지" style="width: 75%;" />
-
-<img src="img/project/FRankSurvivor/work3.png" alt="게임 이미지" style="width: 75%;" />
-`,
-          }
-        ],
         showDivider: true,
+        // buttons: [
+        //       {
+        //           text: '영상 보러가기',
+        //           link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%8F%99%EC%A0%81-%EC%83%9D%EC%84%B1-%EB%AF%B8%EB%8B%88%EB%A7%B5.html',
+        //           type: 'live'
+        //       }
+        // ],
       },
       {
         id: 'p_fh_highlight',
-        title: '주요 구현 과제',
+        title: '주요 구현 내용',
         subSections: [
           {
             id: 'p_fh_highlight_gas',
-            title: 'GAS 기반의 게임 시스템',
-            content: `언리얼의 GAS를 공부한 뒤, 이 게임에 반드시 필요한 시스템이라고 생각되어 사용할 것을 적극적으로 주장하였습니다.
-GAS가 추구하는 철학과 구조가 세계적인 개발자들이 내놓은 모범적인 답안이라고 느껴졌기 때문입니다. 저희 게임은 육성 요소가 있기에 다양한 어트리뷰트들을 체계적으로 관리해야 했고 여러 아이템, 특수능력마다 고유한 로직을 구현해야 했기에 개별 로직의 디커플링을 확장에 용이한 구조 위에서 확보할 필요가 있었습니다.
-
-결론부터 말하자면 GAS를 사용한 건 이번 프로젝트에서 최고의 결정이었다고 생각합니다. 설계 단계에서의 시행착오를 크게 줄여 아낀 시간을 컨텐츠 개발에 투입할 수 있었고, GAS가 제시하는 큰 틀 위에서 어떻게 구조를 설계해야 확장과 유지보수에 용이한지 정말 많은 것을 배울 수 있었습니다.
+            title: 'GAS 기반 시스템',
+            content: `저희 게임에는 육성 요소가 있고 여러 아이템, 특수능력마다 <b>의존성이 분리된</b> 독립적인 로직을 구현할 필요가 있어 Gameplay Ability System을 적극적으로 사용하였습니다.
 
 
 ▶ 사례1: 효율적인 태그 구조
 
-GameplayTag는 저희 게임의 산소같은 역할을 합니다. 캐릭터의 현재 상태를 나타내는 건 물론 재생할 VFX·SFX를 선택하고 동작시킬 어빌리티를 선택하는 데에도 사용됩니다.
-가장 중요한 건 <a target="_blank" href="https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84/%ED%8C%81%EA%B3%BC-%EB%85%B8%ED%95%98%EC%9A%B0/%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EA%B2%8C%EC%9E%84%ED%94%8C%EB%A0%88%EC%9D%B4-%ED%83%9C%EA%B7%B8-%EA%B5%AC%EC%A1%B0.html">태그의 트리 구조를 효율적으로 설계하는 것</a>이었습니다. 특히 캐릭터의 상태를 나타낼 때 중요했는데, 예컨대 플레이어의 행동 불능은 여러 가지 이유로 나타날 수 있고, 여러 가지 종류(제약되는 행동에 따라)로 나타날 수 있었습니다. 덫 함정에 걸리게 되면 움직이는 것만 차단해야 하고, 스턴 상태가 되었을 땐 일정 시간동안 모든 행동이 차단되어야 했습니다.
+GameplayTag를 통해 플레이어의 상태를 나타낼 때 어떻게 하면 의존성을 줄일 수 있을지 고민했습니다.
 
-각각의 행동들을 모두 계층성이 없는 개별 태그로 만들어 사용한다면 스턴 상태 GE에서 부착해야 하는 태그의 양은 수 십개에 달하고, 새로운 행동이 추가되면 하나가 더 늘어나야 했을 것입니다. 대신 저는 아래와 같은 계층 구조를 만들어 'Uncapable' 태그만을 스턴 상태 GE가 부착하도록 했습니다. 개별 GA의 호출은 BlockTag의 조상에 대해서도 방지되기 때문에 새로운 행동이 추가되어도, 예컨대 'Player->Action->PlayEmote'와 'Player->State->Uncapable->Unactionable->BlockEmote'가 추가되어도 스턴 상태 GE를 편집하지 않아도 됐습니다.
+예컨대 플레이어의 특정한 행동을 막는 각각의 태그들을 수평적으로 늘어놓고 운용하게 되면 이들을 모두 일일이 관리해줘야 해 유지보수가 어려워질 수밖에 없었습니다.
+
+대신 <b>상위 태그가 하위 태그의 개념을 포괄하는 계층 구조</b>를 설계하여 사용할 태그의 레벨을 선택할 수 있게 함으로써 의존성을 훨씬 줄일 수 있었습니다.
 
 <img src="img/project/FRankSurvivor/gas1.png" alt="본문 이미지" style="width: 80%;" />
 
+▶ 사례2: 자동으로 계산되는 스테이터스
 
-▶ 사례2: 유연하고 범용적인 어트리뷰트
+플레이어의 스테이터스는 (1) 기반이 되는 1차 스탯과 (2) 1차 스탯을 계산식에 사용하는 2차 스탯으로 나뉩니다.
+처음엔 어트리뷰트 세트의 소스코드에서 1차 스탯이 변할 때 2차 스탯을 갱신하는 방법을 사용했으나, 얼마 안 가 다음과 같은 문제가 발생했습니다.
 
-플레이어의 스테이터스에는 두 가지 종류가 있습니다. 첫째는 기본이 되는 5가지 주요 능력치이고, 둘째는 주요 능력치를 계산식에 사용하여 계산되어지는 구체적인 스펙(Derived attribute)입니다. 예컨대 민첩성(1)이 오르면 이동속도(2)가 상승하고, 힘(1)이 오르면 주먹데미지(2)와 패널티 없이 소지 가능한 무게(2)가 올라야 했습니다.
+1. 기획에서 2차 스탯의 계산식을 바꿔가며 테스트하기 어려움
+2. 어트리뷰트 세트 클래스가 비대해져 유지보수가 어려워짐
 
-처음엔 코드상에서 주요 능력치가 변할 때 연관된 모든 Derived Attribute 값을 갱신하는 방식으로 구현하였는데, 얼마 안 가 다음과 같은 문제가 발생했습니다.
-1. 기획에서 Derived Attribute의 계산식을 조금씩 바꿔가며 테스트하고 싶다는 요청이 들어왔습니다.
-2. 어트리뷰트 세트 클래스의 코드가 비대해져 유지보수가 점점 어려워지면서 새로운 스탯이 추가되기라도 하면 대대적인 공사가 필요했습니다.
-
-방법을 찾아보던 중 GAS의 Mod Magnitude Calculation에 대해 알게 되었습니다. GE에서 어트리뷰트의 갱신 모디파이어로 MMC를 지정하게 되면 1차 스탯의 변화를 추적하여 계산된 값을 반환하게 되는데, 이를 통해 Derived Attribute들을 갱신시키는 영구적인 GE를 적용하는 방식을 사용하기로 결정했습니다.
-
-먼저 어트리뷰트마다 초기화 방식을 고를 수 있게 하고, Derived Attribute의 경우 플레이어에게 상시 적용되는 GE를 거쳐 실시간으로 갱신됩니다.
-
-<img src="img/project/FRankSurvivor/gas2.png" alt="본문 이미지" style="width: 80%;" />
-
-이렇게 방식을 바꾸자 앞서 말한 두 가지 문제가 모두 해결되었습니다. 모든 계산식이 블루프린트로 작성되므로 기획에서도 부담 없이 식을 고쳐 테스트해볼 수 있었고, Derived Attribute마다 각각 MMC 블루프린트를 생성하여 추가만 해주면 되기 때문에 코드를 고칠 일도 없어졌습니다.
+따라서 기존의 로직 대신 1차 스탯의 변화를 추적하는 <b>Mod Magnitude Calculation</b>을 사용해 2차 스탯을 갱신시키는 Infinite GE를 사용하였습니다.
+이를 통해 각각의 2차 스탯 계산식을 분리할 수 있었음은 물론 블루프린트로 기획에서도 계산식을 쉽게 수정하며 테스트할 수 있었습니다.
 
 
-▶ 사례3: 독립적으로 실행되는 로직들
+▶ 사례3: 디커플링된 로직들
 
-클래스와 로직의 의존성 문제는 이전까지의 프로젝트에서 가장 큰 골칫거리였습니다. 그러나 이 프로젝트에선 GAS를 사용하는 것만으로도 그런 고민에서 상당 부분 해방될 수 있었는데, Gameplay Ability 자체가 로직의 철저한 분리를 확보해줄 것을 전제로, 또 그럴 수 있는 용이한 구조로 작성되어 있었기 때문입니다.
+GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있었습니다.
+먼저 플레이어의 행동들은 모두 개별적인 Gameplay Ability로 작성하였으며, 이 때 다음의 원칙을 지켰습니다.
 
-그렇게 GAS의 도움을 받아 다음의 원칙을 지켜가며 로직을 작성한 결과 확장과 유지보수가 굉장히 편리해질 수 있었습니다.
-- 동작의 주체(AvatarActor)로부터 호출되어야 하는 로직들은 개별 기능 단위로 최대한 분리시킨다. (여러 종류의 GA에서 범용적으로 사용하기 위해)
-- GA의 발동에 필요한 데이터들은 최대한 발동 시점에 복사 또는 const 참조로 GA에 전달하여 사용한다. (read only 속성을 유지하여 의존성이 없는 설계를 유도)
-- InputID 또는 TriggerTag를 사용해 GA를 발동시켜 발동 주체가 개별 GA에 의존하지 않게 한다.
+1. 동작의 주체로부터 호출되어야 하는 로직들은 기능 단위로 최대한 분리 / 여러 종류의 GA에서 범용적으로 사용할 수 있도록 함.
+2. GA의 발동에 필요한 데이터는 최대한 발동 시점에 복사 또는 const 참조로 전달.
+3. InputID 또는 Trigger tag를 사용해 GA를 발동시킴으로써 발동 주체가 개별 GA에 대해 몰라도 되도록 함.
 
-또 한 가지 매우 유용했던 개념은 GameplayAbilityTask입니다. GA 내부에서 비동기적으로 별도의 로직을 만들어낼 수 있기 때문에 GA 자체의 코드도 깔끔하게 정리할 수 있었습니다.
-예컨대 플레이어가 말 크리쳐의 돌진기에 치이면 래그돌이 되어 뒤로 날아가는데, 다시 일어서기 시작하는 타이밍을 결정하기 위해 Pelvis 본의 월드 속도가 일정 수준 이하로 떨어지면 이벤트를 발생시키는 <a target="_blank" href="https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%96%B4%EB%B9%8C%EB%A6%AC%ED%8B%B0-%ED%83%9C%EC%8A%A4%ED%81%AC.html">태스크 어빌리티를 작성</a>하여 구현할 수 있었습니다.
+여기에 더해 <a target="_blank" href="https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%96%B4%EB%B9%8C%EB%A6%AC%ED%8B%B0-%ED%83%9C%EC%8A%A4%ED%81%AC.html">커스텀 GameplayAbilityTask를 작성</a>하여 GA 코드 자체도 깔끔하게 정리할 수 있었습니다.
 `,
-            buttons: [
-              {
-                  text: '블로그: 효율적인 태그 구조에 대한 공부',
-                  link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84/%ED%8C%81%EA%B3%BC-%EB%85%B8%ED%95%98%EC%9A%B0/%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EA%B2%8C%EC%9E%84%ED%94%8C%EB%A0%88%EC%9D%B4-%ED%83%9C%EA%B7%B8-%EA%B5%AC%EC%A1%B0.html',
-                  type: 'blog'
-              },
-              {
-                  text: '블로그: 커스텀 어빌리티 태스크 작성하기',
-                  link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%96%B4%EB%B9%8C%EB%A6%AC%ED%8B%B0-%ED%83%9C%EC%8A%A4%ED%81%AC.html',
-                  type: 'blog'
-              },
-            ],
+            // buttons: [
+            //   {
+            //       text: '블로그: 효율적인 태그 구조에 대한 공부',
+            //       link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84/%ED%8C%81%EA%B3%BC-%EB%85%B8%ED%95%98%EC%9A%B0/%ED%9A%A8%EC%9C%A8%EC%A0%81%EC%9D%B8-%EA%B2%8C%EC%9E%84%ED%94%8C%EB%A0%88%EC%9D%B4-%ED%83%9C%EA%B7%B8-%EA%B5%AC%EC%A1%B0.html',
+            //       type: 'blog'
+            //   },
+            //   {
+            //       text: '블로그: 커스텀 어빌리티 태스크 작성하기',
+            //       link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%BB%A4%EC%8A%A4%ED%85%80-%EC%96%B4%EB%B9%8C%EB%A6%AC%ED%8B%B0-%ED%83%9C%EC%8A%A4%ED%81%AC.html',
+            //       type: 'blog'
+            //   },
+            // ],
           },
           {
             id: 'p_fh_highlight_procedural_dungeon',
-            title: '절차적 생성: 오픈소스 라이브러리 개조하기',
-            content: `절차적으로 생성되는 던전은 이 게임의 핵심입니다. 구현의 난이도도 높고 던전의 형태 자체가 게임의 밸런스, 재미와 직결되기 때문에 가장 부담이 컸던 작업이었습니다.
+            title: '랜덤 맵 생성',
+            content: `플레이어들이 매번 새로운 구조의 던전을 경험할 수 있도록 <a target="_blank" href="https://github.com/BenPyton/ProceduralDungeon">절차적 레벨 스트리밍 오픈소스 플러그인(BenPyton/ProceduralDungeon v3.5.1/MIT License)</a>을 기반으로 랜덤하게 생성되는 던전을 구현하였습니다.
 
-처음에는 자체적으로 만들어보는 걸 고려했으나, 촉박한 시간과 기획에서 요구하는 기능 수준을 생각할 때 이는 불가능하다고 판단하였습니다. 대신 3D 그리드를 기반으로 DFS/BFS를 사용해 레벨을 이어붙이는 기능을 제공하는 오픈소스 라이브러리를 기반으로 저희 게임만의 절차적 던전 생성기를 제작하였습니다.
+플러그인이 제공하는 기능만으론 원하는 바를 구현할 수 없었기 때문에 먼저 <a target="_blank" href="https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C/procedural-dungeon-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%B6%84%EC%84%9D.html">플러그인의 구조를 분석</a>하여 기능을 확장시켰습니다.
 
+<collapsible title="오픈소스 플러그인 원본 구조 (클릭하여 펼치기)">
+<img src="img/project/FRankSurvivor/pd1.png" alt="본문 이미지" style="width: 90%;" />
+</collapsible>
+<collapsible title="확장된 구조 (클릭하여 펼치기)">
+<img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" style="width: 90%;" />
+</collapsible>
 
-▶ 오프소스 라이브러리의 구조
+추가된 주요 기능은 다음과 같습니다.
+- 방과 방 간의 연결 규칙(확률, 최소거리, 최대개수 등)에 따라 이어지도록 함.
+- 일정한 개수의 방을 반드시 생성하도록 보장하고, 이들을 던전 전체에 고르게 분포시킴.
+- 통로의 타입이 같을 경우 연결하고, 여러 디자인의 통로를 둘 수 있도록 함.
 
-라이브러리가 제공하는 기능만으론 원하는 바를 구현할 수 없었기 때문에 수정과 확장은 필수적이었습니다.
-이를 위해선 우선 라이브러리가 작동하는 구조를 자세히 분석할 필요가 있었습니다. 다음은 그렇게 분석한 작동 구조의 대략적인 플로우 차트입니다.
-
-<img src="img/project/FRankSurvivor/pd1.png" alt="본문 이미지" style="width: 75%;" />
-
-라이브러리는 크게 두 단계로 이루어지고 있었습니다.
-첫 단계(Init State)에선 DFS/BFS 방식으로 그대로 스트리밍이 가능한 레벨들의 그래프를 구성하고,
-다음 단계(Generate State)에선 여러 틱에 걸쳐 언리얼의 레벨 스트리밍으로 룸들을 실제로 로드합니다. 플로우 차트에선 최종적으로 도달하는 'Level Streaming' 노드에 해당합니다.
-
-
-▶ 라이브러리 확장하기
-
-이미 훌륭한 라이브러리였지만 저희에겐 추가적인 기능들이 필요했습니다.
-- 일정한 크기 범위의 던전이 '반드시' 생성되는 것이 보장되어야 했습니다.
-- 룸과 룸이 연결될 수 있는 조건, 통로의 타입, 특정 타입의 룸들 간의 최소 거리, 시작 룸으로부터 코어 룸의 최소 거리 등 복잡하고 세세한 연결 규칙을 지정할 수 있어야 했습니다.
-- 어떤 룸은 코어 룸으로서 반드시 일정 개수가 배치되는 것이 보장되어야 했습니다.
-- 순환(사이클) 경로는 크리쳐로부터 도망다녀야 하는 게임의 특성상 충분히 제공되어야 했습니다.
-- 던전의 구조적인 조건을 충족하고 모든 코어룸이 제대로 배치된 유효한 던전인지 검사가 필요했습니다.
-
-이런 요구사항들은 기존의 구조에선 해결할 수 없었고, 저는 아래와 같이 라이브러리를 수정 및 확장했습니다.
-
-<img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" style="width: 75%;" />
-
-추가된 노드들의 의미와 역할을 간략하게 말씀드리자면 다음과 같습니다.
-
-<img src="img/project/FRankSurvivor/pd3.png" alt="본문 이미지" style="width: 40%;" />
-
-가장 중요한 건 룸과 룸이 연결될 수 있는 규칙을 설정하는 것이었습니다.
-
-룸을 디자인하는 아트 팀원은 연결 통로의 디자인이 다양해질 수 있기를 원했고, 던전 구조의 밸런스를 담당하는 기획 팀원은 룸 타입별로 세부적인 연결 규칙(타입별 기본적인 확률부터 최소 거리, 시작 위치로부터의 거리 등)을 설정할 수 있기를 원했습니다.
-
-<img src="img/project/FRankSurvivor/pd4.png" alt="본문 이미지" style="width: 50%;" />
-
-이런 규칙들을 에셋을 통해 간단하게 수정하고 적용할 수 있도록 하여 타 파트에서 로우 로직에 대해 전혀 신경쓰지 않고 원하는 대로 수정할 수 있도록 했습니다.
-
-또, 코어룸들은 반드시 일정 개수 배치가 보장되어야 하는 동시에 던전 전체에 균등하게 분포될 필요가 있었습니다.
-
-<img src="img/project/FRankSurvivor/pd5.png" alt="본문 이미지" style="width: 25%;" />
-
-따라서 시작할 때 배치되어야 하는 코어룸들을 늘어놓고 '0 ~ 목표 던전 크기' 사이의 랜덤한 인덱스를 배정했습니다.
-이 인덱스는 코어룸의 배치 순서가 되어 던전 크기가 해당 숫자에 도달했을 때 해당 코어룸을 Ready 상태로 바꿔 다른 무엇보다 우선 배치를 시도하도록 합니다.
-
-<img src="img/project/FRankSurvivor/pd6.png" alt="본문 이미지" style="width: 40%;" />
-
-다음으로 저희 게임은 던전 안에서 크리쳐들로부터 도망다녀야 했는데, 만약 경로들이 일방향으로 막다른 길로 향하게 된다면 게임의 재미가 크게 떨어지게 됩니다.
-그래서 룸을 배치한 뒤 추가적으로 연결 가능한 방향을 순회하여 통로를 만들 수 있다면 확률적으로 통로를 생성하는 로직을 추가해 순환(사이클) 경로를 적극적으로 생성했습니다. 
-
-그래프의 구성이 끝나면 유효성을 검사하고, 만약 유효하지 않은 던전(예컨대, 목표한 크기 범위를 벗어나거나, 모든 코어룸의 배치에 실패했거나, 특정 층에 너무 많은 방이 몰려있는 등)이라고 판단된다면 재작성을 시도하게 됩니다.
-하지만 이 과정을 무한히 반복할 수는 없었고, 만약 던전의 생성 조건이 매우 까다로워 수 차례 생성에 실패하는 경우의 예외 처리가 필요했습니다.
-
-<img src="img/project/FRankSurvivor/pd7.png" alt="본문 이미지" style="width: 60%;" />
-
-따라서 저는 미리 '좋은 구조'를 만들어내는 시드값을 여러 개 기록해놓고, 일정 횟수 유효한 던전 생성에 실패했다면 대신 그 중 하나를 골라 생성하도록 했습니다.
-
-<img src="img/project/FRankSurvivor/pd8.png" alt="본문 이미지" style="width: 50%;" />
-
-마지막으로 레벨 스트리밍이 완료되면 두 차례에 걸쳐 내부 인테리어를 진행하고, 모든 절차가 완료된 클라이언트는 레디 이벤트를 발생시키는 것으로 생성 과정이 마무리됩니다.
+이후 생성된 던전 내부를 다음과 같이 꾸밈으로써 던전을 완성시킬 수 있었습니다.
+- 시작 위치로부터의 거리, 방의 사이즈에 따라 자원을 분포시킴.
+- 지정된 포인트 또는 Nav Mesh를 기준으로 랜덤한 프롭을 배치함.
+- 모든 플레이어로부터 일정 거리 떨어진 위치에 크리쳐를 스폰함.
 `,
           },
           {
             id: 'p_fh_highlight_dynamic_minimap_rendering',
-            title: '실시간으로 렌더링되는 미니맵',
+            title: '실시간 미니맵 렌더링',
             content: `던전이 절차적으로 생성되는 만큼 미니맵도 동적으로 렌더링되어야 했습니다.
+기획측에선 (1) R.E.P.O 스타일의 미니멀한 느낌을 줄 것, (2) 방문하지 않은 룸의 구조를 가릴 것, (3) 다른 플레이어를 아이콘으로 트래킹 할 것, (4) 층계를 구분할 수 있을 것을 요구했습니다.
 
-기획측의 요구는 총 네 가지로, (1) R.E.P.O 스타일의 미니멀한 미니맵이어야 하고, (2) 방문하지 않은 룸의 구조를 밝히지 말아야 하며, (3) 다른 플레이어를 아이콘으로 트래킹해야 하고, (4) 마지막으로 층계를 구분할 수 있기를 원했습니다.
 
+▶ 색상값 활용하기
 
-▶ 미니멀한 미니맵
+렌더 타겟에 그려지는 방 도식의 색상값을 이용하는 아이디어가 떠올랐고 다음의 방법으로 R.E.P.O 스타일의 추상화된 미니맵을 그릴 수 있었습니다.
 
-<img src="img/project/FRankSurvivor/minimap0.png" alt="본문 이미지" style="width: 25%;" />
-(예시사진: 게임 R.E.P.O의 미니맵 스타일)
+- 누군가 방문한 방은 고유한 R 값을 배정받음.
+- 인근 픽셀과 R값의 오차가 발생하는 곳에 아웃라인을 그림.
+- G값은 문 등 다른 요소에 대한 정보로 사용함.
 
-R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은 룸들은 하나로 뭉쳐서 외곽선을 그리고, 방문한 룸은 각각에 대해 외곽선을 그릴 수 있어야 했습니다.
-따라서 이미 외곽선이 그려진 이미지를 단순히 가져다 붙이는 방식은 사용할 수 없었고, 대신 렌더 타겟에 실시간으로 그리는 방식을 사용하기로 결정했습니다.
-
-외곽선은 일정 거리 떨어진 인근 픽셀과의 비교로 그려야 하는 영역을 쉽게 구할 수 있습니다. 하지만 문제는 '방문한 룸'들에 대해선 각각 외곽선을 그려야 한다는 것이었는데, 이 문제를 해결할 아이디어는 어렵지 않게 떠올릴 수 있었습니다.
-
-방문한 룸마다 고유한 R값으로 그리는 것입니다. 이 방법을 사용해 외곽선 알고리즘에는 어떤 수정도 없이 그래도 적용할 수 있었습니다. 추가적으로 G값은 문이 있는 위치 등 부가적인 정보로 활용하기로 했습니다.
-
-그렇게 그려진 렌더타겟의 모습은 다음과 같습니다.
+<collapsible title="미니맵이 그려지는 과정 (클릭하여 펼치기)">렌더 타겟에 1차적으로 그려진 미니맵
 
 <img src="img/project/FRankSurvivor/minimap1.png" alt="본문 이미지" style="width: 30%;" />
 
-다음으로 이 렌더타겟에 대해 마터리얼을 이용해 적절한 처리를 가했습니다.
+머터리얼을 통해 가공합니다.
 
 <img src="img/project/FRankSurvivor/minimap2.png" alt="본문 이미지" style="width: 70%;" />
 
 <img src="img/project/FRankSurvivor/minimap3.png" alt="본문 이미지" style="width: 30%;" />
-
+</collapsible>
 
 ▶ 층계 구분하기
 
-던전은 여러 층계로 이루어져 계단이 있는 룸을 통해 오르내릴 수 있습니다. 이 때 미니맵에서도 현재 층에 있는 룸만 그려야 했습니다.
-
-먼저 현재 테마의 던전이 사용하는 그리드 상 한 칸의 높이를 층의 높이로 정의한 뒤, 월드 공간에서 각 룸마다 최소 층과 최대 층이 몇 층인지 계산했습니다.
+던전은 여러 층계로 이루어질 수 있었기에 던전이 사용하는 그리드 상 한 칸의 높이를 층의 높이로 정의한 뒤, 월드 공간에서 각 룸마다 최소 층과 최대 층이 몇 층인지 계산했습니다.
 
 <img src="img/project/FRankSurvivor/minimap4.png" alt="본문 이미지" style="width: 40%;" />
 
 이후 미니맵을 그릴 때 로컬 플레이어의 무릎 정도의 높이를 기준으로 층을 판별한 뒤 해당 층에 존재하는 룸들을 추려 그리도록 했습니다. 이 때 각 층에서 해당 룸을 그릴 지 말 지, 그려져야 한다면 어떤 모양으로 그릴 지 커스텀이 가능하게 하여 유연성을 제공하였습니다.
 
-
-최종적으로 후처리를 입히고 룸 아이콘이나 트래킹할 액터의 아이콘을 붙여 완성한 미니맵의 모습입니다.
 
 <img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="width: 30%;" />
 `,
@@ -287,17 +216,15 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
           {
             id: 'p_fh_highlight_editor_custom',
             title: '디테일 패널 커스터마이징',
-            content: `던전을 생성하고 인테리어를 꾸미는 과정에서 기획의 의도를 자유롭게 반영하기 위해 다양한 옵션이 제공하고, 헷갈리지 않게 이들을 총괄적으로 관리할 수 있게 데이터 에셋을 구성하였습니다.
-
-그런데 Details 패널의 기본 레이아웃에선 프로퍼티가 행마다 하나씩 놓이고, 배열은 인덱스를 각각 눌러 하위 섹션을 열어야 했기 때문에 한 눈에 현황을 파악하기가 힘들었습니다. 
+            content: `던전 생성, 인테리어 과정에서 아트와 기획의 의도를 반영하기 위해 다양한 옵션을 제공하였는데, Details 패널의 기본 레이아웃은 한 눈에 현황을 파악하기 어려웠습니다.
 
 <img src="img/project/FRankSurvivor/detail1.png" alt="본문 이미지" style="width: 60%;" />
 
-그래서 에디터 편집용 모듈을 추가하고 FPropertyEditorModule에 커스텀 프로퍼티 레이아웃을 추가하여 모든 프로퍼티를 인덱스 헤더의 ValueContent에 나열하도록 수정하였습니다.
+이에 에디터 편집용 모듈을 추가하고 FPropertyEditorModule에 커스텀 프로퍼티 레이아웃을 추가하여 모든 프로퍼티를 인덱스 헤더의 ValueContent에 나열하도록 수정하였습니다.
 
 <img src="img/project/FRankSurvivor/details2.png" alt="본문 이미지" style="width: 60%;" />
 
-이를 통해 구성 현황을 한 눈에 파악하며 밸런스를 맞춰 옵션을 변경하기가 매우 편리해질 수 있었습니다.
+이를 통해 구성 현황을 한 눈에 파악하여 옵션을 변경하기가 매우 편리해질 수 있었습니다.
 `,
 			      buttons: [
               {
@@ -316,176 +243,71 @@ R.E.P.O 같은 스타일의 미니맵을 만들기 위해선 방문하지 않은
 // 뿐만 아니라 좌우, 뒤로 이동할 경우 플레이어의 방향에 따른 이동 속도 감소를 부여하며, 이 모든 과정이 MovementComponent의 예측 실행 구조와 호환되도록 구현되어 있어 클라 예측 - 서버 검증 모델로 사용이 가능합니다.`,
 //           },
           {
-            id: 'p_fh_highlight_8',
-            title: '메타휴먼 캐릭터에 이펙트 입히기',
-            content: `저희 게임은 '수준 낮은 헌터'라는 게임의 컨셉과 던전 아트의 분위기에 맞추기 위해 현실적으로 생긴 캐릭터가 필요해 메타휴먼을 플레이어 캐릭터로 사용하기로 결정했습니다.
+            id: 'p_fh_highlight_etc',
+            title: '기타 컨텐츠 구현',
+            content: `이외에도 인게임 컨텐츠의 대부분을 구현하였습니다.
 
-결론부터 말해 좋은 선택은 아니었다고 생각합니다. 바디 메쉬와 따로 임포트한 옷 메쉬를 맞추기 위해 몇 번이나 임포트를 다시 해야 했고, LOD 단계가 달라 일정 거리에서 스킨이 찢어지는 버그나 UGroomComponent를 씬 캡쳐할 때 크래쉬가 나는 버그 등 숱한 버그들 때문에 작업이 상당히 지연되기도 했습니다.
-
-문제는 캐릭터에 Dissolving 효과같은 이펙트를 입힐 때도 생겼습니다. 메타휴먼은 고퀄리티의 모듈형 캐릭터이기 때문에 하나의 캐릭터를 렌더링하는데 수 십가지의 머터리얼을 사용합니다. 그런데 점진적인 투명화와 같은 효과를 위해선 이 마터리얼들을 전부 다 수정해야 했습니다.
-
-<img src="img/project/FRankSurvivor/metahuman1.png" alt="본문 이미지" style="width: 60%;" />
-(총 21개의 머터리얼을 수정하고 110개의 머터리얼 인스턴스를 만들어야 했습니다.)
-
-머터리얼은 Masked 블렌드와 Transcluent 블렌드로 나뉘어져 있었기 때문에 두 가지 버전의 머터리얼 함수를 작성해 사용했습니다. 그런데 UGroomComponent의 머터리얼들은 아예 Opacity를 적용할 수가 없었습니다. 찾아본 결과 언리얼 개발자의 답변에서 UGroomComponent의 경우 내부적으로 Hair Shading Model을 사용해 완전히 다른 방식으로 렌더링되기 때문에 머터리얼로 Opacity Mask를 사용할 수 없다는 사실을 알 수 있었습니다.
-
-따라서 헤어 메쉬의 경우 색만 변화시킨 뒤 적당한 타이밍에 Visibility를 끄는 방법을 선택했습니다.
+▶ 메타휴먼 캐릭터 이펙트
+메타휴먼이 사용하는 머터리얼을 수정하여 Dissolving 이펙트 등을 구현하였습니다. 별개의 렌더링 프로세스를 사용하는 UGroomComponent의 경우 Opacity를 적용할 수 없어 적절한 시점에 Visiblity를 끄는 방식으로 구현되었습니다.
 
 <img src="img/project/FRankSurvivor/5.gif" alt="본문 이미지" style="width: 30%;" />
-`,
-			      buttons: [
-              {
-                  text: '블로그에서 더 자세히 보기',
-                  link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%A9%94%ED%83%80%ED%9C%B4%EB%A8%BC%EC%9D%84-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.html',
-                  type: 'blog'
-              }
-            ],
-          },
-          {
-            id: 'p_fh_highlight_9',
-            title: '1/3인칭의 분리, 장비 상태와 모션의 동기화',
-            content: `보다 리얼한 모션을 구현하기 위해 저희는 남들이 볼 때의 3인칭 모션과 내 화면에서 보이는 1인칭 모션을 구분했습니다. 문제는 애니메이션이 다르기 때문에 두 모션간의 타이밍이 어긋날 수 있다는 점이었습니다.
 
-이 때 기준이 되어야 하는 것은 동작의 주체인 자신이 보는 1인칭 모션이었고, 따라서 모션을 재생하는 GameplayCue를 작성하여 1인칭 모션의 노티파이나 시간대를 기준으로 3인칭 모션의 프레임을 조절, 두 모션의 타이밍이 일치하도록 맞추었습니다.
+▶ 스태미너 시스템, Movement Component 확장
+CharacterMovementComponent를 확장하여 스프린트 모드를 추가하고, 스프린트 중에 스태미너를 감소시키는 시스템을제작하였습니다.
 
-또한 인벤토리 슬롯을 변경하면 기존 아이템을 집어넣거나 꺼내서 드는 모션이 재생되고, 그 상태도 모든 클라이언트에게 동기화되도록 했습니다. 이를 위해 우선 아이템마다 범용 마네킹의 손 슬롯의 어느 위치에 있어야 하는지, 어느 손으로 들어야 하고 어떤 홀딩 모션을 취하는지 모두 정의해놓은 데이터테이블을 만들어 사용했습니다.
 
-또 아이템을 사용해 소모하거나, 사용하던 아이템의 내구도가 닳아 부서질 경우 보다 자연스러운 동작을 위해 메쉬를 캐싱해 아이템이 슬롯에서 사라졌어도 특정 시점까지 메쉬를 해제하지 않도록 했습니다. 예컨대 포션을 사용하면 마시는 모션을 재생하고 다시 손을 내려놓기 시작하는 타이밍까지 캐싱된 메쉬가 해제되지 않습니다.
+▶ 1/3인칭 애니메이션의 분리와 착용장비 · 모션 동기화
+플레이어의 애니메이션은 로컬 시점(1인칭)과 타자 시점(3인칭)을 분리하여 제작하였습니다.
 
-<video-gif src="img/project/FRankSurvivor/animsync.mp4" title="Animation Sync demo" width="70%"/>
-`,
-            buttons: [
-              {
-                  text: '블로그에서 더 자세히 보기',
-                  link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%9E%A5%EB%B9%84-%EC%8A%A4%EC%99%91,-%EC%B0%A9%EC%9A%A9-%EB%AA%A8%EC%85%98-%EB%8F%99%EA%B8%B0%ED%99%94.html',
-                  type: 'blog'
-              }
-            ],
-          },
-          {
-            id: 'p_fh_highlight_interaction',
-            title: '상호작용 시스템',
-            content: `상호작용은 플레이어의 경험에 중요한 요소이기 때문에 여러모로 공을 많이 들였습니다.
-우선 플레이어가 바라보고 있는 방향으로 Sweep을 통해 액터를 판별하며, 상호작용이 가능한 액터만을 추림으로써 반응성을 높였고, 상호작용 컴포넌트를 통해 액터마다 최대 거리나 상호작용 키, 툴팁 등을 커스텀할 수 있게 했습니다.
+<video-gif src="img/project/FRankSurvivor/animsync.mp4" title="demo" width="70%"/>
 
-레벨이 어두운 경우 플레이어가 무엇과 상호작용할 수 있는지 알기 어려울 수 있으므로, 플레이어의 주변 반경에 들어온 상호작용 가능한 액터에 부드러운 아웃라인을 입혔습니다.
-스텐실 버퍼에 일정 구간을 사용해 현재 Opcacity를 전달하는 방식으로, 실제 아웃라인 애니메이션은 상호작용 컴포넌트가 처리합니다.
+▶ 상호작용 시스템
+멀티 키를 받고 짧게 누르기 / 길게 누르기 분기가 가능한 상호작용 시스템을 제작하였습니다.
+스텐실 값을 Opacity로 활용하여 상호작용 가능한 오브젝트에 대해 부드럽게 등장하고 사라지는 아웃라인을 구현하였습니다.
 
 <img src="img/project/FRankSurvivor/7.gif" alt="본문 이미지" style="width: 30%;" />
-`,
-            buttons: [
-              {
-                  text: '블로그에서 더 자세히 보기',
-                  link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EC%83%81%ED%98%B8%EC%9E%91%EC%9A%A9,-interactable-component.html',
-                  type: 'blog'
-              }
-            ],
-          },
-          {
-            id: 'p_fh_highlight_destructible_prop',
-            title: '파괴 가능한 프롭',
-            content: `언리얼의 카오스 디스트럭션을 사용해 부술 수 있는 오브젝트를 만들었습니다.
-여기서도 역시 GAS를 사용하여 프롭에 체력 어트리뷰트를 부착하고 플레이어의 공격에 의해 체력이 깎이면 카오스 필드를 작동시켜 프롭을 부수게 됩니다.
 
-<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="width: 30%;" />
-`,
-            buttons: [
-              {
-                  text: '블로그에서 더 자세히 보기',
-                  link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/chaos-destruction%EC%9D%84-%EC%82%AC%EC%9A%A9%ED%95%9C-%EC%98%A4%EB%B8%8C%EC%A0%9D%ED%8A%B8-%EB%B6%80%EC%88%98%EA%B8%B0.html',
-                  type: 'blog'
-              }
-            ],
-          },
-          {
-            id: 'p_fh_highlight_16',
-            title: '시각적 이펙트 개선하기',
-            content: `곡괭이로 오브젝트를 부수거나 피격당하는 상황에서 나이아가라 이펙트만 재생하니 너무 타격감이 없고 밋밋했습니다.
-
-이를 개선하기 위해 먼저 FloatCurve를 따라 카메라의 Rotation과 Pov를 변환하는 간단한 커스텀 카메라 쉐이크 클래스를 작성하여 카메라가 흔들리는 느낌을 주었습니다. 특히 코어 오브젝트를 파괴했을 때 던전 전체가 흔들리는 느낌을 준 건 지스타에서 많은 플레이어분들의 좋은 반응을 얻을 수 있었습니다.
-그리고 추가적으로 화면 효과 에셋을 구매한 뒤 플레이어의 카메라를 따라다니는 Plane에 효과를 재생시키는 Vignette Manager를 작성하였습니다.
-
-사운드 + 나이아가라 이펙트 + 카메라 쉐이크 + 비네트 매니저를 조합하여 보다 실감나고 타격감 있는 시각적 효과를 보여줄 수 있었습니다.
+▶ 시각적 이펙트 개선하기
+FloatCurve를 따라 카메라의 Rotation, Pov 값을 조절하는 커스텀 카메라 쉐이크, 플레이어의 뷰포트 크기로 생성되어 카메라를 따라다니는 Vignette Effect Manager를 제작하였습니다.
 
 <img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" style="width: 30%;" />
-`,
-          },
-          {
-            id: 'p_fh_highlight_17',
-            title: '사운드 시스템',
-            content: `사운드 서브시스템을 만들어 편리하게 사운드를 재생하고 관리할 수 있도록 했습니다. 게임 설정과 연동하기 위한 별도의 세팅이 되어 있으며, 특정한 위치에 3D 음향을 발생시키거나 로컬 플레이어에게 2D 음향을 재생하는 동작을 두 개의 블루프린트 노드만으로 수행할 수 있습니다.
 
-모든 음향은 옵션으로 다른 클라이언트에게 전파하거나 노이즈를 발생시켜 크리쳐 AI가 감지하게 할 수 있으며, 필요한 경우 FName으로 재생된 사운드의 핸들을 생성하고 원하는 시점에 페이드아웃 시킬 수도 있습니다.`,
+▶ 사운드 매니저
+TMap을 사용해 사운드의 재생/정지를 임의로 관리하고 AIPerception 컴포넌트가 감지할 수 있는 노이즈를 발생시키는 전역 매니저 객체를 제작하였습니다.
+
+
+▶ 파괴 가능한 오브젝트
+카오스 디스트럭션 시스템을 사용하여 플레이어의 공격에 의해 파괴되는 오브젝트를 제작하였습니다.
+
+<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="width: 30%;" />
+
+▶ 플레이어와 상호작용하는 오브젝트
+MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어와 상호작용하여 움직이는 다양한 액터를 제작하였습니다.
+
+
+▶ PhysicsConstraint를 활용한 문과 상자
+
+<video-gif src="img/project/FRankSurvivor/door.mp4" title="demo" width="40%"/>
+
+▶ 랜덤 프롭 배치 포인트 / 미리보기
+
+<video-gif src="img/project/FRankSurvivor/spawnpoint.mp4" title="demo" width="70%"/>
+
+`,
+			      // buttons: [
+            //   {
+            //       text: '블로그에서 더 자세히 보기',
+            //       link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%A9%94%ED%83%80%ED%9C%B4%EB%A8%BC%EC%9D%84-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.html',
+            //       type: 'blog'
+            //   }
+            // ],
           },
-//           {
-//             id: 'p_fh_highlight_18',
-//             title: '기타',
-//             content: `이번 프로젝트에서 구현한 것이 매우 많아 모두 적지는 못 하지만, 이외에도 PhysicsConstraint를 사용해 부드럽게 열리고 닫히는 문이나 상자, 메타휴먼 래그돌화와 크리쳐의 돌진에 맞았을 때 날아가는 로직, 던전 내부의 공포감을 높이는 디스턴스 포그, 타 파트에서 쉽게 수정이 가능한 피직스 마터리얼 기반의 사운드 분기 시스템 등을 구현하였습니다.
-// `,
-//           },
 // 공부하고 배운 내용 짤막하게 제시? : 언리얼 인사이트, 애니메이션 리타게팅, 엔진 코드 분석 사례 등
         ],
         showDivider: true,
       },
-//       {
-//         id: 'p_fh_troubleshooting',
-//         title: '트러블슈팅',
-//         subSections: [
-//           {
-//             id: 'p_fh_troubleshooting_1',
-//             title: 'MovementComponent 동기화 관리',
-//             content: `
-// `,
-//           },
-//           {
-//             id: 'p_fh_troubleshooting_2',
-//             title: 'CDO 생성 이후 추가된 블루프린트 노드를 다루는 법',
-//             content: `
-// `,
-//           },
-//           {
-//             id: 'p_fh_troubleshooting_3',
-//             title: '메타휴먼 LOD 문제',
-//             content: `
-// `,
-//           },
-//           {
-//             id: 'p_fh_troubleshooting_4',
-//             title: 'ULevelStreaming 동적 해제 문제',
-//             content: `
-// `,
-//           },
-//           {
-//             id: 'p_fh_troubleshooting_5',
-//             title: 'UGroomComponent 렌더링 문제',
-//             content: `
-// `,
-//           },
-//           {
-//             id: 'p_fh_troubleshooting_6',
-//             title: '카메라의 업데이트 순서 문제',
-//             content: `
-// `,
-//           },
-//         ],
-//         showDivider: true,
-//       },
-//       {
-//         id: 'p_fh_lesson',
-//         title: '반성과 개선점',
-//         subSections: [
-//           {
-//             id: 'p_fh_lesson_1',
-//             title: '이것저것',
-//             content: `
-// `,
-//           },
-//         ],
-//       },
     ],
     technologies: ['언리얼5', '언리얼 네트워크', '4인 멀티플레이', '1인칭', '리썰라이크', '생존'],
-    liveLink: '',
-    blogLink: '',
   },
 
 
@@ -1477,5 +1299,11 @@ export const PhoneIcon = (props) => (
 export const CalendarDaysIcon = (props) => (
   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" {...props}>
     <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0h18" />
+  </svg>
+);
+
+export const PlayIcon = (props) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" {...props}>
+    <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
   </svg>
 );

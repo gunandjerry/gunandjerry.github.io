@@ -10,7 +10,7 @@ interface VideoGifProps {
 const VideoGif: React.FC<VideoGifProps> = ({ src, title, width }) => {
   return (
     <div 
-      className="my-4 sm:my-6" 
+      className="my-2" 
       style={{ 
         width: width || '100%' 
       }}

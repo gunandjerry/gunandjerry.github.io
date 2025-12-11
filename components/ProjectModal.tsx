@@ -1,13 +1,14 @@
 
 import React, { useState, useEffect, useRef } from 'react';
-import { CloseIcon, GitHubIcon, ExternalLinkIcon, DocumentTextIcon } from '../constants.tsx';
+import { CloseIcon, GitHubIcon, ExternalLinkIcon, DocumentTextIcon, PlayIcon } from '../constants.tsx';
 import EmbeddedVideo from './EmbeddedVideo.tsx';
 import CollapsibleCodeBlock from './CollapsibleCodeBlock.tsx';
 import VideoGif from './VideoGif.tsx';
+import CollapsibleContent from './CollapsibleContent.tsx';
 
 interface ContentPart {
-  type: 'html' | 'video' | 'codeBlock' | 'videoGif';
-  content?: string;        // For HTML
+  type: 'html' | 'video' | 'codeBlock' | 'videoGif' | 'collapsible' | 'img';
+  content?: string;        // For HTML and img
   videoSrc?: string;       // For video src
   videoTitle?: string;     // For video title
   codeContent?: string;    // For code block content
@@ -16,6 +17,8 @@ interface ContentPart {
   videoGifSrc?: string;    // For video gif src
   videoGifTitle?: string;  // For video gif title
   videoGifWidth?: string;  // For video gif width
+  collapsibleTitle?: string; // For collapsible title
+  collapsibleContent?: string; // For collapsible inner html
 }
 
 
@@ -33,13 +36,19 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
   const codeBlockRegex = /<code-block(?:\s+title=["'](.*?)["'])?(?:\s+language=["'](.*?)["'])?\s*>([\s\S]*?)<\/code-block>/i;
   // video-gif: captures attributes string (1) to be parsed later for src, title, width
   const videoGifRegex = /<video-gif\s+([^>]+?)\s*\/?>/i;
+  // collapsible: captures title (1, optional), content (2)
+  const collapsibleRegex = /<collapsible(?:\s+title=["'](.*?)["'])?\s*>([\s\S]*?)<\/collapsible>/i;
+  // img: captures the full tag to be rendered as-is but isolated
+  const imgRegex = /<img\s+([^>]+?)\s*\/?>/i;
 
   while (remainingHtml.length > 0) {
     const iframeMatch = remainingHtml.match(iframeRegex);
     const codeBlockMatch = remainingHtml.match(codeBlockRegex);
     const videoGifMatch = remainingHtml.match(videoGifRegex);
+    const collapsibleMatch = remainingHtml.match(collapsibleRegex);
+    const imgMatch = remainingHtml.match(imgRegex);
 
-    let matchType: 'iframe' | 'codeBlock' | 'videoGif' | null = null;
+    let matchType: 'iframe' | 'codeBlock' | 'videoGif' | 'collapsible' | 'img' | null = null;
     let matchIndex = Infinity;
     let matchLength = 0;
     let currentMatchDetails: any = null;
@@ -71,9 +80,28 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
       }
     }
 
+    if (collapsibleMatch && collapsibleMatch.index !== undefined) {
+      if (collapsibleMatch.index < matchIndex) {
+        matchIndex = collapsibleMatch.index;
+        matchLength = collapsibleMatch[0].length;
+        matchType = 'collapsible';
+        currentMatchDetails = collapsibleMatch;
+      }
+    }
+
+    if (imgMatch && imgMatch.index !== undefined) {
+      if (imgMatch.index < matchIndex) {
+        matchIndex = imgMatch.index;
+        matchLength = imgMatch[0].length;
+        matchType = 'img';
+        currentMatchDetails = imgMatch;
+      }
+    }
+
     if (!matchType) {
       // No more special tags, add remaining as HTML
-      if (remainingHtml.trim().length > 0) {
+      // Note: We do NOT trim here so that if the string is just "\n", it renders as a spacer.
+      if (remainingHtml.length > 0) {
         parts.push({ type: 'html', content: remainingHtml });
       }
       break;
@@ -82,7 +110,8 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
     // Add HTML content before the found tag
     if (matchIndex > 0) {
       const htmlContentBefore = remainingHtml.substring(0, matchIndex);
-      if (htmlContentBefore.trim().length > 0) {
+      // Note: We do NOT trim end of string here, so trailing newlines are preserved.
+      if (htmlContentBefore.length > 0) {
          parts.push({ type: 'html', content: htmlContentBefore });
       }
     }
@@ -97,11 +126,11 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
       const code = currentMatchDetails[3].trim(); // Trim the code content itself
       parts.push({ type: 'codeBlock', codeBlockTitle: codeTitle, language: codeLang, codeContent: code });
     } else if (matchType === 'videoGif' && currentMatchDetails) {
-		  const attrString = currentMatchDetails[1];
+      const attrString = currentMatchDetails[1];
       const srcMatch = attrString.match(/src=["']([^"']+)["']/i);
       const titleMatch = attrString.match(/title=["']([^"']+)["']/i);
       const widthMatch = attrString.match(/width=["']([^"']+)["']/i);
-	  
+
       if (srcMatch) {
           parts.push({ 
             type: 'videoGif', 
@@ -110,12 +139,19 @@ const parseContent = (htmlString: string | undefined | null, defaultVideoTitle: 
             videoGifWidth: widthMatch ? widthMatch[1] : undefined
           });
       }
+    } else if (matchType === 'collapsible' && currentMatchDetails) {
+      const title = currentMatchDetails[1] || "More Details";
+      const content = currentMatchDetails[2];
+      parts.push({ type: 'collapsible', collapsibleTitle: title, collapsibleContent: content });
+    } else if (matchType === 'img' && currentMatchDetails) {
+      parts.push({ type: 'img', content: currentMatchDetails[0] });
     }
     
     remainingHtml = remainingHtml.substring(matchIndex + matchLength);
+    // Note: We do NOT trim start of string here, so leading newlines are preserved.
   }
   
-  return parts.filter(part => !(part.type === 'html' && (!part.content || part.content.trim() === '')));
+  return parts.filter(part => !(part.type === 'html' && (!part.content || part.content === ''))); // Check for truly empty string only
 };
 
 
@@ -231,7 +267,23 @@ function ProjectModal({ project, onClose }) {
       if (part.type === 'videoGif' && part.videoGifSrc) {
         return <VideoGif key={uniqueKey} src={part.videoGifSrc} title={part.videoGifTitle} width={part.videoGifWidth} />;
       }
-      if (part.type === 'html' && part.content && part.content.trim() !== '') {
+      if (part.type === 'collapsible' && part.collapsibleContent) {
+        return (
+          <CollapsibleContent key={uniqueKey} title={part.collapsibleTitle || "Details"}>
+            {renderParsedContent(part.collapsibleContent, `${uniqueKey}-inner`)}
+          </CollapsibleContent>
+        );
+      }
+      if (part.type === 'img' && part.content) {
+        return (
+          <div 
+            key={uniqueKey} 
+            className="my-1 block w-full"
+            dangerouslySetInnerHTML={{ __html: part.content }} 
+          />
+        );
+      }
+      if (part.type === 'html' && part.content && part.content !== '') {
         return (
           <div 
             key={uniqueKey} 
@@ -245,7 +297,27 @@ function ProjectModal({ project, onClose }) {
             [&_img]:mt-0
             [&_img]:mb-0
             [&_img]:rounded-md
-            [&_img]:shadow-md"
+            [&_img]:shadow-md
+            [&_table]:border-collapse
+            [&_table]:my-4
+            [&_table]:border
+            [&_table]:border-slate-600
+            [&_table]:table-auto
+            [&_table]:mt-6
+            [&_th]:bg-slate-700/50
+            [&_th]:border
+            [&_th]:border-slate-600
+            [&_th]:p-2.5
+            [&_th]:text-center
+            [&_th]:align-middle
+            [&_th]:font-semibold
+            [&_th]:text-slate-200
+            [&_td]:border
+            [&_td]:border-slate-600
+            [&_td]:p-2.5
+            [&_td]:align-middle
+            [&_td]:text-center
+            "
             dangerouslySetInnerHTML={{ __html: part.content }} 
           />
         );
@@ -265,13 +337,13 @@ function ProjectModal({ project, onClose }) {
             target="_blank"
             rel="noopener noreferrer"
             className={`inline-flex items-center font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base ${
-              btn.type === 'live' ? 'bg-teal-500 hover:bg-teal-600 text-white' :
+              btn.type === 'live' ? 'bg-red-600 hover:bg-red-700 text-white' :
               btn.type === 'blog' ? 'bg-sky-600 hover:bg-sky-700 text-white' :
               'bg-slate-700 hover:bg-slate-600 text-slate-100'
             }`}
           >
             {btn.type === 'github' && <GitHubIcon className="w-5 h-5 mr-2" />}
-            {btn.type === 'live' && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
+            {btn.type === 'live' && <PlayIcon className="w-5 h-5 mr-2" />}
             {btn.type === 'blog' && <DocumentTextIcon className="w-5 h-5 mr-2" />}
             {!['github', 'live', 'blog'].includes(btn.type) && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
             {btn.text}
@@ -344,11 +416,11 @@ function ProjectModal({ project, onClose }) {
           )}
 
           <div ref={contentPanelRef} className="relative flex-grow p-4 sm:p-6 overflow-y-auto styled-scrollbar scroll-mt-4 md:scroll-mt-6">
-            <img 
+            {/* <img 
               src={project.image} 
               alt={project.title} 
               className="w-full bg-slate-900/50 rounded-lg mb-4 sm:mb-6 shadow-lg" 
-            />
+            /> */}
 
             {isStructuredDescription ? (
               project.longDescription.map(section => (
@@ -418,13 +490,13 @@ function ProjectModal({ project, onClose }) {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`inline-flex items-center justify-center font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base ${
-                        link.type === 'live' ? 'bg-teal-500 hover:bg-teal-600 text-white' :
+                        link.type === 'live' ? 'bg-red-600 hover:bg-red-700 text-white' :
                         link.type === 'blog' ? 'bg-sky-600 hover:bg-sky-700 text-white' :
                         'bg-slate-700 hover:bg-slate-600 text-slate-100'
                     }`}
                   >
                      {link.type === 'github' && <GitHubIcon className="w-5 h-5 mr-2" />}
-                     {link.type === 'live' && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
+                     {link.type === 'live' && <PlayIcon className="w-5 h-5 mr-2" />}
                      {link.type === 'blog' && <DocumentTextIcon className="w-5 h-5 mr-2" />}
                      {!['github', 'live', 'blog'].includes(link.type) && <ExternalLinkIcon className="w-5 h-5 mr-2" />}
                     {link.text}
@@ -448,9 +520,9 @@ function ProjectModal({ project, onClose }) {
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center bg-teal-500 hover:bg-teal-600 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
+                    className="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors text-sm sm:text-base"
                   >
-                    <ExternalLinkIcon className="w-5 h-5 mr-2" />
+                    <PlayIcon className="w-5 h-5 mr-2" />
                     영상 보러가기 (유튜브)
                   </a>
                 )}
