@@ -453,6 +453,7 @@ function ProjectModal({ project, onClose }) {
                           {subSection.button && !subSection.buttons && renderButtons([subSection.button])}
 
                           <p><br></br></p>
+                          <p><br></br></p>
                         </section>
                       ))}
                     </div>

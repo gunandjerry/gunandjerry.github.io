@@ -45,16 +45,11 @@ export const PROJECTS_DATA = [
     id: 'p_fh',
     isMain: true,
     title: 'F급 헌터 생존기',
-    image: 'img/project/FRankSurvivor/banner.gif',
     images: [
-        'img/project/FRankSurvivor/banner.gif',
+        'img/project/FRankSurvivor/Banner.mp4',
     ],
     shortDescription: '언리얼엔진5로 제작한 6개월 중장기 팀 프로젝트로, 던전 안으로 들어가 크리쳐를 피하며 자원을 채굴하는 리썰라이크 류의 협동 생존 게임입니다.',
     implementationFeatures: ['절차적 맵 생성', '동적 미니맵 렌더링', '에디터 커스텀', 'GAS 기반 시스템', '1/3인칭 분리 및 모션 동기화', '부분 파괴 가능한 오브젝트', '메타휴먼 다루기'],
-    // links: [
-    //     { type: 'github', text: '소스 코드', link: 'https://github.com/yourusername/project-omega' },
-    //     { type: 'blog', text: '개발 회고록 읽기', link: 'https://yourusername.github.io/blog/project-omega-retrospective' }
-    // ],
     longDescription: [
       {
         id: 'p_fh_overview',
@@ -73,7 +68,7 @@ export const PROJECTS_DATA = [
     <td>언리얼 엔진 5</td>
   </tr>
   <tr>
-    <td>맡은 역할</td>
+    <td>맡은역할</td>
     <td>프로그래밍 팀장, 컨텐츠 개발 등</td>
   </tr>
 </table>
@@ -166,7 +161,8 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
 - 시작 위치로부터의 거리, 방의 사이즈에 따라 자원을 분포시킴.
 - 지정된 포인트 또는 Nav Mesh를 기준으로 랜덤한 프롭을 배치함.
 - 모든 플레이어로부터 일정 거리 떨어진 위치에 크리쳐를 스폰함.
-`,
+
+<video-gif src="img/project/FRankSurvivor/RandomMapGen.mp4" title="demo" width="30%"/>`,
           },
           {
             id: 'p_fh_highlight_dynamic_minimap_rendering',
@@ -203,8 +199,7 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
 이후 미니맵을 그릴 때 로컬 플레이어의 무릎 정도의 높이를 기준으로 층을 판별한 뒤 해당 층에 존재하는 룸들을 추려 그리도록 했습니다. 이 때 각 층에서 해당 룸을 그릴 지 말 지, 그려져야 한다면 어떤 모양으로 그릴 지 커스텀이 가능하게 하여 유연성을 제공하였습니다.
 
 
-<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="width: 30%;" />
-`,
+<img src="img/project/FRankSurvivor/3.gif" alt="본문 이미지" style="width: 30%;" />`,
             buttons: [
               {
                   text: '블로그에서 더 자세히 보기',
@@ -245,7 +240,7 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
           {
             id: 'p_fh_highlight_etc',
             title: '기타 컨텐츠 구현',
-            content: `이외에도 인게임 컨텐츠의 대부분을 구현하였습니다.
+            content: `이외에도 인게임 컨텐츠의 절반 이상을 구현하였습니다.
 
 ▶ 메타휴먼 캐릭터 이펙트
 메타휴먼이 사용하는 머터리얼을 수정하여 Dissolving 이펙트 등을 구현하였습니다. 별개의 렌더링 프로세스를 사용하는 UGroomComponent의 경우 Opacity를 적용할 수 없어 적절한 시점에 Visiblity를 끄는 방식으로 구현되었습니다.
@@ -255,6 +250,7 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
 ▶ 스태미너 시스템, Movement Component 확장
 CharacterMovementComponent를 확장하여 스프린트 모드를 추가하고, 스프린트 중에 스태미너를 감소시키는 시스템을제작하였습니다.
 
+<video-gif src="img/project/FRankSurvivor/StaminaSystem.mp4" title="demo" width="30%"/>
 
 ▶ 1/3인칭 애니메이션의 분리와 착용장비 · 모션 동기화
 플레이어의 애니메이션은 로컬 시점(1인칭)과 타자 시점(3인칭)을 분리하여 제작하였습니다.
@@ -270,7 +266,7 @@ CharacterMovementComponent를 확장하여 스프린트 모드를 추가하고, 
 ▶ 시각적 이펙트 개선하기
 FloatCurve를 따라 카메라의 Rotation, Pov 값을 조절하는 커스텀 카메라 쉐이크, 플레이어의 뷰포트 크기로 생성되어 카메라를 따라다니는 Vignette Effect Manager를 제작하였습니다.
 
-<img src="img/project/FRankSurvivor/VFX.gif" alt="본문 이미지" style="width: 30%;" />
+<video-gif src="img/project/FRankSurvivor/VisualEffect.mp4" title="demo" width="30%"/>
 
 ▶ 사운드 매니저
 TMap을 사용해 사운드의 재생/정지를 임의로 관리하고 AIPerception 컴포넌트가 감지할 수 있는 노이즈를 발생시키는 전역 매니저 객체를 제작하였습니다.
@@ -279,11 +275,12 @@ TMap을 사용해 사운드의 재생/정지를 임의로 관리하고 AIPercept
 ▶ 파괴 가능한 오브젝트
 카오스 디스트럭션 시스템을 사용하여 플레이어의 공격에 의해 파괴되는 오브젝트를 제작하였습니다.
 
-<img src="img/project/FRankSurvivor/8.gif" alt="본문 이미지" style="width: 30%;" />
+<video-gif src="img/project/FRankSurvivor/ChaosDestruction.mp4" title="demo" width="30%"/>
 
 ▶ 플레이어와 상호작용하는 오브젝트
 MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어와 상호작용하여 움직이는 다양한 액터를 제작하였습니다.
 
+<video-gif src="img/project/FRankSurvivor/InteractableObjects.mp4" title="demo" width="30%"/>
 
 ▶ PhysicsConstraint를 활용한 문과 상자
 
@@ -291,23 +288,24 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
 
 ▶ 랜덤 프롭 배치 포인트 / 미리보기
 
-<video-gif src="img/project/FRankSurvivor/spawnpoint.mp4" title="demo" width="70%"/>
-
-`,
-			      // buttons: [
-            //   {
-            //       text: '블로그에서 더 자세히 보기',
-            //       link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EB%AA%A9%EB%A1%9D/%EB%A9%94%ED%83%80%ED%9C%B4%EB%A8%BC%EC%9D%84-%ED%94%8C%EB%A0%88%EC%9D%B4%EC%96%B4-%EC%BA%90%EB%A6%AD%ED%84%B0%EB%A1%9C-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0.html',
-            //       type: 'blog'
-            //   }
-            // ],
+<video-gif src="img/project/FRankSurvivor/spawnpoint.mp4" title="demo" width="70%"/>`,
           },
-// 공부하고 배운 내용 짤막하게 제시? : 언리얼 인사이트, 애니메이션 리타게팅, 엔진 코드 분석 사례 등
         ],
         showDivider: true,
       },
+      {
+        id: 'p_fh_bottom',
+        title: '더보기',
+        content: ``,
+        showDivider: false,
+      },
     ],
     technologies: ['언리얼5', '언리얼 네트워크', '4인 멀티플레이', '1인칭', '리썰라이크', '생존'],
+    links: [
+        { type: 'blog', text: '언리얼 엔진 공부 기록', link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84-%EA%B3%B5%EB%B6%80-%EA%B8%B0%EB%A1%9D-%EC%9D%B8%EB%8D%B1%EC%8A%A4.html' },
+        { type: 'blog', text: 'F급 헌터 생존기 구현 기록', link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EA%B8%B0%EB%A1%9D-%EC%9D%B8%EB%8D%B1%EC%8A%A4.html' },
+        { type: 'blog', text: 'F급 헌터 생존기 디버깅 기록', link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EB%94%94%EB%B2%84%EA%B9%85-%EA%B8%B0%EB%A1%9D-%EC%9D%B8%EB%8D%B1%EC%8A%A4.html' },
+    ],
   },
 
 
@@ -316,64 +314,34 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
     id: 'p_pa',
     isMain: true,
     title: 'Potion Atlier',
-    image: 'img/project/PotionAtlier/banner.gif',
     images: [
-        'img/project/PotionAtlier/banner.gif',
+        'img/project/PotionAtlier/Banner.mp4',
     ],
     shortDescription: '3D 자체엔진으로 제작한 4주 단기 팀 프로젝트로, 포션을 제작해 판매하는 캐쥬얼한 타이쿤 게임입니다.',
-    implementationFeatures: ['3D 자체엔진', 'PhysX 물리 시스템', 'UI 스텐실 마스킹', '부드러운 조작', '컨텐츠 전반', '튜토리얼'],
-    links: [
-        { type: 'live', text: '유튜브 보러가기', link: 'https://youtu.be/v2JbL4FlbQM?si=GtCIvaJ0p6GOYd10' }
-    ],
+    implementationFeatures: ['3D 자체엔진', 'PhysX 물리컴포넌트', 'UI 스텐실 마스킹', '상호작용과 QTE', '부드러운 조작', '튜토리얼'],
     longDescription: [
       {
         id: 'p_pa_overview',
         title: '프로젝트 개요',
-        content: `제목: Potion Atlier
-장르: 타이쿤
-개발기간: 4주일 (2025년 1월 ~ 2월)
-개발인원: 개발 4인 / 아트 3인 / 기획 3인
-사용엔진: 자체 3D 엔진
-플랫폼: PC, Window
+        content: `<table>
+  <tr>
+    <td>제작기간</td>
+    <td>4주일 (2025년 1월 ~ 2월)</td>
+  </tr>
+  <tr>
+    <td>제작인원</td>
+    <td>개발 4인 / 아트 3인 / 기획 3인</td>
+  </tr>
+  <tr>
+    <td>사용엔진</td>
+    <td>자체 3D 엔진</td>
+  </tr>
+  <tr>
+    <td>맡은역할</td>
+    <td>엔진 물리·UI 파트, 컨텐츠 전반</td>
+  </tr>
+</table>
 `,
-        subSections: [
-          {
-            id: 'p_pa_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/v2JbL4FlbQM?si=_wRq8rtjiGXRymDr" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
-          {
-            id: 'p_pa_overview_desc',
-            title: '게임 소개',
-            content: `포션 가게를 경영하는 아기자기한 3D 타이쿤 게임입니다. 제한된 시간 안에 최대한 많은 포션을 판매하는 것이 목적입니다.
-
-주문서가 들어오면 알맞은 재료를 꺼내고, 손질하고, 끓여서 포션을 만들어 주문을 처리해야 합니다. 손님들은 참을성이 없으며 너무 오래 끓이면 제조에 실패합니다. 종종 마법에 걸린 테이블이 손님을 날려버리려고 하는 것도 막아야 합니다.`,
-          },
-          {
-            id: 'p_pa_overview_role',
-            title: '맡은 역할',
-//             content: `▶ 물리(PhysX) : Primitive-shape 콜라이더, 메쉬 콜라이더, Raycast, Sweep test, 물리 처리 컴포넌트 등
-// ▶ 캐릭터 조작: 부드러운 이동, 상호작용, 스태미너 시스템
-// ▶ 엔진 성능 개선 및 디버깅
-// ▶ UI 렌더링 / 스텐실 마스킹 / 텍스트 렌더링 등
-// ▶ QTE 미니게임 3종
-// ▶ 튜토리얼
-// ▶ 기물 오브젝트: 솥, 배치대, 작업대, 쓰레기통, 카운터 등의 작동 로직 및 오브젝트 프리팹 만들기
-// ▶ 레벨 에디팅을 위한 컴포넌트: 격자 이동, UI 조절, 
-// ▶ 특수 효과: 날아가는 노움, 오브젝트 상호작용 이펙트, UI 및 기물 스케일 애니메이션 등
-// ▶ 말풍선 등 기타 컨텐츠
-
-
-// <img src="img/project/PotionAtlier/3.png" alt="게임 이미지" style="display: block; width: 100%; height: auto; margin-top: 1rem; margin-bottom: 1rem; border-radius: 0.375rem; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);" />`,
-            content: `엔진 사이드에선 물리, UI, 텍스트, 에디터 툴, 디버깅과 성능 개선을 수행하였습니다.
-게임 컨텐츠 사이드에선 컨텐츠 전반을 구현하였습니다.
-
-<img src="img/project/PotionAtlier/Work/EngineSide.png" alt="게임 이미지" style="width: 60%;" />
-
-<img src="img/project/PotionAtlier/Work/ClientSide.png" alt="게임 이미지" style="width: 75%;" />
-`,
-          }
-        ],
         showDivider: true,
       },
       {
@@ -451,93 +419,16 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
         showDivider: true,
       },
       {
-        id: 'p_pa_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_pa_lesson_1',
-            title: '픽셀 단위로 마스킹되는 스텐실 마스킹의 대안 - SDF 마스킹',
-            content: `이 게임에서 사용한 UI 마스킹은 스텐실 버퍼에 비트플래그를 기록하고 마스크 위에 그려질 UI를 특정 비트 플래그가 켜진 픽셀 위에서만 그려지도록 한 가장 단순한 마스킹 기법입니다.
-이 방식의 가장 큰 문제는 단순히 픽셀 버리기(discard)로 구현되기 때문에 경계 부분에 앨리어싱을 적용할 수 없다는 점입니다.
-
-게임 제작 기간이 끝난 뒤 이 문제를 어떻게 해결할 수 있을 지 고민해 보았습니다. 나온 결론은 G버퍼의 남는 4바이트 영역을 레이어 ID를 나타내는 비트 플래그 영역과 알파값을 기록하는 알파 마스크 영역으로 나누어 사용하면 어떨가 하는 것이었습니다.
-문제는 역시 G 버퍼를 사용하는 만큼 비용 부담이 크다는 것입니다. 또, 마스크로 사용하는 텍스쳐는 단순히 어떤 픽셀이 마스크에 포함되는지 알려주는 역할만 수행하므로 이 또한 낭비였습니다.
-
-그러던 중 SDF(Signed Distance Field)에 대해 알게 되었습니다. SDF는 픽셀마다 색이 칠해지는 경계로부터 얼만큼 떨어져있는지 거리를 기록해둔 특수한 텍스쳐로, 테두리 바로 위를 0.5로 기준으로 삼는다면 색이 칠해지는 영역의 내부는 0~0.5, 외부는 0.5~1 사이의 거리값을 가지게 됩니다.
-
-<img src="img/project/PotionAtlier/7.png" alt="본문 이미지" style="width: 40%;" />
-
-일반적으로 텍스트 그리프 렌더링, 데칼 텍스쳐 렌더링 등 해상도나 거리가 달라져도 부드러운 테두리를 렌더링할 필요가 있을 때 사용하지만, UI 마스킹에도 사용할 수 있겠다는 생각이 들었고 찾아본 결과 이미 사용되고 있는 방법이었습니다.
-SDF 텍스쳐를 마스크로 사용하면 해당 텍스쳐의 거리 값을 약간 조절하여 그려지는 픽셀의 알파값으로 사용할 수 있습니다. 이렇게 되면 추가적인 데이터가 필요 없이 부드러운 경계면을 가진 마스킹을 구현할 수 있을 듯 합니다.
-`,
-          },
-          {
-            id: 'p_pa_lesson_2',
-            title: '정적 리플렉션을 통한 에디팅',
-            content: `게임을 제작하면서 가장 불편했던 점은 직렬화 문제였습니다. 에디터를 통해 컴포넌트를 탈부착하거나 프로퍼티를 수정할 수 있는 상태가 아니었고 단순 바이너리 직렬화를 사용했기에 툭하면 다른 작업자가 코드를 바꿔 바이너리를 읽지 못 하는 경우들이 발생했습니다.
-
-개발이 끝난 뒤 가장 먼저 C++의 정적 리플렉션을 통해 에디터 상에서 컴포넌트를 탈부착하고 프로퍼티를 수정할 방법을 찾게 되었습니다. 기본적으로 C++은 거대한 런타임 시스템 기반이 아니므로 엄밀한 의미의 리플렉션은 구현할 수 없지만, 타입 구조를 저장해놓고 사용하는 정적 리플렉션은 상당히 쉽게 구현할 수 있었습니다.
-
-엔진이 로드될 때 컴포넌트 레지스트리에는 간단한 컴포넌트의 정보와 컴포넌트를 생성해 반환하는 함수 객체를 등록하게 되며, 이후 에디터에서 컴포넌트를 부착하면 레지스트리를 통해 컴포넌트 인스턴스를 생성해 반환하면 됩니다.
-
-아이디어를 설명하는 간단한 예시 코드는 다음과 같습니다.
-<code-block title="컴포넌트 리플렉션 구현 예시" language="cpp">
-class ComponentRegistry
-{
-	std::unordered_map<std::string, std::function<class Component*()>> registry;
-public:
-	static ComponentFactory& GetInstance();
-
-	// 컴포넌트를 레지스트리에 등록한다.
-	template <typename T>
-	bool _RegisterComponent(std::string_view component_name);
-	{
-		if (registry.find(component_name.data()) == registry.end())
-		{
-			registry[component_name.data()] = []() -> T* { return new T; };
-		}
-	
-		return true;
-	}
-
-	// 컴포넌트 인스턴스를 생성해 반환한다.
-	template <typename T>
-	class T* CreateComponent(std::string_view component_name)
-	{
-		auto iter = registry.find(component_name.data());
-		if (iter != registry.end())
-		{
-			return iter->second();
-		}
-
-		return nullptr;
-	}
-	Component* CreateComponent(std::string_view component_name)
-	{
-		return static_cast<Component*>(CreateComponent<Component>(component_name));
-	}
-};
-
-// 등록에 사용할 매크로
-#define RegisterComponent(comp) \
-	inline static bool is_registered = ComponentRegistry::GetInstance()._RegisterComponent<comp>(#comp);
-
-// 간단한 방법으로 에디터에 컴포넌트를 등록할 수 있다.
-class SomeComponent : public Component
-{
-	RegisterComponent(SomeComponnet)
-	...
-}
-</code-block>
-다음은 자체 엔진에 존재하는 컴포넌트들을 컴포넌트 레지스트리에 등록하여 출력한 모습입니다.
-
-<img src="img/project/PotionAtlier/8.png" alt="본문 이미지" style="width: 20%;" />
-`,
-          }
-        ],
+        id: 'p_pa_bottom',
+        title: '더보기',
+        content: ``,
+        showDivider: false,
       },
     ],
     technologies: ['3D 자체엔진', '싱글플레이', '타이쿤', '캐쥬얼'],
+    links: [
+        { type: 'live', text: '게임플레이 영상', link: 'https://youtu.be/v2JbL4FlbQM?si=Go-37POIfkfaz-rR' }
+    ],
   },
 
 

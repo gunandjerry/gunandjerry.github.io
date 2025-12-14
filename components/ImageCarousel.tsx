@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { ChevronLeftIcon, ChevronRightIcon } from '../constants.tsx';
 
@@ -137,6 +138,10 @@ const ImageCarousel = ({ images, alt, aspectClass = 'aspect-[4/3]' }: { images: 
     setCurrentIndex((prev) => prev - 1);
   };
 
+  const isVideo = (src: string) => {
+    return /\.(mp4|webm|ogg|mov)($|\?)/i.test(src);
+  };
+
   if (totalImages === 0) return null;
 
   return (
@@ -151,13 +156,24 @@ const ImageCarousel = ({ images, alt, aspectClass = 'aspect-[4/3]' }: { images: 
       >
         {images.map((src, index) => (
           <div key={index} className="w-full flex-shrink-0">
-            <img
-              src={src}
-              alt={`${alt} - slide ${index + 1}`}
-              className={`w-full object-cover ${aspectClass} pointer-events-none select-none`}
-              loading={index === 0 ? 'eager' : 'lazy'}
-              draggable="false"
-            />
+             {isVideo(src) ? (
+               <video
+                 src={src}
+                 className={`w-full object-cover ${aspectClass} pointer-events-none select-none block`}
+                 autoPlay
+                 loop
+                 muted
+                 playsInline
+               />
+             ) : (
+                <img
+                  src={src}
+                  alt={`${alt} - slide ${index + 1}`}
+                  className={`w-full object-cover ${aspectClass} pointer-events-none select-none block`}
+                  loading={index === 0 ? 'eager' : 'lazy'}
+                  draggable="false"
+                />
+             )}
           </div>
         ))}
       </div>
