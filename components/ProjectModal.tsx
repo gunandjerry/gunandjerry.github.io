@@ -470,14 +470,14 @@ function ProjectModal({ project, onClose }) {
                 : <p className="text-slate-300 leading-relaxed mb-6 whitespace-pre-wrap text-sm sm:text-base">No detailed description available.</p>
             )}
 
-            <div className="mb-6 pt-4 border-t border-slate-700 mt-6 sm:mt-8">
+            {/* <div className="mb-6 pt-4 border-t border-slate-700 mt-6 sm:mt-8">
               <h4 className="text-lg font-semibold text-slate-100 mb-2">주요 키워드:</h4>
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map(tech => (
                   <span key={tech} className="bg-teal-500/20 text-teal-300 px-3 py-1 text-xs sm:text-sm rounded-full">{tech}</span>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             {/* Render Footer Links (supports multiple) */}
             {(project.links && project.links.length > 0) || project.sourceLink || project.liveLink || project.blogLink ? (

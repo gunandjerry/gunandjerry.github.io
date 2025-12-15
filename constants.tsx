@@ -45,6 +45,7 @@ export const PROJECTS_DATA = [
     id: 'p_fh',
     isMain: true,
     title: 'F급 헌터 생존기',
+    technologies: ['언리얼5', '언리얼 네트워크', '4인 멀티플레이', '1인칭', '리썰라이크', '생존'],
     images: [
         'img/project/FRankSurvivor/Banner.mp4',
     ],
@@ -300,7 +301,6 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
         showDivider: false,
       },
     ],
-    technologies: ['언리얼5', '언리얼 네트워크', '4인 멀티플레이', '1인칭', '리썰라이크', '생존'],
     links: [
         { type: 'blog', text: '언리얼 엔진 공부 기록', link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84/%EC%96%B8%EB%A6%AC%EC%96%BC-%EC%97%94%EC%A7%84-%EA%B3%B5%EB%B6%80-%EA%B8%B0%EB%A1%9D-%EC%9D%B8%EB%8D%B1%EC%8A%A4.html' },
         { type: 'blog', text: 'F급 헌터 생존기 구현 기록', link: 'https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EA%B5%AC%ED%98%84-%EA%B8%B0%EB%A1%9D-%EC%9D%B8%EB%8D%B1%EC%8A%A4.html' },
@@ -314,6 +314,7 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
     id: 'p_pa',
     isMain: true,
     title: 'Potion Atlier',
+    technologies: ['3D 자체엔진', '싱글플레이', '타이쿤', '캐쥬얼'],
     images: [
         'img/project/PotionAtlier/Banner.mp4',
     ],
@@ -425,11 +426,11 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
         showDivider: false,
       },
     ],
-    technologies: ['3D 자체엔진', '싱글플레이', '타이쿤', '캐쥬얼'],
     links: [
         { type: 'live', text: '게임플레이 영상', link: 'https://youtu.be/v2JbL4FlbQM?si=Go-37POIfkfaz-rR' }
     ],
   },
+
 
 
   // 레일웨이투헬
@@ -437,54 +438,35 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
     id: 'p_rh',
     isMain: true,
     title: 'Railway to Hell',
-    image: 'img/project/RailwayToHell/banner.gif',
+    technologies: ['2D 자체엔진', '싱글플레이', '전략', '퍼즐'],
     images: [
-        'img/project/RailwayToHell/banner.gif',
+        'img/project/RailwayToHell/Banner.mp4',
     ],
     shortDescription: '2D 자체엔진으로 제작한 3주 단기 팀 프로젝트로, 타일 위치 이동으로 공격을 회피하거나 아군 공격을 유도해 적들을 물리치는 전략 퍼즐 게임입니다.',
-    implementationFeatures: ['2D 자체엔진', '비동기 리소스 로딩', '입력처리, 플레이어 조작', '카메라 쉐이크 이펙트', '타이머 함수', '턴 기반 동작'],
-    links: [
-        { type: 'live', text: '유튜브 보러가기', link: 'https://youtu.be/H3ri3R9NwEg?si=e5JUkvO0QaWvkzq2' }
-    ],
+    implementationFeatures: ['2D 자체엔진', '비동기 로딩', '입력처리, UI 상호작용', '카메라 쉐이크', '타이머 함수', '9-Sliced 이미지'],
     longDescription: [
       {
         id: 'p_rh_overview',
         title: '프로젝트 개요',
-        content: `제목: Railway To Hell
-장르: 전략, 퍼즐
-개발기간: 3주일 (2024년 8월)
-개발인원: 개발 3인 / 아트 3인 / 기획 2인
-사용엔진: 자체 2D 엔진
-플랫폼: PC, Window
+        content: `<table>
+  <tr>
+    <td>제작기간</td>
+    <td>3주일 (2024년 8월)</td>
+  </tr>
+  <tr>
+    <td>제작인원</td>
+    <td>개발 3인 / 아트 3인 / 기획 2인</td>
+  </tr>
+  <tr>
+    <td>사용엔진</td>
+    <td>자체 2D 엔진</td>
+  </tr>
+  <tr>
+    <td>맡은역할</td>
+    <td>게임엔진, 조작, 플레이어, 게임플로우, 효과 등</td>
+  </tr>
+</table>
 `,
-        subSections: [
-          {
-            id: 'p_rh_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/H3ri3R9NwEg?si=IvPL0-jz1M4fDDJu" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
-          {
-            id: 'p_rh_overview_desc',
-            title: '게임 소개',
-            content: `전략을 세워 열차 칸의 모든 적을 처치하며 나아가는 턴제 게임입니다.\n플레이어는 1데미지를 가하는 총과 대상을 한 칸 밀어내는 석궁을 사용할 수 있으며, 적들은 플레이어의 행동 이후 정해진 순서에 따라 행동하게 됩니다.\n\n단순한 공격 외에도 플레이어는 다음과 같은 행동들도 취할 수 있습니다.\n1. 석궁으로 적을 뒤로 밀어 그 뒤에 있는 적과 충돌시켜 각각 1데미지를 입힌다.\n2. 샹들리에를 떨어트려 밑에 있는 적에게 3데미지를 입힌다.\n3. 화약통을 터트려 양 쪽의 적에게 1데미지를 입히고 각각 한 칸씩 밀어낸다.\n4. 다음 턴에 적이 스폰되는 위치에 자신 또는 적을 위치시켜 1데미지를 입고 스폰을 막는다.\n\n일반 적은 총 세 가지 타입으로 이루어집니다.\n1. 근접 공격을 가하는 적\n2. 2칸 앞까지 원거리 공격을 가할 수 있는 적\n3. 사이에 장애물이 없다면 플레이어가 있는 곳까지 돌진하는 적\n\n최종 열차 칸에는 보스 몬스터가 출현하며, 일반 몬스터와 전혀 다른 공격 패턴을 보여줍니다.\n\n플레이어는 가장 먼저 행동할 수 있으며, 적의 행동은 턴이 시작할 때 모두 정해지므로 적과 자리를 바꿔 아군을 공격하도록 유도하는 등 다양한 전략적 플레이가 강요됩니다.`,
-          },
-          {
-            id: 'p_rh_overview_role',
-            title: '맡은 역할',
-            content: `▶ 2D 게임 엔진 프레임워크 (게임루프, 입력, 카메라 조작, 사운드, 렌더링 등)
-▶ 플레이어 캐릭터 조작 및 연출 전반
-▶ 캐릭터 범용 로직: 타일 이동, 자리바꿈, 피격, 넉백, 사망 등
-▶ 구조물 오브젝트 로직
-▶ UI 전반 (버튼 상호작용, 9-Sliced 이미지, UI 우선순위 등)
-▶ 리소스 비동기 로딩
-▶ 카메라 연출
-▶ 기타 컨텐츠
-
-
-<img src="img/project/RailwayToHell/3.png" alt="게임 이미지" style="width: 80%;" />
-`,
-          }
-        ],
         showDivider: true,
       },
       {
@@ -533,9 +515,18 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 `,
           }
         ],
+        showDivider: true,
+      },
+      {
+        id: 'p_fh_bottom',
+        title: '더보기',
+        content: ``,
+        showDivider: false,
       },
     ],
-    technologies: ['2D 자체엔진', '싱글플레이', '전략', '퍼즐'],
+    links: [
+        { type: 'live', text: '게임플레이 영상', link: 'https://youtu.be/H3ri3R9NwEg?si=Wt1hbTA5dwxCib-v' }
+    ],
   },
 
 
@@ -543,6 +534,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_be',
     title: 'Bouncing Emoji Game',
+    technologies: ['유니티', '싱글플레이', '퍼즐', '수박 게임'],
     image: 'img/project/BounceEmoji/banner.gif',
     shortDescription: '수박 게임에 말랑말랑한 탄성을 접목시킨 퍼즐 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.',
     links: [
@@ -596,7 +588,6 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         showDivider: true,
       },
     ],
-    technologies: ['유니티', '싱글플레이', '퍼즐', '수박 게임'],
   },
 
 
@@ -604,6 +595,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_dp',
     title: 'Drawing Puzzle',
+    technologies: ['유니티', '싱글플레이', '퍼즐'],
     image: 'img/project/DrawingPuzzle/banner.gif',
     shortDescription: '그려낸 모양에 물리를 입혀 퍼즐을 푸는 프로토타입 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.',
     links: [
@@ -674,7 +666,6 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         showDivider: true,
       }
     ],
-    technologies: ['유니티', '싱글플레이', '퍼즐'],
   },
 
 
@@ -682,6 +673,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_ap',
     title: 'Aphotica',
+    technologies: ['2D 자체엔진', '리듬', '퍼즐'],
     image: 'img/project/Aphotica/banner.gif',
     shortDescription: '부딪힌 블록의 색을 흡수하고, 흡수한 색을 혼합하며 풀어나가는 퍼즐 게임입니다. 2주 단기 팀 프로젝트로 엔진, 레벨에디터, 컨텐츠 전반을 담당하였습니다.',
     links: [
@@ -770,7 +762,6 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['2D 자체엔진', '리듬', '퍼즐'],
   },
 
 
@@ -778,6 +769,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_etd',
     title: 'Emoji Tower Defense',
+    technologies: ['2D 자체엔진', '싱글플레이', '타워디펜스'],
     image: 'img/project/EmojiTowerDefense/banner.gif',
     shortDescription: '풍선 타워 디펜스를 모방한 타워 디펜스 게임입니다. 자체 2D 엔진으로 제작한 8일 단기 개인 프로젝트입니다.',
     links: [
@@ -871,7 +863,6 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['2D 자체엔진', '싱글플레이', '타워디펜스'],
   },
 
 
@@ -879,6 +870,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
   {
     id: 'p_jf',
     title: 'Jumping Frog',
+    technologies: ['2D 자체엔진', '싱글플레이', '플랫포머', '점프킹'],
     image: 'img/project/JumpingFrog/banner.gif',
     shortDescription: 'GDI+ 렌더링의 자체 2D 엔진으로 제작한 4일 단기 개인 프로젝트입니다.',
     links: [
@@ -950,7 +942,6 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
         ],
       },
     ],
-    technologies: ['2D 자체엔진', '싱글플레이', '플랫포머', '점프킹'],
   },
 ];
 
