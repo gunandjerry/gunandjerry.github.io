@@ -351,24 +351,33 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
         subSections: [
           {
             id: 'p_pa_highlight_physics',
-            title: 'PhysX 물리 컴포넌트 구현하기',
-            content: `NVDIA사에서 제작한 물리엔진인 PhysX를 공부하여 여러 종류의 콜라이더 컴포넌트 / 물리 기반 캐릭터 이동 컴포넌트 / Scene Query 함수를 구현하고 게임에 사용하였습니다.
+            title: 'PhysX 물리 컴포넌트',
+            content: `컴포넌트를 자유롭게 부착하는 것으로 PhysX의 기능을 쉽게 이용할 수 있도록 했습니다.
 
-물리 컴포넌트가 부착된 액터는 PhysX Scene의 피직스 액터와 1:1로 대응되고 관리됩니다. 컴포넌트가 동적으로, 순서에 상관 없이 부착될 수 있어야 했기에 다음과 같이 두 가지 경로로 피직스 신에 대응하는 피직스 액터가 생성되도록 했습니다.
+<img src="img/project/PotionAtlier/physComp.png" alt="본문 이미지" style="width: 80%;" />
+컴포넌트의 부착 순서에 상관 없이 조합에 따라 적절한(Static 또는 Dynamic) PhysActor를 피직스 신에 생성하고, 게임 루프의 PhysicsUpdate를 추가하여 게임 신과 물리 신이 서로 소통할 수 있도록 구현하였습니다.
 
-<img src="img/project/PotionAtlier/4.png" alt="본문 이미지" style="width: 60%;" />
 
-콜라이더에는 정육면체, 캡슐, 스페어 콜라이더와 메쉬의 정점 데이터를 사용한 메쉬 콜라이더를 구현하였습니다. 콜라이더의 초기 사이즈는 메쉬의 바운드 박스를 기준으로 정해지지만 원하는 대로 크기, 앵커 등을 자유롭게 바꿀 수 있습니다.
+▶ 콜라이더
 
-<img src="img/project/PotionAtlier/BoxCollider.gif" alt="본문 이미지" style="width: 35%;" />
+<video-gif src="img/project/PotionAtlier/BoxColliderOnly.mp4" title="demo" width="40%"/>
+<a target="_blank" href="https://github.com/gunandjerry/PUBLIC_4Q_PotionAtlier/tree/01b088306917e6f32ddbfad98de669cd3c835712/D3D11_Engine/Source/Component/Collider">Capsule, Box, Sphere, Mesh 콜라이더 컴포넌트</a>를 구현하였습니다.
 
-모든 액터는 물리 레이어를 설정할 수 있으며, 두 레이어 사이의 물리 반응을 블록(밀어내기), 오버랩(이벤트만 발생), 무시 중 하나로 설정할 수 있습니다.
+편의를 위해 Owner 오브젝트와 그 자식의 메쉬 바운드를 계산해 크기를 자동으로 조절할 수 있도록 했고, Mesh Collider 또한 PxCookTriangleMesh() 함수를 사용해 메쉬의 모양 그대로 콜라이더를 생성합니다.
 
-플레이어의 상호작용에는 Sweep 쿼리를 사용합니다. 반응성을 개선하기 위해 레이캐스트가 아닌 적당한 크기의 스페어와 오버랩된 가장 가까운 기물에 대해 상호작용 함수를 호출하도록 했습니다.
+또한 물리 레이어를 커스텀할 수 있도록 해 서로 충돌하지 않아야 하거나 씬 쿼리에서 제외되어야 할 경우를 처리할 수 있도록 했습니다.
+
+
+▶ 캐릭터 컨트롤러, 리지드바디
+
+<video-gif src="img/project/PotionAtlier/PlayerControllerOnly.mp4" title="demo" width="40%"/>
+유니티를 모방하여 <a target="_blank" href="https://github.com/gunandjerry/PUBLIC_4Q_PotionAtlier/tree/01b088306917e6f32ddbfad98de669cd3c835712/D3D11_Engine/Source/Component/CharacterController">캐릭터를 조작하기 위한 캐릭터 컨트롤러</a>와 <a target="_blank" href="https://github.com/gunandjerry/PUBLIC_4Q_PotionAtlier/tree/01b088306917e6f32ddbfad98de669cd3c835712/D3D11_Engine/Source/Component/Rigidbody">물리적 성질을 다루기 위한 Rigidbody 컴포넌트</a>를 구현하였습니다.
+
+
+▶ 씬 쿼리
 
 <img src="img/project/PotionAtlier/6.gif" alt="본문 이미지" style="width: 35%;" />
-
-Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭터를 손쉽게 이동시킬 수 있습니다. 착지상태 판단, 이동, 점프, 경사면을 부드럽게 올라가고 내려가는 기능 등을 구현하였습니다.
+<a target="_blank" href="https://github.com/gunandjerry/PUBLIC_4Q_PotionAtlier/blob/01b088306917e6f32ddbfad98de669cd3c835712/D3D11_Engine/Source/Physics/PhysicsManager.cpp#L283-L443">Raycast와 Sweep 쿼리를 구현</a>하였습니다. 플레이어의 상호작용은 Sweep 쿼리를 사용합니다.
 `,
           },
           {
@@ -383,37 +392,28 @@ Character Controller 컴포넌트를 구현하여 RigidBody가 입혀진 캐릭�
           {
             id: 'p_pa_highlight_playermovement',
             title: '부드러운 조작감 구현하기',
-            content: `단순히 키가 눌린 방향으로 이동 벡터를 가하는 투박한 방식은 조작감이 매우 좋지 않았기 때문에 조작감을 높힐 방법을 연구했습니다.
-
-우선 캐릭터의 회전은 이동과 함께 부드럽게 이루어지는게 보기 좋았고, 회전 속도가 등속적일 경우 미끄러지는 느낌이 심하게 나기 때문에 '현재 바라보고 있는 방향'과 '이동 방향'의 차이가 클 수록 이동속도를 줄이는 식((t/pi)^2)을 사용했습니다. 그러자 이동할 방향을 돌아 바라본 뒤 이동하는 느낌이 들어 조작감이 상당히 부드러워질 수 있었습니다.
-
-회전은 캐릭터의 전방 벡터와 이동 방향 벡터 간의 외적으로 시계 방향과 반시계 방향 중 각도가 더 작은 쪽으로 회전합니다. 대쉬를 사용하면 그렇게 얻어진 최종 이동량에 가중치를 곱하는 방식으로 속도가 빨라지게 됩니다.
+            content: `캐릭터의 조작감이 너무 뻣뻣하다는 피드백을 받고 부드럽게 조작되는 인상을 주기 위해 다음과 같은 방법을 사용했습니다.
+1. 이동 방향과 현재 바라보는 방향의 각도 차이가 클 수록 이동속도를 줄임.
+2. 외적을 사용해 좌측과 우측 회전 중 이동 방향으로 빨리 도달할 수 있는 방향으로 회전함.
+3. 대쉬를 사용하면 최종 이동량에 가중치로 곱연산을 가함.
 
 <img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" style="width: 30%;" />
 `,
           },
           {
-            id: 'p_pa_highlight_uiinteract',
-            title: 'UI와 상호작용하기',
-            content: `UI 오브젝트는 Z Order에 따라 렌더링의 마지막 과정에 그려질 뿐, 특수한 오브젝트는 아닙니다. 대신 EventListener 컴포넌트를 통해 플레이어의 클릭에 반응하도록 처리했습니다.
+            id: 'p_pa_highlight_tutorial',
+            title: '튜토리얼',
+            content: `게임의 메인 로직과 디커플링된 튜토리얼 시스템을 구현하였습니다.
 
-플레이어가 화면을 클릭하면 현재 활성화된 EventListener 중 클릭 지점이 자신의 바운딩 볼륨 내부에 놓이는 액터만을 추립니다. 이후 UI -> Non-UI 순서로 Order 체크를 진행하여 가장 상단에 있는 오브젝트의 EventListener가 클릭 이벤트를 가져가는 방식입니다.
+플레이어의 모든 동작을 기능 단위로 분리시킨 뒤, 플레이어의 행동마다 이벤트를 발생시켜 독립적으로 작동하는 튜토리얼 매니저가 해당 이벤트를 감지하여 튜토리얼을 진행시키는 방식입니다.
 
-아쉬운 것은 시간이 부족해 내부 판별을 단순 순회로 진행했다는 것입니다. 뷰포트를 나누어 쿼드 트리를 활용한다면 훨씬 효율적으로 검사를 수행할 수 있을 듯 합니다.
-
-<img src="img/project/PotionAtlier/uiorder.png" alt="본문 이미지" style="width: 40%;" />
+<video-gif src="img/project/PotionAtlier/Tutorial_PlayerController_Stamina.mp4" title="demo" width="50%"/>
 `,
           },
           {
-            id: 'p_pa_highlight_tutorial',
-            title: '메인 로직으로부터 분리된 튜토리얼',
-            content: `이전 미니 프로젝트에서의 반면교사로 메인 로직과 분리될 수 있는 튜토리얼 시스템을 만들기 위해 고민했고, 이벤트 기반의 시스템을 만들게 되었습니다.
-
-먼저 캐릭터의 조작과 같은 플레이어의 동작은 모두 구현 단계에서 기능 단위로 독립되도록 설계하였고, 동작이 발생하면 언리얼의 Delegate처럼 등록된 콜백을 호출하는 이벤트 대리자를 동작시킵니다.
-
-튜토리얼 매니저는 연관된 액터에 콜백 함수를 등록해놓고, 이벤트가 발생하길 기다립니다. 필요하다면 연관된 액터가 노출하는 함수를 호출해 기능 일부를 켜고 끌 수 있도록 되어있습니다.
-
-<img src="img/project/PotionAtlier/tuto.gif" alt="본문 이미지" style="width: 50%;" />
+            id: 'p_pa_highlight_etc',
+            title: '기타 컨텐츠 구현',
+            content: `요리 QTE, 대쉬와 스태미너, 상호작용 가능한 기물, 날아가는 노움 기믹, 말풍선과 텍스트 렌더링, UI 상호작용, 에디터 격자 배치 시스템 등 컨텐츠 전반을 개발하였습니다.
 `,
           }
         ],
