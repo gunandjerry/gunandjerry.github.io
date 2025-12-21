@@ -142,7 +142,7 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
           {
             id: 'p_fh_highlight_procedural_dungeon',
             title: '랜덤 맵 생성',
-            content: `플레이어들이 매번 새로운 구조의 던전을 경험할 수 있도록 <a target="_blank" href="https://github.com/BenPyton/ProceduralDungeon">절차적 레벨 스트리밍 오픈소스 플러그인(BenPyton/ProceduralDungeon v3.5.1/MIT License)</a>을 기반으로 랜덤하게 생성되는 던전을 구현하였습니다.
+            content: `플레이어들이 매번 새로운 구조의 던전을 경험할 수 있도록 <a target="_blank" href="https://github.com/BenPyton/ProceduralDungeon">절차적 레벨 스트리밍 오픈소스 플러그인(BenPyton/ProceduralDungeon v3.5.1/MIT License)</a>을 기반으로 <b>랜덤하게 생성되는 던전</b>을 구현하였습니다.
 
 플러그인이 제공하는 기능만으론 원하는 바를 구현할 수 없었기 때문에 먼저 <a target="_blank" href="https://gunandjerry.github.io/gunandjerry_blog/0-%EB%B0%9C%ED%96%89%EC%99%84%EB%A3%8C/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/2504_f%EA%B8%89%ED%97%8C%ED%84%B0%EC%83%9D%EC%A1%B4%EA%B8%B0/%EC%B0%B8%EA%B3%A0%EC%9E%90%EB%A3%8C/procedural-dungeon-%ED%94%8C%EB%9F%AC%EA%B7%B8%EC%9D%B8-%EB%B6%84%EC%84%9D.html">플러그인의 구조를 분석</a>하여 기능을 확장시켰습니다.
 
@@ -152,23 +152,14 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
 <collapsible title="확장된 구조 (클릭하여 펼치기)">
 <img src="img/project/FRankSurvivor/pd2.png" alt="본문 이미지" style="width: 90%;" />
 </collapsible>
-
-추가된 주요 기능은 다음과 같습니다.
-- 방과 방 간의 연결 규칙(확률, 최소거리, 최대개수 등)에 따라 이어지도록 함.
-- 일정한 개수의 방을 반드시 생성하도록 보장하고, 이들을 던전 전체에 고르게 분포시킴.
-- 통로의 타입이 같을 경우 연결하고, 여러 디자인의 통로를 둘 수 있도록 함.
-
-이후 생성된 던전 내부를 다음과 같이 꾸밈으로써 던전을 완성시킬 수 있었습니다.
-- 시작 위치로부터의 거리, 방의 사이즈에 따라 자원을 분포시킴.
-- 지정된 포인트 또는 Nav Mesh를 기준으로 랜덤한 프롭을 배치함.
-- 모든 플레이어로부터 일정 거리 떨어진 위치에 크리쳐를 스폰함.
+방과 방의 세부적인 연결 규칙을 설정하거나, 필수 룸을 던전 전체에 퍼트리거나, 통로의 타입과 디자인을 결정할 수 있도록 하는 등 여러 기능을 확장하였습니다.
 
 <video-gif src="img/project/FRankSurvivor/RandomMapGen.mp4" title="demo" width="30%"/>`,
           },
           {
             id: 'p_fh_highlight_dynamic_minimap_rendering',
             title: '실시간 미니맵 렌더링',
-            content: `던전이 절차적으로 생성되는 만큼 미니맵도 동적으로 렌더링되어야 했습니다.
+            content: `던전이 절차적으로 생성되는 만큼 미니맵도 <b>동적으로 렌더링</b>되어야 했습니다.
 기획측에선 (1) R.E.P.O 스타일의 미니멀한 느낌을 줄 것, (2) 방문하지 않은 룸의 구조를 가릴 것, (3) 다른 플레이어를 아이콘으로 트래킹 할 것, (4) 층계를 구분할 수 있을 것을 요구했습니다.
 
 
@@ -352,7 +343,7 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
           {
             id: 'p_pa_highlight_physics',
             title: 'PhysX 물리 컴포넌트',
-            content: `컴포넌트를 자유롭게 부착하는 것으로 PhysX의 기능을 쉽게 이용할 수 있도록 했습니다.
+            content: `<b>물리 컴포넌트</b>를 자유롭게 부착하는 것으로 PhysX의 기능을 쉽게 이용할 수 있도록 했습니다.
 
 <img src="img/project/PotionAtlier/physComp.png" alt="본문 이미지" style="width: 80%;" />
 컴포넌트의 부착 순서에 상관 없이 조합에 따라 적절한(Static 또는 Dynamic) PhysActor를 피직스 신에 생성하고, 게임 루프의 PhysicsUpdate를 추가하여 게임 신과 물리 신이 서로 소통할 수 있도록 구현하였습니다.
@@ -383,11 +374,10 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
           {
             id: 'p_pa_highlight_uistencil',
             title: 'UI 스텐실 마스킹',
-            content: `UI 이미지의 둥근 모서리를 처리하기 위해 커스텀 스텐실 버퍼를 통한 UI 마스킹을 구현하였습니다.
+            content: `UI 이미지의 둥근 모서리를 처리하기 위해 <b>커스텀 스텐실 버퍼</b>를 사용해 UI 마스킹을 구현하였습니다.
 마스크로 사용될 텍스쳐는 렌더링되는 대신 스텐실 버퍼에 자신의 마스크 ID를 비트플래그로 기록하며, 이후 마스크 위에 그려지도록 설정된 텍스쳐는 스텐실 버퍼에 지정된 비트 플래그가 켜져있는 경우에만 그려집니다.
 
-<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" style="width: 30%;" />
-`,
+<img src="img/project/PotionAtlier/5.gif" alt="본문 이미지" style="width: 30%;" />`,
           },
           {
             id: 'p_pa_highlight_playermovement',
@@ -397,18 +387,16 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
 2. 외적을 사용해 좌측과 우측 회전 중 이동 방향으로 빨리 도달할 수 있는 방향으로 회전함.
 3. 대쉬를 사용하면 최종 이동량에 가중치로 곱연산을 가함.
 
-<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" style="width: 30%;" />
-`,
+<img src="img/project/PotionAtlier/movement.gif" alt="본문 이미지" style="width: 30%;" />`,
           },
           {
             id: 'p_pa_highlight_tutorial',
             title: '튜토리얼',
-            content: `게임의 메인 로직과 디커플링된 튜토리얼 시스템을 구현하였습니다.
+            content: `게임의 <b>메인 로직과 디커플링</b>된 튜토리얼 시스템을 구현하였습니다.
 
 플레이어의 모든 동작을 기능 단위로 분리시킨 뒤, 플레이어의 행동마다 이벤트를 발생시켜 독립적으로 작동하는 튜토리얼 매니저가 해당 이벤트를 감지하여 튜토리얼을 진행시키는 방식입니다.
 
-<video-gif src="img/project/PotionAtlier/Tutorial_PlayerController_Stamina.mp4" title="demo" width="50%"/>
-`,
+<video-gif src="img/project/PotionAtlier/Tutorial_PlayerController_Stamina.mp4" title="demo" width="50%"/>`,
           },
           {
             id: 'p_pa_highlight_etc',
@@ -475,43 +463,43 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
         subSections: [
           {
             id: 'p_rh_highlight_1',
-            title: '게임 제작 환경 구축하기 : 2D 게임 엔진',
-            content: `이전까지 꾸준히 개발해 나가던 2D 게임 엔진을 사용했습니다. 엔진이 필수적으로 지원해야 하는 전반적인 기능들은 이미 준비가 된 상태였고, 저희 게임이 2D 물리나 기능이 많은 에디터를 요구하지는 않았기 때문에 비교적 빠르게 컨텐츠 제작으로 넘어갈 수 있었습니다.\n따라서 게임 엔진은 기능 추가보다는 주로 버그 수정이나 UI를 위한 기능 추가 정도가 이루어졌습니다.`,
-          },
-          {
-            id: 'p_rh_highlight_2',
-            title: '게임의 큰 흐름 구현하기 : 커맨드 패턴의 활용',
-            content: `게임의 핵심 매커니즘은 매 턴의 시작시 모든 적들의 행동과 그 순서를 정해놓는 데에 있습니다.
-순차적으로 진행되는 턴 기반에, 미리 결정된 행동의 종류를 저장해둬야 한다는 점에서 커맨드 패턴을 사용하기에 아주 적합하다고 판단했습니다.
-
-커맨드 객체는 매우 단순한 구조로 적이 취할 행동 정보를 저장하고 있습니다. 여기서 저장해야 하는 데이터와 저장할 필요 없는 데이터를 구분해야 하는데, 이는 적이 행동을 결정한 뒤 상황을 바꿔 적들의 행동을 이용하는 전략이 게임의 핵심 요소이기 때문입니다.
-
-예컨대 '돌진형 몬스터'가 '우측 방향으로' '돌진한다'는 정보만 저장하고 현재 위치가 어디고 어디까지 갈 수 있는 지는 저장하지 않습니다. 후자에 해당하는 정보는 실제로 커맨드를 실행할 때 현재 상황에 따라 결정되게 됩니다.
-
-커맨드 패턴을 활용하여 게임의 메인 플로우를 매우 직관적이고 쉽게 작성할 수 있었습니다.
-개략적인 흐름도는 다음과 같습니다.
-
-<img src="img/project/RailwayToHell/4.png" alt="본문 이미지" style="width: 50%;" />
+            title: '2D 게임 엔진',
+            content: `<a target="_blank" href="https://github.com/gunandjerry/PUBLIC_DogeEngine/blob/4a592786e4cae2ae60b731c64f8e10d415fb24c6/DogeEngine/Core.cpp#L350-L386">게임루프부터</a> 렌더링(Direct2D), <a target="_blank" href="https://github.com/gunandjerry/PUBLIC_DogeEngine/blob/4a592786e4cae2ae60b731c64f8e10d415fb24c6/DogeEngine/InputManager.h">입력 처리</a>, <a target="_blank" href="https://github.com/gunandjerry/PUBLIC_DogeEngine/blob/4a592786e4cae2ae60b731c64f8e10d415fb24c6/DogeEngine/Camera.h">카메라 조작</a>, <a target="_blank" href="https://github.com/gunandjerry/PUBLIC_DogeEngine/blob/4a592786e4cae2ae60b731c64f8e10d415fb24c6/DogeEngine/AudioManager.h">사운드 시스템(FMOD)</a>, <a target="_blank" href="https://github.com/gunandjerry/PUBLIC_DogeEngine/blob/4a592786e4cae2ae60b731c64f8e10d415fb24c6/DogeEngine/Animation2D.h">스프라이트 애니메이션</a> 등 게임 제작에 필요한 기능들을 모두 직접 제작하였습니다.
 `,
           },
           {
+            id: 'p_rh_highlight_2',
+            title: '게임 플로우 / 액션',
+            content: `게임은 (1) 적들의 행동을 결정 (2) 플레이어의 행동 수행 (3) 속도가 빠른 순으로 적들이 미리 결정된 행동을 수행하는 방식으로 진행됩니다.
+
+전체 진행은 간단한 커맨드 큐를 통해 구현되어 있으며, 매 순서마다 수행하는 동작은 미리 구현해둔 범용 조작 함수를 조합하여 쉽게 구현할 수 있도록 하였습니다.
+
+<video-gif src="img/project/RailwayToHell/GameFlow.mp4" title="demo" width="50%"/>`,
+          },
+          {
             id: 'p_rh_highlight_3',
-            title: '타이머 함수 기능 : 자연스러운 딜레이 입히기',
-            content: `행동을 수행하는 동안 또는 행동 사이사이마다, 여러 부분에서 시간 지연을 줄 필요가 있었습니다.
-게임의 메인 플로우 뿐만 아니라 스프라이트 이펙트를 재생한다던가, 열차의 흔들림을 표현하는 카메라 효과 등 다양한 곳에서 범용적으로 사용할 수 있는 기능을 개발하고자 하여 TimerFunction 기능을 엔진에 추가했습니다.
+            title: '타이머 함수를 통한 딜레이',
+            content: `<a target="_blank" href="https://github.com/gunandjerry/PUBLIC_DogeEngine/blob/4a592786e4cae2ae60b731c64f8e10d415fb24c6/DogeEngine/TimerFunctionManager.h">동작과 동작 사이에 적절한 딜레이를 넣거나 히트 스톱을 구현하기 위해 범용적으로 사용할 수 있는 타이머 함수를 구현</a>하였습니다.
 
-TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브젝트에 등록되어 관리되는 람다 함수의 래퍼 객체입니다.
-시간을 정해놓고 콜백하거나, 반복 호출하거나, 지속 호출하는 등의 작업을 편리하게 수행하는 것이 골자입니다.
-
-다만 전역적으로 참조하는 객체들의 수명을 추적하는 시스템은 결코 아니기 때문에, 자신의 주체가 되는 오브젝트 외 다른 오브젝트를 사용할 때는 주의해야 합니다.`,
+주체가 되는 오브젝트에 달려 생성된 뒤 게임 루프 안에서 시간을 누적하다 등록된 함수를 호출하는 방식입니다.
+`,
           },
           {
             id: 'p_rh_highlight_4',
             title: '9-Sliced 이미지',
-            content: `튜토리얼 메세지와 플레이어의 말풍선의 배경 이미지는 텍스트의 길이에 따라 적당하게 사이즈가 조절되는 것이 좋습니다.
-이를 위해 9-Sliced 스프라이트를 구현했습니다. 좌, 우, 상, 하 영역의 비율을 지정하여 이미지를 9등분하고, 가로 세로로 이미지의 크기를 변경할 경우 아래 그림과 같이 중간 부분만 늘려서 이미지 테두리의 품질 저하를 줄이며 렌더링하는 방식입니다.
+            content: `말풍선, 튜토리얼 UI 등 텍스트 길이에 따라 적당하게 사이즈가 조절되는 UI가 필요하다는 요청을 받아 9-Sliced 이미지를 구현하였습니다.
 
-<img src="img/project/RailwayToHell/5.png" alt="본문 이미지" style="width: 40%;" />
+DirectWrite를 사용해 그려지는 텍스트의 바운드 크기를 구해 말풍선 등의 크기를 적절하게 조절할 수 있습니다.
+
+<video-gif src="img/project/RailwayToHell/9sliced.mp4" title="demo" width="50%"/>`,
+          },
+          {
+            id: 'p_rh_highlight_etc',
+            title: '기타 컨텐츠 구현',
+            content: `▶ 유니티의 SmoothDamp를 모방하여 부드럽게 카메라를 흔드는 효과
+▶ UI 렌더링 오더와 클릭 이벤트 처리
+▶ 비동기 로딩 스크린 / 리소스 지연 로딩
+▶ 화약통, 샹들리에 기믹 등
 `,
           }
         ],
@@ -537,33 +525,25 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
     technologies: ['유니티', '싱글플레이', '퍼즐', '수박 게임'],
     image: 'img/project/BounceEmoji/banner.gif',
     shortDescription: '수박 게임에 말랑말랑한 탄성을 접목시킨 퍼즐 게임입니다. 유니티 엔진으로 제작한 개인 프로젝트입니다.',
-    links: [
-        { type: 'live', text: '유튜브 보러가기', link: 'https://www.youtube.com/watch?v=1kLIHAhSvVM' }
-    ],
     longDescription: [
       {
         id: 'p_be_overview',
         title: '프로젝트 개요',
-        content: `제목: (가제) Bouncing Emoji Game
-장르: 퍼즐
-개발인원: 1인
-사용엔진: 유니티 엔진
-플랫폼: PC, Window
+        content: `<table>
+  <tr>
+    <td>제작기간</td>
+    <td>1일</td>
+  </tr>
+  <tr>
+    <td>제작인원</td>
+    <td>1인</td>
+  </tr>
+  <tr>
+    <td>사용엔진</td>
+    <td>유니티엔진 2022</td>
+  </tr>
+</table>
 `,
-        subSections: [
-          {
-            id: 'p_be_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/1kLIHAhSvVM?si=uRIMVK5bqpi_ROIi" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
-          {
-            id: 'p_be_overview_desc',
-            title: '게임 소개',
-            content: `최근 'Suika Game'으로 유행한, 같은 크기의 원형 오브젝트를 합치는 퍼즐 장르의 게임입니다. 기존의 게임과의 차별점을 두기 위해 오브젝트에 Spring joint로 구현한 탄성 시스템을 적용하였습니다.
-
-같은 크기의 이모지가 충돌할 경우 다음 단계의 이모지로 합쳐지며 점수를 얻습니다. 이모지는 총 10단계의 레벨이 존재하며 박스의 전면 영역을 초과할 경우 게임 오버 처리됩니다. 게임의 목표는 높은 점수를 얻는 것입니다.`,
-          },
-        ],
         showDivider: true,
       },
       {
@@ -575,18 +555,29 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             title: 'SpringJoint로 탄성 구현하기',
             content: `오브젝트에 여러 개의 본을 심고, 본마다 Spring joint와 Circle collider를 부착하여 탄성을 구현했습니다.
 
-<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" style="width: 40%;" />
-`,
+<img src="img/project/BounceEmoji/2.png" alt="게임 이미지" style="width: 30%;" />`,
           },
           {
             id: 'p_be_highlight_2',
             title: '이모지를 부드럽게 합치기',
-            content: `이모지가 서로 충돌할 때, 두 이모지의 현재 레벨을 검사하여 같은 경우 더 큰 하나의 이모지로 합쳐지게 됩니다.
-이 때 시각적으로 부드럽게 합쳐져야 하며, 다음 물리 틱에서 주변의 이모지들이 자연스럽게 밀려나고 충돌해야 하기 때문에 (1) 여러 프레임에 걸친 스케일링 애니메이션을 사용하고, (2) 두 이모지의 충돌점으로부터 합쳐진 이모지가 생기도록 하여 부드러운 움직임이 가능하도록 했습니다.`,
+            content: `이모지가 서로 충돌할 때, 두 이모지의 현재 레벨을 검사하여 같은 경우 더 큰 하나의 이모지로 부드럽게 합쳐지는 로직을 구현했습니다.
+
+이모지가 하나로 합쳐진 뒤 주변의 이모지들이 자연스럽게 밀려나야 하기 때문에 합쳐질 두 이모지의 충돌점을 기준으로 여러 틱에 걸쳐 스케일링 애니메이션을 사용해 부드럽게 밀어내는 방법을 사용했습니다.
+
+<img src="img/project/BounceEmoji/Sample.gif" alt="게임 이미지" style="width: 30%;" />`,
           }
         ],
         showDivider: true,
       },
+      {
+        id: 'p_fh_bottom',
+        title: '더보기',
+        content: ``,
+        showDivider: false,
+      },
+    ],
+    links: [
+        { type: 'live', text: '게임플레이 영상', link: 'https://www.youtube.com/watch?v=1kLIHAhSvVM' }
     ],
   },
 
@@ -605,28 +596,21 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
       {
         id: 'p_dp_overview',
         title: '프로젝트 개요',
-        content: `제목: (가제) Drawing Puzzle
-장르: 퍼즐
-개발인원: 1인
-사용엔진: 유니티 엔진
-플랫폼: PC, Window
+        content: `<table>
+  <tr>
+    <td>제작기간</td>
+    <td>4일</td>
+  </tr>
+  <tr>
+    <td>제작인원</td>
+    <td>1인</td>
+  </tr>
+  <tr>
+    <td>사용엔진</td>
+    <td>유니티엔진 2022</td>
+  </tr>
+</table>
 `,
-        subSections: [
-          {
-            id: 'p_df_overview_live',
-            title: '플레이 영상',
-            content: `<iframe style="width: 100%; aspect-ratio: 16 / 9;" src="https://www.youtube.com/embed/uH11PwM16ic?si=7fzwJBssUf03xPmx" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`,
-          },
-          {
-            id: 'p_dp_overview_desc',
-            title: '게임 소개',
-            content: `실시간 라인 콜라이더 생성을 활용한 퍼즐 게임입니다.
-유저가 그림을 그리면 즉시 폴리곤 콜라이더가 생성되며, 선의 위 또는 선으로 둘러쌓인 도형의 내부에 Hinge Joint를 추가하여 다양한 관절 물리를 구현할 수 있습니다.
-
-<img src="img/project/DrawingPuzzle/1.png" alt="게임 이미지" style="width: 80%;" />
-`,
-          }
-        ],
         showDivider: true,
       },
       {
@@ -636,35 +620,37 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
           {
             id: 'p_dp_highlight_1',
             title: '실시간 라인 콜라이더',
-            content: `Line Renderer를 이용하여 오브젝트를 그려내는 기능을 구현하였습니다. 과정은 다음과 같습니다.
-1) 현재 커서의 위치를 기록합니다. 현재 커서와 마지막으로 기록된 좌표의 거리가 설정된 최소거리를 초과하면 해당 지점의 좌표를 기록하고 마지막 좌표를 갱신합니다.
-2) 좌표를 기록할 때마다 Line Renderer의 position을 추가하면서 씬에 그려냅니다.
-3) Line Renderer의 BakeMesh() 메서드로 메시를 구합니다.
-4) 메시 콜라이더를 사용할 경우 연산량이 많아 메시로부터 Polygon Collider를 생성하고, Ramer-Douglas-Peucker 알고리즘을 적용하여 최적화하는 방식을 선택했습니다. 다음 주소의 프로젝트를 참고하였습니다: Automatically Create Polygon Collider 2D From 2D Mesh in Unity, H3XED (h3xed.com/programming/automatically-create-polygon-collider-2d-from-2d-mesh-in-unity)
-	Polygon Collider Simplification, j-bbr, (github.com/j-bbr/PolygonColliderSimplification)
-5) Rigidbody2D 컴포넌트를 부착하고 몇 가지 후처리를 하여 물리효과를 구현한 드로잉 오브젝트를 생성합니다.`,
+            content: `Line Renderer를 이용하여 오브젝트를 그려내는 기능을 구현하였습니다.
+커서의 위치를 추적해 일정 거리마다 포인트를 찍고, Line Renderer의 BakeMesh 메서드를 사용하였습니다.
+
+이 때 단순히 메시 콜라이더를 사용하면 연산량이 너무 많아져 Polygon Collider를 생성한 뒤 <a target="_blank" href="https://www.h3xed.com/programming/automatically-create-polygon-collider-2d-from-2d-mesh-in-unity">Ramer-Douglas-Peucker 알고리즘</a>을 사용해 최적화했습니다.
+`,
           },
           {
             id: 'p_dp_highlight_2',
-            title: '라인 내부 Hinge joint',
-            content: `그려진 오브젝트의 라인 또는 둘러쌓인 내부에 Hinge를 추가하는 기능을 구현하였습니다. 힌지를 설치하는 과정은 다음과 같습니다.
-1) Line Renderer Physics의 특성 상 기존의 도형 내부 판별 알고리즘을 사용할 수 없었기 때문에, 대신 상하좌우로 레이캐스팅을 수행하였습니다.
-2) 씬에 존재하는 모든 오브젝트를 한 번 순회하면서 최초로 모든 방향에서 충돌한 오브젝트를 Hinge의 부모 오브젝트로 삼습니다.
+            title: '라인 내부 판별 / Hinge Joint',
+            content: `그려진 라인이 이루는 모양의 내부에 Hinge를 추가하는 기능을 구현하였습니다.
+간단히 Hinge가 꽂힐 위치로부터 여러 방향으로 레이캐스팅을 수행하여 같은 라인과 충돌할 경우 내부라고 판단하는 방식입니다.
+이 때 HingeJoint2D 컴포넌트는 가장 가까이에 있는 라인에 부착하고, 다른 겹쳐있는 라인은 HingeJoint2D를 통해 연결되도록 했습니다.
 
-생성된 Hinge 위에 오브젝트를 그릴 경우, 우선 힌지마다 오브젝트의 내부에 포함되는지 위 과정대로 체크한 뒤, 해당 힌지를 앵커로 삼는 HingeJoint2D 컴포넌트를 추가해 서로 다른 오브젝트끼리 연결되게 됩니다.`,
+<img src="img/project/DrawingPuzzle/Hinge.gif" alt="게임 이미지" style="width: 40%;" />`,
           },
           {
             id: 'p_dp_highlight_3',
-            title: '지우개, 바람, 무게 등',
-            content: `이외에도 라인 오브젝트나 힌지를 제거하는 지우개(이 역시 내부 판별을 통해 라인 오브젝트의 내부 공간인지 판별할 수 있습니다), 힘을 가하는 바람 등을 구현하였습니다.
-또 라인 오브젝트를 그린 뒤 마우스를 떼지 않고 대기하면 오브젝트의 무게가 높아지는 기능도 구현하였습니다.
-
-<img src="img/project/DrawingPuzzle/2.png" alt="게임 이미지" style="width: 80%;" />
+            title: '기타 컨텐츠',
+            content: `고정되는 라인, 힘을 가하는 바람, 지우개 도구를 구현하였습니다.
+라인을 그린 뒤 마우스를 떼지 않고 있으면 라인의 무게가 늘어나는 기능을 구현하였습니다.
 `,
           }
         ],
         showDivider: true,
-      }
+      },
+      {
+        id: 'p_fh_bottom',
+        title: '더보기',
+        content: ``,
+        showDivider: false,
+      },
     ],
   },
 
@@ -731,7 +717,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 1. 정확한 타이밍의 충돌을 위해 충돌이 일어날 경우 overlap된 크기만큼 예상 경로로 이동하기
 2. 블록을 배치하고 문어의 속도를 조절할 수 있는 레벨 에디터를 만들어 제공하기
 
-문어의 이동 방향은 항상 사선방향으로 반사벡터 공식을 쓸 것도 없이 간단하게 반사된 뒤에 이동할 방향을 결정할 수 있습니다. 충돌이 발생하면 겹친 영역만큼 반사된 방향으로 밀어냄으로써 아주 미세한 오차만 남길 수 있었습니다. 맵(곡)의 길이가 길어봐야 수 분에 불과했으므로 플레이어는 오차를 전혀 느낄 수 없습니다.
+문어의 이동 방향은 항상 사선방향으로 반사벡터 공식을 쓸 것도 없이 간단하게 반사된 뒤에 이동할 방향을 결정할 수 있습니다. 충돌이 발생하면 겹친 영역만큼 반사된 방향으로 밀어냄으로써 싱크 오차를 최소화하였습니다.
 
 또, 기획이 직접 노래와 싱크를 맞춰가며 블록을 배치할 필요가 있었으므로 레벨 에디터를 만들어 제공했습니다.
 레벨 에디터로 맵을 구성한 뒤 직렬화하여 저장하면, 인게임에서 해당 맵 파일을 읽어 맵을 구성하는 방식입니다.
@@ -751,7 +737,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
           {
             id: 'p_ap_highlight_3',
             title: '충돌 예측 애니메이션',
-            content: `박자와 충돌 타이밍을 맞추기 위해 문어는 항상 일정한 속도로 이동해야만 했습니다. 문제는 문어의 충돌 애니메이션을 충돌 시점부터 재생하는 경우 이미 멀어지고 있을 때 충돌하는 애니메이션이 재생된다는 것입니다.
+            content: `박자와 충돌 타이밍을 맞추기 위해 문어는 항상 일정한 속도로 이동해야만 했습니다. 그런데 문어의 충돌 애니메이션을 충돌 시점부터 재생하는 경우 이미 멀어지고 있을 때 충돌하는 애니메이션이 재생되는 문제가 있었습니다.
 
 따라서 더 자연스러운 느낌을 주기 위해 얼마 후에 충돌한다는 정보를 미리 구해서 애니메이션을 예측 실행했습니다. 이 때 부드러운 애니메이션 전환을 위해선 우선 이전의 애니메이션 프레임이 모두 끝날 때까지 기다렸다가 실행해야 했고, 충돌 애니메이션이 실행될 수 있는 간격을 계산해 레이캐스팅을 통해 충돌하기 전에 애니메이션을 재생하도록 했습니다.
 
@@ -823,21 +809,19 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
           {
             id: 'p_etd_highlight_1',
             title: '경로를 따라 이동하는 적',
-            content: `경로를 따라 이동하도록 하는 방법은 매우 다양하지만, 이 게임의 경우 단순히 정해진 길을 일정한 속도로 이동하기만 하면 됩니다.
-각 직선 경로의 시작점, 끝점의 좌표를 기록하고 선형보간으로 이동, 보간계수가 1 이상이 되면 다음 직선 경로로 전환하는 방식으로 구현했습니다.
+            content: `각 직선 경로의 시작점, 끝점의 좌표를 기록하고 선형보간으로 이동, 보간계수가 1 이상이 되면 다음 직선 경로로 전환하는 방식으로 구현했습니다.
 
 이 방식의 장점은 (1) 프레임이 어떻든 항상 경로 상에서만 이동하는 것이 보장되고, (2) 현재 위치를 예측하고 계산하는 것이 매우 쉽다는 점입니다.`,
           },
           {
             id: 'p_etd_highlight_2',
             title: '적의 위치 예측하여 사격하기',
-            content: `앞서 선형보간을 통해 이동시키는 것의 장점으로 위치 예측이 쉽다는 것을 들었습니다. 실제로 거너와 같은 특정 타워는 자신이 발사한 총알의 속도를 고려하여 자신이 타겟팅한 적의 이동을 예측해 해당 방향으로 사격을 가해야 합니다.
+            content: `거너와 같은 특정 타워는 자신이 발사한 총알의 속도를 고려하여 자신이 타겟팅한 적의 이동을 예측해 해당 방향으로 사격을 가해야 했습니다.
 
 <img src="img/project/EmojiTowerDefense/3.png" alt="게임 이미지" style="width: 30%;" />
 
-이 때 사격을 시작할 때의 거리와 총알의 속도를 계산하면 도달까지의 시간을 측정할 수 있고, 선형보간을 통해 이동하므로 그 시간만큼 지났을 때 적이 어디에 가있을지 예측하는 것이 매우 쉽습니다. 거너는 이런 방식으로 적의 현재 위치가 아닌 미래의 위치에 사격을 가합니다.
-물론 경로의 모양이 복잡하면 이런 단순한 계산은 정확성이 떨어질 수밖에 없습니다.
-            `,
+이 때 사격을 시작할 때의 거리와 총알의 속도를 계산하면 도달까지의 시간을 측정할 수 있고, 선형보간을 통해 이동하므로 그 시간만큼 지났을 때 적이 어디에 가있을지 쉽게 예측할 수 있었습니다. 거너는 이런 방식으로 적의 현재 위치가 아닌 미래의 위치에 사격을 가합니다.
+`,
           },
           {
             id: 'p_etd_highlight_3',
@@ -846,22 +830,22 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
 적 오브젝트의 콜라이더 컴포넌트들을 대상으로 공격 범위 영역에 충돌하는지 체크하고, 충돌하는 적 목록을 구한 뒤 경로상의 위치 정보와 레벨 정보를 통해 상황에 맞는 정렬을 수행하여 공격 대상을 결정하도록 하였습니다.`,
           }
         ],
-        showDivider: true,
+        showDivider: false,
       },
-      {
-        id: 'p_etd_lesson',
-        title: '반성과 개선점',
-        subSections: [
-          {
-            id: 'p_etd_lesson_1',
-            title: '확장성 있는 설계 - 적과 효과를 분리시키기',
-            content: `글루 거너의 글루를 맞은 적은 일정한 시간동안 속도가 떨어져야 합니다. 이를 게임에서는 적 오브젝트가 직접 관리하게 했는데, 이러면 다른 방식으로 적에게 영향을 주는 타워나 효과를 추가한다고 할 때마다 매번 적 클래스를 수정해야만 할 것입니다.
+//       {
+//         id: 'p_etd_lesson',
+//         title: '반성과 개선점',
+//         subSections: [
+//           {
+//             id: 'p_etd_lesson_1',
+//             title: '확장성 있는 설계 - 적과 효과를 분리시키기',
+//             content: `글루 거너의 글루를 맞은 적은 일정한 시간동안 속도가 떨어져야 합니다. 이를 게임에서는 적 오브젝트가 직접 관리하게 했는데, 이러면 다른 방식으로 적에게 영향을 주는 타워나 효과를 추가한다고 할 때마다 매번 적 클래스를 수정해야만 할 것입니다.
 
-대신 '효과'를 주관하는 인스턴스를 생성해볼 수 있을 것입니다. 이러한 인스턴스는 전역적으로 존재하는 관리자를 통해 혹은 적 오브젝트의 배열에 담겨 존재하게끔 하고, 시간이 만료되었을 때 알아서 가리키는 적의 속도를 복구시키는 방식으로 작동하면 됩니다.
-이런 방법을 사용하면 어떤 효과나 공격이 새로 추가되던 적이 가지고 있어야 할 어트리뷰트만 가지고 있다면, 이를 수정하는 효과 인스턴스를 만드는 방식으로 쉽게 확장이 가능해집니다.`,
-          }
-        ],
-      },
+// 대신 '효과'를 주관하는 인스턴스를 생성해볼 수 있을 것입니다. 이러한 인스턴스는 전역적으로 존재하는 관리자를 통해 혹은 적 오브젝트의 배열에 담겨 존재하게끔 하고, 시간이 만료되었을 때 알아서 가리키는 적의 속도를 복구시키는 방식으로 작동하면 됩니다.
+// 이런 방법을 사용하면 어떤 효과나 공격이 새로 추가되던 적이 가지고 있어야 할 어트리뷰트만 가지고 있다면, 이를 수정하는 효과 인스턴스를 만드는 방식으로 쉽게 확장이 가능해집니다.`,
+//           }
+//         ],
+//       },
     ],
   },
 
@@ -898,8 +882,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             title: '게임 소개',
             content: `WinAPI, GDI+를 사용해 게임루프를 구현하고 그 결과물로 만들었던 간단한 플랫포머 게임입니다.
 좌·우 이동과 공중 조작이 불가능하고 누르고 있으면 점프력이 높아지는 점프 조작만으로 맵을 올라 골인 지점에 도달하는 게 목표입니다.
-
-짧은 기간동안 제작한 개인 프로젝트인 만큼 단순하지만, 게임 루프의 동작이나 애니메이션, OS API를 통한 렌더링, 간단한 물리 처리 등 여러 가지 지식들을 실제로 게임을 제작하며 깊히 이해할 수 있게 되었습니다.`,
+`,
           },
           {
             id: 'p_jf_overview_role',
@@ -921,7 +904,7 @@ TimerFunction은 코루틴과 유사하게 동작하나 주체가 되는 오브�
             id: 'p_jf_highlight_1',
             title: '2D 충돌 체크 및 밀어내기',
             content: `모든 오브젝트는 AABB 콜라이더 컴포넌트를 가지며, 유니티 엔진을 모방하여 RigidBody2D 컴포넌트가 부착된 캐릭터 오브젝트에는 중력을 적용하고 충돌체크 후 적절한 위치로 밀어내는 후처리가 이루어지도록 했습니다.
-단순한 데모 수준의 엔진인 만큼 고도의 물리적 처리를 수행하지는 않으며, 충돌이 발생하면 겹친 영역을 구해 그 반대 방향으로 밀어내는 방식을 사용합니다.
+충돌이 발생하면 겹친 영역을 구해 그 반대 방향으로 밀어내는 방식입니다.
 
 게임에선 사용하지 않았지만 원과 원, AxisAlignedBox와 원 간의 충돌이나 삼각형의 세 꼭지점 좌표가 주어질 때 외적을 통해 특정 점이 삼각형의 외부에 있는지 내부에 있는지 판별하는 기능도 구현하였습니다.`,
           },
