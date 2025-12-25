@@ -541,6 +541,9 @@ function ProjectModal({ project, onClose }) {
               </div>
             ) : null}
 
+
+            {/* Dummy padding */}
+            <br></br><br></br><br></br>
           </div>
         </div>
       </div>

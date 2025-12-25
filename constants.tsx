@@ -23,7 +23,7 @@ export const PERSONAL_INFO = {
   title: "신입 클라이언트 개발자",
   birthDate: "1998.12.06",
   academic: [
-    "서울과학기술대학교 행정학 학사 (2017.03 - 2023.08)",
+    "서울과학기술대학교 행정학과 졸업 (2017.03 - 2023.08)",
     "건국대학교 사범대학 부속 고등학교 졸업 (2014.03 ~ 2017.02)"
   ],
   education: [
@@ -33,7 +33,7 @@ export const PERSONAL_INFO = {
   email: "gunandjerry@gmail.com",
   github: "https://github.com/gunandjerry",
   blog: "https://gunandjerry.github.io/gunandjerry_blog/",//"https://ddodigi.tistory.com/",
-  photo: "img/profile/face.png"
+  photo: "img/profile/face.png",
 };
 
 
@@ -234,6 +234,7 @@ GAS를 적극적으로 사용하는 것으로 의존성을 크게 줄일 수 있
             title: '기타 컨텐츠 구현',
             content: `이외에도 인게임 컨텐츠의 절반 이상을 구현하였습니다.
 
+<collapsible title="기타 구현 컨텐츠 살펴보기 (클릭하여 펼치기)">
 ▶ 메타휴먼 캐릭터 이펙트
 메타휴먼이 사용하는 머터리얼을 수정하여 Dissolving 이펙트 등을 구현하였습니다. 별개의 렌더링 프로세스를 사용하는 UGroomComponent의 경우 Opacity를 적용할 수 없어 적절한 시점에 Visiblity를 끄는 방식으로 구현되었습니다.
 
@@ -280,7 +281,9 @@ MediaPlayer를 사용한 튜토리얼 영상을 재생하는 TV 등 플레이어
 
 ▶ 랜덤 프롭 배치 포인트 / 미리보기
 
-<video-gif src="img/project/FRankSurvivor/spawnpoint.mp4" title="demo" width="70%"/>`,
+<video-gif src="img/project/FRankSurvivor/spawnpoint.mp4" title="demo" width="70%"/>
+
+</collapsible>`,
           },
         ],
         showDivider: true,
