@@ -17,7 +17,7 @@ function ExperienceTimeline({ id, experiences }) {
     <section id={id} className="py-16 sm:py-24 bg-slate-900">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl sm:text-4xl font-bold text-slate-100 mb-12 text-center">
-          성장 <span className="text-teal-400">여정</span>
+          교육 및<span className="text-teal-400"> 경력사항</span>
         </h2>
         <div className="relative">
           {/* The vertical line is achieved by the `before` pseudo-element in TimelineItem */}

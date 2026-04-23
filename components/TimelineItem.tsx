@@ -16,13 +16,13 @@ function TimelineItem({ experience, isLast }) {
           <span className="text-xs sm:text-sm text-slate-500 sm:ml-2">@ {experience.company}</span>
         </div>
         <p className="text-sm text-slate-400 mb-2">{experience.period}</p>
-        <p className="text-slate-300 leading-relaxed mb-3">{experience.description}</p>
-        {experience.learnings && experience.learnings.length > 0 && (
+        <p className="text-slate-300 leading-relaxed mb-3 whitespace-pre-line">{experience.description}</p>
+        {experience.details && experience.details.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-slate-200 mb-1">배운 점:</h4>
+            {/* <h4 className="text-sm font-semibold text-slate-200 mb-1">세부사항:</h4> */}
             <ul className="list-disc list-inside text-slate-400 text-sm space-y-1">
-              {experience.learnings.map((learning, index) => (
-                <li key={index}>{learning}</li>
+              {experience.details.map((detail, index) => (
+                <li key={index}>{detail}</li>
               ))}
             </ul>
           </div>

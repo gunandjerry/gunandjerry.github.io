@@ -20,14 +20,14 @@ export const SECTION_IDS = {
 export const PERSONAL_INFO = {
   name: "이건제",
   name_eng: "Geonje Lee",
-  title: "신입 클라이언트 개발자",
+  title: "주니어 클라이언트 개발자",
   birthDate: "1998.12.06",
   academic: [
     "서울과학기술대학교 행정학과 졸업 (2017.03 - 2023.08)",
     "건국대학교 사범대학 부속 고등학교 졸업 (2014.03 ~ 2017.02)"
   ],
   education: [
-    "한국콘텐츠진흥원 게임인재원 6기 프로그래밍 학과 (2024.03 ~ )",
+    `한국콘텐츠진흥원 게임인재원 6기 프로그래밍 학과 수료 (2024.03 ~ 2026.02)`,
   ],
   phone: "010-2870-5895",
   email: "gunandjerry@gmail.com",
@@ -952,24 +952,38 @@ export const CALL_TO_ACTION_DATA = [
 ];
 
 
-// <25-08-12> 사용하지 않음
 export const EXPERIENCE_DATA = [
   {
-    id: 'exp-1',
-    period: '2024년 3월 - 2025년 11월',
+    id: 'exp_as',
+    period: '2026년 1월 - 2026년 5월',
+    company: '(주)어나더스타',
+    role: '언리얼 클라이언트 프로그래머',
+    description: '',
+    details: [
+      'C/C++, 3D 렌더링, 3D 수학',
+      '리더십 및 프로젝트 관리',
+      '게임 네트워크 기초',
+      '언리얼 엔진 등'
+    ],
+  },
+  {
+    id: 'exp_gi',
+    period: '2024년 3월 - 2026년 1월',
     company: '게임인재원',
-    role: '게임인재원 6기 프로그래밍 교육생',
-    description: '게임 개발에 필요한 저반 지식 학습부터 멘토링과 수 차례에 걸친 팀 프로젝트 경험. 모든 교육 과정을 우수한 성적으로 수료함.',
-    learnings: ['C/C++, 3D 렌더링, 3D 수학', '리더십 및 프로젝트 관리', '게임 네트워크 기초', '언리얼 엔진 등'],
+    role: '게임인재원 6기 프로그래밍 과정 수료',
+    description: `다섯 차례의 팀 프로젝트 중 네 차례 팀장 역할을 수행하였으며 우수한 성적으로\n프로그래밍 학과 대표 졸업생으로 선정 및 한국콘텐츠진흥원장상을 수상하였습니다.`,
+    details: [
+      '다섯 차례의 팀 프로젝트 중 네 차례 팀장 역할 수행',
+      '한국콘텐츠진흥원장대행상 수상 및 프로그래밍 학과 대표 졸업생으로 선정'
+    ],
   }
 ];
 
 
-
-// <25-11-17> 강점과 역량으로 변경
+// 현재 사용하지 않음
 export const LEARNING_JOURNEY_DATA = {
-  title: "성장 여정", // not use
-  subTitle: "", // not use
+  title: "성장 여정",
+  subTitle: "",
   sections: [
     {
       id: 'lj-1',

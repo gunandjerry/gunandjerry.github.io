@@ -21,9 +21,6 @@ function Footer() {
         <p className="text-sm">
           &copy; {new Date().getFullYear()} {PERSONAL_INFO.name}. All rights reserved.
         </p>
-        <p className="text-xs mt-2">
-          이 페이지는 React와 Tailwind CSS로 제작되었으며, 구글 AI Builder의 도움을 받아 작성되었습니다.
-        </p>
       </div>
     </footer>
   );
